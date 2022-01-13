@@ -1,17 +1,40 @@
-import './App.css'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-
+import { ThemeProvider } from 'styled-components';
 import { Header, Navbar } from './components'
+import Footer from './components/Footer';
+import { Container } from './styles/Container.styled'
+import GlobalStyles from './styles/Global';
+import content from './content';
+import Card from './components/Card'
 
+const theme = {
+  colors: {
+    header: '#ebfbff',
+    body: '#fff',
+    footer: '#003333'
+  },
+  mobile: {
+    size: '760px'
+  }
+}
 
 function App() {
   return (
-    <>
-      <Router>
+    <ThemeProvider theme={theme}>
+      <>
+        {/* <Router>
         <Navbar />
-      </Router>
-      <Header title="Project S" />
-    </>
+      </Router>*/}
+        <GlobalStyles />
+        <Header />
+        <Container>
+          {content.map((item, index) => (
+            <Card key={index} item={item} />
+          ))}
+        </Container>
+        <Footer />
+      </>
+    </ThemeProvider>
   );
 }
 
