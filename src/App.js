@@ -1,17 +1,26 @@
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+// packages
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components';
-import { Header, Navbar } from './components'
-import Footer from './components/Footer';
-import { Container } from './styles/Container.styled'
+// styles
 import GlobalStyles from './styles/Global';
-import content from './content';
-import Card from './components/Card'
+// componenets
+import Navbar from './components/Navbar'
+import Footer from './components/Footer';
+// pages
+import Home from './pages/Home';
 
 const theme = {
   colors: {
-    header: '#ebfbff',
+    primary: '#449DD1',
+    header: '#EEF7FB',
     body: '#fff',
     footer: '#003333'
+  },
+  font: {
+    family: 'Poppins',
+    size: {
+
+    }
   },
   mobile: {
     size: '760px'
@@ -22,16 +31,17 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <>
-        {/* <Router>
-        <Navbar />
-      </Router>*/}
         <GlobalStyles />
-        <Header />
-        <Container>
-          {content.map((item, index) => (
-            <Card key={index} item={item} />
-          ))}
-        </Container>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/brands" />
+            <Route path="/agents" />
+            <Route path="/corporates" />
+            <Route path="/crowdfunding" />
+          </Routes>
+        </Router>
         <Footer />
       </>
     </ThemeProvider>

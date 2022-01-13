@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
-import { StyledHeader, Nav, Logo, Image } from './Header.styled'
+import { StyledHeader, Image } from './Header.styled'
 import { Button } from '../button/Button.styled';
+import Navbar from '../Navbar';
 import { Flex } from '../../styles/Flex.styled'
 import { Container } from '../../styles/Container.styled'
 
@@ -8,10 +9,7 @@ const Header = () => {
     return (
         <StyledHeader>
             <Container>
-                <Nav>
-                    <Logo src='./images/logo_text.svg' alt='' />
-                    <Button>Sign In</Button>
-                </Nav>
+                <Navbar />
 
                 <Flex>
                     <div>
