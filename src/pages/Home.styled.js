@@ -7,6 +7,7 @@ import { FaFileContract } from 'react-icons/fa';
 export const HomeContainer = styled(Flex)`
     align-items: start;
     margin-top: 50px;
+    flex-direction: column;
 `
 
 export const ProfileContainer = styled.div`
@@ -14,6 +15,7 @@ export const ProfileContainer = styled.div`
     margin: 10px;
     align-items: start;
     flex-direction: column;
+    
 `
 
 export const Profile = styled(Flex)`

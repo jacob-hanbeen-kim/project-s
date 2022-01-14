@@ -18,43 +18,48 @@ const Home = () => {
     return (
         <Container>
             <HomeContainer>
-                <ProfileContainer>
-                    <Profile>
-                        <ProfileImage src='./images/logo192_dark.svg' />
-                        <p>
-                            Laenofi aoefaiom ksnviok fod  asfoe kfafoef kmd af oa
-                            asdfo feaklf as. aewofm dkla faoaid
-                            adfonai efoawkf doai f.
-                            asnfoawiejfo jaiosf oaefmo kamdo faief
-                            Laenofi aoefaiom ksnviok fod  asfoe kfafoef kmd af oa
-                            asdfo feaklf as. aewofm dkla faoaid
-                            adfonai efoawkf doai f.
-                            asnfoawiejfo jaiosf oaefmo kamdo faief
-                        </p>
-                    </Profile>
-                    <ContractFilesContainer>
-                        <ContractFileLink>
-                            <ContractFileIcon />
-                        </ContractFileLink>
-                        <ContractFileLink>
-                            <ContractFileIcon />
-                        </ContractFileLink>
-                        <ContractFileLink>
-                            <ContractFileIcon />
-                        </ContractFileLink>
-                        <ContractFileLink>
-                            <ContractFileIcon />
-                        </ContractFileLink>
-                        <ContractFileLink>
-                            <ContractFileIcon />
-                        </ContractFileLink>
-                    </ContractFilesContainer>
-                </ProfileContainer>
-                <SponsorContainer>
+                <Flex>
+                    <ProfileContainer>
+                        <Profile>
+                            <ProfileImage src='./images/logo192_dark.svg' />
+                            <p>
+                                Laenofi aoefaiom ksnviok fod  asfoe kfafoef kmd af oa
+                                asdfo feaklf as. aewofm dkla faoaid
+                                adfonai efoawkf doai f.
+                                asnfoawiejfo jaiosf oaefmo kamdo faief
+                                Laenofi aoefaiom ksnviok fod  asfoe kfafoef kmd af oa
+                                asdfo feaklf as. aewofm dkla faoaid
+                                adfonai efoawkf doai f.
+                                asnfoawiejfo jaiosf oaefmo kamdo faief
+                            </p>
+                        </Profile>
+                        <ContractFilesContainer>
+                            <ContractFileLink>
+                                <ContractFileIcon />
+                            </ContractFileLink>
+                            <ContractFileLink>
+                                <ContractFileIcon />
+                            </ContractFileLink>
+                            <ContractFileLink>
+                                <ContractFileIcon />
+                            </ContractFileLink>
+                            <ContractFileLink>
+                                <ContractFileIcon />
+                            </ContractFileLink>
+                            <ContractFileLink>
+                                <ContractFileIcon />
+                            </ContractFileLink>
+                        </ContractFilesContainer>
+                    </ProfileContainer>
+                    <SponsorContainer>
+                        <Card key={0} item={content[0]} />
+                    </SponsorContainer>
+                </Flex>
+                <div>
                     {content.map((item, index) => (
                         <Card key={index} item={item} />
                     ))}
-                </SponsorContainer>
+                </div>
             </HomeContainer>
         </Container >
     )
