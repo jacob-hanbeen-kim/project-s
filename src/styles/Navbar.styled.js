@@ -58,12 +58,14 @@ export const StyledLink = styled(NavLink)`
 
     font-weight: bold;
     text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
 
     &.active {
         color: ${({ theme }) => theme.colors.primary};
     }
 
     &:hover {
+        transition: all 0.2s ease-in-out;
         color: #000;
     }
 `
@@ -106,8 +108,11 @@ export const Profile = styled(FaRegUserCircle)`
     font-size: 2rem;
     transition: all 0.2s ease-in-out;
 
+    color: rgb(100, 100, 100);
+
     &:hover {
         transition: all 0.2s ease-in-out;
-        color: ${({ theme }) => theme.colors.primary};
+        /* color: ${({ theme }) => theme.colors.primary}; */
+        color: #000;
     }
 `
