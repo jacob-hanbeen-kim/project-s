@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Flex } from '../styles/Flex.styled'
-import { Container } from '../styles/Container.styled'
+import { Flex } from '../../styles/Flex.styled'
+import { Container } from '../../styles/Container.styled'
 import { FaFileContract } from 'react-icons/fa';
 
 export const HomeContainer = styled(Flex)`
@@ -105,7 +105,8 @@ export const ContractFileLink = styled.button`
 
 export const ContractFileIcon = styled(FaFileContract)`
     font-size: 70px;
-    color: ${({ theme }) => theme.colors.primary};
+    /* color: ${({ theme }) => theme.colors.primary}; */
+    fill: url(#blue-gradient);
 
     @media (max-width: ${({ theme }) => theme.mobile.size}) {
         font-size: 50px;

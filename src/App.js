@@ -8,11 +8,12 @@ import styled from 'styled-components';
 import Navbar from './components/Navbar'
 import Footer from './components/Footer';
 // pages
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 
 const theme = {
   colors: {
     primary: '#449DD1',
+    hover: '#308EC5',
     header: '#EEF7FB',
     body: '#fff',
     footer: '#003333'
@@ -49,6 +50,7 @@ function App() {
               <Route path="/agents" />
               <Route path="/corporates" />
               <Route path="/crowdfunding" />
+              <Route path="/account" />
             </Routes>
           </FlexWropper>
         </Router>

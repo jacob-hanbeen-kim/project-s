@@ -48,7 +48,7 @@ export const Menu = styled.div`
 `
 
 export const StyledLink = styled(NavLink)`
-    color: #000;
+    color: rgb(100, 100, 100);
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -61,6 +61,10 @@ export const StyledLink = styled(NavLink)`
 
     &.active {
         color: ${({ theme }) => theme.colors.primary};
+    }
+
+    &:hover {
+        color: #000;
     }
 `
 

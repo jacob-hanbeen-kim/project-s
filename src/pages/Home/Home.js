@@ -1,4 +1,4 @@
-import { Container } from '../styles/Container.styled'
+import { Container } from '../../styles/Container.styled'
 import {
     HomeContainer,
     BlockContainer,
@@ -22,8 +22,8 @@ import {
 
 } from './Home.styled';
 
-import content from '../content';
-import Card from '../components/Card'
+import content from '../../content';
+import Card from '../../components/Card'
 
 const Home = () => {
     return (
@@ -54,6 +54,13 @@ const Home = () => {
                                 </ProfileDetailContainer>
                             </Profile>
                             <ContractFilesContainer>
+                                <svg width="0" height="0">
+                                    <linearGradient id="blue-gradient" x1="100%" y1="100%" x2="0%" y2="0%">
+                                        <stop stopColor="#7a6ded" offset="0%" />
+                                        <stop stopColor="#591885" offset="100%" />
+                                    </linearGradient>
+                                </svg>
+
                                 <ContractFileLink>
                                     <ContractFileIcon />
                                 </ContractFileLink>

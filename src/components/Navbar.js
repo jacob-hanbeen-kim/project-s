@@ -19,7 +19,6 @@ const Navbar = () => {
                 <NavbarLeft>
                     <LogoLink to="/">
                         <Logo />
-                        {/* <h1>Project S</h1> */}
                     </LogoLink>
                 </NavbarLeft>
                 <Bars />
@@ -29,7 +28,7 @@ const Navbar = () => {
                     <StyledLink to="/agents" activeStyle>Agents</StyledLink>
                     <StyledLink to="/corporates">Corportaes</StyledLink>
                     <StyledLink to="/crowdfunding">Crowdfunding</StyledLink>
-                    <ProfileLink to='/signin'>
+                    <ProfileLink to='/account'>
                         <Profile />
                     </ProfileLink>
                 </Menu>
