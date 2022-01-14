@@ -1,20 +1,20 @@
 const content = [
     {
         id: 1,
-        title: 'Grow Together',
-        body: 'Generate meaningful discussions with your audience and build a strong, loyal community. Think of the insightful conversations you miss out on with a feedback form.',
+        title: 'Logo in Tshirt',
+        body: 'Put Logo in the Tshirt for $$$$/month',
         image: 'illustration-flowing-conversation.svg',
     },
     {
         id: 2,
-        title: 'Flowing Conversations',
-        body: "You wouldn't paginate a conversation in real life, so why do it online? Our threads have just-in-time loading for a more natural flow.",
+        title: 'Mention Sponsor',
+        body: "Advertise sponsor in team social medias",
         image: 'illustration-flowing-conversation.svg',
     },
     {
         id: 3,
-        title: 'Your Users',
-        body: "It takes no time at all to integrate Huddle with your app's authentication solution. This means, once signed in to your app, your users can start chatting immediately.",
+        title: 'Choose Team Color',
+        body: "Choose team color for the year! All product will be using the chosen themed color for this year.",
         image: 'illustration-flowing-conversation.svg',
     },
 ]

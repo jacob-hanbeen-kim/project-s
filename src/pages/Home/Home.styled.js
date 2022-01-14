@@ -118,9 +118,6 @@ export const ContractFileIcon = styled(FaFileContract)`
 export const TshirtDesignContainer = styled.div`
     display: flex;
     align-items: center;
-    /* background-color: #fff; */
-    /* border-radius: 15px; */
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
     margin: 40px 0;
     padding: 60px;
     flex-direction: ${({ layout }) => layout || 'row'};
@@ -134,24 +131,56 @@ export const TshirtDesignContainer = styled.div`
     }
 `
 
-export const TshirtImage = styled.div`
-    /* margin: auto;
-    width: 200px;
-    position: relative; */
-
+export const TshirtDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 18px; 
-    border-radius: 5px;
-    box-shadow: inset 0 0 12px 12px white, inset 0 0 3px 2px white;
-    /* background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); */
+    flex-direction: column;
 
-    background: linear-gradient(to bottom, ${({ theme }) => theme.colors.primary}, yellow, black);
+    max-width: 550px;
+    z-index: 2;
+
+    background-color: rgb(251, 253, 255);
+    border-radius: ${({ theme }) => theme.border.radius};
+    box-shadow: rgb(4 17 29 / 25%) 0px 0px 10px 0px;
+`
+
+export const TshirtImage = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* /* background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet); */
+    /* background: linear-gradient(to bottom, ${({ theme }) => theme.colors.primary}, yellow, black); */
+
+    width: 550px;
+    height: 550px;
+
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
 
     img {
+        object-fit: cover;
         width: 100%;
+        height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+
+        opacity: 1;
+        transition: opacity 400ms ease 0s;
     }
+`
+
+export const TshirtButtonContainer = styled.div`
+    border: none;
+    width: 100%;
+    font-weight: 600;
+    padding: 16px;
+    color: rgb(53, 56, 64);
+    text-align: center;
+    box-sizing: border-box;
 `
 
 /** Contract Requisites Elements **/

@@ -1,4 +1,6 @@
 import { Container } from '../../styles/Container.styled'
+import { Button } from '../../styles/Button.styled';
+import Carousel from '../../components/Carousel';
 import {
     HomeContainer,
     BlockContainer,
@@ -12,7 +14,9 @@ import {
     ProfileImageContainer,
     ProfileDetailContainer,
     TshirtDesignContainer,
+    TshirtDiv,
     TshirtImage,
+    TshirtButtonContainer,
 
     ContractFilesContainer,
     ContractFileLink,
@@ -85,19 +89,45 @@ const Home = () => {
                             </ContractFilesContainer>
                         </ProfileContainer>
                         <TshirtDesignContainer>
-                            <TshirtImage>
-                                <img src={`./images/uniform.jpeg`} alt="uniform" />
-                            </TshirtImage>
+                            <TshirtDiv>
+                                <TshirtImage>
+                                    <img src={`./images/uniform.jpg`} alt="uniform" />
+                                </TshirtImage>
+                                <TshirtButtonContainer>
+                                    <Button>Learn More</Button>
+                                </TshirtButtonContainer>
+                            </TshirtDiv>
                         </TshirtDesignContainer>
                     </BlockFlex>
                 </BlockContainer>
             </>
             <Container>
                 <ContractRequisitesSection>
-                    <h1>Sponsor Opportunities</h1>
+                    {/* <h1>Sponsor Opportunities</h1>
                     {content.map((item, index) => (
                         <Card key={index} item={item} />
-                    ))}
+                    ))} */}
+                    <Carousel child={
+                        <>
+                            <TshirtDiv>
+                                <TshirtImage>
+                                    <img src={`./images/uniform.jpg`} alt="uniform" />
+                                </TshirtImage>
+                                <TshirtButtonContainer>
+                                    <Button>Learn More</Button>
+                                </TshirtButtonContainer>
+                            </TshirtDiv>
+                            <TshirtDiv>
+                                <TshirtImage>
+                                    <img src={`./images/uniform.jpg`} alt="uniform" />
+                                </TshirtImage>
+                                <TshirtButtonContainer>
+                                    <Button>Learn More</Button>
+                                </TshirtButtonContainer>
+                            </TshirtDiv>
+                        </>
+                    }>
+                    </Carousel>
                 </ContractRequisitesSection>
             </Container>
         </HomeContainer>

@@ -24,6 +24,9 @@ const theme = {
 
     }
   },
+  border: {
+    radius: '10px',
+  },
   mobile: {
     size: '760px'
   }
