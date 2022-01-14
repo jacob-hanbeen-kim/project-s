@@ -1,6 +1,9 @@
 import {
+    NavContainer,
     Nav,
+    NavbarLeft,
     StyledLink,
+    LogoLink,
     Menu,
     ProfileLink,
     Bars,
@@ -11,12 +14,14 @@ import Logo from './Logo';
 
 const Navbar = () => {
     return (
-        <>
+        <NavContainer>
             <Nav>
-                <StyledLink to="/">
-                    <Logo src='./images/logo_text.svg' alt='logo' />
-                    {/* <h1>Project S</h1> */}
-                </StyledLink>
+                <NavbarLeft>
+                    <LogoLink to="/">
+                        <Logo />
+                        {/* <h1>Project S</h1> */}
+                    </LogoLink>
+                </NavbarLeft>
                 <Bars />
                 <Menu>
                     {/* <StyledLink to="/">Home</StyledLink> */}
@@ -28,13 +33,8 @@ const Navbar = () => {
                         <Profile />
                     </ProfileLink>
                 </Menu>
-                {/* <NavBtn>
-                    <NavBtnLink to='/signin'>
-                        <FaRegUserCircle />
-                    </NavBtnLink>
-                </NavBtn> */}
             </Nav>
-        </>
+        </NavContainer>
     )
 }
 
