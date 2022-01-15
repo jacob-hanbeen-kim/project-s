@@ -24,8 +24,8 @@ const Navbar = () => {
                 <Bars />
                 <Menu>
                     {/* <StyledLink to="/">Home</StyledLink> */}
-                    <StyledLink to="/brands" activeStyle>Brands</StyledLink>
-                    <StyledLink to="/agents" activeStyle>Agents</StyledLink>
+                    <StyledLink to="/brands">Brands</StyledLink>
+                    <StyledLink to="/agents">Agents</StyledLink>
                     <StyledLink to="/corporates">Corportaes</StyledLink>
                     <StyledLink to="/crowdfunding">Crowdfunding</StyledLink>
                     <ProfileLink to='/account'>
