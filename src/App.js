@@ -28,7 +28,8 @@ const theme = {
     radius: '10px',
   },
   mobile: {
-    size: '760px'
+    size: '760px',
+    sizeM: '1420px'
   }
 }
 

@@ -14,7 +14,7 @@ const content = [
     {
         id: 3,
         title: 'Choose Team Color',
-        body: "Choose team color for the year! All product will be using the chosen themed color for this year.",
+        body: "Choose team color for the year! ",
         image: 'illustration-flowing-conversation.svg',
     },
 ]
