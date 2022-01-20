@@ -12,17 +12,12 @@ import {
     ProfileImageContainer,
     ProfileDetailContainer,
     ProfileDetail,
-    TshirtDesignContainer,
 
     ContractFilesContainer,
     ContractFileLink,
     ContractFileIcon,
-
-    TshirtDiv,
-    TshirtImage,
-    TshirtButtonContainer,
 } from './Profile.styled';
-import { Button } from '../../../styles/Button.styled';
+import Card2 from '../../../components/Card2';
 
 const Profile = () => {
     return (
@@ -39,10 +34,6 @@ const Profile = () => {
                         </ProfileImageContainer>
                         <ProfileDetailContainer>
                             <ProfileDetail>
-                                Laenofi aoefaiom ksnviok fod  asfoe kfafoef kmd af oa
-                                asdfo feaklf as. aewofm dkla faoaid
-                                adfonai efoawkf doai f.
-                                asnfoawiejfo jaiosf oaefmo kamdo faief
                                 Laenofi aoefaiom ksnviok fod  asfoe kfafoef kmd af oa
                                 asdfo feaklf as. aewofm dkla faoaid
                                 adfonai efoawkf doai f.
@@ -78,16 +69,15 @@ const Profile = () => {
                         </ContractFileLink>
                     </ContractFilesContainer>
                 </ProfileContainer>
-                <TshirtDesignContainer>
-                    <TshirtDiv>
-                        <TshirtImage>
-                            <img src={`./images/uniform.jpg`} alt="uniform" />
-                        </TshirtImage>
-                        <TshirtButtonContainer>
-                            <Button>Learn More</Button>
-                        </TshirtButtonContainer>
-                    </TshirtDiv>
-                </TshirtDesignContainer>
+                <Card2
+                    image="./images/uniform.jpg"
+                    // image="./images/brand_name.svg"
+                    title="Uniform Logo"
+                    details="add custom logo to our team's uniform"
+                    buttonTxt="Learn More"
+                    color='white'
+                    backgroundColor='#3f3f3f'
+                />
             </BlockFlex>
         </BlockContainer>
     )

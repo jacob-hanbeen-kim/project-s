@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Button = styled.button`
     border-radius: ${({ theme }) => theme.border.radius};
-    border: 1px solid ${({ theme }) => theme.colors.primary};
+    border: 1px solid ${({ color, theme }) => color || theme.colors.primary};
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
     cursor: pointer;
     font-size: 16px;

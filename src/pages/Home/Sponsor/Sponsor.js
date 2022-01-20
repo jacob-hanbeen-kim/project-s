@@ -15,6 +15,7 @@ import Carousel from '../../../components/Carousel';
 
 import content from '../../../content.js'
 import Card from '../../../components/Card';
+import Card2 from '../../../components/Card2';
 
 const Sponsor = () => {
     return (
@@ -44,6 +45,33 @@ const Sponsor = () => {
                 {content.map((item, index) => (
                     <Card key={index} item={item} />
                 ))}
+                <Card2
+                    layout='row'
+                    image="./images/uniform.jpg"
+                    title="Uniform Logo"
+                    details="add custom logo to our team's uniform"
+                    buttonTxt="Learn More"
+                />
+                <Card2
+                    image="./images/uniform.jpg"
+                    title="Uniform Logo"
+                    details="add custom logo to our team's uniform"
+                    buttonTxt="Learn More"
+                />
+                <Card2
+                    image="./images/uniform.jpg"
+                    title="Uniform Logo"
+                    details="add custom logo to our team's uniform"
+                    buttonTxt="Learn More"
+                    layout='row-reverse'
+                />
+                <Card2
+                    image="./images/uniform.jpg"
+                    title="Uniform Logo"
+                    details="add custom logo to our team's uniform"
+                    buttonTxt="Learn More"
+                    layout='column-reverse'
+                />
             </ContractRequisitesSection>
         </Container>
     )
