@@ -9,6 +9,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer';
 // pages
 import Home from './pages/Home/Home';
+import Brand from './pages/Brands/Brands';
 
 const theme = {
   colors: {
@@ -50,7 +51,7 @@ function App() {
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/brands" />
+              <Route path="/brands" element={<Brand />} />
               <Route path="/agents" />
               <Route path="/corporates" />
               <Route path="/crowdfunding" />
