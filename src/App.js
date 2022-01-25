@@ -9,7 +9,9 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer';
 // pages
 import Home from './pages/Home/Home';
+import Account from './pages/Account/Account';
 import Brand from './pages/Brands/Brands';
+import Agents from './pages/Agents/Agents';
 
 const theme = {
   colors: {
@@ -52,10 +54,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/brands" element={<Brand />} />
-              <Route path="/agents" />
+              <Route path="/agents" element={<Agents />} />
               <Route path="/corporates" />
               <Route path="/crowdfunding" />
-              <Route path="/account" />
+              <Route path="/account" element={<Account />} />
             </Routes>
           </FlexWropper>
         </Router>

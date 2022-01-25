@@ -38,6 +38,8 @@ const Profile = () => {
                                 asdfo feaklf as. aewofm dkla faoaid
                                 adfonai efoawkf doai f.
                                 asnfoawiejfo jaiosf oaefmo kamdo faief
+                                Laenofi aoefaiom ksnviok fod  asfoe kfafoef kmd af oa
+                                asdfo feaklf as. aewofm dkla faoaid adfonai efoawkf doai f. asnfoawiejfo jaiosf oaefmo kamdo faief
                             </ProfileDetail>
                         </ProfileDetailContainer>
                     </ProfileFlex>
