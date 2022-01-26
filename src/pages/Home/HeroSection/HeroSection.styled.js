@@ -57,18 +57,18 @@ export const Title = styled.h1`
 
     /* color: ${({ theme }) => theme.colors.primary}; */
     color: #fff;
-    background: linear-gradient(180deg, #EEF7FB 0%, #7BC2E0 100%);
+    background: linear-gradient(110deg, #EEF7FB 20%, #535DCA 100%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
 
     
-    span {
-        background: linear-gradient(180deg, #EEF7FB 0%, #449DD1 100%);
+    /* span {
+        background: linear-gradient(90deg, #EEF7FB 30%, #003333 100%);
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
-    }
+    } */
 
     @media (max-width: 785px) {
         font-size: 2.5rem;
@@ -95,13 +95,14 @@ export const Background = styled.div`
     bottom: 0;
     left: 0;
     width: 100%;
-    /* height: 100%; */
+    height: 100%;
     overflow: hidden;
 `
 
 export const VideoBg = styled.video`
     width: 100%;
     height: 100%;
+    /* height: 860px; */
     /* -o-object-fit: cover; */
     object-fit: cover;
     background: #232a34;

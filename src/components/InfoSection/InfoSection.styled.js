@@ -1,9 +1,23 @@
 import styled from 'styled-components'
 
+const themes = {
+    light: {
+        background: '#f9f9f9',
+        toplineColor: 'primary',
+        headingColor: '#010606',
+        subtitleColor: '#010606'
+
+    },
+    dark: {
+        background: '#535DCA',
+        headingColor: '#f7f8fa',
+        subtitleColor: '#fff',
+    }
+}
 
 export const InfoContainer = styled.div`
     color: #fff;
-    background: ${({ lightBg }) => lightBg ? '#f9f9f9' : '#535DCA'};
+    background: ${({ selectedTheme }) => themes[selectedTheme].background};
 
     @media screen and (max-width: 768px) {
         padding: 100px 0;
@@ -20,16 +34,16 @@ export const InfoWrapper = styled.div`
     margin-left: auto;
     padding: 0 24px;
     justify-content: center;
+    align-items: center;
 `
 
 export const InfoRow = styled.div`
     display: grid;
     grid-auto-columns: minmax(auto, 1fr);
-    align-items: center;
-    grid-template-areas: ${({ imgStart }) => (imgStart ? `'col2 col1'` : `'col1 col2'`)};
+    grid-template-areas: ${({ hasImage, imgStart }) => hasImage ? (imgStart ? `'col2 col1'` : `'col1 col2'`) : `'col1'`};
 
     @media screen and (max-width: 760px) {
-        grid-template-areas: ${({ imgStart }) => (imgStart ? `'col1' 'col2'` : `'col1 col1' 'col2 col2'`)};
+        grid-template-areas: ${({ hasImage, imgStart }) => hasImage ? (imgStart ? `'col1' 'col2'` : `'col1 col1' 'col2 col2'`) : `'col1'`};
     }
 `
 
@@ -52,7 +66,7 @@ export const TextWrapper = styled.div`
 `
 
 export const TopLine = styled.p`
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ selectedTheme, theme }) => theme.colors[themes[selectedTheme].toplineColor]};
     font-size: 16px;
     line-height: 16px;
     font-weight: 700;
@@ -66,7 +80,7 @@ export const Heading = styled.h1`
     font-size: 48px;
     line-height: 1.1;
     font-weight: 600;
-    color: ${({ lightText }) => lightText ? '#f7f8fa' : '#010606'};
+    color: ${({ selectedTheme }) => themes[selectedTheme].headingColor};
 
     @media screen and (max-width: 480px) {
         font-size: 32px;
@@ -78,7 +92,7 @@ export const Subtitle = styled.p`
     margin-bottom: 35px;
     font-size: 18px;
     line-height: 24px;
-    color: ${({ darkText }) => darkText ? '#010606' : '#fff'};
+    color: ${({ selectedTheme }) => themes[selectedTheme].subtitleColor};
 `
 
 export const BtnWrapper = styled.div`

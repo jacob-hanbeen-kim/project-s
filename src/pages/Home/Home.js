@@ -4,9 +4,8 @@ import {
 } from './Home.styled'
 
 import HeroSection from './HeroSection/HeroSection';
-import VipSection from './VipSection/VipSection';
-import InfoSection from '../../components/InfoSection';
-import { connectVip, aiGuidance, blockChain } from './Data'
+import { InfoSection } from '../../components';
+import { connectVip, aiGuidance, blockChain, test } from './Data'
 
 const Home = () => {
     return (
@@ -15,6 +14,7 @@ const Home = () => {
             <InfoSection {...connectVip} />
             <InfoSection {...aiGuidance} />
             <InfoSection {...blockChain} />
+            <InfoSection {...test} />
             {/* <InfoSection {...numbers} /> */}
             {/* <Section>
             <h1>AI Guidance</h1>

@@ -31,8 +31,8 @@ const HeroSection = () => {
                         Welcome to the new Paradigm of
                         <br /> <span>Networking</span> in Sports and Entertainment
                     </Title>
-                    <Description>Stop Researching and Start Choosing</Description>
-                    <Button>Join Now</Button>
+                    <Description>Stop Researching Start Choosing</Description>
+                    <Button dark={true} >Join Now</Button>
                 </ConentContainer>
 
                 {/* <ImageContainer>

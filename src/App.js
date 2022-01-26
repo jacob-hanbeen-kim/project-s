@@ -15,7 +15,10 @@ import Agents from './pages/Agents/Agents';
 
 const theme = {
   colors: {
-    primary: '#449DD1',
+    // primary: '#449DD1',
+    primary: '#535DCA',
+    dark: '#000',
+    light: '#fff',
     hover: '#308EC5',
     header: '#EEF7FB',
     body: '#fff',

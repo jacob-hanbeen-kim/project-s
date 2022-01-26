@@ -12,37 +12,33 @@ import {
 
     ImgWrap,
     Img
-} from '../styles/InfoSection.styled'
+} from './InfoSection.styled'
 import {
     Button
-} from '../styles/Button.styled'
+} from '../../styles/Button.styled'
 
 const InfoSection = ({
-    lightBg,
+    theme,
     id,
     imgStart,
     topLine,
-    lightText,
     headline,
-    darkText,
     description,
     buttonLabel,
     img,
     alt,
     primary,
-    dark,
-    dark2
 }) => {
     return (
         <>
-            <InfoContainer lightBg={lightBg} id={id}>
+            <InfoContainer selectedTheme={theme} id={id}>
                 <InfoWrapper>
-                    <InfoRow imgStart={imgStart}>
+                    <InfoRow hasImage={img ? true : false} imgStart={imgStart}>
                         <Column1>
                             <TextWrapper>
-                                <TopLine>{topLine}</TopLine>
-                                <Heading lightText={lightText}>{headline}</Heading>
-                                <Subtitle darkText={darkText}>{description}</Subtitle>
+                                <TopLine selectedTheme={theme}>{topLine}</TopLine>
+                                <Heading selectedTheme={theme}>{headline}</Heading>
+                                <Subtitle selectedTheme={theme}>{description}</Subtitle>
                                 <BtnWrapper>
                                     <Button
                                         to='home'
@@ -52,19 +48,20 @@ const InfoSection = ({
                                         exact="true"
                                         offset={-80}
                                         primary={primary ? 1 : 0}
-                                        dark={dark ? 1 : 0}
-                                        dark2={dark2 ? 1 : 0}
+                                        dark={theme}
                                     >
                                         {buttonLabel}
                                     </Button>
                                 </BtnWrapper>
                             </TextWrapper>
                         </Column1>
-                        <Column2>
-                            <ImgWrap>
-                                <Img src={img} alt={alt} />
-                            </ImgWrap>
-                        </Column2>
+                        {img &&
+                            <Column2>
+                                <ImgWrap>
+                                    <Img src={img} alt={alt} />
+                                </ImgWrap>
+                            </Column2>
+                        }
                     </InfoRow>
                 </InfoWrapper>
             </InfoContainer>
