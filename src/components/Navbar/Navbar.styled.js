@@ -47,18 +47,19 @@ export const Menu = styled.div`
     }
 `
 
+// export const StyledLink = styled.ul`
 export const StyledLink = styled(NavLink)`
     color: rgb(100, 100, 100);
-    display: flex;
+    display: inline-block;
     align-items: center;
     text-decoration: none;
     padding: 0 0.8rem;
+    padding-top: 25px;
     height: 100%;
     cursor: pointer;
 
     font-weight: bold;
     text-transform: uppercase;
-    transition: all 0.2s ease-in-out;
 
     &.active {
         color: ${({ theme }) => theme.colors.primary};
@@ -66,6 +67,41 @@ export const StyledLink = styled(NavLink)`
 
     &:hover {
         transition: all 0.2s ease-in-out;
+        color: #000;
+    }
+`
+
+export const DropDownContent = styled.div`
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+    margin-top: 10px;
+`
+
+export const DropDownList = styled(StyledLink)`
+    
+    &:hover ${DropDownContent} {
+        transition: all 0.2s ease-in-out;
+        display: block;
+    }
+`
+
+export const StyledA = styled.a`
+    display: inline-block;
+    background-color: white;
+    text-align: center;
+    text-decoration: none;
+`
+
+export const SubA = styled(StyledA)`
+    color: rgb(100, 100, 100);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    &:hover {
+        background-color: #f1f1f1;
         color: #000;
     }
 `
@@ -96,7 +132,7 @@ export const Bars = styled(FaBars)`
 `
 
 export const ProfileLink = styled(NavLink)`
-    padding: 12px;
+    padding: 10px;
     color: #000;
     border: none;
     outline: none;
@@ -104,7 +140,7 @@ export const ProfileLink = styled(NavLink)`
     /* margin-left: 24px; */
 `
 
-export const Profile = styled(FaRegUserCircle)`
+export const Profile = styled(FaRegUserCircle, DropDownList)`
     font-size: 2rem;
     transition: all 0.2s ease-in-out;
 
@@ -115,4 +151,11 @@ export const Profile = styled(FaRegUserCircle)`
         /* color: ${({ theme }) => theme.colors.primary}; */
         color: #000;
     }
+`
+
+export const ProfileImg = styled.img`
+    border-radius: 50%;
+    object-fit: cover;
+    width: 2rem;
+    height: 2rem;
 `
