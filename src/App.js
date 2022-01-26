@@ -1,5 +1,6 @@
 // packages
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 // styles
 import GlobalStyles from './styles/Global';
@@ -8,9 +9,14 @@ import styled from 'styled-components';
 import { Footer, Navbar } from './components/'
 // pages
 import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
 import Account from './pages/Account/Account';
 import Brand from './pages/Brands/Brands';
 import Agents from './pages/Agents/Agents';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
+// web3
+import Web3 from 'web3';
+// import { web3Hanlder } from './Web3Handler';
 
 const theme = {
   colors: {
@@ -50,20 +56,50 @@ const FlexWropper = styled.div`
 `
 
 function App() {
+
+  const [isConnected, setIsConnected] = useState(false);
+  const [currentAccount, setCurrentAccount] = useState(null);
+  const [balance, setBalance] = useState(0);
+
+  const onLogin = async (provider) => {
+    const web3 = new Web3(provider);
+    const accounts = await web3.eth.getAccounts();
+
+    if (accounts.length === 0) {
+      console.log("Please connect to MetaMask!");
+    } else if (accounts[0] !== currentAccount) {
+      setCurrentAccount(accounts[0]);
+
+      const accBalanceEth = web3.utils.fromWei(
+        await web3.eth.getBalance(accounts[0]),
+        "ether"
+      );
+
+      setBalance(Number(accBalanceEth).toFixed(6));
+      setIsConnected(true);
+    }
+  };
+
+  const onLogout = () => {
+    setIsConnected(false);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyles />
         <Router>
           <FlexWropper>
-            <Navbar />
+            <Navbar isConnected={isConnected} currentAccount={currentAccount} />
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login isConnected={isConnected} onLogin={onLogin} onLogout={onLogout} />} />
               <Route path="/brands" element={<Brand />} />
               <Route path="/agents" element={<Agents />} />
               <Route path="/corporates" />
               <Route path="/crowdfunding" />
-              <Route path="/account" element={<Account />} />
+              <Route path="/account" element={<Account currentAccount={currentAccount} />} />
+              <Route path="*" element={<ErrorPage />} />
             </Routes>
           </FlexWropper>
         </Router>
@@ -72,5 +108,6 @@ function App() {
     </ThemeProvider>
   );
 }
+
 
 export default App;
