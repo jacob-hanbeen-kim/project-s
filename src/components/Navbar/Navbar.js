@@ -5,9 +5,13 @@ import {
     StyledLink,
     LogoLink,
     Menu,
+    DropDownList,
+    SubA,
     ProfileLink,
     Bars,
-    Profile
+    Profile,
+
+    DropDownContent
 } from './Navbar.styled';
 import { Logo } from '../';
 
@@ -24,16 +28,51 @@ const Navbar = () => {
                 <Bars />
                 <Menu>
                     {/* <StyledLink to="/">Home</StyledLink> */}
-                    <StyledLink to="/brands">Brands</StyledLink>
-                    <StyledLink to="/agents">Agents</StyledLink>
-                    <StyledLink to="/corporates">Corportaes</StyledLink>
-                    <StyledLink to="/crowdfunding">Crowdfunding</StyledLink>
+                    <DropDownList>
+                        Brands
+                        <DropDownContent>
+                            <SubA href="/link1">Link 1</SubA>
+                            <SubA href="/link2">Link 2</SubA>
+                            <SubA href="/link3">Link 3</SubA>
+                        </DropDownContent>
+                    </DropDownList>
+                    <DropDownList>
+                        Agents
+                        <DropDownContent>
+                            <SubA href="/link1">Link 1</SubA>
+                            <SubA href="/link2">Link 2</SubA>
+                            <SubA href="/link3">Link 3</SubA>
+                        </DropDownContent>
+                    </DropDownList>
+                    <DropDownList>
+                        Corporates
+                        <DropDownContent>
+                            <SubA href="/link1">Link 1</SubA>
+                            <SubA href="/link2">Link 2</SubA>
+                            <SubA href="/link3">Link 3</SubA>
+                        </DropDownContent>
+                    </DropDownList>
+                    <DropDownList>
+                        CrowdFunding
+                        <DropDownContent>
+                            <SubA href="/link1">Link 1</SubA>
+                            <SubA href="/link2">Link 2</SubA>
+                            <SubA href="/link3">Link 3</SubA>
+                        </DropDownContent>
+                    </DropDownList>
                     <ProfileLink to='/account'>
-                        <Profile />
-                    </ProfileLink>
+                        <DropDownList>
+                            <Profile />
+                            <DropDownContent>
+                                <SubA href="/link1">Link 1</SubA>
+                                <SubA href="/link2">Link 2</SubA>
+                                <SubA href="/link3">Link 3</SubA>
+                            </DropDownContent>
+                        </DropDownList>
+                                        </ProfileLink>
                 </Menu>
             </Nav>
-        </NavContainer>
+                                </NavContainer>
     )
 }
 
