@@ -5,7 +5,7 @@ import {
 
 import HeroSection from './HeroSection/HeroSection';
 import { InfoSection } from '../../components';
-import { connectVip, aiGuidance, blockChain, test } from './Data'
+import { connectVip, aiGuidance, blockChain } from './InfoSectionData'
 
 const Home = () => {
     return (
@@ -14,7 +14,6 @@ const Home = () => {
             <InfoSection {...connectVip} />
             <InfoSection {...aiGuidance} />
             <InfoSection {...blockChain} />
-            <InfoSection {...test} />
             {/* <InfoSection {...numbers} /> */}
             {/* <Section>
             <h1>AI Guidance</h1>

@@ -8,8 +8,8 @@ import {
     ProfileLink,
     Bars,
     Profile
-} from '../styles/Navbar.styled';
-import Logo from './Logo';
+} from './Navbar.styled';
+import { Logo } from '../';
 
 
 const Navbar = () => {

@@ -5,8 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/Global';
 import styled from 'styled-components';
 // componenets
-import Navbar from './components/Navbar'
-import Footer from './components/Footer';
+import { Footer, Navbar } from './components/'
 // pages
 import Home from './pages/Home/Home';
 import Account from './pages/Account/Account';
@@ -35,6 +34,10 @@ const theme = {
   },
   mobile: {
     size: '760px',
+    sizeM: '1420px'
+  },
+  screen: {
+    sizeS: '760px',
     sizeM: '1420px'
   }
 }

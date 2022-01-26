@@ -10,12 +10,9 @@ import {
 
 import { Container } from '../../../styles/Container.styled'
 import { Button } from '../../../styles/Button.styled';
-import Carousel from '../../../components/Carousel';
-
 
 import content from '../../../content.js'
-import Card from '../../../components/Card';
-import Card2 from '../../../components/Card2';
+import { Card, Card2, Carousel } from '../../../components/';
 
 const Sponsor = () => {
     return (
@@ -43,29 +40,29 @@ const Sponsor = () => {
                 } /> */}
                 <h1>Sponsor Opportunities</h1>
                 {content.map((item, index) => (
-                    <Card key={index} item={item} />
+                    <Card2 key={index} item={item} />
                 ))}
-                <Card2
+                <Card
                     layout='row'
                     image="./images/uniform.jpg"
                     title="Uniform Logo"
                     details="add custom logo to our team's uniform"
                     buttonTxt="Learn More"
                 />
-                <Card2
+                <Card
                     image="./images/uniform.jpg"
                     title="Uniform Logo"
                     details="add custom logo to our team's uniform"
                     buttonTxt="Learn More"
                 />
-                <Card2
+                <Card
                     image="./images/uniform.jpg"
                     title="Uniform Logo"
                     details="add custom logo to our team's uniform"
                     buttonTxt="Learn More"
                     layout='row-reverse'
                 />
-                <Card2
+                <Card
                     image="./images/uniform.jpg"
                     title="Uniform Logo"
                     details="add custom logo to our team's uniform"

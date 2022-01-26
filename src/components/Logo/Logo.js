@@ -2,7 +2,7 @@ import {
     LogoContainer,
     LogoImageContainer,
     BrandNameContainer
-} from '../styles/Logo.styled';
+} from './Logo.styled';
 
 const Logo = () => {
     return (

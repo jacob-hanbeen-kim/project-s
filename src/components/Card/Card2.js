@@ -1,6 +1,6 @@
-import { StyledCard } from '../styles/Card.styled'
+import { StyledCard } from './Card2.styled'
 
-const Card = ({ item: { id, title, body, image } }) => {
+const Card2 = ({ item: { id, title, body, image } }) => {
     return (
         <StyledCard layout={id % 2 === 0 && 'row-reverse'}>
             <div>
@@ -15,4 +15,4 @@ const Card = ({ item: { id, title, body, image } }) => {
     )
 }
 
-export default Card
+export default Card2

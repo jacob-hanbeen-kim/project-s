@@ -48,7 +48,7 @@ const InfoSection = ({
                                         exact="true"
                                         offset={-80}
                                         primary={primary ? 1 : 0}
-                                        dark={theme}
+                                        dark={theme === 'dark'}
                                     >
                                         {buttonLabel}
                                     </Button>

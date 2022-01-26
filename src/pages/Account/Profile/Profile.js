@@ -17,7 +17,7 @@ import {
     ContractFileLink,
     ContractFileIcon,
 } from './Profile.styled';
-import Card2 from '../../../components/Card2';
+import { Card } from '../../../components';
 
 const Profile = () => {
     return (
@@ -71,7 +71,7 @@ const Profile = () => {
                         </ContractFileLink>
                     </ContractFilesContainer>
                 </ProfileContainer>
-                <Card2
+                <Card
                     image="./images/uniform.jpg"
                     // image="./images/brand_name.svg"
                     title="Uniform Logo"

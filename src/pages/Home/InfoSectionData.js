@@ -36,12 +36,3 @@ export const blockChain = {
     alt: 'Car',
     primary: false,
 }
-
-export const test = {
-    id: 'blockchain',
-    theme: 'dark',
-    topLine: 'Blockchain',
-    headline: 'Crypto Token & Web 3.0',
-    description: 'Soidasnfoiw  aoifnoinof aiwj odif oaie foiadn ofianwoinf dno. SOiwafn odsn fowainda foi ansof. SDion jwnfodna aonoain fodmn owei. IONINke fmomndo fioew? fioenao eokm d. WIndoem oiofna ogin efoiwfneinio! Fodkneo fksnoinaoejkfnds.',
-    buttonLabel: 'Get started'
-}
