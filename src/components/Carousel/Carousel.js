@@ -12,11 +12,11 @@ import {
     CarouselCard,
     CarouselCardImage,
     CarouselCardContent
-} from '../styles/Carousel.styled';
+} from './Carousel.styled';
 
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
-import Card2 from './Card2';
+import { Card } from '../';
 
 const Carousel = ({ children }) => {
     return (
@@ -81,7 +81,7 @@ const Carousel = ({ children }) => {
                                 </CarouselCard>
                             </SlickSlide> */}
                             <SlickSlide>
-                                <Card2
+                                <Card
                                     image="./images/uniform.jpg"
                                     title="Uniform Logo"
                                     details="add custom logo to our team's uniform"
@@ -89,7 +89,7 @@ const Carousel = ({ children }) => {
                                 />
                             </SlickSlide>
                             <SlickSlide>
-                                <Card2
+                                <Card
                                     image="./images/uniform.jpg"
                                     title="Uniform Logo"
                                     details="add custom logo to our team's uniform"
@@ -97,7 +97,7 @@ const Carousel = ({ children }) => {
                                 />
                             </SlickSlide>
                             <SlickSlide>
-                                <Card2
+                                <Card
                                     image="./images/uniform.jpg"
                                     title="Uniform Logo"
                                     details="add custom logo to our team's uniform"
@@ -105,7 +105,7 @@ const Carousel = ({ children }) => {
                                 />
                             </SlickSlide>
                             <SlickSlide>
-                                <Card2
+                                <Card
                                     image="./images/uniform.jpg"
                                     title="Uniform Logo"
                                     details="add custom logo to our team's uniform"

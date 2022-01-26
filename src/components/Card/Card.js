@@ -5,10 +5,10 @@ import {
     CardFlex,
     CardImage,
     CardContent,
-} from '../styles/Card2.styled'
-import { Button } from '../styles/Button.styled';
+} from './Card.styled'
+import { Button } from '../../styles/Button.styled';
 
-const Card2 = ({ image, title, details, buttonTxt, backgroundColor, color, layout }) => {
+const Card = ({ image, title, details, buttonTxt, backgroundColor, color, layout }) => {
     return (
         <CardContainer>
             <CardFlex backgroundColor={backgroundColor} layout={layout}>
@@ -29,14 +29,14 @@ const Card2 = ({ image, title, details, buttonTxt, backgroundColor, color, layou
     )
 }
 
-Card2.defaultProps = {
+Card.defaultProps = {
     buttonTxt: 'Learn More',
     layout: 'column'
 }
 
-Card2.propTypes = {
+Card.propTypes = {
     // title: PropTypes.string.isRequired,
 }
 
 
-export default Card2
+export default Card
