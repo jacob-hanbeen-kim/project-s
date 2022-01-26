@@ -10,13 +10,14 @@ import {
     ProfileLink,
     Bars,
     Profile,
+    ProfileImg,
 
     DropDownContent
 } from './Navbar.styled';
 import { Logo } from '../';
 
 
-const Navbar = () => {
+const Navbar = ({ isConnected, currentAccount }) => {
     return (
         <NavContainer>
             <Nav>
@@ -27,8 +28,7 @@ const Navbar = () => {
                 </NavbarLeft>
                 <Bars />
                 <Menu>
-                    {/* <StyledLink to="/">Home</StyledLink> */}
-                    <DropDownList>
+                    {/* <DropDownList>
                         Brands
                         <DropDownContent>
                             <SubA href="/link1">Link 1</SubA>
@@ -69,10 +69,20 @@ const Navbar = () => {
                                 <SubA href="/link3">Link 3</SubA>
                             </DropDownContent>
                         </DropDownList>
-                                        </ProfileLink>
+                    </ProfileLink> */}
+                    <StyledLink to="/brands">Brands</StyledLink>
+                    <StyledLink to="/agents">Agents</StyledLink>
+                    <StyledLink to="/corporates">Corportaes</StyledLink>
+                    <StyledLink to="/crowdfunding">Crowdfunding</StyledLink>
+                    <ProfileLink to='/login'>
+                        {isConnected ?
+                            <ProfileImg src={'images/login/profileImg.jpg'} /> :
+                            <Profile />
+                        }
+                    </ProfileLink>
                 </Menu>
             </Nav>
-                                </NavContainer>
+        </NavContainer>
     )
 }
 
