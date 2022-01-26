@@ -84,11 +84,12 @@ export const ProfileDetailContainer = styled.div`
 export const ProfileDetail = styled.p`
     color: #fff;
     font-size: 1.2em;
-    text-align: center;
+    text-align: start;
     max-width: 600px;
 
     @media screen and (max-width: ${({ theme }) => theme.mobile.sizeM}) {
         font-size: 1em;
+        text-align: center;
     }
 
     /* @media screen and (max-width: ${({ theme }) => theme.mobile.size}) {

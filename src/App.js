@@ -5,15 +5,19 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/Global';
 import styled from 'styled-components';
 // componenets
-import Navbar from './components/Navbar'
-import Footer from './components/Footer';
+import { Footer, Navbar } from './components/'
 // pages
 import Home from './pages/Home/Home';
+import Account from './pages/Account/Account';
 import Brand from './pages/Brands/Brands';
+import Agents from './pages/Agents/Agents';
 
 const theme = {
   colors: {
-    primary: '#449DD1',
+    // primary: '#449DD1',
+    primary: '#535DCA',
+    dark: '#000',
+    light: '#fff',
     hover: '#308EC5',
     header: '#EEF7FB',
     body: '#fff',
@@ -30,6 +34,10 @@ const theme = {
   },
   mobile: {
     size: '760px',
+    sizeM: '1420px'
+  },
+  screen: {
+    sizeS: '760px',
     sizeM: '1420px'
   }
 }
@@ -52,10 +60,10 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/brands" element={<Brand />} />
-              <Route path="/agents" />
+              <Route path="/agents" element={<Agents />} />
               <Route path="/corporates" />
               <Route path="/crowdfunding" />
-              <Route path="/account" />
+              <Route path="/account" element={<Account />} />
             </Routes>
           </FlexWropper>
         </Router>
