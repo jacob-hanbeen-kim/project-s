@@ -47,11 +47,11 @@ export const Menu = styled.div`
     }
 `
 
-export const StyledLink = styled.ul`
+// export const StyledLink = styled.ul`
+export const StyledLink = styled(NavLink)`
     color: rgb(100, 100, 100);
     display: inline-block;
     align-items: center;
-    float: left;
     text-decoration: none;
     padding: 0 0.8rem;
     padding-top: 25px;
@@ -151,4 +151,11 @@ export const Profile = styled(FaRegUserCircle, DropDownList)`
         /* color: ${({ theme }) => theme.colors.primary}; */
         color: #000;
     }
+`
+
+export const ProfileImg = styled.img`
+    border-radius: 50%;
+    object-fit: cover;
+    width: 2rem;
+    height: 2rem;
 `
