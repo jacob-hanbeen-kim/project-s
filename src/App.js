@@ -2,11 +2,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
+
 // styles
 import GlobalStyles from './styles/Global';
 import styled from 'styled-components';
+
 // componenets
 import { Footer, Navbar } from './components/'
+
 // pages
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
@@ -14,10 +17,29 @@ import Account from './pages/Account/Account';
 import Brand from './pages/Brands/Brands';
 import Agents from './pages/Agents/Agents';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+
 // web3
 import Web3 from 'web3';
 // import { web3Hanlder } from './Web3Handler';
 
+// firebase
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+// Firebase configuration - for Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyD2VppbBbjkKiZWLkzbTiOCsyMp3syYjvw",
+  authDomain: "project-s-backend.firebaseapp.com",
+  projectId: "project-s-backend",
+  storageBucket: "project-s-backend.appspot.com",
+  messagingSenderId: "1024709888570",
+  appId: "1:1024709888570:web:05a5e90adc5f62ffd04303",
+  measurementId: "G-7ZMDCPVH4N"
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// theme
 const theme = {
   colors: {
     // primary: '#449DD1',
