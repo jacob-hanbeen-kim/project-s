@@ -7,9 +7,6 @@ import {
     Title,
 
     ImageContainer,
-
-    Background,
-    VideoBg
 } from './HeroSection.styled';
 
 import {
@@ -18,12 +15,12 @@ import {
 
 import { Button } from '../../../styles/Button.styled';
 
+import { VideoBackground } from '../../../components';
+
 const HeroSection = () => {
     return (
         <Section>
-            <Background>
-                <VideoBg autoPlay logo muted src='./videos/video.mp4' type='video/mp4' />
-            </Background>
+            <VideoBackground autoPlay logo muted src='./videos/video.mp4' type='video/mp4' />
             {/* <Container> */}
             <SectionFlex>
                 <ConentContainer>

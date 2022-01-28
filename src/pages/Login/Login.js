@@ -12,7 +12,7 @@ import {
     WalletLogo
 } from './Login.styled';
 
-const Login = ({ isConnected, onLogin, onLogout }) => {
+const Login = ({ isConnected, onLogin }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
