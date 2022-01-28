@@ -5,15 +5,30 @@ import {
 import Profile from './Profile/Profile';
 import Sponsor from './Sponsor/Sponsor';
 
-const Account = ({ currentAccount }) => {
+import { Button } from '../../styles/Button.styled';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+
+const Account = ({ currentAccount, onLogout }) => {
+
+    const navigate = useNavigate();
+
+    const LogOut = () => {
+        onLogout();
+        navigate("/");
+    }
+
+    useEffect(() => {
+        currentAccount === null && navigate("/login");
+    })
+
     return (
         <AccountContainer>
-            {/* <Profile />
-            <Sponsor /> */}
-            <h1 style={{ fontSize: '2vw' }}>Current User</h1>
-            <p style={{ fontSize: '1.5vw' }}>
-                {currentAccount}
-            </p>
+            <Profile currentAccount={currentAccount} />
+            {
+                currentAccount && <Button onClick={() => LogOut()}>Log out</Button>
+            }
+            {/* <Sponsor /> */}
         </AccountContainer >
     )
 }
