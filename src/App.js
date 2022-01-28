@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/Global';
 import styled from 'styled-components';
 // componenets
-import { Footer, Navbar } from './components/'
+import { Footer, Navbar, Sidebar } from './components/'
 // pages
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
@@ -43,8 +43,11 @@ const theme = {
     sizeM: '1420px'
   },
   screen: {
-    sizeS: '760px',
-    sizeM: '1420px'
+    sizeXS: '320px',
+    sizeS: '481px',
+    sizeM: '769px',
+    sizeL: '1025px',
+    sizeXL: '1201px'
   }
 }
 
@@ -60,6 +63,12 @@ function App() {
   const [isConnected, setIsConnected] = useState(false);
   const [currentAccount, setCurrentAccount] = useState(null);
   const [balance, setBalance] = useState(0);
+
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+
+  const onSidebarToggle = () => {
+    setSidebarOpen(!isSidebarOpen);
+  }
 
   const onLogin = async (provider) => {
     const web3 = new Web3(provider);
@@ -102,17 +111,22 @@ function App() {
         <GlobalStyles />
         <Router>
           <FlexWropper>
-            <Navbar isConnected={isConnected} currentAccount={currentAccount} />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login isConnected={isConnected} onLogin={onLogin} />} />
-              <Route path="/brands" element={<Brand />} />
-              <Route path="/agents" element={<Agents />} />
-              <Route path="/corporates" />
-              <Route path="/crowdfunding" />
-              <Route path="/account" element={<Account currentAccount={currentAccount} onLogout={onLogout} />} />
-              <Route path="*" element={<ErrorPage />} />
-            </Routes>
+            <Navbar isConnected={isConnected} currentAccount={currentAccount} isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} />
+            {
+              isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} isConnected={isConnected} onLogout={onLogout} />
+            }
+            <PageWrapper isSidebarOpen={isSidebarOpen} >
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login isConnected={isConnected} onLogin={onLogin} />} />
+                <Route path="/brands" element={<Brand />} />
+                <Route path="/agents" element={<Agents />} />
+                <Route path="/corporates" />
+                <Route path="/crowdfunding" />
+                <Route path="/account" element={<Account currentAccount={currentAccount} onLogout={onLogout} />} />
+                <Route path="*" element={<ErrorPage />} />
+              </Routes>
+            </PageWrapper>
           </FlexWropper>
         </Router>
         <Footer />
@@ -120,6 +134,10 @@ function App() {
     </ThemeProvider>
   );
 }
+
+const PageWrapper = styled.div`
+  display: ${({ isSidebarOpen }) => isSidebarOpen ? 'none' : 'block'};
+`
 
 
 export default App;
