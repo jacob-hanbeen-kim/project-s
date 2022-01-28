@@ -13,5 +13,23 @@ import Navbar from './Navbar/Navbar';
 
 import SocialIcons from './SocialIcons/SocialIcons';
 
+import VideoBackground from './Background/VideoBackground';
+import ImageBackground from './Background/ImageBackground';
 
-export { Card, Card2, Carousel, Footer, InfoSection, Logo, Navbar, SocialIcons };
+import ProfileImg from './ProfileImg/ProfileImg';
+
+import AccountTag from './AccountTag/AccountTag';
+
+export {
+    Card, Card2,
+    Carousel,
+    Footer,
+    InfoSection,
+    Logo,
+    Navbar,
+    SocialIcons,
+    VideoBackground,
+    ImageBackground,
+    ProfileImg,
+    AccountTag
+};
