@@ -20,6 +20,8 @@ import ProfileImg from './ProfileImg/ProfileImg';
 
 import AccountTag from './AccountTag/AccountTag';
 
+import Sidebar from './Sidebar/Sidebar';
+
 export {
     Card, Card2,
     Carousel,
@@ -31,5 +33,6 @@ export {
     VideoBackground,
     ImageBackground,
     ProfileImg,
-    AccountTag
+    AccountTag,
+    Sidebar
 };

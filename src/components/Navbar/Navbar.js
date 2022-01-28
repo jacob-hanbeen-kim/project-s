@@ -5,28 +5,28 @@ import {
     StyledLink,
     LogoLink,
     Menu,
-    DropDownList,
-    SubA,
+    MenuItems,
     ProfileLink,
-    Bars,
-    Profile,
+    MenuBar,
+    BarIcon,
+    CloseIcon,
+    ProfileIcon,
     ProfileImg,
-
     DropDownContent
 } from './Navbar.styled';
 import { Logo } from '../';
 
 
-const Navbar = ({ isConnected, currentAccount }) => {
+const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle }) => {
+
     return (
         <NavContainer>
             <Nav>
                 <NavbarLeft>
-                    <LogoLink to="/">
+                    <LogoLink to="/" onClick={() => { isSidebarOpen && onSidebarToggle() }}>
                         <Logo />
                     </LogoLink>
                 </NavbarLeft>
-                <Bars />
                 <Menu>
                     {/* <DropDownList>
                         Brands
@@ -70,19 +70,28 @@ const Navbar = ({ isConnected, currentAccount }) => {
                             </DropDownContent>
                         </DropDownList>
                     </ProfileLink> */}
-                    <StyledLink to="/brands">Brands</StyledLink>
-                    <StyledLink to="/agents">Agents</StyledLink>
-                    <StyledLink to="/corporates">Corportaes</StyledLink>
-                    <StyledLink to="/crowdfunding">Crowdfunding</StyledLink>
+                    <MenuItems>
+                        <StyledLink to="/brands">Brands</StyledLink>
+                        <StyledLink to="/agents">Agents</StyledLink>
+                        <StyledLink to="/corporates">Corportaes</StyledLink>
+                        <StyledLink to="/crowdfunding">Crowdfunding</StyledLink>
+                    </MenuItems>
                     <ProfileLink to='/login'>
                         {isConnected ?
                             <ProfileImg src={'images/login/profileImg.jpg'} /> :
-                            <Profile />
+                            <ProfileIcon />
                         }
                     </ProfileLink>
+                    <MenuBar onClick={onSidebarToggle}>
+                        {
+                            isSidebarOpen ?
+                                <CloseIcon /> :
+                                <BarIcon />
+                        }
+                    </MenuBar>
                 </Menu>
             </Nav>
-        </NavContainer>
+        </NavContainer >
     )
 }
 
