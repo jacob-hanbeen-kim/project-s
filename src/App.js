@@ -1,6 +1,6 @@
 // packages
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 // styles
 import GlobalStyles from './styles/Global';
@@ -69,6 +69,7 @@ function App() {
       console.log("Please connect to MetaMask!");
     } else if (accounts[0] !== currentAccount) {
       setCurrentAccount(accounts[0]);
+      window.localStorage.setItem('userAccount', accounts[0]);
 
       const accBalanceEth = web3.utils.fromWei(
         await web3.eth.getBalance(accounts[0]),
@@ -81,8 +82,19 @@ function App() {
   };
 
   const onLogout = () => {
+    console.log('logging out');
     setIsConnected(false);
+    setCurrentAccount(null);
+    window.localStorage.removeItem('userAccount');
   };
+
+  useEffect(() => {
+    const account = window.localStorage.getItem('userAccount');
+    if (account !== null) {
+      setCurrentAccount(account);
+      setIsConnected(true);
+    }
+  })
 
   return (
     <ThemeProvider theme={theme}>
@@ -93,12 +105,12 @@ function App() {
             <Navbar isConnected={isConnected} currentAccount={currentAccount} />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login isConnected={isConnected} onLogin={onLogin} onLogout={onLogout} />} />
+              <Route path="/login" element={<Login isConnected={isConnected} onLogin={onLogin} />} />
               <Route path="/brands" element={<Brand />} />
               <Route path="/agents" element={<Agents />} />
               <Route path="/corporates" />
               <Route path="/crowdfunding" />
-              <Route path="/account" element={<Account currentAccount={currentAccount} />} />
+              <Route path="/account" element={<Account currentAccount={currentAccount} onLogout={onLogout} />} />
               <Route path="*" element={<ErrorPage />} />
             </Routes>
           </FlexWropper>
