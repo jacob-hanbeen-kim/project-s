@@ -5,84 +5,83 @@ import {
     StyledLink,
     LogoLink,
     Menu,
+    MenuItems,
+    StyledLi,
     DropDownList,
     SubA,
+    StyledA,
     ProfileLink,
-    Bars,
-    Profile,
+    MenuBar,
+    BarIcon,
+    CloseIcon,
+    ProfileIcon,
     ProfileImg,
-
     DropDownContent
 } from './Navbar.styled';
 import { Logo } from '../';
 
 
-const Navbar = ({ isConnected, currentAccount }) => {
+const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle }) => {
+
     return (
         <NavContainer>
             <Nav>
                 <NavbarLeft>
-                    <LogoLink to="/">
+                    <LogoLink to="/" onClick={() => { isSidebarOpen && onSidebarToggle() }}>
                         <Logo />
                     </LogoLink>
                 </NavbarLeft>
-                <Bars />
                 <Menu>
-                    {/* <DropDownList>
-                        Brands
-                        <DropDownContent>
-                            <SubA href="/link1">Link 1</SubA>
-                            <SubA href="/link2">Link 2</SubA>
-                            <SubA href="/link3">Link 3</SubA>
-                        </DropDownContent>
-                    </DropDownList>
-                    <DropDownList>
-                        Agents
-                        <DropDownContent>
-                            <SubA href="/link1">Link 1</SubA>
-                            <SubA href="/link2">Link 2</SubA>
-                            <SubA href="/link3">Link 3</SubA>
-                        </DropDownContent>
-                    </DropDownList>
-                    <DropDownList>
-                        Corporates
-                        <DropDownContent>
-                            <SubA href="/link1">Link 1</SubA>
-                            <SubA href="/link2">Link 2</SubA>
-                            <SubA href="/link3">Link 3</SubA>
-                        </DropDownContent>
-                    </DropDownList>
-                    <DropDownList>
-                        CrowdFunding
-                        <DropDownContent>
-                            <SubA href="/link1">Link 1</SubA>
-                            <SubA href="/link2">Link 2</SubA>
-                            <SubA href="/link3">Link 3</SubA>
-                        </DropDownContent>
-                    </DropDownList>
-                    <ProfileLink to='/account'>
+                    <MenuItems>
                         <DropDownList>
-                            <Profile />
+                            <StyledA href="/brands">Brands</StyledA>
                             <DropDownContent>
-                                <SubA href="/link1">Link 1</SubA>
-                                <SubA href="/link2">Link 2</SubA>
-                                <SubA href="/link3">Link 3</SubA>
+                                <SubA to="/brands/link1">Link 1</SubA>
+                                <SubA to="/brands/link2">Link 2</SubA>
+                                <SubA to="/brands/link3">Link 3</SubA>
                             </DropDownContent>
                         </DropDownList>
-                    </ProfileLink> */}
-                    <StyledLink to="/brands">Brands</StyledLink>
-                    <StyledLink to="/agents">Agents</StyledLink>
-                    <StyledLink to="/corporates">Corportaes</StyledLink>
-                    <StyledLink to="/crowdfunding">Crowdfunding</StyledLink>
+                        <DropDownList>
+                            <StyledA href="/agents">Agents</StyledA>
+                            <DropDownContent>
+                                <SubA to="/agents/link1">Link 1</SubA>
+                                <SubA to="/agents/link2">Link 2</SubA>
+                                <SubA to="/agents/link3">Link 3</SubA>
+                            </DropDownContent>
+                        </DropDownList>
+                        <DropDownList>
+                            <StyledA href="/corporates">Corporates</StyledA>
+                            <DropDownContent>
+                                <SubA to="corporates/link1">Link 1</SubA>
+                                <SubA to="corporates/link2">Link 2</SubA>
+                                <SubA to="corporates/link3">Link 3</SubA>
+                            </DropDownContent>
+                        </DropDownList>
+                        <DropDownList>
+                            <StyledA href="/crowdfunding">CrowdFunding</StyledA>
+                            <DropDownContent>
+                                <SubA to="crowdfunding/link1">Link 1</SubA>
+                                <SubA to="crowdfunding/link2">Link 2</SubA>
+                                <SubA to="crowdfunding/link3">Link 3</SubA>
+                            </DropDownContent>
+                        </DropDownList>
+                    </MenuItems>
                     <ProfileLink to='/login'>
                         {isConnected ?
                             <ProfileImg src={'images/login/profileImg.jpg'} /> :
-                            <Profile />
+                            <ProfileIcon />
                         }
                     </ProfileLink>
+                    <MenuBar onClick={onSidebarToggle}>
+                        {
+                            isSidebarOpen ?
+                                <CloseIcon /> :
+                                <BarIcon />
+                        }
+                    </MenuBar>
                 </Menu>
             </Nav>
-        </NavContainer>
+        </NavContainer >
     )
 }
 
