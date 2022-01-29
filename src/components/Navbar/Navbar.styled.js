@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
-import { FaBars, FaRegUserCircle } from 'react-icons/fa'
+import { FaBars, FaTimes, FaRegUserCircle } from 'react-icons/fa'
 
 export const NavContainer = styled.nav`
     /* background: ${({ theme }) => theme.colors.header}; */
@@ -11,10 +11,6 @@ export const NavContainer = styled.nav`
     z-index: 110;
     box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
     transition: top 0.5s ease 0s;
-    /* 
-    @media (max-width: ${({ theme }) => theme.mobile.size}) {
-        flex-direction: column;
-    } */
 `
 
 export const Nav = styled.nav`
@@ -22,11 +18,6 @@ export const Nav = styled.nav`
     justify-content: space-between;
     height: 100%;
     padding-left: 24px;
-
-    /* 
-    @media (max-width: ${({ theme }) => theme.mobile.size}) {
-        flex-direction: column;
-    } */
 `
 
 export const NavbarLeft = styled.div`
@@ -41,20 +32,12 @@ export const Menu = styled.div`
     align-items: center;
     /* margin-right: -24px; */
     padding-right: 24px;
-
-    @media (max-width: ${({ theme }) => theme.mobile.size}) {
-        display: none;
-    }
 `
-
-// export const StyledLink = styled.ul`
-export const StyledLink = styled(NavLink)`
+export const StyledLink = styled.li`
     color: rgb(100, 100, 100);
-    display: inline-block;
     align-items: center;
     text-decoration: none;
     padding: 0 0.8rem;
-    padding-top: 25px;
     height: 100%;
     cursor: pointer;
 
@@ -71,41 +54,6 @@ export const StyledLink = styled(NavLink)`
     }
 `
 
-export const DropDownContent = styled.div`
-    display: none;
-    position: absolute;
-    min-width: 160px;
-    z-index: 1;
-    margin-top: 10px;
-`
-
-export const DropDownList = styled(StyledLink)`
-    
-    &:hover ${DropDownContent} {
-        transition: all 0.2s ease-in-out;
-        display: block;
-    }
-`
-
-export const StyledA = styled.a`
-    display: inline-block;
-    background-color: white;
-    text-align: center;
-    text-decoration: none;
-`
-
-export const SubA = styled(StyledA)`
-    color: rgb(100, 100, 100);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    &:hover {
-        background-color: #f1f1f1;
-        color: #000;
-    }
-`
-
 export const LogoLink = styled(NavLink)`
     align-items: center;
     display: flex;
@@ -116,21 +64,6 @@ export const LogoLink = styled(NavLink)`
     position: relative;
 `
 
-export const Bars = styled(FaBars)`
-    display: none;
-    color: ${({ theme }) => theme.colors.primary};
-
-    @media (max-width: ${({ theme }) => theme.mobile.size}) {
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        transform: translate(-100%, 75%);
-        font-size: 1.8rem;
-        cursor: pointer;
-    }
-`
-
 export const ProfileLink = styled(NavLink)`
     padding: 10px;
     color: #000;
@@ -138,9 +71,13 @@ export const ProfileLink = styled(NavLink)`
     outline: none;
     cursor: pointer;
     /* margin-left: 24px; */
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeS}) {
+        display: none;
+    }
 `
 
-export const Profile = styled(FaRegUserCircle, DropDownList)`
+export const ProfileIcon = styled(FaRegUserCircle)`
     font-size: 2rem;
     transition: all 0.2s ease-in-out;
 
@@ -158,4 +95,94 @@ export const ProfileImg = styled.img`
     object-fit: cover;
     width: 2rem;
     height: 2rem;
+`
+
+export const MenuBar = styled.div`
+    display: none;
+    padding: 10px;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
+        display: block;
+        cursor: pointer;
+    }
+`
+
+export const BarIcon = styled(FaBars)`
+    font-size: 1.8rem;
+    color: ${({ theme }) => theme.colors.primary};
+    opacity: 0.8;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        opacity: 1.0;
+    }
+`
+
+export const CloseIcon = styled(FaTimes)`
+    font-size: 1.8rem;
+    color: ${({ theme }) => theme.colors.primary};
+    opacity: 0.8;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        opacity: 1.0;
+    }
+`
+
+export const MenuItems = styled.ul`
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
+        display: none;
+    }
+`;
+
+export const DropDownContent = styled.div`
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        display: block;
+    }
+`;
+
+export const DropDownList = styled(StyledLink)`
+    display: inline-block;
+
+    &:hover ${DropDownContent} {
+        transition: all 0.2s ease-in-out;
+        display: block;
+    }
+`
+
+export const StyledA = styled.a`
+    display: inline-block;
+    background-color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 6px;
+    color: rgb(100, 100, 100)
+`
+
+export const SubA = styled(NavLink)`
+    color: rgb(100, 100, 100);
+    background-color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    &:hover {
+        background-color: #f1f1f1;
+    }
 `

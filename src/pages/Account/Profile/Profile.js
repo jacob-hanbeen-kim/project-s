@@ -1,87 +1,58 @@
 import {
-    BlockContainer,
-    BlockFlex,
-    ProfileBackground,
-    VideoBg,
-    BlockImage,
-
     ProfileContainer,
-    ProfileFlex,
-    ProfileImage,
-    ProfileIcon,
-    ProfileImageContainer,
-    ProfileDetailContainer,
-    ProfileDetail,
+    ProfileWrapper,
+    Row,
+    Column,
 
-    ContractFilesContainer,
-    ContractFileLink,
-    ContractFileIcon,
+    TextWrapper,
+    TopLine,
+    Heading,
+    Details,
+    BtnWrapper,
+
+    ImgWrap,
+    Img,
+    ImgDivider
 } from './Profile.styled';
-import { Card } from '../../../components';
+import { Button } from '../../../styles/Button.styled';
+import { ImageBackground, InfoSection, ProfileImg, AccountTag } from '../../../components';
 
-const Profile = () => {
+const Profile = ({ currentAccount, theme }) => {
+
     return (
-        <BlockContainer>
-            <ProfileBackground>
-                <VideoBg autoPlay logo muted src='./videos/video.mp4' type='video/mp4' />
-            </ProfileBackground>
-            <BlockFlex>
-                <ProfileContainer>
-                    <ProfileFlex>
-                        <ProfileImageContainer>
-                            {/* <ProfileImage src='./images/team_logo.png' /> */}
-                            <ProfileIcon />
-                        </ProfileImageContainer>
-                        <ProfileDetailContainer>
-                            <ProfileDetail>
-                                Laenofi aoefaiom ksnviok fod  asfoe kfafoef kmd af oa
-                                asdfo feaklf as. aewofm dkla faoaid
-                                adfonai efoawkf doai f.
-                                asnfoawiejfo jaiosf oaefmo kamdo faief
-                                Laenofi aoefaiom ksnviok fod  asfoe kfafoef kmd af oa
-                                asdfo feaklf as. aewofm dkla faoaid adfonai efoawkf doai f. asnfoawiejfo jaiosf oaefmo kamdo faief
-                            </ProfileDetail>
-                        </ProfileDetailContainer>
-                    </ProfileFlex>
-                    <ContractFilesContainer>
-                        <svg width="0" height="0">
-                            <linearGradient id="blue-gradient" x1="100%" y1="100%" x2="0%" y2="0%">
-                                <stop stopColor="#9ACDD9" offset="0%" />
-                                <stop stopColor="#fff" offset="100%" />
-                            </linearGradient>
-                        </svg>
+        <ProfileContainer>
+            <ImageBackground src='./images/account/background.jpeg' />
+            <ProfileWrapper>
+                <Row>
+                    <Column gridArea='col1'>
+                        <TextWrapper>
 
-                        <ContractFileLink>
-                            <ContractFileIcon />
-                        </ContractFileLink>
-                        <ContractFileLink>
-                            <ContractFileIcon />
-                        </ContractFileLink>
-                        <ContractFileLink>
-                            <ContractFileIcon />
-                        </ContractFileLink>
-                        <ContractFileLink>
-                            <ContractFileIcon />
-                        </ContractFileLink>
-                        <ContractFileLink>
-                            <ContractFileIcon />
-                        </ContractFileLink>
-                        <ContractFileLink>
-                            <ContractFileIcon />
-                        </ContractFileLink>
-                    </ContractFilesContainer>
-                </ProfileContainer>
-                <Card
-                    image="./images/uniform.jpg"
-                    // image="./images/brand_name.svg"
-                    title="Uniform Logo"
-                    details="add custom logo to our team's uniform"
-                    buttonTxt="Learn More"
-                    color='white'
-                    backgroundColor='#3f3f3f'
-                />
-            </BlockFlex>
-        </BlockContainer>
+                            <ProfileImg hasProfileImg={true} size='10rem' />
+                            <TopLine>Your Name</TopLine>
+                            <AccountTag account={currentAccount} />
+                            <Details>
+                                My name is Uofin ewoif iosdfajeo. I am fiodf oweijios foaij ofjao ijfo joifjoiaw ejofij aojdfsfafwefa. Difwio do faeio mfaoweif oskfm oaweifnoaiwnfiansfaok.
+                            </Details>
+                            <BtnWrapper>
+                                <Button dark={false} style={{ zIndex: 1 }}>
+                                    Learn More
+                                </Button>
+                            </BtnWrapper>
+                        </TextWrapper>
+                    </Column>
+                    {/* <Column gridArea='col2'> */}
+                    {/* <ImgWrap> */}
+                    {/* <Img src='./images/account/background.jpeg' alt='alt' /> */}
+                    {/* <ImgDivider>
+                                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                                    <path d="M892.25 114.72L0 0 0 120 1200 120 1200 0 892.25 114.72z"></path>
+                                </svg>
+                            </ImgDivider> */}
+                    {/* </ImgWrap> */}
+                    {/* </Column> */}
+                </Row>
+            </ProfileWrapper>
+        </ProfileContainer >
     )
 }
 
