@@ -15,9 +15,11 @@ import {
     ImgDivider
 } from './Profile.styled';
 import { Button } from '../../../styles/Button.styled';
-import { ImageBackground, InfoSection, ProfileImg, AccountTag } from '../../../components';
+import { ImageBackground, InfoSection, ProfileImg, AccountTag, MembershipStatus } from '../../../components';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
-const Profile = ({ currentAccount, theme }) => {
+const Profile = ({ currentAccount, theme, onLogout }) => {
 
     return (
         <ProfileContainer>
@@ -29,6 +31,7 @@ const Profile = ({ currentAccount, theme }) => {
 
                             <ProfileImg hasProfileImg={true} size='10rem' />
                             <TopLine>Your Name</TopLine>
+                            <MembershipStatus size='1.5rem'> Membership Status : </MembershipStatus>
                             <AccountTag account={currentAccount} />
                             <Details>
                                 My name is Uofin ewoif iosdfajeo. I am fiodf oweijios foaij ofjao ijfo joifjoiaw ejofij aojdfsfafwefa. Difwio do faeio mfaoweif oskfm oaweifnoaiwnfiansfaok.

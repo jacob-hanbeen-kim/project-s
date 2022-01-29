@@ -9,6 +9,8 @@ import InfoSection from "./InfoSection/InfoSection";
 
 import Logo from './Logo/Logo';
 
+import MembershipStatus from './MembershipStatus/MembershipStatus';
+
 import Navbar from './Navbar/Navbar';
 
 import SocialIcons from './SocialIcons/SocialIcons';
@@ -33,6 +35,7 @@ export {
     VideoBackground,
     ImageBackground,
     ProfileImg,
+    MembershipStatus,
     AccountTag,
     Sidebar
 };
