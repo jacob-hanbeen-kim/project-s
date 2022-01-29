@@ -6,7 +6,7 @@ import {
     LogoLink,
     Menu,
     MenuItems,
-    StyledLi,
+    ProfileDropDown,
     DropDownList,
     SubA,
     StyledA,
@@ -65,20 +65,31 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle })
                                 <SubA to="crowdfunding/link3">Link 3</SubA>
                             </DropDownContent>
                         </DropDownList>
-                    </MenuItems>
-                    <ProfileLink to='/login'>
-                        {isConnected ?
-                            <ProfileImg src={'images/login/profileImg.jpg'} /> :
+                        <ProfileLink to='/login'>
+                        {isConnected ? 
+                            <DropDownList>
+                                <ProfileImg src={'images/login/profileImg.jpg'} />
+                                <ProfileDropDown>
+                                    <SubA to="crowdfunding/link1">Profile</SubA>
+                                    <SubA to="crowdfunding/link2">Favorites</SubA>
+                                    <SubA to="crowdfunding/link3">Watchlist</SubA>
+                                    <SubA to="crowdfunding/link3">Settings</SubA>
+                                    <SubA to="crowdfunding/link3">Logout</SubA>
+                                    <SubA to="crowdfunding/link3">NightMode</SubA>
+                                </ProfileDropDown>
+                            </DropDownList> :
                             <ProfileIcon />
                         }
-                    </ProfileLink>
-                    <MenuBar onClick={onSidebarToggle}>
-                        {
-                            isSidebarOpen ?
-                                <CloseIcon /> :
-                                <BarIcon />
-                        }
-                    </MenuBar>
+                        </ProfileLink>
+                        <MenuBar onClick={onSidebarToggle}>
+                            {
+                                isSidebarOpen ?
+                                    <CloseIcon /> :
+                                    <BarIcon />
+                            }
+                        </MenuBar>
+                    </MenuItems>
+                    
                 </Menu>
             </Nav>
         </NavContainer >

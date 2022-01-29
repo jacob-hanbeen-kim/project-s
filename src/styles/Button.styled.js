@@ -17,7 +17,6 @@ export const Button = styled.button`
     border: 1px solid ${({ dark, theme }) => dark ? theme.colors[themes['dark'].background] : theme.colors[themes['light'].background]};
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); */
     padding: ${({ big }) => big ? '14px 48px' : '12px 30px'};
-
     cursor: pointer;
 
     font-size: ${({ big }) => big ? '20px' : '16px'};

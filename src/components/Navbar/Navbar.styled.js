@@ -157,6 +157,13 @@ export const DropDownContent = styled.div`
     }
 `;
 
+export const ProfileDropDown = styled(DropDownContent)`
+    float: right;
+    left:auto;
+    right:0;
+    padding: 16px 0px;
+`
+
 export const DropDownList = styled(StyledLink)`
     display: inline-block;
 
@@ -171,14 +178,14 @@ export const StyledA = styled.a`
     background-color: white;
     text-align: center;
     text-decoration: none;
-    padding: 6px;
+    padding: 24px 3px;
     color: rgb(100, 100, 100)
 `
 
 export const SubA = styled(NavLink)`
     color: rgb(100, 100, 100);
     background-color: white;
-    padding: 12px 16px;
+    padding: 20px 20px;
     text-decoration: none;
     display: block;
     text-align: left;

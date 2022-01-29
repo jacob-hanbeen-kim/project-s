@@ -55,6 +55,16 @@ export const TextWrapper = styled.div`
     justify-items: center;
 `
 
+export const MembershipStatus = styled.p`
+    color: #000;
+    font-size: 13px;
+    line-height: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+`
+
 export const TopLine = styled.p`
     color: #000;
     font-size: 16px;
