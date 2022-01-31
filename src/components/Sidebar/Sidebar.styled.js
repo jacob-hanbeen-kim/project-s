@@ -76,7 +76,7 @@ export const SidebarLink = styled(NavLink)`
     cursor: pointer;
 
     &:hover {
-        color: ${({ theme }) => theme.colors.primary};
+        color: ${({ theme }) => theme.colors.base};
         transition: 0.2s ease-in-out;
     } 
 `

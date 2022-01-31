@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 // styles
+import theme from './theme';
 import GlobalStyles from './styles/Global';
 import styled from 'styled-components';
 // componenets
@@ -13,43 +14,11 @@ import Login from './pages/Login/Login';
 import Account from './pages/Account/Account';
 import Brand from './pages/Brands/Brands';
 import Agents from './pages/Agents/Agents';
+import Membership from './pages/Membership/Membership';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 // web3
 import Web3 from 'web3';
-// import { web3Hanlder } from './Web3Handler';
 
-const theme = {
-  colors: {
-    // primary: '#449DD1',
-    primary: '#535DCA',
-    dark: '#000',
-    light: '#fff',
-    hover: '#308EC5',
-    header: '#EEF7FB',
-    body: '#fff',
-    footer: '#003333'
-  },
-  font: {
-    family: 'Poppins',
-    size: {
-
-    }
-  },
-  border: {
-    radius: '10px',
-  },
-  mobile: {
-    size: '760px',
-    sizeM: '1420px'
-  },
-  screen: {
-    sizeXS: '320px',
-    sizeS: '481px',
-    sizeM: '769px',
-    sizeL: '1025px',
-    sizeXL: '1201px'
-  }
-}
 
 const FlexWropper = styled.div`
   min-height: 100%;
@@ -124,6 +93,7 @@ function App() {
                 <Route path="/corporates" />
                 <Route path="/crowdfunding" />
                 <Route path="/account" element={<Account currentAccount={currentAccount} onLogout={onLogout} />} />
+                <Route path="/membership" element={<Membership />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             </PageWrapper>
