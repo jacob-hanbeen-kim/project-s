@@ -57,7 +57,7 @@ export const StyledLink = styled(NavLink)`
     text-transform: uppercase;
 
     &.active {
-        color: ${({ theme }) => theme.colors.primary};
+        color: ${({ theme }) => theme.colors.base};
     }
 
     &:hover {
@@ -97,7 +97,7 @@ export const ProfileIcon = styled(FaRegUserCircle)`
 
     &:hover {
         transition: all 0.2s ease-in-out;
-        /* color: ${({ theme }) => theme.colors.primary}; */
+        /* color: ${({ theme }) => theme.colors.base}; */
         color: #000;
     }
 `
@@ -121,7 +121,7 @@ export const MenuBar = styled.div`
 
 export const BarIcon = styled(FaBars)`
     font-size: 1.8rem;
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.base};
     opacity: 0.8;
     transition: all 0.2s ease-in-out;
 
@@ -133,7 +133,7 @@ export const BarIcon = styled(FaBars)`
 
 export const CloseIcon = styled(FaTimes)`
     font-size: 1.8rem;
-    color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.base};
     opacity: 0.8;
     transition: all 0.2s ease-in-out;
 

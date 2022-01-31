@@ -9,7 +9,7 @@ export const Icon = styled(FaRegUserCircle)`
 
     &:hover {
         transition: all 0.2s ease-in-out;
-        /* color: ${({ theme }) => theme.colors.primary}; */
+        /* color: ${({ theme }) => theme.colors.base}; */
         color: #000;
     }
 `

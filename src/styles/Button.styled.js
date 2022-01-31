@@ -2,12 +2,12 @@ import styled from 'styled-components'
 
 const themes = {
     light: {
-        background: 'primary',
-        color: 'light',
+        background: 'base',
+        color: 'white',
     },
     dark: {
-        background: 'light',
-        color: 'primary'
+        background: 'white',
+        color: 'base'
     },
 }
 
