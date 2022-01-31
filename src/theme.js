@@ -3,9 +3,10 @@ const theme = {
         // primary: '#449DD1',
         base: '#535DCA',
         accent: '#003333',
+        // accent: '#FFB151',
         white: '#ffffff',
-        darkGray: '#EEF7FB',
-        lightGray: '#308EC5'
+        darkGray: '#393b52',
+        lightGray: '#f9fafb'
     },
     fonts: ['Poppins'],
     fontSizes: {
