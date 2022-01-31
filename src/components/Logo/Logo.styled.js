@@ -3,9 +3,6 @@ import styled from 'styled-components'
 export const LogoContainer = styled.div`
     display: flex;
     justify-content: space-around;
-    /* @media (max-width: ${({ theme }) => theme.mobile.size}) {
-        margin-bottom: 40px;
-    } */
 `
 
 export const LogoImageContainer = styled.div`
