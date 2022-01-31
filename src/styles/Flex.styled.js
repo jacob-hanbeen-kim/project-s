@@ -9,7 +9,7 @@ export const Flex = styled.div`
         flex: 1;
     }
 
-    @media screen and (max-width: ${({ theme }) => theme.mobile.size}) {
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
         flex-direction: column;
         text-align: center;
     }
