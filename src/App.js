@@ -14,6 +14,7 @@ import Login from './pages/Login/Login';
 import Account from './pages/Account/Account';
 import Brand from './pages/Brands/Brands';
 import Agents from './pages/Agents/Agents';
+import Membership from './pages/Membership/Membership';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 // web3
 import Web3 from 'web3';
@@ -92,6 +93,7 @@ function App() {
                 <Route path="/corporates" />
                 <Route path="/crowdfunding" />
                 <Route path="/account" element={<Account currentAccount={currentAccount} onLogout={onLogout} />} />
+                <Route path="/membership" element={<Membership />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             </PageWrapper>
