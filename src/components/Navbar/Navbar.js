@@ -26,7 +26,7 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle, t
             <Nav>
                 <NavbarLeft>
                     <LogoLink to="/" onClick={() => { isSidebarOpen && onSidebarToggle() }}>
-                        <Logo />
+                        <Logo isDark={theme === 'dark'} />
                     </LogoLink>
                 </NavbarLeft>
                 <Menu>
