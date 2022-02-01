@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 // styles
-import theme from './theme';
+import { lightTheme, darkTheme } from './Theme';
 import GlobalStyles from './styles/Global';
 import styled from 'styled-components';
 // componenets
@@ -22,12 +22,14 @@ import Web3 from 'web3';
 
 const FlexWropper = styled.div`
   min-height: 100%;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.background};
   display: flex;
   flex-direction: column;
 `
 
 function App() {
+  const [theme, setTheme] = useState("light");
+  const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
 
   const [isConnected, setIsConnected] = useState(false);
   const [currentAccount, setCurrentAccount] = useState(null);
@@ -75,14 +77,14 @@ function App() {
   })
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
         <Router>
           <FlexWropper>
             <Navbar isConnected={isConnected} currentAccount={currentAccount} isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} />
             {
-              isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} isConnected={isConnected} onLogout={onLogout} />
+              isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} isConnected={isConnected} onLogout={onLogout} theme={theme} toggleTheme={toggleTheme} />
             }
             <PageWrapper isSidebarOpen={isSidebarOpen} >
               <Routes>

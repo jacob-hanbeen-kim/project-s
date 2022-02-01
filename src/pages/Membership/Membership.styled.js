@@ -8,7 +8,7 @@ export const Container = styled(Flex)`
     align-items: center;
     padding: 0px 30px;
 
-    background-color: ${({ theme }) => theme.colors.lightGray};
+    background-color: ${({ theme }) => theme.colors.background};
 `
 
 export const ContentContainer = styled.div`

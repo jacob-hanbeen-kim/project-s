@@ -17,7 +17,7 @@ const themes = {
 
 export const InfoContainer = styled.div`
     color: #fff;
-    background: ${({ selectedTheme }) => themes[selectedTheme].background};
+    background-color: ${props => props.invert ? props.theme.colors.onInvert : props.theme.colors.background};
 
     @media screen and (max-width: 768px) {
         padding: 100px 0;
@@ -66,7 +66,7 @@ export const TextWrapper = styled.div`
 `
 
 export const TopLine = styled.p`
-    color: ${({ selectedTheme, theme }) => theme.colors[themes[selectedTheme].toplineColor]};
+    color: ${props => props.invert ? props.theme.colors.invert : props.theme.colors.fontDefault};
     font-size: 16px;
     line-height: 16px;
     font-weight: 700;
@@ -80,7 +80,7 @@ export const Heading = styled.h1`
     font-size: 48px;
     line-height: 1.1;
     font-weight: 600;
-    color: ${({ selectedTheme }) => themes[selectedTheme].headingColor};
+    color: ${props => props.invert ? props.theme.colors.invert : props.theme.colors.fontDefault};
 
     @media screen and (max-width: 480px) {
         font-size: 32px;
@@ -92,7 +92,7 @@ export const Subtitle = styled.p`
     margin-bottom: 35px;
     font-size: 18px;
     line-height: 24px;
-    color: ${({ selectedTheme }) => themes[selectedTheme].subtitleColor};
+    color: ${props => props.invert ? props.theme.colors.invert : props.theme.colors.fontDefault};
 `
 
 export const BtnWrapper = styled.div`

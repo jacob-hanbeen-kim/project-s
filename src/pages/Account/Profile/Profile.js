@@ -6,18 +6,13 @@ import {
 
     TextWrapper,
     TopLine,
-    Heading,
     Details,
     BtnWrapper,
-
-    ImgWrap,
-    Img,
-    ImgDivider
 } from './Profile.styled';
 import { Button } from '../../../styles/Button.styled';
-import { ImageBackground, InfoSection, ProfileImg, AccountTag } from '../../../components';
+import { ImageBackground, ProfileImg, AccountTag } from '../../../components';
 
-const Profile = ({ currentAccount, theme }) => {
+const Profile = ({ currentAccount }) => {
 
     return (
         <ProfileContainer>
@@ -26,7 +21,6 @@ const Profile = ({ currentAccount, theme }) => {
                 <Row>
                     <Column gridArea='col1'>
                         <TextWrapper>
-
                             <ProfileImg hasProfileImg={true} size='10rem' />
                             <TopLine>Your Name</TopLine>
                             <AccountTag account={currentAccount} />
@@ -40,16 +34,6 @@ const Profile = ({ currentAccount, theme }) => {
                             </BtnWrapper>
                         </TextWrapper>
                     </Column>
-                    {/* <Column gridArea='col2'> */}
-                    {/* <ImgWrap> */}
-                    {/* <Img src='./images/account/background.jpeg' alt='alt' /> */}
-                    {/* <ImgDivider>
-                                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                                    <path d="M892.25 114.72L0 0 0 120 1200 120 1200 0 892.25 114.72z"></path>
-                                </svg>
-                            </ImgDivider> */}
-                    {/* </ImgWrap> */}
-                    {/* </Column> */}
                 </Row>
             </ProfileWrapper>
         </ProfileContainer >
