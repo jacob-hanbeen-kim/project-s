@@ -82,9 +82,9 @@ function App() {
         <GlobalStyles />
         <Router>
           <FlexWropper>
-            <Navbar isConnected={isConnected} currentAccount={currentAccount} isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} />
+            <Navbar isConnected={isConnected} currentAccount={currentAccount} isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} />
             {
-              isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} isConnected={isConnected} onLogout={onLogout} theme={theme} toggleTheme={toggleTheme} />
+              isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} isConnected={isConnected} onLogout={onLogout} />
             }
             <PageWrapper isSidebarOpen={isSidebarOpen} >
               <Routes>

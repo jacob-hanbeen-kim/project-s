@@ -15,9 +15,11 @@ import {
     DropDownContent
 } from './Navbar.styled';
 import { Logo } from '../';
+import { Toggler } from '../../styles/Toggle.styled';
+import { FiSun, FiMoon } from 'react-icons/fi';
 
 
-const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle }) => {
+const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
 
     return (
         <NavContainer>
@@ -82,6 +84,11 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle })
                             <ProfileIcon />
                         }
                     </ProfileLink>
+                    <Toggler onClick={() => toggleTheme()}>{
+                        theme === 'light' ?
+                            <FiMoon /> :
+                            <FiSun />
+                    }</Toggler>
                     <MenuBar onClick={onSidebarToggle}>
                         {
                             isSidebarOpen ?
