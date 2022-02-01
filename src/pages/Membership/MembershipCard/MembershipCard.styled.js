@@ -12,7 +12,7 @@ export const Container = styled.div`
     
     text-align: center;
 
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.surface};
     border: none;
     border-radius: ${({ theme }) => theme.border.radius};
 
@@ -36,12 +36,12 @@ export const ContentContainer = styled.div`
 export const Header = styled.h2`
     font-size: ${({ theme }) => theme.fontSizes.default};
     text-transform: uppercase;
-    color: ${({ theme }) => theme.colors.darkGray};
+    color: ${({ theme }) => theme.colors.onSurface};
     margin: 0px;
 `
 
 export const PriceContainer = styled.div`
-    color: ${({ theme }) => theme.colors.base};
+    color: ${({ theme }) => theme.colors.primary};
     margin: 0px;
     margin-top: 30px;
     margin-bottom: 15px;
@@ -63,7 +63,7 @@ export const SubscriptionDetails = styled.ul`
     margin: 0px;
     font-size: ${({ theme }) => theme.fontSizes.small};
 
-    color: ${({ theme }) => theme.colors.darkGray};
+    color: ${({ theme }) => theme.colors.onSurface};
     opacity: 0.5;
     
     overflow: hidden;
