@@ -7,10 +7,7 @@ import {
     SocialIcons
 } from './Sidebar.styled';
 
-import { Toggler } from '../../styles/Toggle.styled';
-import { FiSun, FiMoon } from 'react-icons/fi';
-
-const Sidebar = ({ onSidebarToggle, isConnected, onLogout, theme, toggleTheme }) => {
+const Sidebar = ({ onSidebarToggle, isConnected, onLogout }) => {
     return (
         <SidebarContainer>
             <SidebarWrapper>
@@ -25,13 +22,6 @@ const Sidebar = ({ onSidebarToggle, isConnected, onLogout, theme, toggleTheme })
                             isConnected &&
                             <li><SidebarLink to="/" onClick={() => { onSidebarToggle(); onLogout(); }} >Log Out</SidebarLink></li>
                         }
-                        <li><Toggler onClick={
-                            () => toggleTheme()
-                        }>{
-                                theme === 'light' ?
-                                    <FiMoon size={26} /> :
-                                    <FiSun size={26} />
-                            }</Toggler></li>
                     </MenuList>
                     <SocialIcons>
 
