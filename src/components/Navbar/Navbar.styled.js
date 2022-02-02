@@ -141,6 +141,10 @@ export const MenuItems = styled.ul`
     align-items: center;
     justify-content: center;
 
+    &:hover {
+        transition: all 0.2s ease-in-out;
+    }
+
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
         display: none;
     }
@@ -173,13 +177,16 @@ export const DropDownList = styled(StyledLink)`
     }
 `
 
-export const StyledA = styled.a`
+export const StyledA = styled(NavLink)`
     display: inline-block;
-    background-color: white;
     text-align: center;
     text-decoration: none;
     padding: 24px 3px;
-    color: rgb(100, 100, 100)
+    color: rgb(100, 100, 100);
+
+    &:hover {
+        color: #000;
+    }
 `
 
 export const SubA = styled(NavLink)`

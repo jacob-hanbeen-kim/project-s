@@ -34,7 +34,7 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle })
                 <Menu>
                     <MenuItems>
                         <DropDownList>
-                            <StyledA href="/brands">Brands</StyledA>
+                            <StyledA to="/brands">Brands</StyledA>
                             <DropDownContent>
                                 <SubA to="/brands/link1">Link 1</SubA>
                                 <SubA to="/brands/link2">Link 2</SubA>
@@ -42,7 +42,7 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle })
                             </DropDownContent>
                         </DropDownList>
                         <DropDownList>
-                            <StyledA href="/agents">Agents</StyledA>
+                            <StyledA to="/agents">Agents</StyledA>
                             <DropDownContent>
                                 <SubA to="/agents/link1">Link 1</SubA>
                                 <SubA to="/agents/link2">Link 2</SubA>
@@ -50,7 +50,7 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle })
                             </DropDownContent>
                         </DropDownList>
                         <DropDownList>
-                            <StyledA href="/corporates">Corporates</StyledA>
+                            <StyledA to="/corporates">Corporates</StyledA>
                             <DropDownContent>
                                 <SubA to="corporates/link1">Link 1</SubA>
                                 <SubA to="corporates/link2">Link 2</SubA>
@@ -58,14 +58,15 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle })
                             </DropDownContent>
                         </DropDownList>
                         <DropDownList>
-                            <StyledA href="/crowdfunding">CrowdFunding</StyledA>
+                            <StyledA to="/crowdfunding">CrowdFunding</StyledA>
                             <DropDownContent>
                                 <SubA to="crowdfunding/link1">Link 1</SubA>
                                 <SubA to="crowdfunding/link2">Link 2</SubA>
                                 <SubA to="crowdfunding/link3">Link 3</SubA>
                             </DropDownContent>
                         </DropDownList>
-                        <ProfileLink to='/login'>
+                    </MenuItems>
+                    <ProfileLink to='/login'>
                         {isConnected ? 
                             <DropDownList>
                                 <ProfileImg src={'images/login/profileImg.jpg'} />
@@ -88,8 +89,6 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle })
                                     <BarIcon />
                             }
                         </MenuBar>
-                    </MenuItems>
-                    
                 </Menu>
             </Nav>
         </NavContainer >
