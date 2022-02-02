@@ -29,7 +29,7 @@ export const SidebarWrapper = styled.div`
     height: 100%;
 `
 export const SidebarMenu = styled.div`
-    background-color: rgb(255, 255, 255);
+    background-color: ${({ theme }) => theme.colors.sidebar};
     display: flex;
     flex-direction: column;
     font-size: 16px;
@@ -40,7 +40,6 @@ export const SidebarMenu = styled.div`
 `
 
 export const MenuList = styled.ul`
-    background: rgb(251, 253, 255);
     flex: 1 0 0%;
     margin: 0px;
     overflow-y: auto;
@@ -66,7 +65,9 @@ export const MenuList = styled.ul`
 export const SidebarLink = styled(NavLink)`
     -webkit-box-align: center;
     align-items: center;
-    color: rgba(4, 17, 29, 0.75);
+    color: ${({ theme }) => theme.colors.onNavbar};
+    opacity: 0.75;
+
     display: flex;
     height: 100%;
     padding: 0px 20px;
@@ -76,8 +77,8 @@ export const SidebarLink = styled(NavLink)`
     cursor: pointer;
 
     &:hover {
-        color: ${({ theme }) => theme.colors.primary};
         transition: 0.2s ease-in-out;
+        opacity: 1.0;
     } 
 `
 
@@ -85,9 +86,9 @@ export const SocialIcons = styled.div`
     height: 80px;
     width: 100%;
     flex-shrink: 0;
-    background-color: rgb(255, 255, 255);
+    background-color: ${({ theme }) => theme.colors.navbar};
     z-index: 110;
-    border-color: rgb(229, 232, 235);
+    border-color: ${({ theme }) => theme.colors.border};
     border-top-style: solid;
     border-top-width: 1px;
 

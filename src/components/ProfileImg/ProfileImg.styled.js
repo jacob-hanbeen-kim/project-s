@@ -5,12 +5,12 @@ export const Icon = styled(FaRegUserCircle)`
     font-size: ${({ size }) => size ? size : '2rem'};
     transition: all 0.2s ease-in-out;
 
-    color: rgb(100, 100, 100);
+    color: ${({ theme }) => theme.colors.background};
+    opacity: 0.6;
 
     &:hover {
         transition: all 0.2s ease-in-out;
-        /* color: ${({ theme }) => theme.colors.primary}; */
-        color: #000;
+        opacity: 1.0;
     }
 `
 

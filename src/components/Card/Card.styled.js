@@ -20,11 +20,11 @@ export const CardFlex = styled.div`
     width: 100%;
     z-index: 2;
 
-    background-color: ${({ backgroundColor }) => backgroundColor || 'rgb(251, 253, 255)'};
+    background-color: ${({ backgroundColor, theme }) => backgroundColor || theme.colors.background};
     border-radius: ${({ theme }) => theme.border.radius};
     box-shadow: rgb(4 17 29 / 25%) 0px 0px 10px 0px;
 
-    @media(max-width: ${({ theme }) => theme.mobile.size}) {
+    @media(max-width: ${({ theme }) => theme.screen.sizeM}) {
         flex-direction: ${({ layout }) => (layout === 'column' || layout === 'column-reverse') ? layout : 'column'};
     }
 `
@@ -54,6 +54,6 @@ export const CardContent = styled.div`
     width: 100%;
     font-weight: 600;
     padding: 16px;
-    color: ${({ color }) => color || 'rgb(53, 56, 64)'};
+    color: ${({ color, theme }) => color || theme.colors.onSurface};
     text-align: center;
 `

@@ -55,7 +55,7 @@ export const Title = styled.h1`
     margin: 0px;
     font-size: 3rem;
 
-    /* color: ${({ theme }) => theme.colors.primary}; */
+    /* color: ${({ theme }) => theme.colors.base}; */
     color: #fff;
     background: linear-gradient(110deg, #EEF7FB 20%, #535DCA 100%);
     background-clip: text;

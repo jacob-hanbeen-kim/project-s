@@ -4,14 +4,22 @@ import {
     BrandNameContainer
 } from './Logo.styled';
 
-const Logo = () => {
+const Logo = ({ isDark }) => {
     return (
         <LogoContainer>
             <LogoImageContainer>
-                <img src='./images/logo192.svg' alt='logo' />
+                {
+                    isDark ?
+                        <img src='./images/logo192_dark.svg' alt='logo' /> :
+                        <img src='./images/logo192.svg' alt='logo' />
+                }
             </LogoImageContainer>
             <BrandNameContainer>
-                <img src='./images/brand_name.svg' alt='brand-name' />
+                {
+                    isDark ?
+                        <img src='./images/brand_name_dark.svg' alt='brand-name' /> :
+                        <img src='./images/brand_name.svg' alt='brand-name' />
+                }
             </BrandNameContainer>
         </LogoContainer>
     )
