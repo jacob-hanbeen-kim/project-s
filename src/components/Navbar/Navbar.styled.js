@@ -78,7 +78,6 @@ export const DropdownItem = styled.li`
     align-items: center;
     text-decoration: none;
     padding: 0.8rem;
-    height: 100%;
     cursor: pointer;
 
     font-weight: bold;
@@ -113,7 +112,6 @@ export const ProfileLink = styled(NavLink)`
     border: none;
     outline: none;
     cursor: pointer;
-    font-size: 1em;
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeS}) {
         display: none;
