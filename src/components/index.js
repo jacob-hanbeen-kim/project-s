@@ -24,6 +24,8 @@ import AccountTag from './AccountTag/AccountTag';
 
 import Sidebar from './Sidebar/Sidebar';
 
+import Tabs from './Tabs/Tabs';
+
 export {
     Card, Card2,
     Carousel,
@@ -37,5 +39,6 @@ export {
     ProfileImg,
     MembershipStatus,
     AccountTag,
-    Sidebar
+    Sidebar,
+    Tabs
 };

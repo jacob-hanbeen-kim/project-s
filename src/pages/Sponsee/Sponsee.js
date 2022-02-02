@@ -1,26 +1,21 @@
 import {
     Container,
-
-    TabContainer,
-    Tab
+    SectionContainer
 } from './Sponsee.styled';
 
+// sections
+import HeroSection from './HeroSection/HeroSection';
+import { Tabs } from '../../components';
 import ProfileSection from './ProfileSection/ProfileSection';
 
 const Sponsee = ({ currentAccount }) => {
-
     return (
         <>
-            <ProfileSection currentAccount={currentAccount} />
-            <TabContainer>
-                <Tab>Profile</Tab>
-                <Tab>Achievements</Tab>
-                <Tab>Sponsors</Tab>
-                <Tab>Contact Me</Tab>
-            </TabContainer>
-            <div>
-                change sections based on the tab
-            </div>
+            <HeroSection currentAccount={currentAccount} />
+            <Tabs>
+                <ProfileSection label="Profile" />
+                <div label="Hi">hi</div>
+            </Tabs>
         </>
     )
 }
