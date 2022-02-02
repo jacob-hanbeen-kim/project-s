@@ -35,46 +35,50 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle, t
                     </LogoLink>
                 </NavbarLeft>
                 <Menu>
-                <MenuItems>
-                    <DropdownList>
-                        <DropdownItem>
-                            <StyledNavLink to="/brands">Brands</StyledNavLink>
-                            <DropdownContent>
-                                <SubNavLink to="/brands/link1">Link 1</SubNavLink>
-                                <SubNavLink to="/brands/link2">Link 2</SubNavLink>
-                                <SubNavLink to="/brands/link3">Link 3</SubNavLink>
-                            </DropdownContent>
-                        </DropdownItem>
-                        <DropdownItem>
-                            <StyledNavLink to="/agents">Agents</StyledNavLink>
-                            <DropdownContent>
-                                <SubNavLink to="/agents/link1">Link 1</SubNavLink>
-                                <SubNavLink to="/agents/link2">Link 2</SubNavLink>
-                                <SubNavLink to="/agents/link3">Link 3</SubNavLink>
-                            </DropdownContent>
-                        </DropdownItem>
-                        <DropdownItem>
-                            <StyledNavLink to="/corporates">Corporates</StyledNavLink>
-                            <DropdownContent>
-                                <SubNavLink to="corporates/link1">Link 1</SubNavLink>
-                                <SubNavLink to="corporates/link2">Link 2</SubNavLink>
-                                <SubNavLink to="corporates/link3">Link 3</SubNavLink>
-                            </DropdownContent>
-                        </DropdownItem>
-                        <DropdownItem>
-                            <StyledNavLink to="/crowdfunding">CrowdFunding</StyledNavLink>
-                            <DropdownContent>
-                                <SubNavLink to="crowdfunding/link1">Link 1</SubNavLink>
-                                <SubNavLink to="crowdfunding/link2">Link 2</SubNavLink>
-                                <SubNavLink to="crowdfunding/link3">Link 3</SubNavLink>
-                            </DropdownContent>
-                        </DropdownItem>
-                    </DropdownList>
-                </MenuItems>
-                <ProfileLink to='/login'>
-                    {isConnected ?
-                        <DropdownItem>
-                            <ProfileImg src={'images/login/profileImg.jpg'} />
+                    <MenuItems>
+                        <DropdownList>
+                            <DropdownItem>
+                                <StyledNavLink to="/brands">Brands</StyledNavLink>
+                                <DropdownContent>
+                                    <SubNavLink to="/brands/link1">Link 1</SubNavLink>
+                                    <SubNavLink to="/brands/link2">Link 2</SubNavLink>
+                                    <SubNavLink to="/brands/link3">Link 3</SubNavLink>
+                                </DropdownContent>
+                            </DropdownItem>
+                            <DropdownItem>
+                                <StyledNavLink to="/agents">Agents</StyledNavLink>
+                                <DropdownContent>
+                                    <SubNavLink to="/agents/link1">Link 1</SubNavLink>
+                                    <SubNavLink to="/agents/link2">Link 2</SubNavLink>
+                                    <SubNavLink to="/agents/link3">Link 3</SubNavLink>
+                                </DropdownContent>
+                            </DropdownItem>
+                            <DropdownItem>
+                                <StyledNavLink to="/corporates">Corporates</StyledNavLink>
+                                <DropdownContent>
+                                    <SubNavLink to="corporates/link1">Link 1</SubNavLink>
+                                    <SubNavLink to="corporates/link2">Link 2</SubNavLink>
+                                    <SubNavLink to="corporates/link3">Link 3</SubNavLink>
+                                </DropdownContent>
+                            </DropdownItem>
+                            <DropdownItem>
+                                <StyledNavLink to="/crowdfunding">CrowdFunding</StyledNavLink>
+                                <DropdownContent>
+                                    <SubNavLink to="crowdfunding/link1">Link 1</SubNavLink>
+                                    <SubNavLink to="crowdfunding/link2">Link 2</SubNavLink>
+                                    <SubNavLink to="crowdfunding/link3">Link 3</SubNavLink>
+                                </DropdownContent>
+                            </DropdownItem>
+                        </DropdownList>
+                    </MenuItems>
+                    <DropdownItem>
+                        <ProfileLink to='/login'>
+                            {isConnected ?
+                                <ProfileImg src={'images/login/profileImg.jpg'} /> :
+                                <ProfileIcon />
+                            }
+                        </ProfileLink>
+                        {isConnected &&
                             <ProfileDropDown>
                                 <SubNavLink to="crowdfunding/link1">Profile</SubNavLink>
                                 <SubNavLink to="crowdfunding/link2">Favorites</SubNavLink>
@@ -83,24 +87,22 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle, t
                                 <SubNavLink to="crowdfunding/link3">Logout</SubNavLink>
                                 <SubNavLink to="crowdfunding/link3">NightMode</SubNavLink>
                             </ProfileDropDown>
-                        </DropdownItem> :
-                        <ProfileIcon />
-                    }
-                </ProfileLink>
-                <Toggler onClick={() => toggleTheme()}>{
-                    theme === 'light' ?
-                        <FiMoon /> :
-                        <FiSun />
-                }</Toggler>
-                <MenuBar onClick={onSidebarToggle}>
-                    {
-                        isSidebarOpen ?
-                            <CloseIcon /> :
-                            <BarIcon />
-                    }
-                </MenuBar>
-            </Menu>
-        </Nav>
+                        }
+                    </DropdownItem>
+                    <Toggler onClick={() => toggleTheme()}>{
+                        theme === 'light' ?
+                            <FiMoon /> :
+                            <FiSun />
+                    }</Toggler>
+                    <MenuBar onClick={onSidebarToggle}>
+                        {
+                            isSidebarOpen ?
+                                <CloseIcon /> :
+                                <BarIcon />
+                        }
+                    </MenuBar>
+                </Menu>
+            </Nav>
         </NavContainer >
     )
 }
