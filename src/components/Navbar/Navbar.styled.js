@@ -22,7 +22,6 @@ export const Nav = styled.nav`
 export const NavbarLeft = styled.div`
     align-items: center;
     display: flex;
-    height: 100%;
     padding-right: 24px;
 `
 
@@ -32,7 +31,6 @@ export const LogoLink = styled(NavLink)`
     display: flex;
     font-size: 20px;
     font-weight: 500;
-    height: 100%;
     padding: 8px 0px;
     position: relative;
 `
@@ -119,7 +117,7 @@ export const ProfileLink = styled(NavLink)`
 `
 
 export const ProfileIcon = styled(FaRegUserCircle)`
-    font-size: 1em;
+    font-size: 2rem;
     transition: all 0.2s ease-in-out;
 
     color: ${({ theme }) => theme.colors.onNavbar};

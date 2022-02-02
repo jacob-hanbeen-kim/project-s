@@ -24,7 +24,7 @@ import { Toggler } from '../../styles/Toggle.styled';
 import { FiSun, FiMoon } from 'react-icons/fi';
 
 
-const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
+const Navbar = ({ isConnected, onLogout, isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
 
     return (
         <NavContainer>
@@ -40,33 +40,17 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle, t
                             <DropdownItem>
                                 <StyledNavLink to="/brands">Brands</StyledNavLink>
                                 <DropdownContent>
-                                    <SubNavLink to="/brands/link1">Link 1</SubNavLink>
-                                    <SubNavLink to="/brands/link2">Link 2</SubNavLink>
-                                    <SubNavLink to="/brands/link3">Link 3</SubNavLink>
+                                    <SubNavLink to="/brands/tiers">By Tiers</SubNavLink>
+                                    <SubNavLink to="/brands/nations">By Nations</SubNavLink>
+                                    <SubNavLink to="/brands/sports">By Sports</SubNavLink>
                                 </DropdownContent>
                             </DropdownItem>
                             <DropdownItem>
                                 <StyledNavLink to="/agents">Agents</StyledNavLink>
                                 <DropdownContent>
-                                    <SubNavLink to="/agents/link1">Link 1</SubNavLink>
-                                    <SubNavLink to="/agents/link2">Link 2</SubNavLink>
-                                    <SubNavLink to="/agents/link3">Link 3</SubNavLink>
-                                </DropdownContent>
-                            </DropdownItem>
-                            <DropdownItem>
-                                <StyledNavLink to="/corporates">Corporates</StyledNavLink>
-                                <DropdownContent>
-                                    <SubNavLink to="corporates/link1">Link 1</SubNavLink>
-                                    <SubNavLink to="corporates/link2">Link 2</SubNavLink>
-                                    <SubNavLink to="corporates/link3">Link 3</SubNavLink>
-                                </DropdownContent>
-                            </DropdownItem>
-                            <DropdownItem>
-                                <StyledNavLink to="/crowdfunding">CrowdFunding</StyledNavLink>
-                                <DropdownContent>
-                                    <SubNavLink to="crowdfunding/link1">Link 1</SubNavLink>
-                                    <SubNavLink to="crowdfunding/link2">Link 2</SubNavLink>
-                                    <SubNavLink to="crowdfunding/link3">Link 3</SubNavLink>
+                                    <SubNavLink to="/agents/tiers">By Tiers</SubNavLink>
+                                    <SubNavLink to="/agents/nations">By Nations</SubNavLink>
+                                    <SubNavLink to="/agents/sports">By Sports</SubNavLink>
                                 </DropdownContent>
                             </DropdownItem>
                         </DropdownList>
@@ -80,12 +64,12 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle, t
                         </ProfileLink>
                         {isConnected &&
                             <ProfileDropDown>
-                                <SubNavLink to="crowdfunding/link1">Profile</SubNavLink>
-                                <SubNavLink to="crowdfunding/link2">Favorites</SubNavLink>
-                                <SubNavLink to="crowdfunding/link3">Watchlist</SubNavLink>
-                                <SubNavLink to="crowdfunding/link3">Settings</SubNavLink>
-                                <SubNavLink to="crowdfunding/link3">Logout</SubNavLink>
-                                <SubNavLink to="crowdfunding/link3">NightMode</SubNavLink>
+                                <SubNavLink to="/account">Profile</SubNavLink>
+                                <SubNavLink to="/account/settings">Settings</SubNavLink>
+                                {
+                                    isConnected &&
+                                    <SubNavLink to="/" onClick={() => { onLogout(); }}>Logout</SubNavLink>
+                                }
                             </ProfileDropDown>
                         }
                     </DropdownItem>
