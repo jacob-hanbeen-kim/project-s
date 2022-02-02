@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const StyledFooter = styled.footer`
-  background-color: ${({ theme }) => theme.colors.accent};
-  color: #fff;
+  background-color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }) => theme.colors.onSecondary};
   padding: 100px 0 60px;
 
   ul {
@@ -11,10 +11,12 @@ export const StyledFooter = styled.footer`
 
   ul li {
     margin-bottom: 20px;
+    color: ${({ theme }) => theme.colors.onSecondary};
   }
 
   p {
     text-align: right;
+    color: ${({ theme }) => theme.colors.onSecondary};
   }
 
   img {

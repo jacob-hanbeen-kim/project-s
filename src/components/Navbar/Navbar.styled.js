@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { FaBars, FaTimes, FaRegUserCircle } from 'react-icons/fa'
 
 export const NavContainer = styled.nav`
-    /* background: ${({ theme }) => theme.colors.header}; */
-    background: #fff;
+    background: ${({ theme }) => theme.colors.navbar};
     max-width: 100vw;
     height: 72px;
     position: sticky;
@@ -45,7 +44,10 @@ export const MenuItems = styled.div`
 `
 
 export const StyledLink = styled(NavLink)`
-    color: rgb(100, 100, 100);
+    /* color: rgb(100, 100, 100); */
+    color: ${({ theme }) => theme.colors.onNavbar};
+    opacity: 0.75;
+
     display: inline-block;
     align-items: center;
     text-decoration: none;
@@ -57,12 +59,12 @@ export const StyledLink = styled(NavLink)`
     text-transform: uppercase;
 
     &.active {
-        color: ${({ theme }) => theme.colors.base};
+        opacity: 1.0;
     }
 
     &:hover {
         transition: all 0.2s ease-in-out;
-        color: #000;
+        opacity: 1.0;
     }
 `
 
@@ -78,7 +80,7 @@ export const LogoLink = styled(NavLink)`
 
 export const ProfileLink = styled(NavLink)`
     padding: 10px;
-    color: #000;
+    color: ${({ theme }) => theme.colors.onNavbar};
     border: none;
     outline: none;
     cursor: pointer;
@@ -93,12 +95,12 @@ export const ProfileIcon = styled(FaRegUserCircle)`
     font-size: 2rem;
     transition: all 0.2s ease-in-out;
 
-    color: rgb(100, 100, 100);
+    color: ${({ theme }) => theme.colors.onNavbar};
+    opacity: 0.75;
 
     &:hover {
         transition: all 0.2s ease-in-out;
-        /* color: ${({ theme }) => theme.colors.base}; */
-        color: #000;
+        opacity: 1.0;
     }
 `
 
@@ -121,8 +123,8 @@ export const MenuBar = styled.div`
 
 export const BarIcon = styled(FaBars)`
     font-size: 1.8rem;
-    color: ${({ theme }) => theme.colors.base};
-    opacity: 0.8;
+    color: ${({ theme }) => theme.colors.onNavbar};
+    opacity: 0.75;
     transition: all 0.2s ease-in-out;
 
     &:hover {
@@ -133,8 +135,8 @@ export const BarIcon = styled(FaBars)`
 
 export const CloseIcon = styled(FaTimes)`
     font-size: 1.8rem;
-    color: ${({ theme }) => theme.colors.base};
-    opacity: 0.8;
+    color: ${({ theme }) => theme.colors.onNavbar};
+    opacity: 0.75;
     transition: all 0.2s ease-in-out;
 
     &:hover {
@@ -161,13 +163,13 @@ export const DropDownList = styled(StyledLink)`
 
 export const StyledA = styled.a`
     display: inline-block;
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.navbar};
     text-align: center;
     text-decoration: none;
 `
 
 export const SubA = styled(StyledA)`
-    color: rgb(100, 100, 100);
+    color: ${({ theme }) => theme.colors.onNavbar};
     padding: 12px 16px;
     text-decoration: none;
     display: block;

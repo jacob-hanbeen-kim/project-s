@@ -18,7 +18,6 @@ import {
 } from '../../styles/Button.styled'
 
 const InfoSection = ({
-    theme,
     id,
     imgStart,
     topLine,
@@ -28,17 +27,18 @@ const InfoSection = ({
     img,
     alt,
     primary,
+    invert
 }) => {
     return (
         <>
-            <InfoContainer selectedTheme={theme} id={id}>
+            <InfoContainer invert={invert} id={id}>
                 <InfoWrapper>
                     <InfoRow hasImage={img ? true : false} imgStart={imgStart}>
                         <Column1>
                             <TextWrapper>
-                                <TopLine selectedTheme={theme}>{topLine}</TopLine>
-                                <Heading selectedTheme={theme}>{headline}</Heading>
-                                <Subtitle selectedTheme={theme}>{description}</Subtitle>
+                                <TopLine invert={invert}>{topLine}</TopLine>
+                                <Heading invert={invert}>{headline}</Heading>
+                                <Subtitle invert={invert}>{description}</Subtitle>
                                 <BtnWrapper>
                                     <Button
                                         to='home'
@@ -48,7 +48,7 @@ const InfoSection = ({
                                         exact="true"
                                         offset={-80}
                                         primary={primary ? 1 : 0}
-                                        dark={theme === 'dark'}
+                                        invert={invert}
                                     >
                                         {buttonLabel}
                                     </Button>

@@ -8,16 +8,18 @@ const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        background: ${({ theme }) => theme.colors.white};
-        color: hsl(192, 100%, 9%);
+        background: ${({ theme }) => theme.colors.background};
+        color: ${({ theme }) => theme.colors.fontDefault};
         font-family: 'Poppins', sans-serif;
         font-size: 1.15em;
+        /* font-size: 67.5%; */
         margin: 0;
         padding: 0;
     }
 
     p {
-        opacity: 0.6;
+        color: ${({ theme }) => theme.colors.fontMuted};
+        opacity: 0.75;
         line-height: 1.5;
     }
 
