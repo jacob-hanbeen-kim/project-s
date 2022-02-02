@@ -3,8 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { FaBars, FaTimes, FaRegUserCircle } from 'react-icons/fa'
 
 export const NavContainer = styled.nav`
-    /* background: ${({ theme }) => theme.colors.header}; */
-    background: #fff;
+    background: ${({ theme }) => theme.colors.navbar};
     max-width: 100vw;
     height: 72px;
     position: sticky;
@@ -45,6 +44,16 @@ export const Menu = styled.div`
     padding-right: 24px;
 `
 
+export const MenuItems = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
+        display: none;
+    }
+`
+
 export const DropdownList = styled.ul`
     list-style-type: none;
     margin: 0;
@@ -52,16 +61,8 @@ export const DropdownList = styled.ul`
     padding: 0px;
     font-weight: bold;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     &:hover {
         transition: all 0.2s ease-in-out;
-    }
-
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
-        display: none;
     }
 `;
 
@@ -76,16 +77,12 @@ export const DropdownItem = styled.li`
     display: inline-block;
     align-items: center;
     text-decoration: none;
-    padding: 0 0.8rem;
+    padding: 0.8rem;
     height: 100%;
     cursor: pointer;
 
     font-weight: bold;
     text-transform: uppercase;
-
-    &.active {
-        color: ${({ theme }) => theme.colors.primary};
-    }
 
     &:hover ${DropdownContent} {
         transition: all 0.2s ease-in-out;
@@ -93,13 +90,30 @@ export const DropdownItem = styled.li`
     }
 `
 
+export const StyledNavLink = styled(NavLink)`
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    padding: 24px 0px;
+    
+    color: ${({ theme }) => theme.colors.onNavbar};
+    opacity: 0.75;
+
+    &.active {
+        opacity: 1.0;
+    }
+
+    &:hover {
+        opacity: 1.0;
+    }
+`
+
 export const ProfileLink = styled(NavLink)`
-    padding: 10px;
-    color: #000;
+    color: ${({ theme }) => theme.colors.onNavbar};
     border: none;
     outline: none;
     cursor: pointer;
-    /* margin-left: 24px; */
+    font-size: 1em;
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeS}) {
         display: none;
@@ -107,15 +121,15 @@ export const ProfileLink = styled(NavLink)`
 `
 
 export const ProfileIcon = styled(FaRegUserCircle)`
-    font-size: 2rem;
+    font-size: 1em;
     transition: all 0.2s ease-in-out;
 
-    color: rgb(100, 100, 100);
+    color: ${({ theme }) => theme.colors.onNavbar};
+    opacity: 0.75;
 
     &:hover {
         transition: all 0.2s ease-in-out;
-        /* color: ${({ theme }) => theme.colors.primary}; */
-        color: #000;
+        opacity: 1.0;
     }
 `
 
@@ -131,18 +145,6 @@ export const ProfileDropDown = styled(DropdownContent)`
     left:auto;
     right:0;
     padding: 16px 0px;
-`
-
-export const StyledNavLink = styled(NavLink)`
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    padding: 24px 3px;
-    color: rgb(100, 100, 100);
-
-    &:hover {
-        color: #000;
-    }
 `
 
 export const SubNavLink = styled(NavLink)`
@@ -169,8 +171,8 @@ export const MenuBar = styled.div`
 
 export const BarIcon = styled(FaBars)`
     font-size: 1.8rem;
-    color: ${({ theme }) => theme.colors.primary};
-    opacity: 0.8;
+    color: ${({ theme }) => theme.colors.onNavbar};
+    opacity: 0.75;
     transition: all 0.2s ease-in-out;
 
     &:hover {
@@ -181,8 +183,8 @@ export const BarIcon = styled(FaBars)`
 
 export const CloseIcon = styled(FaTimes)`
     font-size: 1.8rem;
-    color: ${({ theme }) => theme.colors.primary};
-    opacity: 0.8;
+    color: ${({ theme }) => theme.colors.onNavbar};
+    opacity: 0.75;
     transition: all 0.2s ease-in-out;
 
     &:hover {

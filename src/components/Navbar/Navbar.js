@@ -5,6 +5,7 @@ import {
     StyledLink,
     LogoLink,
     Menu,
+    MenuItems,
     DropdownList,
     ProfileDropDown,
     DropdownItem,
@@ -19,19 +20,22 @@ import {
     DropdownContent
 } from './Navbar.styled';
 import { Logo } from '../';
+import { Toggler } from '../../styles/Toggle.styled';
+import { FiSun, FiMoon } from 'react-icons/fi';
 
 
-const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle }) => {
+const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
 
     return (
         <NavContainer>
             <Nav>
                 <NavbarLeft>
                     <LogoLink to="/" onClick={() => { isSidebarOpen && onSidebarToggle() }}>
-                        <Logo />
+                        <Logo isDark={theme === 'dark'} />
                     </LogoLink>
                 </NavbarLeft>
                 <Menu>
+                <MenuItems>
                     <DropdownList>
                         <DropdownItem>
                             <StyledNavLink to="/brands">Brands</StyledNavLink>
@@ -66,31 +70,37 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle })
                             </DropdownContent>
                         </DropdownItem>
                     </DropdownList>
-                    <ProfileLink to='/login'>
-                        {isConnected ?
-                            <DropdownItem>
-                                <ProfileImg src={'images/login/profileImg.jpg'} />
-                                <ProfileDropDown>
-                                    <SubNavLink to="crowdfunding/link1">Profile</SubNavLink>
-                                    <SubNavLink to="crowdfunding/link2">Favorites</SubNavLink>
-                                    <SubNavLink to="crowdfunding/link3">Watchlist</SubNavLink>
-                                    <SubNavLink to="crowdfunding/link3">Settings</SubNavLink>
-                                    <SubNavLink to="crowdfunding/link3">Logout</SubNavLink>
-                                    <SubNavLink to="crowdfunding/link3">NightMode</SubNavLink>
-                                </ProfileDropDown>
-                            </DropdownItem> :
-                            <ProfileIcon />
-                        }
-                    </ProfileLink>
-                    <MenuBar onClick={onSidebarToggle}>
-                        {
-                            isSidebarOpen ?
-                                <CloseIcon /> :
-                                <BarIcon />
-                        }
-                    </MenuBar>
-                </Menu>
-            </Nav>
+                </MenuItems>
+                <ProfileLink to='/login'>
+                    {isConnected ?
+                        <DropdownItem>
+                            <ProfileImg src={'images/login/profileImg.jpg'} />
+                            <ProfileDropDown>
+                                <SubNavLink to="crowdfunding/link1">Profile</SubNavLink>
+                                <SubNavLink to="crowdfunding/link2">Favorites</SubNavLink>
+                                <SubNavLink to="crowdfunding/link3">Watchlist</SubNavLink>
+                                <SubNavLink to="crowdfunding/link3">Settings</SubNavLink>
+                                <SubNavLink to="crowdfunding/link3">Logout</SubNavLink>
+                                <SubNavLink to="crowdfunding/link3">NightMode</SubNavLink>
+                            </ProfileDropDown>
+                        </DropdownItem> :
+                        <ProfileIcon />
+                    }
+                </ProfileLink>
+                <Toggler onClick={() => toggleTheme()}>{
+                    theme === 'light' ?
+                        <FiMoon /> :
+                        <FiSun />
+                }</Toggler>
+                <MenuBar onClick={onSidebarToggle}>
+                    {
+                        isSidebarOpen ?
+                            <CloseIcon /> :
+                            <BarIcon />
+                    }
+                </MenuBar>
+            </Menu>
+        </Nav>
         </NavContainer >
     )
 }

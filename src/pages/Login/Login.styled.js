@@ -9,12 +9,6 @@ export const LoginContainer = styled(Flex)`
 `
 
 export const ContentContainer = styled.div`
-    /* width: 100%;
-    height: 860px;
-    margin-right: auto;
-    margin-left: auto;
-    padding: 0 24px; */
-
     margin-top: 24px;
     width: 500px;
     
@@ -39,8 +33,10 @@ export const ButtonContainer = styled.div`
 `
 
 export const WalletList = styled.ul`
-    border: 1px solid rgb(229, 232, 235);
+    border: 1px solid;
+    border-color: ${({ theme }) => theme.colors.border};
     border-radius: ${({ theme }) => theme.border.radius};
+    background-color: ${({ theme }) => theme.colors.surface};
 
     margin: 0px;
 
@@ -48,7 +44,8 @@ export const WalletList = styled.ul`
     list-style-type: none;
 
     li:not(:last-child){        
-        border-bottom: 1px solid rgb(229, 232, 235);
+        border-bottom: 1px solid;
+        border-color: ${({ theme }) => theme.colors.border};
     }
 
     li:first-child > button {
@@ -79,7 +76,7 @@ export const Wallet = styled(Button)`
     text-align: left;
     
     background: inherit;
-    color: rgb(53, 56, 64);
+    color: ${({ theme }) => theme.colors.onSurface};
 
     font-weight: 600;
     font-size: 100%;
