@@ -7,7 +7,7 @@ export const BackgroundContainer = styled.div`
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: inherit;
     overflow: hidden;
 `
 
@@ -16,14 +16,14 @@ export const ImageBg = styled.div`
     background-size: cover;
     background-position: center center;
     opacity: 0.4;
-    height: 586px;
+    height: inherit;
     filter: blur(1px);
     mask: linear-gradient(#fff, transparent);
 `
 
 export const VideoBg = styled.video`
     width: 100%;
-    height: 100%;
+    height: inherit;
     object-fit: cover;
     background: #232a34;
 `

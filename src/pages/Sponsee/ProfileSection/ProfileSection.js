@@ -1,18 +1,18 @@
 import {
     ProfileContainer,
     ProfileWrapper,
+    ProfileFlex,
     Row,
     Column,
 
     TextWrapper,
     TopLine,
     Details,
-    BtnWrapper,
-} from './Profile.styled';
+} from './ProfileSection.styled';
 import { Button } from '../../../styles/Button.styled';
 import { ImageBackground, ProfileImg, AccountTag } from '../../../components';
 
-const Profile = ({ currentAccount }) => {
+const ProfileSection = ({ currentAccount }) => {
 
     return (
         <ProfileContainer>
@@ -20,18 +20,21 @@ const Profile = ({ currentAccount }) => {
             <ProfileWrapper>
                 <Row>
                     <Column gridArea='col1'>
+                        <ProfileFlex>
+                            <TextWrapper>
+                                <ProfileImg hasProfileImg={true} size='10rem' />
+                            </TextWrapper>
+                            <TextWrapper>
+                                <TopLine>Your Name</TopLine>
+                                <AccountTag account={currentAccount} />
+                            </TextWrapper>
+                        </ProfileFlex>
+                    </Column>
+                    <Column gridArea='col2'>
                         <TextWrapper>
-                            <ProfileImg hasProfileImg={true} size='10rem' />
-                            <TopLine>Your Name</TopLine>
-                            <AccountTag account={currentAccount} />
                             <Details>
                                 My name is Uofin ewoif iosdfajeo. I am fiodf oweijios foaij ofjao ijfo joifjoiaw ejofij aojdfsfafwefa. Difwio do faeio mfaoweif oskfm oaweifnoaiwnfiansfaok.
                             </Details>
-                            <BtnWrapper>
-                                <Button dark={false} style={{ zIndex: 1 }}>
-                                    Learn More
-                                </Button>
-                            </BtnWrapper>
                         </TextWrapper>
                     </Column>
                 </Row>
@@ -40,4 +43,4 @@ const Profile = ({ currentAccount }) => {
     )
 }
 
-export default Profile
+export default ProfileSection
