@@ -94,7 +94,7 @@ function App() {
                 <Route path="/agents" element={<Agents />} />
                 <Route path="/corporates" />
                 <Route path="/crowdfunding" />
-                <Route path="/account" element={<Account currentAccount={currentAccount} onLogout={onLogout} />} />
+                <Route path="/account" element={<Account currentAccount={currentAccount} userType={"sponsee"} />} />
                 <Route path="/membership" element={<Membership />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>

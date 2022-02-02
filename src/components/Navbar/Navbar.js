@@ -89,11 +89,13 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle, t
                             </ProfileDropDown>
                         }
                     </DropdownItem>
-                    <Toggler onClick={() => toggleTheme()}>{
-                        theme === 'light' ?
-                            <FiMoon /> :
-                            <FiSun />
-                    }</Toggler>
+                    <Toggler onClick={() => toggleTheme()}>
+                        {
+                            theme === 'light' ?
+                                <FiMoon /> :
+                                <FiSun />
+                        }
+                    </Toggler>
                     <MenuBar onClick={onSidebarToggle}>
                         {
                             isSidebarOpen ?
@@ -103,7 +105,7 @@ const Navbar = ({ isConnected, currentAccount, isSidebarOpen, onSidebarToggle, t
                     </MenuBar>
                 </Menu>
             </Nav>
-        </NavContainer >
+        </ NavContainer>
     )
 }
 

@@ -1,4 +1,5 @@
 import {
+    Section,
     SectionContainer,
     SectionFlex,
 
@@ -8,10 +9,6 @@ import {
 
     ImageContainer,
 } from './HeroSection.styled';
-
-import {
-    Section
-} from '../Home.styled'
 
 import { Button } from '../../../styles/Button.styled';
 

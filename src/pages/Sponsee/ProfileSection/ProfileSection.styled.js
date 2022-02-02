@@ -6,7 +6,9 @@ import { FaUserCircle } from 'react-icons/fa'
 
 
 export const ProfileContainer = styled.div`
-    @media screen and (max-width: 768px) {
+    height: 350px;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
         padding: 100px 0;
     }
 `
@@ -14,8 +16,8 @@ export const ProfileContainer = styled.div`
 export const ProfileWrapper = styled.div`
     display: grid;
     z-index: 1;
-    height: 860px;
     width: 100%;
+    height: inherit;
     max-width: 1100px;
     margin-right: auto;
     margin-left: auto;
@@ -24,19 +26,31 @@ export const ProfileWrapper = styled.div`
     align-items: center;
 `
 
+export const ProfileFlex = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        flex-direction: column;
+        justify-content: center;
+    }
+`
+
 export const Row = styled.div`
     display: grid;
     grid-auto-columns: minmax(auto, 1fr);
     /* grid-template-areas: 'col1 col2'; */
-    grid-template-areas: 'col1 col1';
+    grid-template-areas: 'col1 col1 col2 col2';
 
-    @media screen and (max-width: 760px) {
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
         grid-template-areas: 'col1 col1' 'col2 col2';
     }
 `
 
 export const Column = styled.div`
-    margin-bottom: 15px;
+    margin: 0px;
     padding: 0 15px;
     grid-area: ${({ gridArea }) => gridArea};
 `
@@ -45,8 +59,7 @@ export const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
     max-width: 540px;
-    padding-top: 0;
-    padding-bottom: 60px;
+    padding: 0px;
     align-items: center;
     justify-content: center;
     justify-items: center;
@@ -83,24 +96,12 @@ export const AccountId = styled.p`
 
 export const Details = styled.p`
     max-width: 440px;
-    margin-bottom: 35px;
+    margin: 0px;
     font-size: 18px;
     line-height: 24px;
-    text-align: center;
-`
-
-export const BtnWrapper = styled.div`
-    display: flex;
-    justify-content:flex-start;
-`
-
-export const ImgWrap = styled.div`
-    max-width: 555px;
-    height: 100%;
-`
-
-export const Img = styled.img`
-    width: 100%;
-    margin: 0 0 10px 0;
-    padding-right: 0;
+    text-align: start;
+    
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        text-align: center;
+    }
 `
