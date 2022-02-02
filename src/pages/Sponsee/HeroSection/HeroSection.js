@@ -16,7 +16,7 @@ const HeroSection = ({ currentAccount }) => {
 
     return (
         <HeroContainer>
-            <ImageBackground src='./images/account/background.jpeg' />
+            <ImageBackground src='images/account/background.jpeg' />
             <HeroWrapper>
                 <Row>
                     <Column gridArea='col1'>
