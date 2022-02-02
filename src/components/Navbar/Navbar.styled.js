@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
 import { FaBars, FaTimes, FaRegUserCircle } from 'react-icons/fa'
 
-export const NavContainer = styled.nav`
+export const NavContainer = styled.div`
     background: ${({ theme }) => theme.colors.navbar};
     max-width: 100vw;
     height: 72px;
@@ -143,17 +143,19 @@ export const ProfileDropDown = styled(DropdownContent)`
     left:auto;
     right:0;
     padding: 16px 0px;
+    transform: translateX(-45%);
 `
 
 export const SubNavLink = styled(NavLink)`
-    color: rgb(100, 100, 100);
-    background-color: white;
+    color: ${({ theme }) => `${theme.colors.onNavbar}bf`};
+    background-color: ${({ theme }) => theme.colors.navbar};
     padding: 20px 20px;
     text-decoration: none;
     display: block;
     text-align: left;
     &:hover {
-        background-color: #f1f1f1;
+        background-color: ${({ theme }) => theme.colors.sidebar};
+        color: ${({ theme }) => `${theme.colors.onNavbar}`};
     }
 `
 

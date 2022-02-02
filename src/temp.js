@@ -1,5 +1,5 @@
 const theme = {
-    fonts: ['Poppins'],
+    fonts: ['sans-serif'],
     fontSizes: {
         default: '17px',
         small: '15px',
