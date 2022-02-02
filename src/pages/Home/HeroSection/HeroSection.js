@@ -30,7 +30,7 @@ const HeroSection = () => {
                 </ConentContainer>
 
                 {/* <ImageContainer>
-                    <img src="./images/home/online_transactions.svg"></img>
+                    <img src="images/home/online_transactions.svg"></img>
                 </ImageContainer> */}
             </SectionFlex>
             {/* </Container> */}

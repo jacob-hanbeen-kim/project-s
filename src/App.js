@@ -80,7 +80,7 @@ function App() {
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
-        <Router>
+        <Router basename={'/project-s'}>
           <FlexWropper>
             <Navbar isConnected={isConnected} currentAccount={currentAccount} isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} />
             {
