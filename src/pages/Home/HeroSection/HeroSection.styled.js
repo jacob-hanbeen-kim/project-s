@@ -1,6 +1,15 @@
 import styled, { keyframes } from 'styled-components';
 import { Flex } from '../../../styles/Flex.styled'
 
+const bottomLimit = '100px';
+
+export const Section = styled.section`
+    height: calc(100vh - ${bottomLimit});
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+`
 
 export const SectionFlex = styled(Flex)`
     :before {
@@ -9,7 +18,7 @@ export const SectionFlex = styled(Flex)`
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;
+        bottom: ${bottomLimit};
         /* background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%), linear-gradient(180deg, rgba(0,0,0,0.1) 0%, transparent 100%); */
         background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(50,50,50,0.8) 100%), linear-gradient(180deg, rgba(50,50,50,0.1) 0%, transparent 100%);
         z-index: 2;
