@@ -10,7 +10,7 @@ import {
     BtnWrapper,
 } from './Profile.styled';
 import { Button } from '../../../styles/Button.styled';
-import { ImageBackground, ProfileImg, AccountTag } from '../../../components';
+import { ImageBackground, ProfileImg, AccountTag, MembershipStatus } from '../../../components';
 
 const Profile = ({ currentAccount }) => {
 
@@ -23,6 +23,7 @@ const Profile = ({ currentAccount }) => {
                         <TextWrapper>
                             <ProfileImg hasProfileImg={true} size='10rem' />
                             <TopLine>Your Name</TopLine>
+                            <MembershipStatus size='1.5rem'> Membership Status : </MembershipStatus>
                             <AccountTag account={currentAccount} />
                             <Details>
                                 My name is Uofin ewoif iosdfajeo. I am fiodf oweijios foaij ofjao ijfo joifjoiaw ejofij aojdfsfafwefa. Difwio do faeio mfaoweif oskfm oaweifnoaiwnfiansfaok.
