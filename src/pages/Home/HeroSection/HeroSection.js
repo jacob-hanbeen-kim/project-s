@@ -29,7 +29,7 @@ const HeroSection = () => {
                         <br /> <span>Networking</span> in Sports and Entertainment
                     </Title>
                     <Description>Stop Researching Start Choosing</Description>
-                    <Button dark={true} >Join Now</Button>
+                    <Button invert={true} >Join Now</Button>
                 </ConentContainer>
 
                 {/* <ImageContainer>
