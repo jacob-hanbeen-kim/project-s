@@ -6,10 +6,6 @@ export const Container = styled(Flex)`
     flex-direction: column;
 `
 
-export const TabContainer = styled.div`
-
-`
-
-export const Tab = styled.button`
+export const SectionContainer = styled.div`
 
 `

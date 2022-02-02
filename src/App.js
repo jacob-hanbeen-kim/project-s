@@ -80,9 +80,9 @@ function App() {
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
-        <Router>
+        <Router basename={'/project-s'}>
           <FlexWropper>
-            <Navbar isConnected={isConnected} currentAccount={currentAccount} isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} />
+            <Navbar isConnected={isConnected} onLogout={onLogout} isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} />
             {
               isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} isConnected={isConnected} onLogout={onLogout} />
             }
@@ -92,8 +92,6 @@ function App() {
                 <Route path="/login" element={<Login isConnected={isConnected} onLogin={onLogin} />} />
                 <Route path="/brands" element={<Brand />} />
                 <Route path="/agents" element={<Agents />} />
-                <Route path="/corporates" />
-                <Route path="/crowdfunding" />
                 <Route path="/account" element={<Account currentAccount={currentAccount} userType={"sponsee"} />} />
                 <Route path="/membership" element={<Membership />} />
                 <Route path="*" element={<ErrorPage />} />
