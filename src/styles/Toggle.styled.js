@@ -3,8 +3,7 @@ import styled from "styled-components"
 export const Toggler = styled.button`
     display: flex;
     font-size: 2rem;
-    width: 100%;
-    height: 100%;
+    padding: 10px;
     align-items: center;
     justify-content: center;
     color: ${props => props.theme.colors.onNavbar};
