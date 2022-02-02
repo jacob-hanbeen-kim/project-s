@@ -7,7 +7,7 @@ const Footer = () => {
     return (
         <StyledFooter>
             <Container>
-                <img src="./images/logo192.svg" alt="" />
+                <img src="images/logo192.svg" alt="" />
 
                 <Flex>
                     <ul>
