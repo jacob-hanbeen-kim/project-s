@@ -5,7 +5,6 @@ export const Button = styled.button`
     border: 1px solid ${props => props.invert ? props.theme.colors.invert : props.theme.colors.primary};
     
     padding: ${({ big }) => big ? '14px 48px' : '12px 30px'};
-
     cursor: pointer;
 
     font-size: ${({ big }) => big ? '20px' : '16px'};

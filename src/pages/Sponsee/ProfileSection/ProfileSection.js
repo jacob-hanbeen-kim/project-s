@@ -10,7 +10,7 @@ import {
     Details,
 } from './ProfileSection.styled';
 import { Button } from '../../../styles/Button.styled';
-import { ImageBackground, ProfileImg, AccountTag } from '../../../components';
+import { ImageBackground, ProfileImg, AccountTag, MembershipStatus } from '../../../components';
 
 const ProfileSection = ({ currentAccount }) => {
 
@@ -27,6 +27,7 @@ const ProfileSection = ({ currentAccount }) => {
                             <TextWrapper>
                                 <TopLine>Your Name</TopLine>
                                 <AccountTag account={currentAccount} />
+                                {/* <MembershipStatus size='1.5rem'> Membership Status : </MembershipStatus> */}
                             </TextWrapper>
                         </ProfileFlex>
                     </Column>
