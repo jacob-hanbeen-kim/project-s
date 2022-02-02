@@ -27,14 +27,53 @@ export const NavbarLeft = styled.div`
     padding-right: 24px;
 `
 
+
+export const LogoLink = styled(NavLink)`
+    align-items: center;
+    display: flex;
+    font-size: 20px;
+    font-weight: 500;
+    height: 100%;
+    padding: 8px 0px;
+    position: relative;
+`
+
 export const Menu = styled.div`
     display: flex;
     align-items: center;
     /* margin-right: -24px; */
     padding-right: 24px;
 `
-export const StyledLink = styled.li`
-    color: rgb(100, 100, 100);
+
+export const DropdownList = styled.ul`
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+    }
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
+        display: none;
+    }
+`;
+
+export const DropdownContent = styled.div`
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    z-index: 1;
+`;
+
+export const DropdownItem = styled.li`
+    display: inline-block;
     align-items: center;
     text-decoration: none;
     padding: 0 0.8rem;
@@ -48,20 +87,10 @@ export const StyledLink = styled.li`
         color: ${({ theme }) => theme.colors.primary};
     }
 
-    &:hover {
+    &:hover ${DropdownContent} {
         transition: all 0.2s ease-in-out;
-        color: #000;
+        display: block;
     }
-`
-
-export const LogoLink = styled(NavLink)`
-    align-items: center;
-    display: flex;
-    font-size: 20px;
-    font-weight: 500;
-    height: 100%;
-    padding: 8px 0px;
-    position: relative;
 `
 
 export const ProfileLink = styled(NavLink)`
@@ -97,6 +126,37 @@ export const ProfileImg = styled.img`
     height: 2rem;
 `
 
+export const ProfileDropDown = styled(DropdownContent)`
+    float: right;
+    left:auto;
+    right:0;
+    padding: 16px 0px;
+`
+
+export const StyledNavLink = styled(NavLink)`
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    padding: 24px 3px;
+    color: rgb(100, 100, 100);
+
+    &:hover {
+        color: #000;
+    }
+`
+
+export const SubNavLink = styled(NavLink)`
+    color: rgb(100, 100, 100);
+    background-color: white;
+    padding: 20px 20px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    &:hover {
+        background-color: #f1f1f1;
+    }
+`
+
 export const MenuBar = styled.div`
     display: none;
     padding: 10px;
@@ -128,75 +188,5 @@ export const CloseIcon = styled(FaTimes)`
     &:hover {
         transition: all 0.2s ease-in-out;
         opacity: 1.0;
-    }
-`
-
-export const MenuItems = styled.ul`
-    list-style-type: none;
-    margin: 0;
-    overflow: hidden;
-    padding: 0px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &:hover {
-        transition: all 0.2s ease-in-out;
-    }
-
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
-        display: none;
-    }
-`;
-
-export const DropDownContent = styled.div`
-    display: none;
-    position: absolute;
-    min-width: 160px;
-    z-index: 1;
-    &:hover {
-        transition: all 0.2s ease-in-out;
-        display: block;
-    }
-`;
-
-export const ProfileDropDown = styled(DropDownContent)`
-    float: right;
-    left:auto;
-    right:0;
-    padding: 16px 0px;
-`
-
-export const DropDownList = styled(StyledLink)`
-    display: inline-block;
-
-    &:hover ${DropDownContent} {
-        transition: all 0.2s ease-in-out;
-        display: block;
-    }
-`
-
-export const StyledA = styled(NavLink)`
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    padding: 24px 3px;
-    color: rgb(100, 100, 100);
-
-    &:hover {
-        color: #000;
-    }
-`
-
-export const SubA = styled(NavLink)`
-    color: rgb(100, 100, 100);
-    background-color: white;
-    padding: 20px 20px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    &:hover {
-        background-color: #f1f1f1;
     }
 `
