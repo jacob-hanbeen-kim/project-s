@@ -1,7 +1,7 @@
 import {
     TabContainer,
-    TabList,
-    TabItem,
+    TabItems,
+    Tab,
     TabPanel,
 } from './Tabs.styled';
 
@@ -19,20 +19,20 @@ const Tabs = ({ children }) => {
     return (
         <>
             <TabContainer>
-                <TabList>
+                <TabItems>
                     {
                         React.Children.map(children, function (child) {
                             const label = child.props.label;
-                            return (
-                                <TabItem key={label}>
-                                    <a href='#' onClick={(e) => handleClick(e, label)}>
+                            if (label) {
+                                return (
+                                    <Tab href='#profile' onClick={(e) => handleClick(e, label)} isActive={label === activeTab}>
                                         {label}
-                                    </a>
-                                </TabItem>
-                            );
+                                    </Tab>
+                                );
+                            }
                         })
                     }
-                </TabList>
+                </TabItems>
             </TabContainer>
             <TabPanel>
                 {
