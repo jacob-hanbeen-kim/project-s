@@ -21,9 +21,7 @@ export const TabContainer = styled.nav`
 export const TabItems = styled.div`
     display: flex;
     flex-direction: row;
-    /* justify-content: flex-start; */
     justify-content: center;
-    align-content: center;
     align-items: center;
     
     width: 100%;
@@ -36,6 +34,10 @@ export const TabItems = styled.div`
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}){
+        justify-content: flex-start;
+    }
 `
 
 export const Tab = styled.a`
