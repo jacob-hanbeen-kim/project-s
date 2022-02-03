@@ -11,7 +11,7 @@ import AccomplishmentSection from './AccomplishmentSection/AccomplishmentSection
 
 const Sponsee = ({ currentAccount }) => {
     return (
-        <>
+        <Container>
             <HeroSection currentAccount={currentAccount} />
             <Tabs>
                 <ProfileSection label="Profile" />
@@ -19,7 +19,7 @@ const Sponsee = ({ currentAccount }) => {
                 <div label="Sponsors">Sponsor Section</div>
                 <div label="Contact Me">Contact Me</div>
             </Tabs>
-        </>
+        </Container>
     )
 }
 
