@@ -55,7 +55,6 @@ export const ConentContainer = styled.div`
     }
 
     & > button {
-        width: 15%;
         margin-top: 20px;
     }
 `
