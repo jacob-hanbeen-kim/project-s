@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const TabContainer = styled.div`
+export const TabContainer = styled.nav`
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -10,12 +10,19 @@ export const TabContainer = styled.div`
     z-index: 9;
 
     width: 100vw;
+
+    position: sticky;
+    top: 4.5rem;
+    overflow: hidden;
+
+    background-color: ${({ theme }) => theme.colors.navbar};
 `
 
 export const TabItems = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
+    justify-content: center;
     align-content: center;
     align-items: center;
     
@@ -53,6 +60,8 @@ export const TabPanel = styled.div`
     border: 0;
     margin: 0;
     padding: 0;
+    width: 100vw;
+    max-width: 1500px;
     font-size: 100%;
     vertical-align: baseline;
 `

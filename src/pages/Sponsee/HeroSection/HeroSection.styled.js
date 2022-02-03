@@ -50,6 +50,9 @@ export const Row = styled.div`
 `
 
 export const Column = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     margin: 0px;
     padding: 0 15px;
     grid-area: ${({ gridArea }) => gridArea};
@@ -65,33 +68,14 @@ export const TextWrapper = styled.div`
     justify-items: center;
 `
 
-export const MembershipStatus = styled.p`
-    color: #000;
-    font-size: 13px;
-    line-height: 10px;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-`
-
 export const TopLine = styled.h1`
-    color: #000;
+    color: ${({ theme }) => theme.colors.onBackground};
     font-size: 16px;
     line-height: 16px;
     font-weight: 700;
     letter-spacing: 1.4px;
     text-transform: uppercase;
     margin-bottom: 16px;
-`
-
-export const AccountId = styled.p`
-    color: #454545;
-    font-size: 16px;
-    line-height: 16px;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    margin: 16px 0px;
 `
 
 export const Details = styled.p`
