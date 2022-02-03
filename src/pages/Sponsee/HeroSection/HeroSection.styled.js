@@ -38,6 +38,13 @@ export const HeroFlex = styled.div`
     }
 `
 
+export const DetailFlex = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+`
+
 export const Row = styled.div`
     display: grid;
     grid-auto-columns: minmax(auto, 1fr);
@@ -50,9 +57,9 @@ export const Row = styled.div`
 `
 
 export const Column = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
     margin: 0px;
     padding: 0 15px;
     grid-area: ${({ gridArea }) => gridArea};

@@ -2,6 +2,7 @@ import {
     HeroContainer,
     HeroWrapper,
     HeroFlex,
+    DetailFlex,
     Row,
     Column,
 
@@ -32,11 +33,14 @@ const HeroSection = ({ currentAccount }) => {
                         </HeroFlex>
                     </Column>
                     <Column gridArea='col2'>
-                        <TextWrapper>
-                            <Details>
-                                My name is Uofin ewoif iosdfajeo. I am fiodf oweijios foaij ofjao ijfo joifjoiaw ejofij aojdfsfafwefa. Difwio do faeio mfaoweif oskfm oaweifnoaiwnfiansfaok.
-                            </Details>
-                        </TextWrapper>
+                        <DetailFlex>
+                            <TextWrapper>
+                                <Details>
+                                    My name is Uofin ewoif iosdfajeo. I am fiodf oweijios foaij ofjao ijfo joifjoiaw ejofij aojdfsfafwefa. Difwio do faeio mfaoweif oskfm oaweifnoaiwnfiansfaok.
+                                    <br /> SDfospfoajsSDPof aopef opawjf OPDSJfoj aowefoisd ofiIOEjf aojdfo iawef ioaeofi awioef osidmfo aef.
+                                </Details>
+                            </TextWrapper>
+                        </DetailFlex>
                     </Column>
                 </Row>
             </HeroWrapper>
