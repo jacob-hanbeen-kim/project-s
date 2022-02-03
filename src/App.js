@@ -19,14 +19,6 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 // web3
 import Web3 from 'web3';
 
-
-const FlexWropper = styled.div`
-  min-height: 100%;
-  background-color: ${({ theme }) => theme.colors.background};
-  display: flex;
-  flex-direction: column;
-`
-
 function App() {
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
@@ -99,7 +91,7 @@ function App() {
             </PageWrapper>
           </FlexWropper>
         </Router>
-        <Footer />
+        {!isSidebarOpen && <Footer />}
       </>
     </ThemeProvider>
   );
@@ -109,5 +101,11 @@ const PageWrapper = styled.div`
   display: ${({ isSidebarOpen }) => isSidebarOpen ? 'none' : 'block'};
 `
 
+const FlexWropper = styled.div`
+  min-height: 100%;
+  background-color: ${({ theme }) => theme.colors.background};
+  display: flex;
+  flex-direction: column;
+`
 
 export default App;
