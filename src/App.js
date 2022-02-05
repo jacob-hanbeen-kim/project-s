@@ -16,6 +16,7 @@ import Brand from './pages/Brands/Brands';
 import Agents from './pages/Agents/Agents';
 import Membership from './pages/Membership/Membership';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import Settings from './pages/Account/Settings/Settings';
 // web3
 import Web3 from 'web3';
 
@@ -94,6 +95,7 @@ function App() {
                 <Route path="/agents" element={<Agents />} />
                 <Route path="/account" element={<Account currentAccount={currentAccount} userType={"sponsee"} />} />
                 <Route path="/membership" element={<Membership />} />
+                <Route path="/account/settings" element={<Settings currentAccount={currentAccount} userType={"sponsee"}/>} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             </PageWrapper>

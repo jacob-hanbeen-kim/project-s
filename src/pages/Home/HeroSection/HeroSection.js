@@ -17,7 +17,7 @@ import { VideoBackground } from '../../../components';
 const HeroSection = () => {
     return (
         <Section>
-            <VideoBackground autoPlay logo muted src='./videos/video.mp4' type='video/mp4' />
+            <VideoBackground autoPlay logo src='videos/video.mp4' type='video/mp4' />
             {/* <Container> */}
             <SectionFlex>
                 <ConentContainer>
