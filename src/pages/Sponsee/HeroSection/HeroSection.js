@@ -9,9 +9,19 @@ import {
     TextWrapper,
     TopLine,
     Details,
+
+    VerticalLine,
+    TeamTag,
+    SportsTag,
+    TagWrapper,
+    Img,
+
+    SponsorList
 } from './HeroSection.styled';
 import { Button } from '../../../styles/Button.styled';
 import { ImageBackground, ProfileImg, AccountTag, MembershipStatus } from '../../../components';
+
+import { FaRegLifeRing } from 'react-icons/fa';
 
 const HeroSection = ({ currentAccount }) => {
 
@@ -33,6 +43,16 @@ const HeroSection = ({ currentAccount }) => {
                         </HeroFlex>
                     </Column>
                     <Column gridArea='col2'>
+                        <TagWrapper>
+                            <TeamTag>
+                                <Img src='images/account/tottenham_logo.png' />
+                                <Img src='images/account/fifa_logo.png' />
+                            </TeamTag>
+                            <VerticalLine />
+                            <SportsTag>
+                                <Img src='images/account/soccer_ball.png' />
+                            </SportsTag>
+                        </TagWrapper>
                         <DetailFlex>
                             <TextWrapper>
                                 <Details>
@@ -41,6 +61,19 @@ const HeroSection = ({ currentAccount }) => {
                                 </Details>
                             </TextWrapper>
                         </DetailFlex>
+                        <SponsorList>
+                            <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
+                            <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
+                            <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
+                            <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
+                            <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
+                            <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
+                            <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
+                            <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
+                            <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
+                            <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
+                            <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
+                        </SponsorList>
                     </Column>
                 </Row>
             </HeroWrapper>
