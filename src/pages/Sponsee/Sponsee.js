@@ -15,9 +15,9 @@ const Sponsee = ({ currentAccount }) => {
             <HeroSection currentAccount={currentAccount} />
             <Tabs>
                 <ProfileSection label="Profile" />
-                <AccomplishmentSection label="Accomplishments" />
-                <div label="Sponsors">Sponsor Section</div>
-                <div label="Contact Me">Contact Me</div>
+                {/* <AccomplishmentSection label="Accomplishments" /> */}
+                <div label="Locker Room">Locker Room Section</div>
+                <div label="Past Partnerships">Past PartnerShips Sectione</div>
             </Tabs>
         </Container>
     )

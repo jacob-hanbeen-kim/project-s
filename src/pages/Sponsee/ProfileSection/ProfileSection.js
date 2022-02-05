@@ -17,12 +17,12 @@ import { ImageMap } from '../../../components';
 const ProfileSection = () => {
     return (
         <ProfileContainer>
-            <Sidebar items={["About Me", "From"]} />
+            <Sidebar items={["Bio", "Something"]} />
             <ContentContainer>
                 <Section>
                     <TextWrapper>
-                        <Heading>About Me</Heading>
-                        <TopLine>Life Story</TopLine>
+                        <Heading>User Story</Heading>
+                        <TopLine>Something</TopLine>
                         <p>
                             Sdfomaw iofm oasmfoiamofmSOI dmoae foinzoinf oNEfono FONOISNf oNEfoi nSDOfn ESOIFn oSNfoi NE foiNSOIfn OISNEfo nsofnaoienfoiasnfkanmo rnvbnbuno SDF OISnfio af.
                         </p>
@@ -35,9 +35,7 @@ const ProfileSection = () => {
             </ContentContainer>
             <SupportContainer>
                 <Section>
-                    {/* <TextWrapper> */}
                     <TopLine>Add Your Logo</TopLine>
-                    {/* </TextWrapper> */}
                     <ImgWrap>
                         <ImageMap
                             image='images/account/uniform_template.png'

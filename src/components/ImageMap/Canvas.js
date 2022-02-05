@@ -103,9 +103,10 @@ const Canvas = ({
         setAreaElements(createdAreas);
     }
 
-    useEffect(() => {
-        init();
-    }, []);
+    const onLoad = (e) => {
+        init(e);
+        renderArea(e);
+    }
 
     function handleResize() {
         clearBg();
@@ -122,7 +123,7 @@ const Canvas = ({
             <CanvasContainer ref={canvasBgRef} />
             <CanvasContainer ref={canvasSelectedRef} />
             <CanvasContainer ref={canvasHoverRef} />
-            <img src={src} useMap="#image-map" id="uniform" onLoad={renderArea} />
+            <img src={src} useMap="#image-map" id="uniform" onLoad={onLoad} />
             <map name="image-map">
                 {
                     areaElements && areaElements.map((area) => {

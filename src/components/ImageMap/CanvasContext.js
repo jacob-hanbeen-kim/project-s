@@ -1,4 +1,5 @@
 import React, { useContext, useRef, createContext } from 'react';
+import { useTheme } from 'styled-components';
 
 const CanvasContext = createContext();
 
@@ -12,18 +13,22 @@ export const CanvasProvider = ({ children }) => {
     const canvasSelectedRef = useRef(null);
     const contextSelectedRef = useRef(null);
 
-    const init = () => {
-        prepareCanvas(canvasHoverRef, contextHoverRef);
-        prepareCanvas(canvasBgRef, contextBgRef);
-        prepareCanvas(canvasSelectedRef, contextSelectedRef);
+    const theme = useTheme();
+
+    const init = (e) => {
+        let w = e.target.width;
+        let h = e.target.height;
+        prepareCanvas(canvasHoverRef, contextHoverRef, w, h);
+        prepareCanvas(canvasBgRef, contextBgRef, w, h);
+        prepareCanvas(canvasSelectedRef, contextSelectedRef, w, h);
     }
 
-    const prepareCanvas = (canvasRef, contextRef) => {
+    const prepareCanvas = (canvasRef, contextRef, width, height) => {
         const canvas = canvasRef.current;
-        canvas.width = window.innerWidth * 2;
-        canvas.height = window.innerHeight * 2;
-        canvas.style.width = `${window.innerWidth}px`;
-        canvas.style.height = `${window.innerHeight}px`;
+        canvas.width = width * 2;
+        canvas.height = height * 2;
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
 
         const context = canvas.getContext("2d");
         context.scale(2, 2);
@@ -62,7 +67,11 @@ export const CanvasProvider = ({ children }) => {
     function drawCircle(coordon, context, isHover) {
         var coord = coordon.split(',');
         context.arc(coord[0], coord[1], coord[2], 0, 2 * Math.PI);
-        !isHover && context.fill();
+        if (!isHover) {
+            context.fill();
+        } else {
+            context.stroke();
+        }
     }
 
     function drawBg(coordStr, shape) {
@@ -79,14 +88,14 @@ export const CanvasProvider = ({ children }) => {
 
     function draw(coordStr, shape, context, drawType) {
         if (drawType === 1) {
-            context.fillStyle = '#535dcaab';
-            context.strokeStyle = '#535dcaab';
+            context.fillStyle = theme.colors.primary + '40';
+            context.strokeStyle = theme.colors.primary + '40';
         } else if (drawType === 2) {
-            context.fillStyle = '#000';
-            context.strokeStyle = '#000';
+            context.fillStyle = theme.colors.secondary + '90';
+            context.strokeStyle = theme.colors.secondary + '90';
         } else {
-            context.fillStyle = 'red';
-            context.strokeStyle = 'red';
+            context.fillStyle = theme.colors.primary;
+            context.strokeStyle = theme.colors.primary;
         }
 
         let isHover = drawType === 3;
@@ -101,7 +110,6 @@ export const CanvasProvider = ({ children }) => {
             drawPolygon(coordStr, context, isHover);
         }
 
-        context.stroke();
         context.closePath();
     }
 
