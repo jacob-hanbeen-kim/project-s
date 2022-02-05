@@ -7,10 +7,12 @@ import {
     Heading,
     Subtitle,
     ImgWrap,
-    Img
+    Img,
+    SupportContainer
 } from './ProfileSection.styled';
 
 import Sidebar from '../StickySidebar';
+import { ImageMap } from '../../../components';
 
 const ProfileSection = () => {
     return (
@@ -30,8 +32,19 @@ const ProfileSection = () => {
                     </ImgWrap>
                 </Section>
                 <Section></Section>
-                <Section></Section>
             </ContentContainer>
+            <SupportContainer>
+                <Section>
+                    {/* <TextWrapper> */}
+                    <TopLine>Add Your Logo</TopLine>
+                    {/* </TextWrapper> */}
+                    <ImgWrap>
+                        <ImageMap
+                            image='images/account/uniform_template.png'
+                        />
+                    </ImgWrap>
+                </Section>
+            </SupportContainer>
         </ProfileContainer>
     )
 }
