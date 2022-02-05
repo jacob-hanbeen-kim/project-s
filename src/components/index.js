@@ -26,6 +26,8 @@ import Sidebar from './Sidebar/Sidebar';
 
 import Tabs from './Tabs/Tabs';
 
+import ImageMap from './ImageMap/ImageMap'
+
 export {
     Card, Card2,
     Carousel,
@@ -40,5 +42,6 @@ export {
     MembershipStatus,
     AccountTag,
     Sidebar,
-    Tabs
+    Tabs,
+    ImageMap
 };

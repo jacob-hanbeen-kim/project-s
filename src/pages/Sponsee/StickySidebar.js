@@ -11,7 +11,7 @@ const Sidebar = ({ items }) => {
                     <MenuList>
                         {
                             items.map((item) => {
-                                return (<li><SidebarLink to='#'>{item}</SidebarLink></li>);
+                                return (<li key={item}><SidebarLink to='#'>{item}</SidebarLink></li>);
                             })
                         }
                     </MenuList>
