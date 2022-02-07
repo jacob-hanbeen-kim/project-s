@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useCanvas } from './CanvasContext';
 
-const Area = ({ area, xRatio, yRatio }) => {
+const Area = ({ area, xRatio, yRatio, selected }) => {
 
     const [transArea, setTransArea] = useState(area)
     const {
@@ -19,9 +19,29 @@ const Area = ({ area, xRatio, yRatio }) => {
     } = useCanvas();
 
     useEffect(() => {
-        console.log('rerendered');
+        console.log('rerendered', xRatio, yRatio);
         renderArea();
     }, [xRatio, yRatio]);
+
+    const markArea = (e) => {
+        e.preventDefault(); // prevent href
+
+        // clear any selection
+        if (selected.current) {
+            clearSelected(e);
+        }
+
+        // draw if not current seelection
+        if (selected.current != e.target.href) {
+            drawSelected(e.target.coords, e.target.shape);
+
+            // set to current selection
+            selected.current = e.target.href;
+        } else {
+            selected.current = null;
+        }
+    }
+
 
     const calculateResponsiveCoords = (coords, shape) => {
         let coordinates = coords.split(',');
@@ -50,7 +70,7 @@ const Area = ({ area, xRatio, yRatio }) => {
     const renderArea = () => {
         const coords = calculateResponsiveCoords(area.props.coords, area.props.shape);
 
-        // drawBg(coords, area.shape);
+        drawBg(coords, area.props.shape);
         setTransArea(<area
             key={area.props.href}
             href={area.props.href}
@@ -58,7 +78,7 @@ const Area = ({ area, xRatio, yRatio }) => {
             shape={area.props.shape}
             onMouseOver={() => drawHover(coords, area.props.shape)}
             onMouseOut={clearCanvas}
-        // onClick={markArea}
+            onClick={markArea}
         />);
     }
 

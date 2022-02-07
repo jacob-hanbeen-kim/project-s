@@ -15,10 +15,7 @@ export const CanvasProvider = ({ children }) => {
 
     const theme = useTheme();
 
-    const init = (e) => {
-        let w = e.target.width;
-        let h = e.target.height;
-
+    const init = (w, h) => {
         prepareCanvas(canvasHoverRef, contextHoverRef, w, h);
         prepareCanvas(canvasBgRef, contextBgRef, w, h);
         prepareCanvas(canvasSelectedRef, contextSelectedRef, w, h);
