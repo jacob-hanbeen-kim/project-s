@@ -18,9 +18,17 @@ export const CanvasProvider = ({ children }) => {
     const init = (e) => {
         let w = e.target.width;
         let h = e.target.height;
+
         prepareCanvas(canvasHoverRef, contextHoverRef, w, h);
         prepareCanvas(canvasBgRef, contextBgRef, w, h);
         prepareCanvas(canvasSelectedRef, contextSelectedRef, w, h);
+    }
+
+    const resize = (canvas, width, height) => {
+        canvas.width = width * 2;
+        canvas.height = height * 2;
+        canvas.style.width = `${width}px`;
+        canvas.style.height = `${height}px`;
     }
 
     const prepareCanvas = (canvasRef, contextRef, width, height) => {
@@ -144,7 +152,8 @@ export const CanvasProvider = ({ children }) => {
                 drawSelected,
                 clearCanvas,
                 clearBg,
-                clearSelected
+                clearSelected,
+                resize
             }}
         >
             {children}
