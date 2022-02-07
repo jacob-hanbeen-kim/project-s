@@ -1,60 +1,69 @@
 import PropTypes from 'prop-types';
 
+import React, { useEffect, useState, useRef } from 'react';
+
 import { CanvasProvider } from './CanvasContext';
 import Canvas from './Canvas'
+import Area from './Area';
 
 
 const ImageMap = ({
     image,
-    // areas
+    children
 }) => {
 
-    const areas = [
-        {
-            href: 'chest', shape: 'rect', coords: '74,90,151,121'
-        },
-        {
-            href: "lowerback", coords: "302,180,371,157", shape: "rect"
-        },
-        {
-            href: "rightchest", coords: "84,75,12", shape: "circle"
-        },
-        {
-            href: "leftchest", coords: "141,74,12", shape: "circle"
-        },
-        {
-            href: "back", coords: "302,83,370,153", shape: "rect"
-        },
-        {
-            href: "upperback", coords: "301,57,371,79", shape: "rect"
-        },
-        {
-            href: "rightleg", coords: "59,376,12", shape: "circle"
-        },
-        {
-            href: "leftleg", coords: "157,376,12", shape: "circle"
-        },
-        {
-            href: "shoulder", coords: "552,120,508,85", shape: "rect"
-        },
-        {
-            href: "sleeve", coords: "512,131,551,146", shape: "rect"
-        },
-        {
-            href: "neckline", coords: "316,33,357,42", shape: "rect"
-        },
-    ]
+    const [imageWidth, setImageWidth] = useState(0);
+    const [imageHeight, setImageHeight] = useState(0);
+
+    const [xRatio, setXRatio] = useState(0);
+    const [yRatio, setYRatio] = useState(0);
+
+    const imageRef = useRef();
+
+    const calcImageRatio = () => {
+        setXRatio(imageWidth / imageRef.current.naturalWidth);
+        setYRatio(imageHeight / imageRef.current.naturalHeight);
+    }
+
+    const handleResize = () => {
+        // clearBg();
+        // resize(canvasBgRef.current, e.target.width, e.target.height);
+        // renderArea();
+        setImageWidth(imageRef.current.width);
+        setImageHeight(imageRef.current.width);
+    }
+
+    useEffect(() => {
+        calcImageRatio();
+    }, [imageWidth, imageHeight]);
+
+
+    useEffect(() => {
+        // onMount
+        window.addEventListener('resize', handleResize)
+
+        // cleanup
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <CanvasProvider>
-            <Canvas src={image} areas={areas}></Canvas>
+            <img ref={imageRef} src={image} useMap="#image-map" id="uniform" />
+
+            <Canvas />
+            <map name="image-map">
+                {
+                    React.Children.map(children, (area) => {
+                        return <Area area={area} xRatio={xRatio} yRatio={yRatio} />
+                    })
+                }
+            </map>
         </CanvasProvider>
     )
 }
 
 ImageMap.propTypes = {
-    // title: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    areas: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default ImageMap

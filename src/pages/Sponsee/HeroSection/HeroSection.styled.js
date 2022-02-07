@@ -143,6 +143,9 @@ export const SponsorList = styled.div`
     padding: 0px 15px;
     overflow-x: scroll;
     max-width: 430px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 20px;
     /* margin-bottom: 30px; */
 
 `
