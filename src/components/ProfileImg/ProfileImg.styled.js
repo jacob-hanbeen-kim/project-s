@@ -7,6 +7,9 @@ export const Icon = styled.div`
     color: ${({ theme }) => theme.colors.onBackground};
     opacity: 0.6;
 
+    /* max-width:100%;
+    max-height:100%; */
+
     &:hover {
         transition: all 0.2s ease-in-out;
         opacity: 1.0;
