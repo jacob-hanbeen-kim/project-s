@@ -58,7 +58,7 @@ const Navbar = ({ isConnected, onLogout, isSidebarOpen, onSidebarToggle, theme, 
                     <DropdownItem>
                         <ProfileLink to='/login'>
                             {isConnected ?
-                                <ProfileImg src={'images/login/profileImg.jpg'} /> :
+                                <ProfileImg src={process.env.PUBLIC_URL + '/images/login/profileImg.jpg'} /> :
                                 <ProfileIcon />
                             }
                         </ProfileLink>

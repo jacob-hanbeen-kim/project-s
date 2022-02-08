@@ -11,7 +11,7 @@ const Sidebar = ({ items }) => {
                     <MenuList>
                         {
                             items.map((item) => {
-                                return (<li><SidebarLink to='#'>{item}</SidebarLink></li>);
+                                return (<li key={item}><SidebarLink to='#'>{item}</SidebarLink></li>);
                             })
                         }
                     </MenuList>
@@ -32,7 +32,7 @@ const SidebarContainer = styled.aside`
     border-width: 0px;
 
     /* height: calc(100% - 72px); */
-    overflow: auto;
+    /* overflow: auto; */
     /* filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px); */
     transition: transform 0.3s ease 0s, opacity 0.3s ease 0s;
     visibility: visible;

@@ -58,7 +58,7 @@ const InfoSection = ({
                         {img &&
                             <Column2>
                                 <ImgWrap>
-                                    <Img src={img} alt={alt} />
+                                    <Img src={process.env.PUBLIC_URL + img} alt={alt} />
                                 </ImgWrap>
                             </Column2>
                         }

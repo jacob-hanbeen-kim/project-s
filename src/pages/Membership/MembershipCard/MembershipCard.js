@@ -1,18 +1,24 @@
 import { Button } from '../../../styles/Button.styled';
+import { Tag } from '../../../components';
 import {
     Container,
     ContentContainer,
     Header,
     PriceContainer,
+    PriceWrap,
     Price,
-    Monthly,
+    Recurrence,
+    Conjunction,
     SubscriptionDetails,
+    SubscriptionIcon,
     BtnWrapper
 } from './MembershipCard.styled';
 
 const MembershipCard = ({
     option,
     price,
+    priceYearly,
+    save,
     benefits,
     isCurrentPlan
 }) => {
@@ -21,24 +27,53 @@ const MembershipCard = ({
             <ContentContainer>
                 <Header>{option}</Header>
                 <PriceContainer>
-                    <Price>{price}</Price>
-                    <Monthly>/Monthly</Monthly>
+                    <PriceWrap>
+                        {price === null ?
+                            <Price>Free</Price> :
+                            <>
+                                <Price>{price}</Price>
+                                <Recurrence>/month</Recurrence>
+                            </>
+                        }
+                    </PriceWrap>
+                    {priceYearly &&
+                        <>
+                            <Conjunction>or</Conjunction>
+                            <PriceWrap>
+                                <Price>{priceYearly}</Price>
+                                <Recurrence>/year</Recurrence>
+                            </PriceWrap>
+                        </>
+                    }
                 </PriceContainer>
+                {
+                    save &&
+                    <Tag>
+                        {save}
+                    </Tag>
+                }
+            </ContentContainer>
+            <div>
                 <SubscriptionDetails>
                     {benefits.map((item) => {
-                        return <li>{item}</li>
+                        return (
+                            <li>
+                                <SubscriptionIcon />
+                                {item}
+                            </li>
+                        )
                     })}
                 </SubscriptionDetails>
-            </ContentContainer>
-            <BtnWrapper>
-                <Button disabled={isCurrentPlan}>
-                    {isCurrentPlan ?
-                        'Current Plan' :
-                        'Subscribe'
-                    }
-                </Button>
-            </BtnWrapper>
-        </Container>
+                <BtnWrapper>
+                    <Button disabled={isCurrentPlan}>
+                        {isCurrentPlan ?
+                            'Current Plan' :
+                            'Subscribe'
+                        }
+                    </Button>
+                </BtnWrapper>
+            </div>
+        </Container >
     )
 }
 
