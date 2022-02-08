@@ -19,6 +19,8 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Settings from './pages/Account/Settings/Settings';
 // web3
 import Web3 from 'web3';
+// axios
+import axios from 'axios'
 
 
 const FlexWropper = styled.div`
@@ -76,6 +78,24 @@ function App() {
       setIsConnected(true);
     }
   })
+
+  let state = {
+    selectedFile:null
+  }
+
+  const fileSelectedSystem = event => {
+    this.setState({
+      selectedFile: event.target.files[0]
+    })
+  }
+
+  const fileUploadHandler = () => {
+    const fd = FormData();
+    fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+    // axios.post('endpoint', fc).then(res => {
+    //   console.log(res);
+    // });
+  }
 
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>

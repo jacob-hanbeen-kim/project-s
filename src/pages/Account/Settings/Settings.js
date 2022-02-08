@@ -10,7 +10,8 @@ import {
     ProfileEditInput,
     ProfileEditLabel,
     CheckboxWrapper,
-    EditButton,
+    UploadFileButton,
+    UploadFileInput,
     CheckboxInput,
     CheckboxLabel,
     ProfileWrapper,
@@ -20,7 +21,7 @@ import {
 import { InputBox } from '../../../styles/InputBox.styled';
 import HeroSection from '../../Sponsee/HeroSection/HeroSection';
 
-import { ImageBackground, ProfileImg, AccountTag, MembershipStatus } from '../../../components';
+import { ImageBackground, ProfileImg, AccountTag, MembershipStatus, FileUploader } from '../../../components';
 import ErrorPage from '../../ErrorPage/ErrorPage';
 
 const Settings = ({ currentAccount, userType }) => {
@@ -77,7 +78,7 @@ const Settings = ({ currentAccount, userType }) => {
             </ProfileEditWrapper>
             <ProfileWrapper>
                 <ProfileImg hasProfileImg={true} size='10rem' />
-                <EditButton>Edit Photo</EditButton>
+                <FileUploader />
                 <TopLine>Your Name</TopLine>
                 {/* <MembershipStatus size='1.5rem'> Membership Status : </MembershipStatus> */}
                 <AccountTag account={currentAccount} />
