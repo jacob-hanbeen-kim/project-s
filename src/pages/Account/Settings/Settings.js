@@ -26,67 +26,67 @@ import ErrorPage from '../../ErrorPage/ErrorPage';
 
 const Settings = ({ currentAccount, userType }) => {
     return (
-        
+
         <ProfileSettingContainer>
-        {
-            currentAccount ?
-            <>
-            <SidebarContainer>
-                <SidebarWrapper>
-                    <SidebarMenu>
-                        <MenuList>
-                            <li><SidebarLink to="/brands">Profile</SidebarLink></li>
-                            <li><SidebarLink to="/agents">Something</SidebarLink></li>
-                            <li><SidebarLink to="/corporates">Something</SidebarLink></li>
-                            <li><SidebarLink to="/crowdfunding">Something</SidebarLink></li>
-                            <li><SidebarLink to="/account">Something</SidebarLink></li>
-                            <li><SidebarLink to="/account">Something</SidebarLink></li>
-                            {/* {
+            {
+                currentAccount ?
+                    <>
+                        <SidebarContainer>
+                            <SidebarWrapper>
+                                <SidebarMenu>
+                                    <MenuList>
+                                        <li><SidebarLink to="/brands">Profile</SidebarLink></li>
+                                        <li><SidebarLink to="/agents">Something</SidebarLink></li>
+                                        <li><SidebarLink to="/corporates">Something</SidebarLink></li>
+                                        <li><SidebarLink to="/crowdfunding">Something</SidebarLink></li>
+                                        <li><SidebarLink to="/account">Something</SidebarLink></li>
+                                        <li><SidebarLink to="/account">Something</SidebarLink></li>
+                                        {/* {
                                 isConnected ? 
                             } */}
-                        </MenuList>
-                    </SidebarMenu>
-                </SidebarWrapper>
-            </SidebarContainer>
-            <ProfileEditWrapper>
-                <h2>Profile Settings</h2>
-                <ProfileEditLabel for="fname">First Name: </ProfileEditLabel>
-                <ProfileEditInput type="text" id="fname" name="firstname" placeholder="Your first name.." />
+                                    </MenuList>
+                                </SidebarMenu>
+                            </SidebarWrapper>
+                        </SidebarContainer>
+                        <ProfileEditWrapper>
+                            <h2>Profile Settings</h2>
+                            <ProfileEditLabel htmlFor="fname">First Name: </ProfileEditLabel>
+                            <ProfileEditInput type="text" id="fname" name="firstname" placeholder="Your first name.." />
 
-                <ProfileEditLabel for="lname">Last Name: </ProfileEditLabel>
-                <ProfileEditInput type="text" id="fname" name="firstname" placeholder="Your last name.." />
+                            <ProfileEditLabel htmlFor="lname">Last Name: </ProfileEditLabel>
+                            <ProfileEditInput type="text" id="fname" name="firstname" placeholder="Your last name.." />
 
-                <ProfileEditLabel for="email">Email: </ProfileEditLabel>
-                <ProfileEditInput type="text" id="fname" name="firstname" placeholder="Your email.." />
+                            <ProfileEditLabel htmlFor="email">Email: </ProfileEditLabel>
+                            <ProfileEditInput type="text" id="fname" name="firstname" placeholder="Your email.." />
 
-                <ProfileEditLabel for="nname">Nickname: </ProfileEditLabel>
-                <ProfileEditInput type="text" id="fname" name="firstname" placeholder="Your nickname.." />
-                
-                <ProfileEditLabel for="userType">User Type: </ProfileEditLabel>
-                <CheckboxWrapper>
-                    <CheckboxLabel class="container">Sponsee
-                        <CheckboxInput type="checkbox"/>
-                    </CheckboxLabel>
-                    <CheckboxLabel class="container">Sponsor
-                        <CheckboxInput type="checkbox" />
-                    </CheckboxLabel>
-                    <CheckboxLabel class="container">Agent
-                        <CheckboxInput type="checkbox" />
-                    </CheckboxLabel>
-                </CheckboxWrapper>
-                <SubmitButton type="submit" value="Submit"></SubmitButton>
-            </ProfileEditWrapper>
-            <ProfileWrapper>
-                <ProfileImg hasProfileImg={true} size='10rem' />
-                <FileUploader />
-                <TopLine>Your Name</TopLine>
-                {/* <MembershipStatus size='1.5rem'> Membership Status : </MembershipStatus> */}
-                <AccountTag account={currentAccount} />
-            </ProfileWrapper>   
-            </>
-        :
-        <ErrorPage />
-        }
+                            <ProfileEditLabel htmlFor="nname">Nickname: </ProfileEditLabel>
+                            <ProfileEditInput type="text" id="fname" name="firstname" placeholder="Your nickname.." />
+
+                            <ProfileEditLabel htmlFor="userType">User Type: </ProfileEditLabel>
+                            <CheckboxWrapper>
+                                <CheckboxLabel className="container">Sponsee
+                                    <CheckboxInput type="checkbox" />
+                                </CheckboxLabel>
+                                <CheckboxLabel className="container">Sponsor
+                                    <CheckboxInput type="checkbox" />
+                                </CheckboxLabel>
+                                <CheckboxLabel className="container">Agent
+                                    <CheckboxInput type="checkbox" />
+                                </CheckboxLabel>
+                            </CheckboxWrapper>
+                            <SubmitButton type="submit" value="Submit"></SubmitButton>
+                        </ProfileEditWrapper>
+                        <ProfileWrapper>
+                            <ProfileImg hasProfileImg={true} size='10rem' />
+                            <FileUploader />
+                            <TopLine>Your Name</TopLine>
+                            {/* <MembershipStatus size='1.5rem'> Membership Status : </MembershipStatus> */}
+                            <AccountTag account={currentAccount} />
+                        </ProfileWrapper>
+                    </>
+                    :
+                    <ErrorPage />
+            }
         </ProfileSettingContainer>
     )
 }
