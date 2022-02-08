@@ -165,7 +165,7 @@ export const ProfileWrapper = styled.div`
     justify-items: center;
 `
 
-export const EditButton = styled(Button)`
+export const UploadButton = styled.button`
     padding: 10px 20px;
     margin: 10px;
 `
