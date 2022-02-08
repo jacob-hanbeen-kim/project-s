@@ -5,19 +5,26 @@ import {
     Image
 } from './ProfileImg.styled';
 
-const ProfileImg = ({ size, hasProfileImg }) => {
+import { FaRegUserCircle } from 'react-icons/fa'
+
+const ProfileImg = ({ src, children, size, hasProfileImg }) => {
     return (
         <>
             {
                 hasProfileImg ?
-                    <Image src={'images/login/profileImg.jpg'} size={size} /> :
-                    <Icon size={size} />
+                    <Image src={src} size={size} /> :
+                    <Icon size={size}>
+                        {children}
+                    </Icon>
+
             }
         </>
     )
 }
 
 ProfileImg.defaultProps = {
+    src: process.env.PUBLIC_URL + '/images/login/profileImg.jpg',
+    children: <FaRegUserCircle />,
     hasProfileImg: false
 }
 

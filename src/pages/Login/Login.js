@@ -68,7 +68,7 @@ const Login = ({ isConnected, onLogin }) => {
                     <li>
                         <Wallet onClick={() => onLoginHandler('metamask')}>
                             <WalletLogo>
-                                <img src='images/login/metamask.png' />
+                                <img src={process.env.PUBLIC_URL + '/images/login/metamask.png'} />
                             </WalletLogo>
                             <WalletName>
                                 MetaMask
@@ -83,7 +83,7 @@ const Login = ({ isConnected, onLogin }) => {
                     <li>
                         <Wallet onClick={() => onLoginHandler('coinbase')} disabled>
                             <WalletLogo>
-                                <img src='images/login/coinbase.png' />
+                                <img src={process.env.PUBLIC_URL + '/images/login/coinbase.png'} />
                             </WalletLogo>
                             <WalletName>
                                 Coinbase
@@ -98,7 +98,7 @@ const Login = ({ isConnected, onLogin }) => {
                     <li>
                         <Wallet onClick={() => onLoginHandler('formatic')} disabled>
                             <WalletLogo>
-                                <img src='images/login/formatic.png' />
+                                <img src={process.env.PUBLIC_URL + '/images/login/formatic.png'} />
                             </WalletLogo>
                             <WalletName>
                                 Formatic

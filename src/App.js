@@ -2,10 +2,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
+
 // styles
 import { lightTheme, darkTheme } from './Theme';
 import GlobalStyles from './styles/Global';
 import styled from 'styled-components';
+
 // componenets
 import { Footer, Navbar, Sidebar } from './components/'
 // pages
@@ -16,10 +18,12 @@ import Brand from './pages/Brands/Brands';
 import Agents from './pages/Agents/Agents';
 import Membership from './pages/Membership/Membership';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+
 // web3
 import Web3 from 'web3';
 
 function App() {
+
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
 
@@ -84,14 +88,15 @@ function App() {
                 <Route path="/login" element={<Login isConnected={isConnected} onLogin={onLogin} />} />
                 <Route path="/brands" element={<Brand />} />
                 <Route path="/agents" element={<Agents />} />
-                <Route path="/account" element={<Account currentAccount={currentAccount} userType={"sponsee"} />} />
+                <Route path="/account" element={<Account currentAccount={currentAccount} />} />
+                <Route path="/account/:username" element={<Account currentAccount={currentAccount} />} />
                 <Route path="/membership" element={<Membership />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             </PageWrapper>
           </FlexWropper>
         </Router>
-        {!isSidebarOpen && <Footer />}
+        {!isSidebarOpen && <Footer isDark={theme === 'dark'} />}
       </>
     </ThemeProvider>
   );

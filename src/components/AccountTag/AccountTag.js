@@ -37,7 +37,7 @@ const AccountTag = ({ account }) => {
         <AccountContainer>
             <AccountWrapper>
                 <AccountButton onClick={onCopy}>
-                    <CryptoIcon src="images/account/ethereum.svg" loading="lazy" />
+                    <CryptoIcon src={process.env.PUBLIC_URL + "/images/account/ethereum.svg"} loading="lazy" />
                     <AccountNumber>
                         {
                             isCopying ? 'Copied!' : getConcatAccount()

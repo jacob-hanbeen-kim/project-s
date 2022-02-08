@@ -5,11 +5,11 @@ export const ProfileContainer = styled.div`
     flex-direction: row;
     /* flex-wrap: wrap; */
     padding: 20px 48px ;
-`
+    /* height: 100vh; */
 
-export const MenuContainer = styled.div`
-    position: sticky;
-    top: 2rem;
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        flex-direction: column;
+    }
 `
 
 export const ContentContainer = styled.div`
@@ -58,4 +58,9 @@ export const Img = styled.img`
     width: 100%;
     margin: 0 0 10px 0;
     padding-right: 0;
+`
+
+export const SupportContainer = styled.div`
+    overflow-y: auto;
+    padding: 0px 30px;
 `
