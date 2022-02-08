@@ -16,7 +16,7 @@ const Membership = () => {
             <ContentContainer>
                 <HeaderContainer>
                     <Title>Subscription</Title>
-                    <Subtitle>Upgrade to one of our plan for better networking experience</Subtitle>
+                    <Subtitle>We have only one mesaure of success. <span>Yours</span></Subtitle>
                 </HeaderContainer>
                 <MembershipContainer>
                     <MembershipCard {...basicMembership} isCurrentPlan={true} />

@@ -6,6 +6,12 @@ import { CanvasProvider } from './CanvasContext';
 import Canvas from './Canvas'
 import Area from './Area';
 
+import debounce from '../../debounce';
+
+import {
+    ImageMapContainer
+} from './ImageMap.styled'
+
 
 const ImageMap = ({
     image,
@@ -23,45 +29,48 @@ const ImageMap = ({
     const selected = useRef(null);
 
     const calcImageRatio = () => {
-        setXRatio(imageWidth / imageRef.current.naturalWidth);
-        setYRatio(imageHeight / imageRef.current.naturalHeight);
+        // setXRatio(imageWidth / imageRef.current.naturalWidth);
+        // setYRatio(imageHeight / imageRef.current.naturalHeight);
+
+        setXRatio(imageRef.current.width / imageRef.current.naturalWidth);
+        setYRatio(imageRef.current.height / imageRef.current.naturalHeight);
+
+        console.log(xRatio, yRatio);
     }
 
     const handleResize = () => {
-        // clearBg();
-        // resize(canvasBgRef.current, e.target.width, e.target.height);
-        // renderArea();
         setImageWidth(imageRef.current.width);
         setImageHeight(imageRef.current.height);
-        console.log("Resize", imageRef.current.width, imageRef.current.height);
     }
 
     useEffect(() => {
         // onMount
         window.addEventListener('resize', handleResize);
-
+        // setImageWidth(imageRef.current.width);
+        // setImageHeight(imageRef.current.height);
         // cleanup
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     useEffect(() => {
         calcImageRatio();
-        console.log('in image display', imageRef.current.width, imageRef.current.height);
-        console.log('in image natural', imageRef.current.naturalWidth, imageRef.current.naturalHeight);
-        console.log('in image ratio', xRatio, yRatio);
     }, [imageWidth, imageHeight]);
 
     return (
         <CanvasProvider>
-            <Canvas width={imageWidth} height={imageHeight} />
-            <img ref={imageRef} src={image} useMap="#image-map" id="uniform" onLoad={handleResize} />
-            <map name="image-map">
-                {
-                    React.Children.map(children, (area) => {
-                        return <Area area={area} xRatio={xRatio} yRatio={yRatio} selected={selected} />
-                    })
-                }
-            </map>
+            <ImageMapContainer>
+                {/* <CanvasContainer> */}
+                <Canvas width={imageWidth} height={imageHeight} xRatio={xRatio} yRatio={yRatio} />
+                {/* </CanvasContainer> */}
+                <img ref={imageRef} src={image} useMap="#image-map" id="uniform" onLoad={calcImageRatio} />
+                <map name="image-map">
+                    {
+                        React.Children.map(children, (area) => {
+                            return <Area area={area} xRatio={xRatio} yRatio={yRatio} selected={selected} />
+                        })
+                    }
+                </map>
+            </ImageMapContainer>
         </CanvasProvider>
     )
 }
@@ -71,3 +80,27 @@ ImageMap.propTypes = {
 }
 
 export default ImageMap
+
+
+/*
+render parent
+render a
+render b
+
+layout cleanup a
+layout cleanup b
+layout cleanup parent
+
+layout effect a
+layout effect b
+layout effect parent
+
+effect cleanup a
+effect  a
+
+effect cleanup b
+effect  b
+
+effect cleanup parent
+effect  parent
+*/

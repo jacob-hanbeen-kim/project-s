@@ -28,6 +28,11 @@ export const Title = styled.h1`
 export const Subtitle = styled.p`
     font-size: ${({ theme }) => theme.fontSizes.default};
     margin: 0px;
+
+    & > span {
+        font-size: ${({ theme }) => theme.fontSizes.large};
+        font-weight: bold;
+    }
 `
 
 

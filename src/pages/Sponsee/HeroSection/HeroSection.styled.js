@@ -55,6 +55,7 @@ export const Row = styled.div`
     justify-content: center;
     flex: auto;
     align-items: center;
+    /* height: inherit; */
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
         /* grid-template-areas: 'col1 col1' 'col2 col2'; */
@@ -116,8 +117,14 @@ export const TagWrapper = styled.div`
 export const Img = styled.img`
     border-radius: 50%;
     object-fit: cover;
+    margin: 0px 10px;
+    padding: 5px;
     width: ${({ size }) => size ? size : '2rem'};
     height: ${({ size }) => size ? size : '2rem'};
+
+    /* filter: ${({ theme }) => theme.colors.onSurface}; */
+    /* background-color: ${({ theme }) => theme.colors.onSurface}; */
+    background-color: #f0f6fc;
 `
 
 export const TeamTag = styled.div`
@@ -142,7 +149,7 @@ export const SponsorList = styled.div`
     display: flex;
     padding: 0px 15px;
     overflow-x: scroll;
-    max-width: 430px;
+    max-width: 460px;
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 20px;

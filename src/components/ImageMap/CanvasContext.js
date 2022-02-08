@@ -16,27 +16,30 @@ export const CanvasProvider = ({ children }) => {
     const theme = useTheme();
 
     const init = (w, h) => {
-        prepareCanvas(canvasHoverRef, contextHoverRef, w, h);
         prepareCanvas(canvasBgRef, contextBgRef, w, h);
+        prepareCanvas(canvasHoverRef, contextHoverRef, w, h);
         prepareCanvas(canvasSelectedRef, contextSelectedRef, w, h);
     }
 
-    const resize = (canvas, width, height) => {
-        canvas.width = width * 2;
-        canvas.height = height * 2;
-        canvas.style.width = `${width}px`;
-        canvas.style.height = `${height}px`;
+    const resize = (xRatio, yRatio) => {
+        const canvas = canvasBgRef.current;
+        // canvas.width = canvas.offsetWidth;
+        // canvas.height = canvas.offsetHeight;
+        const context = canvas.getContext("2d");
+
+        console.log('resizing to', xRatio, yRatio);
+        context.scale(xRatio, yRatio);
+
+        contextBgRef.current = context;
     }
 
     const prepareCanvas = (canvasRef, contextRef, width, height) => {
         const canvas = canvasRef.current;
-        canvas.width = width * 2;
-        canvas.height = height * 2;
-        canvas.style.width = `${width}px`;
-        canvas.style.height = `${height}px`;
+        canvas.width = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
 
         const context = canvas.getContext("2d");
-        context.scale(2, 2);
+        context.scale(1, 1);
 
         context.lineCap = "round";
         context.lineWidth = 2;
