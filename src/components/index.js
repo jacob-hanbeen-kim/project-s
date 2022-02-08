@@ -28,6 +28,10 @@ import Tabs from './Tabs/Tabs';
 
 import FileUploader from './UploadFile/UploadFile';
 
+import ImageMap from './ImageMap/ImageMap'
+
+import Tag from './Tag/Tag';
+
 export {
     Card, Card2,
     Carousel,
@@ -43,5 +47,7 @@ export {
     AccountTag,
     Sidebar,
     Tabs,
-    FileUploader
+    FileUploader,
+    ImageMap,
+    Tag
 };
