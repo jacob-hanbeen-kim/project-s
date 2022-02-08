@@ -15,25 +15,13 @@ export const CanvasProvider = ({ children }) => {
 
     const theme = useTheme();
 
-    const init = (w, h) => {
-        prepareCanvas(canvasBgRef, contextBgRef, w, h);
-        prepareCanvas(canvasHoverRef, contextHoverRef, w, h);
-        prepareCanvas(canvasSelectedRef, contextSelectedRef, w, h);
+    const init = () => {
+        prepareCanvas(canvasBgRef, contextBgRef);
+        prepareCanvas(canvasHoverRef, contextHoverRef);
+        prepareCanvas(canvasSelectedRef, contextSelectedRef);
     }
 
-    const resize = (xRatio, yRatio) => {
-        const canvas = canvasBgRef.current;
-        // canvas.width = canvas.offsetWidth;
-        // canvas.height = canvas.offsetHeight;
-        const context = canvas.getContext("2d");
-
-        console.log('resizing to', xRatio, yRatio);
-        context.scale(xRatio, yRatio);
-
-        contextBgRef.current = context;
-    }
-
-    const prepareCanvas = (canvasRef, contextRef, width, height) => {
+    const prepareCanvas = (canvasRef, contextRef) => {
         const canvas = canvasRef.current;
         canvas.width = canvas.offsetWidth;
         canvas.height = canvas.offsetHeight;
@@ -83,18 +71,27 @@ export const CanvasProvider = ({ children }) => {
     }
 
     function drawBg(coordStr, shape) {
-        draw(coordStr, shape, contextBgRef.current, 1);
+        draw(coordStr, shape, contextBgRef.current, canvasBgRef.current, 1);
     }
 
     function drawSelected(coordStr, shape) {
-        draw(coordStr, shape, contextSelectedRef.current, 2);
+        draw(coordStr, shape, contextSelectedRef.current, canvasSelectedRef.current, 2);
     }
 
     function drawHover(coordStr, shape) {
-        draw(coordStr, shape, contextHoverRef.current, 3);
+        draw(coordStr, shape, contextHoverRef.current, canvasHoverRef.current, 3);
     }
 
-    function draw(coordStr, shape, context, drawType) {
+    function draw(coordStr, shape, context, canvas, drawType) {
+
+        // calculate screen resize offset
+        let coords = coordStr.split(',');
+        coords = coords.map((c) => {
+            return c * (canvas.width / canvas.clientWidth);
+        })
+        coordStr = coords.join(',');
+
+        // determine drawtype
         if (drawType === 1) {
             context.fillStyle = theme.colors.primary + '40';
             context.strokeStyle = theme.colors.primary + '40';
@@ -129,6 +126,7 @@ export const CanvasProvider = ({ children }) => {
     const clearBg = () => {
         const canvas = canvasBgRef.current;
         contextBgRef.current.clearRect(0, 0, canvas.width, canvas.height);
+        // contextBgRef.current.scale(2 * xRatio, 2 * yRatio);
     }
 
     const clearSelected = () => {
@@ -153,7 +151,6 @@ export const CanvasProvider = ({ children }) => {
                 clearCanvas,
                 clearBg,
                 clearSelected,
-                resize
             }}
         >
             {children}

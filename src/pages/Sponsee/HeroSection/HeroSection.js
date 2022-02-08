@@ -60,7 +60,7 @@ const HeroSection = ({ currentAccount }) => {
                                 </Details>
                             </TextWrapper>
                         </DetailFlex>
-                        <SponsorList>
+                        {/* <SponsorList>
                             <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
                             <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
                             <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
@@ -72,7 +72,7 @@ const HeroSection = ({ currentAccount }) => {
                             <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
                             <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
                             <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
-                        </SponsorList>
+                        </SponsorList> */}
                     </Column>
                 </Row>
             </HeroWrapper>
