@@ -17,7 +17,7 @@ import { VideoBackground } from '../../../components';
 const HeroSection = () => {
     return (
         <Section>
-            <VideoBackground autoPlay logo src='videos/video.mp4' type='video/mp4' />
+            <VideoBackground autoPlay logo muted src={process.env.PUBLIC_URL + '/videos/video.mp4'} type='video/mp4' />
             {/* <Container> */}
             <SectionFlex>
                 <ConentContainer>
@@ -30,7 +30,7 @@ const HeroSection = () => {
                 </ConentContainer>
 
                 {/* <ImageContainer>
-                    <img src="images/home/online_transactions.svg"></img>
+                    <img src={{process.env.PUBLIC_URL + '/images/home/online_transactions.svg"}></img>
                 </ImageContainer> */}
             </SectionFlex>
             {/* </Container> */}

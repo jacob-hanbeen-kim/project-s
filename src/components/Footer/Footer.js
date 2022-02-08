@@ -1,13 +1,19 @@
 import { SocialIcons } from '../';
 import { Container } from '../../styles/Container.styled';
 import { Flex } from '../../styles/Flex.styled';
+import { Img, ImgWrap } from '../InfoSection/InfoSection.styled';
 import { StyledFooter } from './Footer.styled';
 
-const Footer = () => {
+const Footer = ({ isDark }) => {
     return (
         <StyledFooter>
             <Container>
-                <img src="images/logo192.svg" alt="" />
+                <ImgWrap>
+                    {isDark ?
+                        <Img src={process.env.PUBLIC_URL + '/images/logo192_dark.svg'} alt='logo' /> :
+                        <Img src={process.env.PUBLIC_URL + '/images/logo192.svg'} alt='logo' />
+                    }
+                </ImgWrap>
 
                 <Flex>
                     <ul>

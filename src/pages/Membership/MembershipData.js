@@ -1,29 +1,32 @@
 export const basicMembership = {
     option: "Basic",
-    price: "$0",
+    price: null,
+    priceYearly: null,
+    save: null,
     benefits: [
-        "personal profile page",
-        "limited view on info"
+        "free view of profile",
+        "limited networking features"
     ]
 }
 
 export const proMembership = {
-    option: "Pro",
-    price: "$150",
+    option: "Elite",
+    price: "$50",
+    priceYearly: "$499",
+    save: "17%",
     benefits: [
-        "+ all benefits of basic",
-        "access to personal profile visitors",
-        "sponsor full list",
+        "low commision",
+        "unlimited networking features",
     ]
 }
 
 export const permiumMembership = {
-    option: "Premium",
-    price: "$300",
+    option: "VIP",
+    price: "$100",
+    priceYearly: "$995",
+    save: "17%",
     benefits: [
-        "+ all benefits of pro",
-        "view agent contact info",
-        "view agent contract info",
-        "middle man",
+        "minimal commision",
+        "targeted advertisement",
     ]
 }

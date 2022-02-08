@@ -10,13 +10,14 @@ import ProfileSection from './ProfileSection/ProfileSection';
 
 const Sponsee = ({ currentAccount }) => {
     return (
-        <>
+        <Container>
             <HeroSection currentAccount={currentAccount} />
             <Tabs>
                 <ProfileSection label="Profile" />
-                <div label="Hi">hi</div>
+                <div label="Locker Room">Locker Room Section</div>
+                <div label="Past Partnerships">Past PartnerShips Sectione</div>
             </Tabs>
-        </>
+        </Container>
     )
 }
 

@@ -2,10 +2,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
+
 // styles
 import { lightTheme, darkTheme } from './Theme';
 import GlobalStyles from './styles/Global';
 import styled from 'styled-components';
+
 // componenets
 import { Footer, Navbar, Sidebar } from './components/'
 // pages
@@ -19,18 +21,9 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Settings from './pages/Account/Settings/Settings';
 // web3
 import Web3 from 'web3';
-// axios
-import axios from 'axios'
-
-
-const FlexWropper = styled.div`
-  min-height: 100%;
-  background-color: ${({ theme }) => theme.colors.background};
-  display: flex;
-  flex-direction: column;
-`
 
 function App() {
+
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
 
@@ -80,7 +73,7 @@ function App() {
   })
 
   let state = {
-    selectedFile:null
+    selectedFile: null
   }
 
   const fileSelectedSystem = event => {
@@ -113,15 +106,16 @@ function App() {
                 <Route path="/login" element={<Login isConnected={isConnected} onLogin={onLogin} />} />
                 <Route path="/brands" element={<Brand />} />
                 <Route path="/agents" element={<Agents />} />
-                <Route path="/account" element={<Account currentAccount={currentAccount} userType={"sponsee"} />} />
+                <Route path="/account" element={<Account currentAccount={currentAccount} />} />
+                <Route path="/account/:username" element={<Account currentAccount={currentAccount} />} />
                 <Route path="/membership" element={<Membership />} />
-                <Route path="/account/settings" element={<Settings currentAccount={currentAccount} userType={"sponsee"}/>} />
+                <Route path="/account/settings" element={<Settings currentAccount={currentAccount} userType={"sponsee"} />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             </PageWrapper>
           </FlexWropper>
         </Router>
-        <Footer />
+        {!isSidebarOpen && <Footer isDark={theme === 'dark'} />}
       </>
     </ThemeProvider>
   );
@@ -131,5 +125,11 @@ const PageWrapper = styled.div`
   display: ${({ isSidebarOpen }) => isSidebarOpen ? 'none' : 'block'};
 `
 
+const FlexWropper = styled.div`
+  min-height: 100%;
+  background-color: ${({ theme }) => theme.colors.background};
+  display: flex;
+  flex-direction: column;
+`
 
 export default App;
