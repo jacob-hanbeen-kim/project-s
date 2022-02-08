@@ -26,6 +26,8 @@ import Sidebar from './Sidebar/Sidebar';
 
 import Tabs from './Tabs/Tabs';
 
+import FileUploader from './UploadFile/UploadFile';
+
 import ImageMap from './ImageMap/ImageMap'
 
 import Tag from './Tag/Tag';
@@ -45,6 +47,7 @@ export {
     AccountTag,
     Sidebar,
     Tabs,
+    FileUploader,
     ImageMap,
     Tag
 };
