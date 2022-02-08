@@ -56,12 +56,11 @@ const HeroSection = ({ currentAccount }) => {
                         <DetailFlex>
                             <TextWrapper>
                                 <Details>
-                                    My name is Uofin ewoif iosdfajeo. I am fiodf oweijios foaij ofjao ijfo joifjoiaw ejofij aojdfsfafwefa. Difwio do faeio mfaoweif oskfm oaweifnoaiwnfiansfaok.
-                                    <br /> SDfospfoajsSDPof aopef opawjf OPDSJfoj aowefoisd ofiIOEjf aojdfo iawef ioaeofi awioef osidmfo aef.
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque vitae tempus quam pellentesque nec nam aliquam sem. Facilisi etiam dignissim diam quis enim lobortis scelerisque.
                                 </Details>
                             </TextWrapper>
                         </DetailFlex>
-                        {/* <SponsorList>
+                        <SponsorList>
                             <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
                             <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
                             <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
@@ -73,7 +72,7 @@ const HeroSection = ({ currentAccount }) => {
                             <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
                             <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
                             <ProfileImg size={'4rem'}><FaRegLifeRing /></ProfileImg>
-                        </SponsorList> */}
+                        </SponsorList>
                     </Column>
                 </Row>
             </HeroWrapper>

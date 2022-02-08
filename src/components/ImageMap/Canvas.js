@@ -1,13 +1,15 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { useCanvas } from './CanvasContext';
 
 import {
-    CanvasContainer
+    StyledCanvas
 } from './ImageMap.styled'
 
 const Canvas = ({
     width,
-    height
+    height,
+    xRatio,
+    yRatio
 }) => {
     const {
         init,
@@ -24,14 +26,31 @@ const Canvas = ({
     } = useCanvas();
 
     useEffect(() => {
+        // initialize canvas on mount
         init(width, height);
-    }, [width, height])
+    }, [])
+
+    // useEffect(() => {
+    //     // init(width, height);
+    //     // console.log('here');
+    //     // clearBg();
+    //     // resize(xRatio, yRatio);
+    //     console.log('resize');
+    //     // resize(canvasHoverRef.current, width, height);
+    //     // resize(canvasBgRef.current, width, height);
+    //     // resize(canvasSelectedRef.current, width, height);
+    //     // clearBg();
+    //     // resize(canvasBgRef.current, e.target.width, e.target.height);
+    //     // renderArea();
+
+    //     // return () => clearBg();
+    // }, [xRatio, yRatio])
 
     return (
         <>
-            <CanvasContainer ref={canvasBgRef} />
-            <CanvasContainer ref={canvasSelectedRef} />
-            <CanvasContainer ref={canvasHoverRef} />
+            <StyledCanvas ref={canvasBgRef} />
+            <StyledCanvas ref={canvasSelectedRef} />
+            <StyledCanvas ref={canvasHoverRef} />
         </>
     )
 }

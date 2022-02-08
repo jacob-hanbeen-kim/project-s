@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { FaCheckCircle } from 'react-icons/fa';
+
 
 export const Container = styled.div`
     display: flex;
@@ -47,12 +49,26 @@ export const PriceContainer = styled.div`
     margin-bottom: 15px;
 `
 
+export const PriceWrap = styled.div`
+    display: flex;
+    flex-direction: row;
+
+    align-items: baseline;
+    justify-content: center;
+`
+
 export const Price = styled.h1`
     /* font-size: ${({ theme }) => theme.fontSizes.large}; */
     margin: 0px;
 `
 
-export const Monthly = styled.p`
+export const Recurrence = styled.p`
+    margin: 0px;
+    margin-left: 5px;
+    font-size: ${({ theme }) => theme.fontSizes.small};
+`
+
+export const Conjunction = styled.p`
     margin: 0px;
     font-size: ${({ theme }) => theme.fontSizes.small};
 `
@@ -70,9 +86,18 @@ export const SubscriptionDetails = styled.ul`
     white-space: nowrap;
     text-overflow: ellipsis;
 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
     & > li {
         margin: 15px;
+        margin-top: auto;
     };
+`
+
+export const SubscriptionIcon = styled(FaCheckCircle)`
+    margin: 0px 10px;
 `
 
 export const BtnWrapper = styled.div`
@@ -92,4 +117,8 @@ export const BtnWrapper = styled.div`
             }
         }
     }
+`
+
+export const SaveTag = styled.div`
+    
 `

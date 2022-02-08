@@ -91,7 +91,7 @@ function App() {
             </PageWrapper>
           </FlexWropper>
         </Router>
-        {!isSidebarOpen && <Footer />}
+        {!isSidebarOpen && <Footer isDark={theme === 'dark'} />}
       </>
     </ThemeProvider>
   );
