@@ -5,15 +5,11 @@ export const ProfileContainer = styled.div`
     flex-direction: row;
     /* flex-wrap: wrap; */
     padding: 20px 48px ;
+    /* height: 100vh; */
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
         flex-direction: column;
     }
-`
-
-export const MenuContainer = styled.div`
-    position: sticky;
-    top: 2rem;
 `
 
 export const ContentContainer = styled.div`

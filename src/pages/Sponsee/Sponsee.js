@@ -7,7 +7,6 @@ import {
 import HeroSection from './HeroSection/HeroSection';
 import { Tabs } from '../../components';
 import ProfileSection from './ProfileSection/ProfileSection';
-import AccomplishmentSection from './AccomplishmentSection/AccomplishmentSection';
 
 const Sponsee = ({ currentAccount }) => {
     return (
@@ -15,7 +14,6 @@ const Sponsee = ({ currentAccount }) => {
             <HeroSection currentAccount={currentAccount} />
             <Tabs>
                 <ProfileSection label="Profile" />
-                {/* <AccomplishmentSection label="Accomplishments" /> */}
                 <div label="Locker Room">Locker Room Section</div>
                 <div label="Past Partnerships">Past PartnerShips Sectione</div>
             </Tabs>
