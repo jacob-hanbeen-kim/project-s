@@ -13,5 +13,8 @@
   },
   "dependencies": {
     "dotenv": "^15.0.0"
+  },
+  "scripts": {
+    "deployFunctions": "firebase deploy --only functions"
   }
 }

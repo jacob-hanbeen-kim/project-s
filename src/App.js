@@ -21,26 +21,12 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 // web3
 import Web3 from 'web3';
-// import { web3Hanlder } from './Web3Handler';
 
 // firebase
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-// Firebase configuration - for Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyD2VppbBbjkKiZWLkzbTiOCsyMp3syYjvw",
-  authDomain: "project-s-backend.firebaseapp.com",
-  projectId: "project-s-backend",
-  storageBucket: "project-s-backend.appspot.com",
-  messagingSenderId: "1024709888570",
-  appId: "1:1024709888570:web:05a5e90adc5f62ffd04303",
-  measurementId: "G-7ZMDCPVH4N"
-};
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+import { db } from './firbase-config';
 
 function App() {
+
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
 
