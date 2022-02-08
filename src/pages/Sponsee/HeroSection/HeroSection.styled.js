@@ -6,8 +6,9 @@ import { FaUserCircle } from 'react-icons/fa'
 
 
 export const HeroContainer = styled.div`
-    height: 350px;
-    /* width: 100%; */
+    /* height: 350px; */
+    padding: 30px 100px;
+    width: 100vw;
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
         padding: 100px 0;
@@ -24,36 +25,10 @@ export const HeroWrapper = styled.div`
     align-items: center;
 `
 
-export const HeroFlex = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    flex: auto;
-    align-items: center;
-
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
-        flex-direction: column;
-        justify-content: center;
-    }
-`
-
-export const DetailFlex = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-`
-
-export const Row = styled.div`
-    /* display: grid; */
-    /* grid-auto-columns: minmax(auto, 1fr); */
-    /* grid-template-areas: 'col1 col2'; */
-    /* grid-template-areas: 'col1 col1 col2 col2'; */
-
+export const HeroContent = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    flex: auto;
     align-items: center;
     /* height: inherit; */
 
@@ -63,19 +38,26 @@ export const Row = styled.div`
     }
 `
 
-export const Column = styled.div`
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
+export const ProfileInfoWrapper = styled.div`
     margin: 0px;
     padding: 0 15px;
-    /* grid-area: ${({ gridArea }) => gridArea}; */
+`
+
+export const ProfileInfoFlex = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        flex-direction: column;
+        /* justify-content: center; */
+    }
 `
 
 export const TextWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    max-width: 540px;
     padding: 15px;
     align-items: center;
     justify-content: center;
@@ -92,21 +74,16 @@ export const TopLine = styled.h1`
     margin-bottom: 16px;
 `
 
-export const Details = styled.p`
-    max-width: 440px;
+export const BioWrapper = styled.div`
     margin: 0px;
-    font-size: 18px;
-    line-height: 24px;
-    text-align: start;
-    
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
-        text-align: center;
-    }
+    padding: 0 15px;
 `
 
 export const TagWrapper = styled.div`
     display: flex;
     justify-content: flex-start;
+    /* justify-items: center; */
+    flex: 1 1 auto;
     align-items: center;
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
@@ -114,11 +91,12 @@ export const TagWrapper = styled.div`
     }
 `
 
+
 export const Img = styled.img`
     border-radius: 50%;
     object-fit: cover;
-    margin: 0px 10px;
     padding: 5px;
+    margin: 0px 10px;
     width: ${({ size }) => size ? size : '2rem'};
     height: ${({ size }) => size ? size : '2rem'};
 
@@ -127,16 +105,16 @@ export const Img = styled.img`
     background-color: #f0f6fc;
 `
 
-export const TeamTag = styled.div`
+export const TagContainer = styled.div`
     margin: 0px;
-    margin-right: 10px;
+    margin-left: ${({ isLeft }) => isLeft ? '0px' : '10px'};
+    margin-right: ${({ isLeft }) => isLeft ? '10px' : '0px'};
     padding: 0px;
-`
 
-export const SportsTag = styled.div`
-    margin: 0px;
-    margin-left: 10px;
-    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
 `
 
 export const VerticalLine = styled.div`
@@ -145,14 +123,42 @@ export const VerticalLine = styled.div`
     margin: 0px;
 `
 
+export const Details = styled.p`
+    /* max-width: 440px; */
+    margin: 0px;
+    font-size: 1rem;
+    /* line-height: 24px; */
+    text-align: start;
+    overflow-y: scroll;
+    max-height: 300px;
+    max-width: 600px;
+    min-width: 300px;
+    
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        text-align: center;
+    }
+`
+
 export const SponsorList = styled.div`
     display: flex;
-    padding: 0px 15px;
-    overflow-x: scroll;
-    max-width: 460px;
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: 20px;
-    /* margin-bottom: 30px; */
+    justify-content: flex-start;
+    align-items: center;
 
+    overflow-x: scroll;
+    max-width: 600px;
+    min-width: 300px;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
+        max-width: 300px;
+    }
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        max-width: 600px;
+    }
+    /* width: 300px; */
+`
+
+export const SponsorItem = styled.div`
+    width: 100%;
+    height: 100%;
 `
