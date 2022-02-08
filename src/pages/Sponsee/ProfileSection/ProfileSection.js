@@ -28,7 +28,7 @@ const ProfileSection = () => {
                         </p>
                     </TextWrapper>
                     <ImgWrap>
-                        <Img src='images/account/background.jpeg' />
+                        <Img src={process.env.PUBLIC_URL + '/images/account/background.jpeg'} />
                     </ImgWrap>
                 </Section>
                 <Section></Section>
@@ -36,7 +36,7 @@ const ProfileSection = () => {
             <SupportContainer>
                 <Section>
                     <TopLine>Add Your Logo</TopLine>
-                    <ImageMap image='images/account/uniform_template.png'>
+                    <ImageMap image={process.env.PUBLIC_URL + '/images/account/uniform_template.png'}>
                         <area alt="chest" title="chest" href="chest" coords="74,90,151,121" shape="rect" />
                         <area alt="lowerback" title="lowerback" href="lowerback" coords="302,180,371,157" shape="rect" />
                         <area alt="rightchest" title="rightchest" href="rightchest" coords="84,75,12" shape="circle" />
