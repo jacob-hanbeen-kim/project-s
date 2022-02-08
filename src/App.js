@@ -22,9 +22,6 @@ import ErrorPage from './pages/ErrorPage/ErrorPage';
 // web3
 import Web3 from 'web3';
 
-// firebase
-import { db } from './firbase-config';
-
 function App() {
 
   const [theme, setTheme] = useState("light");
@@ -91,7 +88,8 @@ function App() {
                 <Route path="/login" element={<Login isConnected={isConnected} onLogin={onLogin} />} />
                 <Route path="/brands" element={<Brand />} />
                 <Route path="/agents" element={<Agents />} />
-                <Route path="/account" element={<Account currentAccount={currentAccount} userType={"sponsee"} />} />
+                <Route path="/account" element={<Account currentAccount={currentAccount} />} />
+                <Route path="/account/:username" element={<Account currentAccount={currentAccount} />} />
                 <Route path="/membership" element={<Membership />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>

@@ -29,13 +29,13 @@ const HeroSection = ({ currentAccount }) => {
 
     return (
         <HeroContainer>
-            <ImageBackground src='images/account/background.jpeg' />
+            <ImageBackground src={process.env.PUBLIC_URL + '/images/account/background.jpeg'} />
             <HeroWrapper>
                 <HeroContent>
                     <ProfileInfoWrapper>
                         <ProfileInfoFlex>
                             <TextWrapper>
-                                <ProfileImg hasProfileImg={true} size='10rem' />
+                                <ProfileImg hasProfileImg={true} size='10rem' src={process.env.PUBLIC_URL + '/images/login/profileImg.jpg'} />
                             </TextWrapper>
                             <TextWrapper>
                                 <TopLine>Your Name</TopLine>
@@ -47,12 +47,12 @@ const HeroSection = ({ currentAccount }) => {
                     <BioWrapper>
                         <TagWrapper>
                             <TagContainer isLeft={true}>
-                                <Img src='images/account/tottenham_logo.png' />
-                                <Img src='images/account/fifa_logo.png' />
+                                <Img src={process.env.PUBLIC_URL + '/images/account/tottenham_logo.png'} />
+                                <Img src={process.env.PUBLIC_URL + '/images/account/fifa_logo.png'} />
                             </TagContainer>
                             <VerticalLine />
                             <TagContainer isLeft={false}>
-                                <Img src='images/account/soccer_ball.png' />
+                                <Img src={process.env.PUBLIC_URL + '/images/account/soccer_ball.png'} />
                             </TagContainer>
                         </TagWrapper>
                         <TextWrapper>

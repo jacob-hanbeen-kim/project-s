@@ -82,7 +82,7 @@ const Carousel = ({ children }) => {
                             </SlickSlide> */}
                             <SlickSlide>
                                 <Card
-                                    image="images/uniform.jpg"
+                                    image="/images/uniform.jpg"
                                     title="Uniform Logo"
                                     details="add custom logo to our team's uniform"
                                     buttonTxt="Learn More"
@@ -90,7 +90,7 @@ const Carousel = ({ children }) => {
                             </SlickSlide>
                             <SlickSlide>
                                 <Card
-                                    image="images/uniform.jpg"
+                                    image="/images/uniform.jpg"
                                     title="Uniform Logo"
                                     details="add custom logo to our team's uniform"
                                     buttonTxt="Learn More"
@@ -98,7 +98,7 @@ const Carousel = ({ children }) => {
                             </SlickSlide>
                             <SlickSlide>
                                 <Card
-                                    image="images/uniform.jpg"
+                                    image="/images/uniform.jpg"
                                     title="Uniform Logo"
                                     details="add custom logo to our team's uniform"
                                     buttonTxt="Learn More"
@@ -106,7 +106,7 @@ const Carousel = ({ children }) => {
                             </SlickSlide>
                             <SlickSlide>
                                 <Card
-                                    image="images/uniform.jpg"
+                                    image="/images/uniform.jpg"
                                     title="Uniform Logo"
                                     details="add custom logo to our team's uniform"
                                     buttonTxt="Learn More"
