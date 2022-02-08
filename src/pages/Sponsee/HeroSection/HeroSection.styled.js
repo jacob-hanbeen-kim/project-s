@@ -6,7 +6,7 @@ import { FaUserCircle } from 'react-icons/fa'
 
 
 export const HeroContainer = styled.div`
-    /* height: 350px; */
+    height: 50vh;
     padding: 30px 100px;
     width: 100vw;
 
