@@ -169,7 +169,7 @@ export async function signInWithMetaMask() {
 }
 
 
-function signOutOfFirebase {
+function signOutOfFirebase() {
     const auth = getAuth();
     signOut(auth).then(() => {
         // Sign out successful
