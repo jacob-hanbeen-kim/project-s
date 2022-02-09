@@ -1,34 +1,34 @@
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore'
+import { collection, getDocs, getDoc, setDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore'
 // firebase
 import { db } from '../firbase-config';
 
-const usersCollectionRef = collection(db, "users");
-
 const getUsers = async () => {
+    const usersCollectionRef = collection(db, "users");
     const data = await getDocs(usersCollectionRef);
-
     const users = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     return users;
 }
 
-const createUser = async (name, email, usertype) => {
-    const fields = {
-        name: name,
-        email: email,
-        membership: 'basic',
-        usertype: usertype
+const getUserById = async (id) => {
+    const userDoc = doc(db, "users", id);
+    const data = await getDoc(userDoc);
+    if (data.data()) {
+        const user = { ...data.data(), id: data.id };
+        console.log(user);
+        return user;
+    } else {
+        console.log({ ...data.data(), id: data.id });
+        return false;
     }
-    await addDoc(usersCollectionRef, fields);
 }
 
-const updateUser = async (id, name, email, membership, usertype) => {
+const createUser = async (id, fields) => {
     const userDoc = doc(db, "users", id);
-    const fields = {
-        name: name,
-        email: email,
-        membership: 'basic',
-        usertype: usertype
-    }
+    await setDoc(userDoc, fields);
+}
+
+const updateUser = async (id, fields) => {
+    const userDoc = doc(db, "users", id);
     await updateDoc(userDoc, fields);
 }
 
@@ -37,11 +37,53 @@ const deleteUser = async (id) => {
     await deleteDoc(userDoc);
 }
 
+class UserFields {
+    fields = {}
+
+    clear() {
+        this.fields = {};
+        return this;
+    }
+
+    setName(name) {
+        this.fields['name'] = name;
+        return this;
+    }
+
+    setEmail(email) {
+        this.fields['email'] = email;
+        return this;
+    }
+
+    setMembership(membership) {
+        this.fields['membership'] = membership;
+        return this;
+    }
+
+    setUsertype(usertype) {
+        this.fields['usertype'] = usertype;
+        return this;
+    }
+
+    setNonce(nonce) {
+        this.fields['nonce'] = nonce;
+        return this;
+    }
+
+    getFields() {
+        return this.fields;
+    }
+}
+const userFields = new UserFields();
+
 const UserService = {
     getUsers,
+    getUserById,
     createUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    UserFields,
+    userFields
 }
 
 export default UserService;
