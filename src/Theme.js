@@ -25,8 +25,9 @@ export const lightTheme = {
     colors: {
         // A primary color is the color displayed most frequently
         // across your app's screens and components.
-        primary: '#535dca', // primary 400
-        primaryVariant: '#2c38b5', // primary 600
+        // primary: '#535dca', // primary 400
+        // primaryVariant: '#2c38b5', // primary 600
+        primary: 'rgba(187, 161, 79, 0.8)', // change
         invert: '#f9fafb',
 
         // A secondary color provides more ways to
@@ -38,7 +39,7 @@ export const lightTheme = {
         //  - Progress bars
         //  - Links and headlines
         secondary: '#003333', // teal 900
-        secondaryVariant: '#00777d', // teal 500
+        secondaryVariant: '#343e3f', // teal 500
 
         // links
         accent: '#2081e2',
@@ -66,7 +67,8 @@ export const lightTheme = {
         // refers to the color elements that appear “on” top of
         // surfaces that use the above colors
         onPrimary: '#f9fafb',
-        onInvert: '#535dca',
+        // onInvert: '#535dca',
+        onInvert: 'rgba(187, 161, 79, 0.8)', // change
         onSecondary: '#f9fafb',
         onNavbar: '#04111d',
         onSurface: '#04111d',
@@ -79,7 +81,8 @@ export const darkTheme = {
     colors: {
         // A primary color is the color displayed most frequently
         // across your app's screens and components.
-        primary: '#535dca', // darkGray 800
+        // primary: '#535dca', // darkGray 800
+        primary: 'rgba(187, 161, 79, 0.8)', // change
         primaryVariant: '#181b2f', // darkGray 900
         invert: '#0d1117',
 

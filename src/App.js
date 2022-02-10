@@ -22,6 +22,16 @@ import Settings from './pages/Account/Settings/Settings';
 // web3
 import Web3 from 'web3';
 
+// UserService
+import UserService, { userFields } from './services/users-service';
+
+// const accBalanceEth = web3.utils.fromWei(
+//   await web3.eth.getBalance(accounts[0]),
+//   "ether"
+// );
+
+// setBalance(Number(accBalanceEth).toFixed(6));
+
 function App() {
 
   const [theme, setTheme] = useState("light");
@@ -29,7 +39,7 @@ function App() {
 
   const [isConnected, setIsConnected] = useState(false);
   const [currentAccount, setCurrentAccount] = useState(null);
-  const [balance, setBalance] = useState(0);
+  const [user, setUser] = useState(null);
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
@@ -44,15 +54,27 @@ function App() {
     if (accounts.length === 0) {
       console.log("Please connect to MetaMask!");
     } else if (accounts[0] !== currentAccount) {
+
+      // Fetch User Information from firebase
+      const user = await UserService.getUserById(accounts[0]);
+      if (user) {
+        // user exists, get user info
+        setUser(user);
+      } else {
+        // user does not exist, creat user
+        await UserService.createUser(accounts[0],
+          userFields
+            .setName('nike')
+            .setMembership('basic')
+            .setUsertype('sponsor')
+            .getFields()
+        )
+      }
+
+      // Store current account in state and localstorage
       setCurrentAccount(accounts[0]);
       window.localStorage.setItem('userAccount', accounts[0]);
-
-      const accBalanceEth = web3.utils.fromWei(
-        await web3.eth.getBalance(accounts[0]),
-        "ether"
-      );
-
-      setBalance(Number(accBalanceEth).toFixed(6));
+      // Set Connected to true
       setIsConnected(true);
     }
   };
@@ -65,10 +87,20 @@ function App() {
   };
 
   useEffect(() => {
+    // #TODO: Change the logic to singin with firebase
     const account = window.localStorage.getItem('userAccount');
+    console.log('mount', account);
     if (account !== null) {
       setCurrentAccount(account);
       setIsConnected(true);
+    }
+  }, [])
+
+  useEffect(() => {
+    if (currentAccount && user === null) {
+      UserService.getUserById(currentAccount).then((user) => {
+        setUser(user);
+      });
     }
   })
 
@@ -106,7 +138,7 @@ function App() {
                 <Route path="/login" element={<Login isConnected={isConnected} onLogin={onLogin} />} />
                 <Route path="/brands" element={<Brand />} />
                 <Route path="/agents" element={<Agents />} />
-                <Route path="/account" element={<Account currentAccount={currentAccount} />} />
+                <Route path="/account" element={<Account currentAccount={currentAccount} user={user} />} />
                 <Route path="/account/:username" element={<Account currentAccount={currentAccount} />} />
                 <Route path="/membership" element={<Membership />} />
                 <Route path="/account/settings" element={<Settings currentAccount={currentAccount} userType={"sponsee"} />} />

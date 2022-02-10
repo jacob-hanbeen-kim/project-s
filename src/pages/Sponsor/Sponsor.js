@@ -3,10 +3,11 @@ import {
 } from './Sponsor.styled';
 
 // sections
-import HeroSection from '../Sponsee/HeroSection/HeroSection';
+import HeroSection from './HeroSection/HeroSection';
 import { Tabs } from '../../components';
 
 const Sponsor = ({ currentAccount, username }) => {
+
     return (
         <Container>
             <HeroSection currentAccount={currentAccount} username={username} />

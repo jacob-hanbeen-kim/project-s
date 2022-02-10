@@ -14,7 +14,7 @@ const getUserById = async (id) => {
     const data = await getDoc(userDoc);
     if (data.data()) {
         const user = { ...data.data(), id: data.id };
-        console.log(user);
+        console.log('res', user);
         return user;
     } else {
         console.log({ ...data.data(), id: data.id });
@@ -74,7 +74,7 @@ class UserFields {
         return this.fields;
     }
 }
-const userFields = new UserFields();
+export const userFields = new UserFields();
 
 const UserService = {
     getUsers,
@@ -83,7 +83,6 @@ const UserService = {
     updateUser,
     deleteUser,
     UserFields,
-    userFields
 }
 
 export default UserService;
