@@ -21,7 +21,7 @@ const Account = ({ currentAccount, user }) => {
         if (user) return user.name;
 
         console.log('no user found');
-        navigate("/");
+        // navigate("/");
     }
 
     const displayProfilePage = () => {

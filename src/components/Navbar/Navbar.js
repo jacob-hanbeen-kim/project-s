@@ -24,7 +24,12 @@ import { Toggler } from '../../styles/Toggle.styled';
 import { FiSun, FiMoon } from 'react-icons/fi';
 
 
-const Navbar = ({ isConnected, onLogout, isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
+const Navbar = ({ isConnected, onLogout, isSidebarOpen, onSidebarToggle, theme, toggleTheme, user }) => {
+
+    const getUsername = () => {
+        if (user) return user.name;
+        return '';
+    }
 
     return (
         <NavContainer>
@@ -58,7 +63,7 @@ const Navbar = ({ isConnected, onLogout, isSidebarOpen, onSidebarToggle, theme, 
                     <DropdownItem>
                         <ProfileLink to='/login'>
                             {isConnected ?
-                                <ProfileImg src={process.env.PUBLIC_URL + '/images/login/profileImg.jpg'} /> :
+                                <ProfileImg src={process.env.PUBLIC_URL + `/images/account/${getUsername()}/profileImg.png`} /> :
                                 <ProfileIcon />
                             }
                         </ProfileLink>

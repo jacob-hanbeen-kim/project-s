@@ -23,7 +23,7 @@ const ProfileImg = ({ src, children, size, hasProfileImg }) => {
 }
 
 ProfileImg.defaultProps = {
-    src: process.env.PUBLIC_URL + '/images/login/profileImg.jpg',
+    src: process.env.PUBLIC_URL + '/images/accpimt/profileImg.png',
     children: <FaRegUserCircle />,
     hasProfileImg: false
 }

@@ -4,6 +4,7 @@ import {
 
 // sections
 import HeroSection from './HeroSection/HeroSection';
+import ProfileSection from './ProfileSection/ProfileSection';
 import { Tabs } from '../../components';
 
 const Sponsor = ({ currentAccount, username }) => {
@@ -12,8 +13,8 @@ const Sponsor = ({ currentAccount, username }) => {
         <Container>
             <HeroSection currentAccount={currentAccount} username={username} />
             <Tabs>
-                <div label="Profile">Profile Section for {username}</div>
-                <div label="Locker Room">Locker Room Section</div>
+                <ProfileSection label="Profile" username={username} />
+                <div label="Market Place">Market Place Section</div>
                 <div label="Past Partnerships">Past PartnerShips Sectione</div>
             </Tabs>
         </Container>

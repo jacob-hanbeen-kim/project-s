@@ -35,7 +35,7 @@ const HeroSection = ({ currentAccount }) => {
                     <ProfileInfoWrapper>
                         <ProfileInfoFlex>
                             <TextWrapper>
-                                <ProfileImg hasProfileImg={true} size='10rem' src={process.env.PUBLIC_URL + '/images/login/profileImg.jpg'} />
+                                <ProfileImg hasProfileImg={true} size='10rem' src={process.env.PUBLIC_URL + '/images/account/profileImg.png'} />
                             </TextWrapper>
                             <TextWrapper>
                                 <TopLine>Your Name</TopLine>

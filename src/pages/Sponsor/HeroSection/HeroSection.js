@@ -43,7 +43,7 @@ const HeroSection = ({ currentAccount, username }) => {
                                 {
                                     username ?
                                         <ProfileImg hasProfileImg={true} size='10rem' src={process.env.PUBLIC_URL + `/images/account/${username}/profileImg.png`} /> :
-                                        <ProfileImg hasProfileImg={true} size='10rem' src={process.env.PUBLIC_URL + '/images/login/profileImg.jpg'} />
+                                        <ProfileImg hasProfileImg={true} size='10rem' src={process.env.PUBLIC_URL + '/images/account/profileImg.png'} />
                                 }
                             </TextWrapper>
                             <TextWrapper>

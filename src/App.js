@@ -128,7 +128,7 @@ function App() {
         <GlobalStyles />
         <Router basename={'/project-s'}>
           <FlexWropper>
-            <Navbar isConnected={isConnected} onLogout={onLogout} isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} />
+            <Navbar isConnected={isConnected} onLogout={onLogout} isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} user={user} />
             {
               isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} isConnected={isConnected} onLogout={onLogout} />
             }
