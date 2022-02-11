@@ -44,7 +44,8 @@ const Account = ({ currentAccount, user }) => {
             setUsertype(state.usertype);
         } else {
             // fetch current user and set usertype
-            setUsertype('sponsor');
+            user &&
+                setUsertype(user.usertype);
         }
     }, [])
 

@@ -1,7 +1,6 @@
 import Web3 from 'web3';
 import UserService from './users-service';
-import { db } from '../firbase-config';
-import { getAuth, signInWithCustomToken, signOut } from 'firebase/auth'
+import { getAuth, signInWithCustomToken, signOut, updateProfile } from 'firebase/auth'
 
 const detectProvider = () => {
     let provider;
@@ -176,4 +175,8 @@ function signOutOfFirebase() {
     }).catch((error) => {
         // An error happened
     })
+}
+
+const update = (user, fields) => {
+    updateProfile(user, fields);
 }

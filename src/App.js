@@ -59,9 +59,11 @@ function App() {
       const user = await UserService.getUserById(accounts[0]);
       if (user) {
         // user exists, get user info
+        console.log('get existing user', user);
         setUser(user);
       } else {
         // user does not exist, creat user
+        console.log('create new user', user);
         await UserService.createUser(accounts[0],
           userFields
             .setName('nike')

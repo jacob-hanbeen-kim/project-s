@@ -15,13 +15,14 @@ import {
     MenuBar,
     BarIcon,
     CloseIcon,
-    ProfileIcon,
-    ProfileImg,
+    // ProfileIcon,
+    // ProfileImg,
     DropdownContent
 } from './Navbar.styled';
 import { Logo } from '../';
 import { Toggler } from '../../styles/Toggle.styled';
 import { FiSun, FiMoon } from 'react-icons/fi';
+import { ProfileImg } from '../';
 
 
 const Navbar = ({ isConnected, onLogout, isSidebarOpen, onSidebarToggle, theme, toggleTheme, user }) => {
@@ -62,10 +63,11 @@ const Navbar = ({ isConnected, onLogout, isSidebarOpen, onSidebarToggle, theme, 
                     </MenuItems>
                     <DropdownItem>
                         <ProfileLink to='/login'>
-                            {isConnected ?
-                                <ProfileImg src={process.env.PUBLIC_URL + `/images/account/${getUsername()}/profileImg.png`} /> :
+                            {/* {isConnected ?
+                                 :
                                 <ProfileIcon />
-                            }
+                            } */}
+                            <ProfileImg hasProfileImg={isConnected} src={process.env.PUBLIC_URL + `/images/account/${getUsername()}/profileImg.png`} />
                         </ProfileLink>
                         {isConnected &&
                             <ProfileDropDown>
