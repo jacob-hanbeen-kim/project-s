@@ -121,7 +121,7 @@ contract SubscriptionContract is Ownable {
 
     // [USER] Cancels a subscription.
     // NOTE: Subscription will be canceled right away. But client server should wait until the next subscription end date and then perform cancel.
-    // NOTE: this contract cannot "signal" off-chain server when a subscription expires. 
+    // NOTE: this contract cannot "signal" off-chain server when a subscription expires.
     // solution 1) Repeated external call (once every day) to verify subscription expiry status for a subscriber and behave accordingly
     // solution 2) Setup Firebase Functions to call cancelSubscription whenever a subscription expires (need this data stored off-chain in firebase)
     function cancelSubscription() external {
