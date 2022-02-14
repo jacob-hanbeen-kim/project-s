@@ -9,7 +9,7 @@ TODO Improvements: implement using ERC-948 (opt-out type subscription based toke
 */
 contract SubscriptionContract is Ownable {
     struct Plan {
-        uint planId;
+        uint256 planId;
         address merchant;
         uint256 cost;
         uint256 durationMonth;
@@ -46,18 +46,20 @@ contract SubscriptionContract is Ownable {
         uint256 date
     );
     event NewPlanCostSet(uint256 planId, uint256 previousCost, uint256 newCost);
+    event Received(address, uint256);
 
     // [Merchant] Creates a plan for users to subscribe to.
-    // planId 0: ELITE Month
-    // planId 1: ELITE Year
-    // planId 2: VIP Month
-    // planId 3: VIP Year
+    // planId 0: BASIC
+    // planId 1: ELITE Month
+    // planId 2: ELITE Year
+    // planId 3: VIP Month
+    // planId 4: VIP Year
     function createPlan(
         uint256 planId,
         uint256 cost,
         uint256 durationMonth
     ) external onlyOwner {
-        require(cost > 0, "cost needs to be > 0");
+        require(cost >= 0, "cost needs to be >= 0");
         require(
             durationMonth > 0,
             "durationMonth needs to be set correctly. Will typically be a month(1) or a year(12)"
@@ -92,26 +94,26 @@ contract SubscriptionContract is Ownable {
             "sent fund does not match the plan cost"
         );
         payable(address(this)).transfer(msg.value);
+        uint256 timestamp = block.timestamp;
         emit PaymentSent(
             msg.sender,
             plan.merchant,
             plan.cost,
             planId,
-            block.timestamp
+            timestamp
         );
-
         subscriptions[msg.sender] = Subscription(
             msg.sender,
             planId,
-            block.timestamp,
-            block.timestamp + plan.durationMonth * 30 * 1 days,
+            timestamp,
+            timestamp + plan.durationMonth * 30 * 1 days,
             false
         );
         emit SubscriptionCreated(
             msg.sender,
             planId,
-            block.timestamp,
-            block.timestamp + plan.durationMonth * 30 * 1 days
+            timestamp,
+            timestamp + plan.durationMonth * 30 * 1 days
         );
     }
 
@@ -163,10 +165,12 @@ contract SubscriptionContract is Ownable {
         );
         subscription.nextPaymentTimeStamp =
             subscription.nextPaymentTimeStamp +
-            plan.durationMonth * 30 * 1 days;
+            plan.durationMonth *
+            30 *
+            1 days;
     }
-    
-    // [Merchant] re-sets a plan's cost 
+
+    // [Merchant] re-sets a plan's cost
     function setPlanCost(uint256 planId, uint256 newCost) external onlyOwner {
         require(
             plans[planId].merchant != address(0),
@@ -182,14 +186,34 @@ contract SubscriptionContract is Ownable {
         return address(this).balance;
     }
 
-    // [Merchant] withdraws the balance on this smart contract
-    function withdraw() external onlyOwner {
+    // [Merchant] withdraws the balance on this smart contract to the owner.
+    function withdraw(uint256 _amount) external onlyOwner {
+        require(
+            _amount <= address(this).balance,
+            "Insufficient balance to withdraw"
+        );
         // only owner of this contract will be able to withdraw the balance
-        payable(msg.sender).transfer(address(this).balance);
+        payable(msg.sender).transfer(_amount);
+    }
+
+    // [Merchant] withdraws the balance on this smart contract to a specified address.
+    function withdrawTo(address payable _to, uint256 _amount)
+        external
+        onlyOwner
+    {
+        require(
+            _amount <= address(this).balance,
+            "Insufficient balance to withdraw"
+        );
+        _to.transfer(_amount);
+    }
+
+    receive() external payable {
+        emit Received(msg.sender, msg.value);
     }
 }
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+// import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 /*
