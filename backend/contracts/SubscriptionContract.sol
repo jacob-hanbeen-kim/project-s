@@ -46,7 +46,8 @@ contract SubscriptionContract is Ownable {
         uint256 date
     );
     event NewPlanCostSet(uint256 planId, uint256 previousCost, uint256 newCost);
-    event Received(address, uint256);
+    event Received(address from, uint256 amount);
+    event Withdrawn(address from, address to, uint256 amount);
 
     // [Merchant] Creates a plan for users to subscribe to.
     // planId 0: BASIC
@@ -54,6 +55,7 @@ contract SubscriptionContract is Ownable {
     // planId 2: ELITE Year
     // planId 3: VIP Month
     // planId 4: VIP Year
+    // Note: planId is subject to change.
     function createPlan(
         uint256 planId,
         uint256 cost,
@@ -118,7 +120,10 @@ contract SubscriptionContract is Ownable {
     }
 
     // [USER] Cancels a subscription.
-    // TODO Improvements: check remaining $ to be collected, and return remaining balance.
+    // NOTE: Subscription will be canceled right away. But client server should wait until the next subscription end date and then perform cancel.
+    // NOTE: this contract cannot "signal" off-chain server when a subscription expires. 
+    // solution 1) Repeated external call (once every day) to verify subscription expiry status for a subscriber and behave accordingly
+    // solution 2) Setup Firebase Functions to call cancelSubscription whenever a subscription expires (need this data stored off-chain in firebase)
     function cancelSubscription() external {
         Subscription storage subscription = subscriptions[msg.sender];
         require(
@@ -126,7 +131,7 @@ contract SubscriptionContract is Ownable {
             "this subscription does not exist"
         );
         require(
-            subscription.canceled != false,
+            subscription.canceled == false,
             "This subscription has already been canceled"
         );
 
@@ -139,8 +144,8 @@ contract SubscriptionContract is Ownable {
         );
     }
 
-    // [USER] called to pay every payment duration.
-    // TODO: when can a user call this? When the plan has x days left?
+    // [USER] called to renew subscription and pay the fee. called every payment cycle.
+    // Note: CANNOT implement automatic subscription every month. Needs user signing every time.
     function renewSubscription() external payable {
         Subscription storage subscription = subscriptions[msg.sender];
         Plan storage plan = plans[subscription.planId];
@@ -150,11 +155,21 @@ contract SubscriptionContract is Ownable {
             "this subscription does not exist"
         );
 
-        // send $ to this smart contract
         require(
             msg.value == plan.cost,
             "user sent fund does not match the plan cost."
         );
+
+        // TODO: Currently, subscriber can only re-new the subscription when the current plan has expired.
+        // Can the user renew the plan when it has "x" days left?
+        // Or only AFTER current plan has expired?
+        // Or whenever the subscriber would like?
+        require(
+            block.timestamp >= subscription.nextPaymentTimeStamp,
+            "payment not due yet"
+        );
+
+        // send $ to this smart contract
         payable(address(this)).transfer(msg.value);
         emit PaymentSent(
             subscription.subscriber,
@@ -170,7 +185,7 @@ contract SubscriptionContract is Ownable {
             1 days;
     }
 
-    // [Merchant] re-sets a plan's cost
+    // [Merchant] re-sets a plan's cost. Subscribers already committed to the plan won't be affected until next renewal date.
     function setPlanCost(uint256 planId, uint256 newCost) external onlyOwner {
         require(
             plans[planId].merchant != address(0),
@@ -194,6 +209,7 @@ contract SubscriptionContract is Ownable {
         );
         // only owner of this contract will be able to withdraw the balance
         payable(msg.sender).transfer(_amount);
+        emit Withdrawn(address(this), msg.sender, _amount);
     }
 
     // [Merchant] withdraws the balance on this smart contract to a specified address.
@@ -206,6 +222,7 @@ contract SubscriptionContract is Ownable {
             "Insufficient balance to withdraw"
         );
         _to.transfer(_amount);
+        emit Withdrawn(address(this), _to, _amount);
     }
 
     receive() external payable {

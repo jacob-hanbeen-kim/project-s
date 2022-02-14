@@ -9,7 +9,7 @@ const { expect } = chai;
 const DECIMAL_CONVERSION = 10 ** 18;
 const DELAY_TOLERANCE = 10; // 10 seconds delay tolerance for timestamp checking.
 const MONTH = 1;
-
+const DAY_IN_SECONDS = 86400;
 // plans
 const PLAN_NOT_APPLICABLE = -1; // no such plan exists. for testing purpose only.
 const PLAN_BASIC = 0;
@@ -171,10 +171,26 @@ describe("Subscription contract", function () {
     );
   });
 
-  it("should NOT create a subscription", async () => {
+  it("should NOT create a subscription - no such plan exists yet", async () => {
     await expect(
       subscription.connect(subscriber).subscribeToPlan(PLAN_ELITE_MONTHLY)
     ).to.be.reverted;
+  });
+
+  it('should emit Received event - subscriber subscribed', async () => {
+    await subscription
+      .connect(merchant)
+      .createPlan(PLAN_ELITE_MONTHLY, PLAN_ELITE_MONTHLY_COST, MONTH);
+
+    await expect(await subscription
+      .connect(subscriber)
+      .subscribeToPlan(PLAN_ELITE_MONTHLY, {
+        value: ethers.utils.parseEther(
+          CONVERT_COST_TO_STRING(PLAN_ELITE_MONTHLY_COST)
+        ),
+      }))
+    .to.emit(subscription, 'Received')
+    .withArgs(subscription.address, PLAN_ELITE_MONTHLY_COST);
   });
 
   it("should subscribe and pay", async () => {
@@ -188,6 +204,7 @@ describe("Subscription contract", function () {
 
     prevBalanceSubscriber = await subscriber.getBalance();
     prevBalanceMerchant = await merchant.getBalance();
+
 
     const tx = await subscription
       .connect(subscriber)
@@ -211,56 +228,71 @@ describe("Subscription contract", function () {
     expect(prevBalanceMerchant).to.equal(
       afterBalanceMerchant
     )
-    expect(await subscription.getBalance()).to.equal(PLAN_ELITE_MONTHLY_COST);
 
-    const tx2 = await subscription.connect(merchant).withdraw(await subscription.getBalance());
+    const balance = await subscription.getBalance();
+    expect(balance).to.equal(PLAN_ELITE_MONTHLY_COST);
+
+    const tx2 = await subscription.connect(merchant).withdraw(balance);
     const receipt2 = await tx2.wait();
     const totalGasCostForThisTransaction2 = receipt2.effectiveGasPrice.mul(receipt2.gasUsed);
+
     afterBalanceMerchant = await merchant.getBalance();
-    expect(prevBalanceMerchant).to.equal(
-      afterBalanceMerchant.sub(PLAN_ELITE_MONTHLY_COST).sub(totalGasCostForThisTransaction2)
+    expect(afterBalanceMerchant).to.equal(
+      prevBalanceMerchant.add(PLAN_ELITE_MONTHLY_COST).sub(totalGasCostForThisTransaction2)
     )
-
-
-    // await time.increase(THIRTY_DAYS + 1);
-    // await subscription.pay(subscriber, 0);
-    // balanceMerchant = await token.balanceOf(merchant);
-    // balanceSubscriber = await token.balanceOf(subscriber);
-    // expect(balanceMerchant.toString() === "200");
-    // expect(balanceSubscriber.toString() === "800");
-
-    // await time.increase(THIRTY_DAYS + 1);
-    // await subscription.pay(subscriber, 0);
-    // balanceMerchant = await token.balanceOf(merchant);
-    // balanceSubscriber = await token.balanceOf(subscriber);
-    // expect(balanceMerchant.toString() === "300");
-    // expect(balanceSubscriber.toString() === "700");
   });
 
-  // it('should subscribe and NOT pay', async () => {
-  //   let balanceMerchant, balanceSubscriber;
-  //   await subscription.createPlan(token.address, 100, THIRTY_DAYS, {from: merchant});
+  it('should renew subscription - payment is due', async () => {
+    await subscription.connect(merchant).createPlan(PLAN_ELITE_MONTHLY, PLAN_ELITE_MONTHLY_COST, MONTH);
 
-  //   await subscription.subscribe(0, {from: subscriber});
-  //   await time.increase(THIRTY_DAYS - 1);
-  //   await expectRevert(
-  //     subscription.pay(subscriber, 0),
-  //     'not due yet'
-  //   );
-  // });
+    await subscription.connect(subscriber).subscribeToPlan(PLAN_ELITE_MONTHLY, {
+      value: ethers.utils.parseEther(
+        CONVERT_COST_TO_STRING(PLAN_ELITE_MONTHLY_COST)
+      )
+    });
 
-  // it('should cancel subscription', async () => {
-  //   await subscription.createPlan(token.address, 100, THIRTY_DAYS, {from: merchant});
-  //   await subscription.subscribe(0, {from: subscriber});
-  //   await subscription.cancel(0, {from: subscriber});
-  //   const subscription = await subscription.subscriptions(subscriber, 0);
-  //   expect(subscription.subscriber === constants.ZERO_ADDRESS);
-  // });
+    let block = await ethers.provider.getBlock();
 
-  // it('should NOT cancel subscription', async () => {
-  //   await expectRevert(
-  //     subscription.cancel(0, {from: subscriber}),
-  //     'this subscription does not exist'
-  //   );
-  // });
+    // increase block time by a month and one sec, so the next payment date has come
+    await ethers.provider.send("evm_mine", [block.timestamp + DAY_IN_SECONDS * 30 + 1]);
+
+    await subscription.connect(subscriber).renewSubscription({
+      value: ethers.utils.parseEther(CONVERT_COST_TO_STRING(PLAN_ELITE_MONTHLY_COST))
+    });
+  });
+
+  it('should NOT renew subscription - payment is not due yet', async () => {
+    await subscription.connect(merchant).createPlan(PLAN_ELITE_MONTHLY, PLAN_ELITE_MONTHLY_COST, MONTH);
+
+    await subscription.connect(subscriber).subscribeToPlan(PLAN_ELITE_MONTHLY, {
+      value: ethers.utils.parseEther(
+        CONVERT_COST_TO_STRING(PLAN_ELITE_MONTHLY_COST)
+      )
+    });
+
+    let block = await ethers.provider.getBlock('latest');
+
+    // increase block time by a month minus ten sec, so the next payment date has not come yet
+    await ethers.provider.send("evm_mine", [block.timestamp + DAY_IN_SECONDS * 30 - 10]);
+
+    await expect(
+      subscription.connect(subscriber).renewSubscription({
+        value: ethers.utils.parseEther(CONVERT_COST_TO_STRING(PLAN_ELITE_MONTHLY_COST))
+      })
+    ).to.be.reverted;
+  });
+
+  it('should cancel subscription', async () => {
+    await subscription.connect(merchant).createPlan(PLAN_ELITE_MONTHLY, PLAN_ELITE_MONTHLY_COST, MONTH);
+    await subscription.connect(subscriber).subscribeToPlan(PLAN_ELITE_MONTHLY, {value: ethers.utils.parseEther(CONVERT_COST_TO_STRING(PLAN_ELITE_MONTHLY_COST))});
+    await subscription.connect(subscriber).cancelSubscription();
+    const subscriberObject = await subscription.subscriptions(subscriber.address);
+    expect(subscriberObject.subscriber).to.equal(ethers.constants.AddressZero);
+  });
+
+  it('should NOT cancel subscription - no subscription exists', async () => {
+    await expect(
+      subscription.connect(subscriber).cancelSubscription()
+    ).to.be.reverted;
+  });
 });
