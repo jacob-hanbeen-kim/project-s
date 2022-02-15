@@ -117,7 +117,7 @@ const toHex = (stringToConvert) =>
         .map((c) => c.charCodeAt(0).toString(16).padStart(2, '0'))
         .join('');
 
-export async function signInWithMetaMask() {
+async function signInWithMetaMask() {
 
     // Step 1: Request (limited) access to user's ethereum account
     const provider = detectProvider();
@@ -137,47 +137,54 @@ export async function signInWithMetaMask() {
     const web3 = new Web3(provider);
     const accounts = await web3.eth.getAccounts();
 
+    if (accounts.length === 0) {
+        console.log("Please connect to MetaMask!");
+    }
+
+    return accounts[0];
+
     // Step 2: Retrieve the current nonce for the requested address
 
-    const nonce = await getNonceToSign(accounts[0]);
-    // const nonce = await getNonceToSign(provider.selectedAddress);
+    // const nonce = await getNonceToSign(accounts[0]);
+    // // const nonce = await getNonceToSign(provider.selectedAddress);
 
-    console.log(nonce);
+    // console.log(nonce);
 
-    // Step 3: Get the user to sign the nonce with their private key
+    // // Step 3: Get the user to sign the nonce with their private key
 
-    const signature = await provider.request({
-        method: 'personal_sign',
-        params: [
-            `0x${toHex(nonce)}`,
-            // ethereum.selectedAddress
-            accounts[0]
-        ]
-    })
+    // const signature = await provider.request({
+    //     method: 'personal_sign',
+    //     params: [
+    //         `0x${toHex(nonce)}`,
+    //         // ethereum.selectedAddress
+    //         accounts[0]
+    //     ]
+    // })
 
-    console.log(signature);
+    // console.log(signature);
 
-    // Step 4: Check if the signature is valid
+    // // Step 4: Check if the signature is valid
 
-    const isVerified = await verifySignedMessage(accounts[0], signature, web3);
+    // const isVerified = await verifySignedMessage(accounts[0], signature, web3);
 
-    if (isVerified) {
+    // if (isVerified) {
 
-        // Step 5: Retrieve a custom auth token for Firebase
-        // Create a custom token for the specified address
-        const token = getCustomToken(accounts[0])
-        // post(
-        //     'https://us-central1-project-s-backend.cloudfunctions.net/getCustomToken',
-        //     {
-        //         address: accounts[0]
-        //     }
-        // )
+    //     // Step 5: Retrieve a custom auth token for Firebase
+    //     // Create a custom token for the specified address
+    //     const token = getCustomToken(accounts[0])
+    //     // post(
+    //     //     'https://us-central1-project-s-backend.cloudfunctions.net/getCustomToken',
+    //     //     {
+    //     //         address: accounts[0]
+    //     //     }
+    //     // )
 
-        // Step 6: Use the auth token to auth with Firebase
+    //     // Step 6: Use the auth token to auth with Firebase
 
-        const userCredential = await getAuth().signInWithCustomToken(token);
-        return userCredential.user;
-    }
+    //     // const userCredential = await getAuth().signInWithCustomToken(token);
+    //     const userCredential = await signInWithCustomToken(token);
+    //     return userCredential.user;
+    // }
 
     return false;
 }
@@ -194,4 +201,11 @@ function signOutOfFirebase() {
 
 const update = (user, fields) => {
     updateProfile(user, fields);
+}
+
+
+export const AuthServices = {
+    signInWithMetaMask,
+    signOutOfFirebase,
+    update
 }

@@ -15,6 +15,7 @@ admin.initializeApp({
 //         console.log('Error creating ustom token:', error);
 //     })
 
+// functions.region('us-east1')
 exports.getCustomToken = functions.https.onRequest(async (request, response) => {
     // createCustomToken can only be used in server side
     // https://stackoverflow.com/questions/39197279/firebase-auth-createcustomtoken-is-undefined-on-web-app

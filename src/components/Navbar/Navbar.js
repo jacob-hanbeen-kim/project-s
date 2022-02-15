@@ -24,11 +24,16 @@ import { Toggler } from '../../styles/Toggle.styled';
 import { FiSun, FiMoon } from 'react-icons/fi';
 import { ProfileImg } from '../';
 
+import { useAuth } from '../../contexts/AuthContext';
 
-const Navbar = ({ isConnected, onLogout, isSidebarOpen, onSidebarToggle, theme, toggleTheme, user }) => {
+
+const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
+
+    const { currentUser, logout } = useAuth();
 
     const getUsername = () => {
-        if (user) return user.name;
+        console.log(currentUser);
+        if (currentUser) return currentUser.name;
         return '';
     }
 
@@ -63,19 +68,15 @@ const Navbar = ({ isConnected, onLogout, isSidebarOpen, onSidebarToggle, theme, 
                     </MenuItems>
                     <DropdownItem>
                         <ProfileLink to='/login'>
-                            {/* {isConnected ?
-                                 :
-                                <ProfileIcon />
-                            } */}
-                            <ProfileImg hasProfileImg={isConnected} src={process.env.PUBLIC_URL + `/images/account/${getUsername()}/profileImg.png`} />
+                            <ProfileImg hasProfileImg={currentUser !== null} src={process.env.PUBLIC_URL + `/images/account/${getUsername()}/profileImg.png`} />
                         </ProfileLink>
-                        {isConnected &&
+                        {currentUser &&
                             <ProfileDropDown>
                                 <SubNavLink to="/account">Profile</SubNavLink>
                                 <SubNavLink to="/account/settings">Settings</SubNavLink>
                                 {
-                                    isConnected &&
-                                    <SubNavLink to="/" onClick={() => { onLogout(); }}>Logout</SubNavLink>
+                                    currentUser &&
+                                    <SubNavLink to="/" onClick={() => { logout(); }}>Logout</SubNavLink>
                                 }
                             </ProfileDropDown>
                         }

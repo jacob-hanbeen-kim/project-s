@@ -24,7 +24,7 @@ import Web3 from 'web3';
 
 // UserService
 import UserService, { userFields } from './services/users-service';
-// import { AuthProvider } from './contexts/AuthContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 // const accBalanceEth = web3.utils.fromWei(
 //   await web3.eth.getBalance(accounts[0]),
@@ -38,7 +38,6 @@ function App() {
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
 
-  const [isConnected, setIsConnected] = useState(false);
   const [currentAccount, setCurrentAccount] = useState(null);
   const [user, setUser] = useState(null);
 
@@ -48,91 +47,32 @@ function App() {
     setSidebarOpen(!isSidebarOpen);
   }
 
-  const onLogin = async (provider) => {
-    const web3 = new Web3(provider);
-    const accounts = await web3.eth.getAccounts();
-
-    if (accounts.length === 0) {
-      console.log("Please connect to MetaMask!");
-    } else if (accounts[0] !== currentAccount) {
-
-      // Fetch User Information from firebase
-      const user = await UserService.getUserById(accounts[0]);
-      if (user) {
-        // user exists, get user info
-        console.log('get existing user', user);
-        setUser(user);
-      } else {
-        // user does not exist, creat user
-        console.log('create new user', user);
-        await UserService.createUser(accounts[0],
-          userFields
-            .setName('nike')
-            .setMembership('basic')
-            .setUsertype('sponsor')
-            .getFields()
-        )
-      }
-
-      // Store current account in state and localstorage
-      setCurrentAccount(accounts[0]);
-      window.localStorage.setItem('userAccount', accounts[0]);
-      // Set Connected to true
-      setIsConnected(true);
-    }
-  };
-
-  const onLogout = () => {
-    console.log('logging out');
-    setIsConnected(false);
-    setCurrentAccount(null);
-    window.localStorage.removeItem('userAccount');
-  };
-
-  useEffect(() => {
-    // #TODO: Change the logic to singin with firebase
-    const account = window.localStorage.getItem('userAccount');
-    console.log('mount', account);
-    if (account !== null) {
-      setCurrentAccount(account);
-      setIsConnected(true);
-    }
-  }, [])
-
-  useEffect(() => {
-    if (currentAccount && user === null) {
-      UserService.getUserById(currentAccount).then((user) => {
-        setUser(user);
-      });
-    }
-  })
-
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
         <Router basename={'/project-s'}>
-          {/* <AuthProvider> */}
-          <FlexWropper>
-            <Navbar isConnected={isConnected} onLogout={onLogout} isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} user={user} />
-            {
-              isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} isConnected={isConnected} onLogout={onLogout} />
-            }
-            <PageWrapper isSidebarOpen={isSidebarOpen} >
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login isConnected={isConnected} onLogin={onLogin} />} />
-                <Route path="/brands" element={<Brand />} />
-                <Route path="/agents" element={<Agents />} />
-                <Route path="/account" element={<Account user={user} />} />
-                <Route path="/account/:username" element={<Account />} />
-                <Route path="/membership" element={<Membership />} />
-                <Route path="/account/settings" element={<Settings currentAccount={currentAccount} userType={"sponsee"} />} />
-                <Route path="*" element={<ErrorPage />} />
-              </Routes>
-            </PageWrapper>
-          </FlexWropper>
-          {/* </AuthProvider> */}
+          <AuthProvider>
+            <FlexWropper>
+              <Navbar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} />
+              {
+                isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} />
+              }
+              <PageWrapper isSidebarOpen={isSidebarOpen} >
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/brands" element={<Brand />} />
+                  <Route path="/agents" element={<Agents />} />
+                  <Route path="/account" element={<Account user={user} />} />
+                  <Route path="/account/:username" element={<Account />} />
+                  <Route path="/membership" element={<Membership />} />
+                  <Route path="/account/settings" element={<Settings currentAccount={currentAccount} userType={"sponsee"} />} />
+                  <Route path="*" element={<ErrorPage />} />
+                </Routes>
+              </PageWrapper>
+            </FlexWropper>
+          </AuthProvider>
         </Router>
         {!isSidebarOpen && <Footer isDark={theme === 'dark'} />}
       </>

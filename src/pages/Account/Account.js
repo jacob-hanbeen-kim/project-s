@@ -8,13 +8,16 @@ import Sponsor from '../Sponsor/Sponsor';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
+import { useAuth } from '../../contexts/AuthContext';
 // import StorageService from '../../services/storage-service';
 
-const Account = ({ user }) => {
+const Account = ({ }) => {
+
+    const { currentUser } = useAuth();
 
     const [profileImg, setProfileImg] = useState(null);
     const [profileBg, setProfileBg] = useState(null);
-    const [viewUser, setViewUser] = useState(user);
+    const [viewUser, setViewUser] = useState(currentUser);
 
     const navigate = useNavigate();
     const { state } = useLocation();
@@ -42,15 +45,15 @@ const Account = ({ user }) => {
     }
 
     useEffect(() => {
-        user && setViewUser(user);
-    }, [user])
+        currentUser && setViewUser(currentUser);
+    }, [currentUser])
 
     useEffect(() => {
         viewUser && getUserProfileImgs();
     }, [viewUser])
 
     useEffect(() => {
-        console.log('chainging user to ', user?.name, state);
+        console.log('chainging user to ', currentUser?.name, state);
         state && setViewUser(state.user);
     }, [state])
 
