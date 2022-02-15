@@ -25,14 +25,14 @@ import { ImageBackground, ProfileImg, AccountTag, MembershipStatus } from '../..
 
 import { FaRegLifeRing } from 'react-icons/fa';
 
-const HeroSection = ({ currentAccount, username }) => {
+const HeroSection = ({ currentAccount, username, profileImg, profileBg }) => {
 
 
     return (
         <HeroContainer>
             {
-                username ?
-                    <ImageBackground src={process.env.PUBLIC_URL + `/images/account/${username}/background.jpeg`} opacity={0.6} /> :
+                profileBg ?
+                    <ImageBackground src={profileBg} opacity={0.6} /> :
                     <ImageBackground src={process.env.PUBLIC_URL + `/images/account/background.jpeg`} />
             }
             <HeroWrapper>
@@ -41,8 +41,8 @@ const HeroSection = ({ currentAccount, username }) => {
                         <ProfileInfoFlex>
                             <TextWrapper>
                                 {
-                                    username ?
-                                        <ProfileImg hasProfileImg={true} size='10rem' src={process.env.PUBLIC_URL + `/images/account/${username}/profileImg.png`} /> :
+                                    profileImg ?
+                                        <ProfileImg hasProfileImg={true} size='10rem' src={profileImg} /> :
                                         <ProfileImg hasProfileImg={true} size='10rem' src={process.env.PUBLIC_URL + '/images/account/profileImg.png'} />
                                 }
                             </TextWrapper>

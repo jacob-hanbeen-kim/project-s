@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../../components/Spinner/Spinner';
+import { useAuth } from "../../contexts/AuthContext"
 
 import {
     LoginContainer,
@@ -13,6 +14,9 @@ import {
 } from './Login.styled';
 
 const Login = ({ isConnected, onLogin }) => {
+
+    const { login } = useAuth();
+
     const navigate = useNavigate();
 
     useEffect(() => {

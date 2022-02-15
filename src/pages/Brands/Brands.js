@@ -15,8 +15,8 @@ const Brand = () => {
     const navigate = useNavigate();
     const [brands, setBrands] = useState([]);
 
-    const navigateToBrand = (name, usertype) => {
-        navigate(`/account/${name}`, { state: { usertype: usertype } });
+    const navigateToBrand = (name, user) => {
+        navigate(`/account/${name}`, { state: { user: user } });
     }
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const Brand = () => {
                         <BrandCard key={user.id}>
                             {user.name}
                             {user.id}
-                            <Button onClick={() => navigateToBrand(user.name, user.usertype)}>
+                            <Button onClick={() => navigateToBrand(user.name, user)}>
                                 Visit
                             </Button>
                         </BrandCard>

@@ -1,6 +1,7 @@
 import Web3 from 'web3';
 import UserService from './users-service';
 import { getAuth, signInWithCustomToken, signOut, updateProfile } from 'firebase/auth'
+import { getFunctions, httpsCallable } from 'firebase/functions';
 
 const detectProvider = () => {
     let provider;
@@ -84,18 +85,7 @@ function verifySignedMessage(address, sig, web3) {
                 )
                 console.log('updated');
 
-                // Create a custom token for the specified address
-
-                // createCustomToken can only be used in server side
-                // https://stackoverflow.com/questions/39197279/firebase-auth-createcustomtoken-is-undefined-on-web-app
-                // We can translate these code into the Cloud Fuunction when
-                return getAuth().createCustomToken(address).then((customToken) => {
-                    console.log('custom token', customToken);
-                    return customToken;
-                }).catch((error) => {
-                    console.log('Error', error);
-                    return false;
-                })
+                return true;
             } else {
 
                 // The signature could not be verified
@@ -110,6 +100,15 @@ function verifySignedMessage(address, sig, web3) {
             return false;
         }
     });
+}
+
+function getCustomToken(address) {
+    const functions = getFunctions();
+    const gct = httpsCallable(functions, 'getCustomToken');
+    gct({ address: address })
+        .then((result) => {
+            console.log(result);
+        })
 }
 
 const toHex = (stringToConvert) =>
@@ -157,14 +156,30 @@ export async function signInWithMetaMask() {
     })
 
     console.log(signature);
-    // Step 4: If the signature is valid, retrieve a custom auth token for Firebase
 
-    const token = await verifySignedMessage(accounts[0], signature, web3);
+    // Step 4: Check if the signature is valid
 
-    // // Step 5: Use the auth token to auth with Firebase
+    const isVerified = await verifySignedMessage(accounts[0], signature, web3);
 
-    const userCredential = await getAuth().signInWithCustomToken(token);
-    return userCredential.user;
+    if (isVerified) {
+
+        // Step 5: Retrieve a custom auth token for Firebase
+        // Create a custom token for the specified address
+        const token = getCustomToken(accounts[0])
+        // post(
+        //     'https://us-central1-project-s-backend.cloudfunctions.net/getCustomToken',
+        //     {
+        //         address: accounts[0]
+        //     }
+        // )
+
+        // Step 6: Use the auth token to auth with Firebase
+
+        const userCredential = await getAuth().signInWithCustomToken(token);
+        return userCredential.user;
+    }
+
+    return false;
 }
 
 

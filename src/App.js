@@ -24,6 +24,7 @@ import Web3 from 'web3';
 
 // UserService
 import UserService, { userFields } from './services/users-service';
+// import { AuthProvider } from './contexts/AuthContext';
 
 // const accBalanceEth = web3.utils.fromWei(
 //   await web3.eth.getBalance(accounts[0]),
@@ -106,29 +107,12 @@ function App() {
     }
   })
 
-  let state = {
-    selectedFile: null
-  }
-
-  const fileSelectedSystem = event => {
-    this.setState({
-      selectedFile: event.target.files[0]
-    })
-  }
-
-  const fileUploadHandler = () => {
-    const fd = FormData();
-    fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
-    // axios.post('endpoint', fc).then(res => {
-    //   console.log(res);
-    // });
-  }
-
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
         <Router basename={'/project-s'}>
+          {/* <AuthProvider> */}
           <FlexWropper>
             <Navbar isConnected={isConnected} onLogout={onLogout} isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} user={user} />
             {
@@ -140,14 +124,15 @@ function App() {
                 <Route path="/login" element={<Login isConnected={isConnected} onLogin={onLogin} />} />
                 <Route path="/brands" element={<Brand />} />
                 <Route path="/agents" element={<Agents />} />
-                <Route path="/account" element={<Account currentAccount={currentAccount} user={user} />} />
-                <Route path="/account/:username" element={<Account currentAccount={currentAccount} />} />
+                <Route path="/account" element={<Account user={user} />} />
+                <Route path="/account/:username" element={<Account />} />
                 <Route path="/membership" element={<Membership />} />
                 <Route path="/account/settings" element={<Settings currentAccount={currentAccount} userType={"sponsee"} />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>
             </PageWrapper>
           </FlexWropper>
+          {/* </AuthProvider> */}
         </Router>
         {!isSidebarOpen && <Footer isDark={theme === 'dark'} />}
       </>
