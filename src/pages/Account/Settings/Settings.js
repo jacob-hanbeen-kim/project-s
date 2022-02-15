@@ -18,18 +18,20 @@ import {
     TopLine
 } from './Settings.styled';
 
-import { InputBox } from '../../../styles/InputBox.styled';
-import HeroSection from '../../Sponsee/HeroSection/HeroSection';
-
 import { ImageBackground, ProfileImg, AccountTag, MembershipStatus, FileUploader } from '../../../components';
 import ErrorPage from '../../ErrorPage/ErrorPage';
 
-const Settings = ({ currentAccount, userType }) => {
+import { useAuth } from '../../../contexts/AuthContext';
+
+const Settings = ({ }) => {
+
+    const { currentUser } = useAuth();
+
     return (
 
         <ProfileSettingContainer>
             {
-                currentAccount ?
+                currentUser ?
                     <>
                         <SidebarContainer>
                             <SidebarWrapper>
@@ -81,7 +83,7 @@ const Settings = ({ currentAccount, userType }) => {
                             <FileUploader />
                             <TopLine>Your Name</TopLine>
                             {/* <MembershipStatus size='1.5rem'> Membership Status : </MembershipStatus> */}
-                            <AccountTag account={currentAccount} />
+                            <AccountTag account={currentUser.id} />
                         </ProfileWrapper>
                     </>
                     :
