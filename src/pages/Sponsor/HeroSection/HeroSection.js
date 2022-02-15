@@ -30,21 +30,13 @@ const HeroSection = ({ currentAccount, username, profileImg, profileBg }) => {
 
     return (
         <HeroContainer>
-            {
-                profileBg ?
-                    <ImageBackground src={profileBg} opacity={0.6} /> :
-                    <ImageBackground src={process.env.PUBLIC_URL + `/images/account/background.jpeg`} />
-            }
+            <ImageBackground src={profileBg} opacity={0.6} />
             <HeroWrapper>
                 <HeroContent>
                     <ProfileInfoWrapper>
                         <ProfileInfoFlex>
                             <TextWrapper>
-                                {
-                                    profileImg ?
-                                        <ProfileImg hasProfileImg={true} size='10rem' src={profileImg} /> :
-                                        <ProfileImg hasProfileImg={true} size='10rem' src={process.env.PUBLIC_URL + '/images/account/profileImg.png'} />
-                                }
+                                <ProfileImg hasProfileImg={true} size='10rem' src={profileImg} />
                             </TextWrapper>
                             <TextWrapper>
                                 <TopLine>{username}</TopLine>

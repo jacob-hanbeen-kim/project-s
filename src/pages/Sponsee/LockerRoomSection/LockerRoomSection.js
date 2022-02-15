@@ -11,7 +11,7 @@ import ProfileSection from './ProfileSection/ProfileSection';
 const Sponsee = ({ user, profileImg, profileBg }) => {
     return (
         <Container>
-            <HeroSection currentAccount={user?.id} username={user?.name} profileImg={profileImg} profileBg={profileBg} />
+            <HeroSection currentAccount={user.id} />
             <Tabs>
                 <ProfileSection label="Profile" />
                 <div label="Locker Room">Locker Room Section</div>
