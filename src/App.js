@@ -73,10 +73,11 @@ function App() {
               </PageWrapper>
             </FlexWropper>
           </AuthProvider>
-        </Router>
-        {!isSidebarOpen && <Footer isDark={theme === 'dark'} />}
+        </Router >
+        {!isSidebarOpen && <Footer isDark={theme === 'dark'} />
+        }
       </>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }
 

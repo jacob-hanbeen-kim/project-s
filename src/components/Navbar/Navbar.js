@@ -69,7 +69,7 @@ const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
                     <DropdownItem>
                         <ProfileLink to='/login'>
                             <ProfileImg hasProfileImg={currentUser !== null} src={process.env.PUBLIC_URL + `/images/account/${getUsername()}/profileImg.png`} />
-                        </ProfileLink>
+                        </ProfileLink >
                         {currentUser &&
                             <ProfileDropDown>
                                 <SubNavLink to="/account">Profile</SubNavLink>
@@ -80,7 +80,7 @@ const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
                                 }
                             </ProfileDropDown>
                         }
-                    </DropdownItem>
+                    </DropdownItem >
                     <Toggler onClick={() => toggleTheme()}>
                         {
                             theme === 'light' ?
@@ -95,9 +95,9 @@ const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
                                 <BarIcon />
                         }
                     </MenuBar>
-                </Menu>
-            </Nav>
-        </ NavContainer>
+                </Menu >
+            </Nav >
+        </ NavContainer >
     )
 }
 
