@@ -17,6 +17,7 @@ import Account from './pages/Account/Account';
 import Brand from './pages/Brands/Brands';
 import Agents from './pages/Agents/Agents';
 import Membership from './pages/Membership/Membership';
+import EditProfile from './pages/Profile/EditProfile';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Settings from './pages/Account/Settings/Settings';
 // web3
@@ -72,24 +73,6 @@ function App() {
     }
   })
 
-  let state = {
-    selectedFile: null
-  }
-
-  const fileSelectedSystem = event => {
-    this.setState({
-      selectedFile: event.target.files[0]
-    })
-  }
-
-  const fileUploadHandler = () => {
-    const fd = FormData();
-    fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
-    // axios.post('endpoint', fc).then(res => {
-    //   console.log(res);
-    // });
-  }
-
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <>
@@ -109,6 +92,7 @@ function App() {
                 <Route path="/account" element={<Account currentAccount={currentAccount} />} />
                 <Route path="/account/:username" element={<Account currentAccount={currentAccount} />} />
                 <Route path="/membership" element={<Membership />} />
+                <Route path="/account/edit" element={<EditProfile />} />
                 <Route path="/account/settings" element={<Settings currentAccount={currentAccount} userType={"sponsee"} />} />
                 <Route path="*" element={<ErrorPage />} />
               </Routes>

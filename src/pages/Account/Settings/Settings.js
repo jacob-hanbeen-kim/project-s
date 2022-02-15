@@ -4,24 +4,20 @@ import {
     SidebarMenu,
     MenuList,
     SidebarLink,
+    ProfileContainer,
     ProfileEditWrapper,
     ProfileSettingContainer,
     SubmitButton,
     ProfileEditInput,
     ProfileEditLabel,
     CheckboxWrapper,
-    UploadFileButton,
-    UploadFileInput,
     CheckboxInput,
     CheckboxLabel,
     ProfileWrapper,
     TopLine
 } from './Settings.styled';
 
-import { InputBox } from '../../../styles/InputBox.styled';
-import HeroSection from '../../Sponsee/HeroSection/HeroSection';
-
-import { ImageBackground, ProfileImg, AccountTag, MembershipStatus, FileUploader } from '../../../components';
+import { ProfileImg, AccountTag, MembershipStatus, FileUploader } from '../../../components';
 import ErrorPage from '../../ErrorPage/ErrorPage';
 
 const Settings = ({ currentAccount, userType }) => {
@@ -35,12 +31,12 @@ const Settings = ({ currentAccount, userType }) => {
                             <SidebarWrapper>
                                 <SidebarMenu>
                                     <MenuList>
-                                        <li><SidebarLink to="/brands">Profile</SidebarLink></li>
-                                        <li><SidebarLink to="/agents">Something</SidebarLink></li>
-                                        <li><SidebarLink to="/corporates">Something</SidebarLink></li>
-                                        <li><SidebarLink to="/crowdfunding">Something</SidebarLink></li>
-                                        <li><SidebarLink to="/account">Something</SidebarLink></li>
-                                        <li><SidebarLink to="/account">Something</SidebarLink></li>
+                                        <li><SidebarLink to="/account/settings">Profile</SidebarLink></li>
+                                        <li><SidebarLink to="/something">Something</SidebarLink></li>
+                                        <li><SidebarLink to="/something">Something</SidebarLink></li>
+                                        <li><SidebarLink to="/something">Something</SidebarLink></li>
+                                        <li><SidebarLink to="/something">Something</SidebarLink></li>
+                                        <li><SidebarLink to="/something">Something</SidebarLink></li>
                                         {/* {
                                 isConnected ? 
                             } */}
@@ -48,6 +44,7 @@ const Settings = ({ currentAccount, userType }) => {
                                 </SidebarMenu>
                             </SidebarWrapper>
                         </SidebarContainer>
+                        <ProfileContainer>
                         <ProfileEditWrapper>
                             <h2>Profile Settings</h2>
                             <ProfileEditLabel htmlFor="fname">First Name: </ProfileEditLabel>
@@ -83,6 +80,7 @@ const Settings = ({ currentAccount, userType }) => {
                             {/* <MembershipStatus size='1.5rem'> Membership Status : </MembershipStatus> */}
                             <AccountTag account={currentAccount} />
                         </ProfileWrapper>
+                        </ProfileContainer>
                     </>
                     :
                     <ErrorPage />
