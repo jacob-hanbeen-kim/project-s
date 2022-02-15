@@ -27,7 +27,8 @@ const InfoSection = ({
     img,
     alt,
     primary,
-    invert
+    invert,
+    onClick
 }) => {
     return (
         <>
@@ -41,14 +42,15 @@ const InfoSection = ({
                                 <Subtitle invert={invert}>{description}</Subtitle>
                                 <BtnWrapper>
                                     <Button
-                                        to='home'
-                                        smooth={true}
-                                        duration={500}
-                                        spy={true}
-                                        exact="true"
-                                        offset={-80}
-                                        primary={primary ? 1 : 0}
+                                        // to='home'
+                                        // smooth={true}
+                                        // duration={500}
+                                        // spy={true}
+                                        // exact="true"
+                                        // offset={-80}
+                                        // primary={primary ? 1 : 0}
                                         invert={invert}
+                                        onClick={onClick}
                                     >
                                         {buttonLabel}
                                     </Button>

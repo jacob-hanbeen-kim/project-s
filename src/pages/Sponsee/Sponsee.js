@@ -8,10 +8,10 @@ import HeroSection from './HeroSection/HeroSection';
 import { Tabs } from '../../components';
 import ProfileSection from './ProfileSection/ProfileSection';
 
-const Sponsee = ({ currentAccount }) => {
+const Sponsee = ({ user, profileImg, profileBg }) => {
     return (
         <Container>
-            <HeroSection currentAccount={currentAccount} />
+            <HeroSection currentAccount={user.id} />
             <Tabs>
                 <ProfileSection label="Profile" />
                 <div label="Locker Room">Locker Room Section</div>

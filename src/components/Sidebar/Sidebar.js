@@ -7,7 +7,12 @@ import {
     SocialIcons
 } from './Sidebar.styled';
 
-const Sidebar = ({ onSidebarToggle, isConnected, onLogout }) => {
+import { useAuth } from '../../contexts/AuthContext';
+
+const Sidebar = ({ onSidebarToggle }) => {
+
+    const { currentUser, logout } = useAuth();
+
     return (
         <SidebarContainer>
             <SidebarWrapper>
@@ -19,8 +24,8 @@ const Sidebar = ({ onSidebarToggle, isConnected, onLogout }) => {
                         <li><SidebarLink to="/crowdfunding" onClick={onSidebarToggle} >Crowdfunding</SidebarLink></li>
                         <li><SidebarLink to="/account" onClick={onSidebarToggle} >Account</SidebarLink></li>
                         {
-                            isConnected &&
-                            <li><SidebarLink to="/" onClick={() => { onSidebarToggle(); onLogout(); }} >Log Out</SidebarLink></li>
+                            currentUser &&
+                            <li><SidebarLink to="/" onClick={() => { onSidebarToggle(); logout(); }} >Log Out</SidebarLink></li>
                         }
                     </MenuList>
                     <SocialIcons>

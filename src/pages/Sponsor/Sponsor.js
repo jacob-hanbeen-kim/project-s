@@ -3,16 +3,18 @@ import {
 } from './Sponsor.styled';
 
 // sections
-import HeroSection from '../Sponsee/HeroSection/HeroSection';
+import HeroSection from './HeroSection/HeroSection';
+import ProfileSection from './ProfileSection/ProfileSection';
 import { Tabs } from '../../components';
 
-const Sponsor = ({ currentAccount, username }) => {
+const Sponsor = ({ user, profileImg, profileBg }) => {
+
     return (
         <Container>
-            <HeroSection currentAccount={currentAccount} username={username} />
+            <HeroSection currentAccount={user?.id} username={user?.name} profileImg={profileImg} profileBg={profileBg} />
             <Tabs>
-                <div label="Profile">Profile Section for {username}</div>
-                <div label="Locker Room">Locker Room Section</div>
+                <ProfileSection label="Profile" username={user?.name} />
+                <div label="Market Place">Market Place Section</div>
                 <div label="Past Partnerships">Past PartnerShips Sectione</div>
             </Tabs>
         </Container>

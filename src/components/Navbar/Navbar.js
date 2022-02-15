@@ -15,16 +15,27 @@ import {
     MenuBar,
     BarIcon,
     CloseIcon,
-    ProfileIcon,
-    ProfileImg,
+    // ProfileIcon,
+    // ProfileImg,
     DropdownContent
 } from './Navbar.styled';
 import { Logo } from '../';
 import { Toggler } from '../../styles/Toggle.styled';
 import { FiSun, FiMoon } from 'react-icons/fi';
+import { ProfileImg } from '../';
+
+import { useAuth } from '../../contexts/AuthContext';
 
 
-const Navbar = ({ isConnected, onLogout, isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
+const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
+
+    const { currentUser, logout } = useAuth();
+
+    const getUsername = () => {
+        console.log(currentUser);
+        if (currentUser) return currentUser.name;
+        return '';
+    }
 
     return (
         <NavContainer>
@@ -57,22 +68,19 @@ const Navbar = ({ isConnected, onLogout, isSidebarOpen, onSidebarToggle, theme, 
                     </MenuItems>
                     <DropdownItem>
                         <ProfileLink to='/login'>
-                            {isConnected ?
-                                <ProfileImg src={process.env.PUBLIC_URL + '/images/login/profileImg.jpg'} /> :
-                                <ProfileIcon />
-                            }
-                        </ProfileLink>
-                        {isConnected &&
+                            <ProfileImg hasProfileImg={currentUser !== null} src={process.env.PUBLIC_URL + `/images/account/${getUsername()}/profileImg.png`} />
+                        </ProfileLink >
+                        {currentUser &&
                             <ProfileDropDown>
                                 <SubNavLink to="/account">Profile</SubNavLink>
                                 <SubNavLink to="/account/settings">Settings</SubNavLink>
                                 {
-                                    isConnected &&
-                                    <SubNavLink to="/" onClick={() => { onLogout(); }}>Logout</SubNavLink>
+                                    currentUser &&
+                                    <SubNavLink to="/" onClick={() => { logout(); }}>Logout</SubNavLink>
                                 }
                             </ProfileDropDown>
                         }
-                    </DropdownItem>
+                    </DropdownItem >
                     <Toggler onClick={() => toggleTheme()}>
                         {
                             theme === 'light' ?
@@ -87,9 +95,9 @@ const Navbar = ({ isConnected, onLogout, isSidebarOpen, onSidebarToggle, theme, 
                                 <BarIcon />
                         }
                     </MenuBar>
-                </Menu>
-            </Nav>
-        </ NavContainer>
+                </Menu >
+            </Nav >
+        </ NavContainer >
     )
 }
 
