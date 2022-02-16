@@ -31,7 +31,9 @@ const Login = ({ }) => {
         setIsConnecting(true);
         setWallet(wallet);
 
-        login();
+        const response = await login();
+
+        console.log('login response', response);
 
         setWallet(null);
         setIsConnecting(false);

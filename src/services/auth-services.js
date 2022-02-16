@@ -6,6 +6,12 @@ import { auth } from '../firbase-config';
 
 //#region helper
 
+const CustomException = (message, code) => {
+    const error = new Error(message);
+    error.code = code;
+    throw error;
+}
+
 const detectProvider = () => {
     let provider;
     if (window.ethereum) {
@@ -13,96 +19,67 @@ const detectProvider = () => {
     } else if (window.web3) {
         provider = window.web3.currentProvider;
     } else {
-        window.alert("No Ethereum browser detected! Check out MetaMask");
+        throw CustomException('No Ethereum browser detected! Check out MetaMask');
     }
+
+    if (!provider) {
+        throw CustomException('Metamask Not Found. Please install Metamask');
+    }
+
+    if (provider !== window.ethereum) {
+        throw CustomException('Not Ethereum Provider. Do you have multiple wallet installed?');
+    }
+
     return provider;
 };
 
-function getNonceToSign(address) {
-    console.log('id', address);
-    return UserService.getUserById(address).then((user) => {
-        console.log('user', user);
-        if (user) {
-            // The user document exists already, so just return the nonce
-            console.log('exist');
-            const existingNonce = user?.nonce;
-            return existingNonce;
-        } else {
-            console.log('create');
-            // The user document does not exist, create it first
-            const generatedNonce = Math.floor(Math.random() * 1000000).toString();
+async function getUser(address) {
+    const user = await UserService.getUserById(address);
 
-            // Create User
-            // Create an Auth user
-            // Associate the nonce with that user
-            signUp(address, 'someone', generatedNonce, 'sponsee', 'basic');
-
-            return generatedNonce;
-        }
-    });
-}
-
-function verifySignedbody(address, sig, web3) {
-
-    if (!address || !sig) {
-        // return response.sendStatus(400);
-        return {
-            status: 400,
-            body: "Error: Address or Signiture Not Found."
-        };
+    if (user === null) {
+        throw CustomException('User does not exist', 'USER_NOT_EXIST');
     }
 
-    return UserService.getUserById(address).then(async (user) => {
-        console.log('verifySignedbody user', user);
-        if (user) {
-            // Get the nonce for this address
-            console.log('verifySignedbody exist');
-            const existingNonce = user?.nonce;
-            const recoveredAddress = await web3.eth.personal.ecRecover(`0x${toHex(existingNonce)}`, sig);
-            console.log('recover', recoveredAddress);
+    return user;
+}
 
-            // See if that matches the address the user is claiming the signature is from
-            if (recoveredAddress === address?.toLowerCase()) {
-                // The signature was verified - update the nonce to prevent replay attacks
+async function verifySignedbody(user, sig, web3) {
 
-                // update nonce
-                const generatedNonce = Math.floor(Math.random() * 1000000).toString();
-                console.log('verify nonce', generatedNonce);
+    if (user === null || !sig) {
+        // return response.sendStatus(400);
+        throw CustomException("Error: User or Signiture Not Found.");
+    }
 
-                const userFields = new UserService.UserFields();
-                await UserService.updateUser(address,
-                    userFields
-                        .setNonce(generatedNonce)
-                        .getFields()
-                )
+    try {
+        // Recover Address for signature
+        const recoveredAddress = await web3.eth.personal.ecRecover(`0x${toHex(user.nonce)}`, sig);
+        console.log('recover', recoveredAddress);
 
-                return {
-                    status: 200,
-                    body: "User Verified!"
-                };
-            } else {
+        // See if that matches the address the user is claiming the signature is from
+        if (recoveredAddress === user.id.toLowerCase()) {
+            // The signature was verified - update the nonce to prevent replay attacks
 
-                // The signature could not be verified
-                // return response.sendStatus(401);
-                return {
-                    status: 401,
-                    body: "Error: The signature could not be verified."
-                };
-            }
+            // update nonce
+            const generatedNonce = Math.floor(Math.random() * 1000000).toString();
+            console.log('verify nonce', generatedNonce);
 
+            const userFields = new UserService.UserFields();
+            await UserService.updateUser(user.id,
+                userFields
+                    .setNonce(generatedNonce)
+                    .getFields()
+            )
+
+            return true
         } else {
-            // return response.sendStatus(500);
-            return {
-                status: 500,
-                body: "Error: User doc does not exist."
-            };
+
+            // The signature could not be verified
+            // return response.sendStatus(401);
+            throw CustomException("Error: The signature could not be verified.");
         }
-    }).catch((e) => {
-        return {
-            status: 500,
-            body: `Error: ${e.body}`
-        };
-    });
+    } catch (error) {
+        throw CustomException(error);
+    }
 }
 
 function getCustomToken(address) {
@@ -147,19 +124,6 @@ async function signInWithMetaMask() {
     try {
         // Step 1: Request (limited) access to user's ethereum account
         const provider = detectProvider();
-        if (!provider) {
-            return {
-                status: 400,
-                body: 'Error: Metamask Not Found. Please install Metamask'
-            }
-        }
-
-        if (provider !== window.ethereum) {
-            return {
-                status: 400,
-                body: 'Error: Not Ethereum Provider. Do you have multiple wallet installed?'
-            }
-        }
 
         await provider.request({
             method: "eth_requestAccounts",
@@ -170,14 +134,13 @@ async function signInWithMetaMask() {
         const accounts = await web3.eth.getAccounts();
 
         if (accounts.length === 0) {
-            return {
-                status: 400,
-                body: 'Error: Please connect to MetaMask!'
-            }
+            throw CustomException('Error: Please connect to MetaMask!');
         }
 
         // Step 2: Retrieve the current nonce for the requested address
-        const nonce = await getNonceToSign(accounts[0]);
+        const user = await getUser(accounts[0]);
+
+        const nonce = user.nonce
         console.log('nonce', nonce);
 
         // // Step 3: Get the user to sign the nonce with their private key
@@ -192,10 +155,9 @@ async function signInWithMetaMask() {
         console.log(signature);
 
         // // Step 4: Check if the signature is valid
-        const verificationResponse = await verifySignedbody(accounts[0], signature, web3);
+        const isVerified = await verifySignedbody(user, signature, web3);
 
-        if (verificationResponse.status === 200) {
-
+        if (isVerified) {
             // Step 5: Retrieve a custom auth token for Firebase
             // Create a custom token for the specified address
             const token = await getCustomToken(accounts[0])
@@ -205,15 +167,17 @@ async function signInWithMetaMask() {
             const userCredential = await signInWithCustomToken(auth, token);
             console.log(userCredential.user)
             return userCredential.user;
-        } else {
-            return verificationResponse;
         }
     } catch (error) {
-        console.log('here', error);
-        return {
-            status: 500,
-            body: error
+        if (error.code === 4001) {
+            console.log('denied signature');
         }
+
+        if (error.code === 'USER_NOT_EXIST') {
+            console.log('sign up new user');
+        }
+
+        return error;
     }
 
 }
@@ -232,9 +196,11 @@ const update = (user, fields) => {
     updateProfile(user, fields);
 }
 
-const signUp = (address, name, nonce, usertype, membership) => {
-    // Create an Auth user
-    // Associate the nonce with that user
+const signUp = (address, name, usertype, membership) => {
+    // Generate nonce
+    const nonce = Math.floor(Math.random() * 1000000).toString();
+
+    // Create an new user
     const userFields = new UserService.UserFields();
     UserService.createUser(address,
         userFields
