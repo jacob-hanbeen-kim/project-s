@@ -1,24 +1,26 @@
 import {
     Container,
-    SectionContainer
-} from './Sponsee.styled';
+    SideBarContainer,
+    ApparelContainer
+} from './LockerRoomSection.styled';
 
-// sections
-import HeroSection from './HeroSection/HeroSection';
-import { Tabs } from '../../components';
-import ProfileSection from './ProfileSection/ProfileSection';
+import SideFormBar from './SideFormBar/SideFormBar';
 
-const Sponsee = ({ user, profileImg, profileBg }) => {
+
+const LockerRoomSection = ({ user }) => {
     return (
         <Container>
-            <HeroSection currentAccount={user.id} />
-            <Tabs>
-                <ProfileSection label="Profile" />
-                <div label="Locker Room">Locker Room Section</div>
-                <div label="Past Partnerships">Past PartnerShips Sectione</div>
-            </Tabs>
+            <SideBarContainer>
+                <SideFormBar></SideFormBar>
+            </SideBarContainer>
+            <ApparelContainer>
+                <img src={process.env.PUBLIC_URL + '/images/account/lockerRoom/pants.svg'} alt='pants' />
+                <img src={process.env.PUBLIC_URL + '/images/account/lockerRoom/shirts.svg'} alt='shirts' />
+                <img src={process.env.PUBLIC_URL + '/images/account/lockerRoom/socks.svg'} alt='socks' />
+            </ApparelContainer>
+
         </Container>
     )
 }
 
-export default Sponsee
+export default LockerRoomSection

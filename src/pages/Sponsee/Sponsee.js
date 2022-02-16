@@ -7,6 +7,7 @@ import {
 import HeroSection from './HeroSection/HeroSection';
 import { Tabs } from '../../components';
 import ProfileSection from './ProfileSection/ProfileSection';
+import LockerRoomSection from './LockerRoomSection/LockerRoomSection';
 
 const Sponsee = ({ user, profileImg, profileBg }) => {
     return (
@@ -14,7 +15,7 @@ const Sponsee = ({ user, profileImg, profileBg }) => {
             <HeroSection currentAccount={user?.id} username={user?.name} profileImg={profileImg} profileBg={profileBg} />
             <Tabs>
                 <ProfileSection label="Profile" />
-                <div label="Locker Room">Locker Room Section</div>
+                <LockerRoomSection label="Locker Room" />
                 <div label="Past Partnerships">Past PartnerShips Sectione</div>
             </Tabs>
         </Container>
