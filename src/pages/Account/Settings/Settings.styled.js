@@ -26,14 +26,12 @@ export const SidebarContainer = styled.aside`
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
         font-size: ${({ big }) => big ? '16px' : '14px'};
         width:25%;
-        float: right;
     }
 `
 
 export const SidebarWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    /* height: 100%; */
     width: 10%;
 `
 export const SidebarMenu = styled.div`
@@ -45,12 +43,6 @@ export const SidebarMenu = styled.div`
     flex-grow: 1;
     white-space: nowrap;
     width: 100vw;
-
-    /* @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
-        font-size: ${({ big }) => big ? '16px' : '14px'};
-        flex-direction: row;
-        position: right;
-    } */
 `
 
 export const MenuList = styled.ul`
@@ -78,8 +70,6 @@ export const MenuList = styled.ul`
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
         font-size: ${({ big }) => big ? '16px' : '14px'};
-        /* flex-direction: row;
-        position: top; */
     }
 `
 export const SidebarLink = styled(NavLink)`
@@ -92,7 +82,6 @@ export const SidebarLink = styled(NavLink)`
     height: 100%;
     padding: 0px 20px;
     position: relative;
-    /* width: 100%; */
     text-decoration: none;
     cursor: pointer;
 
@@ -117,7 +106,6 @@ export const ProfileContainer = styled.div`
 export const ProfileEditWrapper = styled.form`
     display: flex;
     width: 40%;
-    /* background-color: red; */
     flex-direction: column;
     height: 100%;
     padding: 0px 50px;
@@ -170,7 +158,6 @@ export const SubmitButton = styled.input`
     border-radius: ${({ theme }) => theme.border.radius};
     border: 1px solid ${props => props.invert ? props.theme.colors.invert : props.theme.colors.primary};
     
-    /* padding: ${({ big }) => big ? '14px 48px' : '12px 30px'}; */
     padding: 10px 20px;
     margin: 10px;
     cursor: pointer;
