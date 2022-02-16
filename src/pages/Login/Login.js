@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../../components/Spinner/Spinner';
+import { useAuth } from "../../contexts/AuthContext"
 
 import {
     LoginContainer,
@@ -12,48 +13,27 @@ import {
     WalletLogo
 } from './Login.styled';
 
-const Login = ({ isConnected, onLogin }) => {
+const Login = ({ }) => {
+
+    const { currentUser, login } = useAuth();
+
     const navigate = useNavigate();
 
     useEffect(() => {
-        isConnected && navigate("/account");
+        currentUser && navigate("/account");
     })
 
     const [isConnecting, setIsConnecting] = useState(false);
     const [selectedWallet, setWallet] = useState(null);
 
-    const detectProvider = () => {
-        let provider;
-        if (window.ethereum) {
-            provider = window.ethereum;
-        } else if (window.web3) {
-            provider = window.web3.currentProvider;
-        } else {
-            window.alert("No Ethereum browser detected! Check out MetaMask");
-        }
-        return provider;
-    };
-
     const onLoginHandler = async (wallet) => {
         setIsConnecting(true);
         setWallet(wallet);
 
-        const provider = detectProvider();
-        if (provider) {
-            if (provider !== window.ethereum) {
-                console.error(
-                    "Not window.ethereum provider. Do you have multiple wallet installed ?"
-                );
-            }
-            setIsConnecting(true);
-            await provider.request({
-                method: "eth_requestAccounts",
-            });
+        login();
 
-            setWallet(null);
-            setIsConnecting(false);
-        }
-        onLogin(provider);
+        setWallet(null);
+        setIsConnecting(false);
     };
 
 
@@ -66,7 +46,7 @@ const Login = ({ isConnected, onLogin }) => {
             <ButtonContainer>
                 <WalletList>
                     <li>
-                        <Wallet onClick={() => onLoginHandler('metamask')}>
+                        <Wallet disabled={isConnecting} onClick={() => onLoginHandler('metamask')}>
                             <WalletLogo>
                                 <img src={process.env.PUBLIC_URL + '/images/login/metamask.png'} />
                             </WalletLogo>

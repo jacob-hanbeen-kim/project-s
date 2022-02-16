@@ -23,14 +23,24 @@ import Settings from './pages/Account/Settings/Settings';
 // web3
 import Web3 from 'web3';
 
+// UserService
+import UserService, { userFields } from './services/users-service';
+import { AuthProvider } from './contexts/AuthContext';
+
+// const accBalanceEth = web3.utils.fromWei(
+//   await web3.eth.getBalance(accounts[0]),
+//   "ether"
+// );
+
+// setBalance(Number(accBalanceEth).toFixed(6));
+
 function App() {
 
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
 
-  const [isConnected, setIsConnected] = useState(false);
   const [currentAccount, setCurrentAccount] = useState(null);
-  const [balance, setBalance] = useState(0);
+  const [user, setUser] = useState(null);
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
@@ -38,70 +48,37 @@ function App() {
     setSidebarOpen(!isSidebarOpen);
   }
 
-  const onLogin = async (provider) => {
-    const web3 = new Web3(provider);
-    const accounts = await web3.eth.getAccounts();
-
-    if (accounts.length === 0) {
-      console.log("Please connect to MetaMask!");
-    } else if (accounts[0] !== currentAccount) {
-      setCurrentAccount(accounts[0]);
-      window.localStorage.setItem('userAccount', accounts[0]);
-
-      const accBalanceEth = web3.utils.fromWei(
-        await web3.eth.getBalance(accounts[0]),
-        "ether"
-      );
-
-      setBalance(Number(accBalanceEth).toFixed(6));
-      setIsConnected(true);
-    }
-  };
-
-  const onLogout = () => {
-    console.log('logging out');
-    setIsConnected(false);
-    setCurrentAccount(null);
-    window.localStorage.removeItem('userAccount');
-  };
-
-  useEffect(() => {
-    const account = window.localStorage.getItem('userAccount');
-    if (account !== null) {
-      setCurrentAccount(account);
-      setIsConnected(true);
-    }
-  })
-
   return (
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
         <Router basename={'/project-s'}>
-          <FlexWropper>
-            <Navbar isConnected={isConnected} onLogout={onLogout} isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} />
-            {
-              isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} isConnected={isConnected} onLogout={onLogout} />
-            }
-            <PageWrapper isSidebarOpen={isSidebarOpen} >
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login isConnected={isConnected} onLogin={onLogin} />} />
-                <Route path="/brands" element={<Brand />} />
-                <Route path="/agents" element={<Agents />} />
-                <Route path="/account" element={<Account currentAccount={currentAccount} />} />
-                <Route path="/account/:username" element={<Account currentAccount={currentAccount} />} />
-                <Route path="/membership" element={<Membership />} />
-                <Route path="/account/edit" element={<EditProfile />} />
-                <Route path="/account/settings" element={<Settings currentAccount={currentAccount} userType={"sponsee"} />} />
-                <Route path="*" element={<ErrorPage />} />
-              </Routes>
-            </PageWrapper>
-          </FlexWropper>
-        </Router>
-        {!isSidebarOpen && <Footer isDark={theme === 'dark'} />}
+          <AuthProvider>
+            <FlexWropper>
+              <Navbar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} />
+              {
+                isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} />
+              }
+              <PageWrapper isSidebarOpen={isSidebarOpen} >
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/brands" element={<Brand />} />
+                  <Route path="/agents" element={<Agents />} />
+                  <Route path="/account" element={<Account user={user} />} />
+                  <Route path="/account/:username" element={<Account />} />
+                  <Route path="/membership" element={<Membership />} />
+                  <Route path="/account/settings" element={<Settings currentAccount={currentAccount} userType={"sponsee"} />} />
+                  <Route path="*" element={<ErrorPage />} />
+                </Routes>
+              </PageWrapper>
+            </FlexWropper>
+          </AuthProvider>
+        </Router >
+        {!isSidebarOpen && <Footer isDark={theme === 'dark'} />
+        }
       </>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }
 

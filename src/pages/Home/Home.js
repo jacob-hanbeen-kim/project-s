@@ -8,6 +8,7 @@ import { InfoSection } from '../../components';
 import { connectVip, aiGuidance, blockChain } from './InfoSectionData'
 
 const Home = () => {
+
     return (
         <HomeContainer>
             <HeroSection />

@@ -10,11 +10,10 @@ const Footer = ({ isDark }) => {
             <Container>
                 <ImgWrap>
                     {isDark ?
-                        <Img src={process.env.PUBLIC_URL + '/images/logo192_dark.svg'} alt='logo' /> :
-                        <Img src={process.env.PUBLIC_URL + '/images/logo192.svg'} alt='logo' />
+                        <Img src={process.env.PUBLIC_URL + '/images/logo_dark.png'} alt='logo' /> :
+                        <Img src={process.env.PUBLIC_URL + '/images/logo.png'} alt='logo' />
                     }
                 </ImgWrap>
-
                 <Flex>
                     <ul>
                         <li>

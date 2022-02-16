@@ -15,7 +15,7 @@ export const ImageBg = styled.div`
     background-image: ${({ src }) => src && `url(${src})`};
     background-size: cover;
     background-position: center center;
-    opacity: 0.4;
+    opacity: ${({ opacity }) => opacity ? opacity : '0.4'};
     height: inherit;
     filter: blur(1px);
     mask: linear-gradient(#fff, transparent);

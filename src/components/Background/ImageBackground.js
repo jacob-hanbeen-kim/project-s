@@ -3,10 +3,10 @@ import {
     ImageBg
 } from './Background.styled';
 
-const ImageBackground = ({ src }) => {
+const ImageBackground = ({ src, opacity }) => {
     return (
         <BackgroundContainer>
-            <ImageBg src={src} />
+            <ImageBg src={src} opacity={opacity} />
         </BackgroundContainer>
     )
 }
