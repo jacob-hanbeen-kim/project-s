@@ -68,7 +68,8 @@ function App() {
                   <Route path="/account" element={<Account user={user} />} />
                   <Route path="/account/:username" element={<Account />} />
                   <Route path="/membership" element={<Membership />} />
-                  <Route path="/account/settings" element={<Settings currentAccount={currentAccount} userType={"sponsee"} />} />
+                  <Route path="/account/settings" element={<Settings />} />
+                  <Route path="/account/edit" element={<EditProfile />} />
                   <Route path="*" element={<ErrorPage />} />
                 </Routes>
               </PageWrapper>

@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import { FaTimes } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 import { Flex } from '../../../styles/Flex.styled';
 import { InputBox } from '../../../styles/InputBox.styled';
-import { Button } from '../../../styles/Button.styled';
 
 export const SidebarContainer = styled.aside`
     z-index: 100;

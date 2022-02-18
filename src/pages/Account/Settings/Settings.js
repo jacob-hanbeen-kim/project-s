@@ -20,12 +20,17 @@ import {
 import { ProfileImg, AccountTag, MembershipStatus, FileUploader } from '../../../components';
 import ErrorPage from '../../ErrorPage/ErrorPage';
 
-const Settings = ({ currentAccount, userType }) => {
+import { useAuth } from '../../../contexts/AuthContext';
+
+const Settings = ({ }) => {
+
+    const { currentUser } = useAuth();
+
     return (
 
         <ProfileSettingContainer>
             {
-                currentAccount ?
+                currentUser ?
                     <>
                         <SidebarContainer>
                             <SidebarWrapper>
@@ -76,9 +81,9 @@ const Settings = ({ currentAccount, userType }) => {
                         <ProfileWrapper>
                             <ProfileImg hasProfileImg={true} size='10rem' />
                             <FileUploader />
-                            <TopLine>Your Name</TopLine>
+                            <TopLine>{currentUser.name}</TopLine>
                             {/* <MembershipStatus size='1.5rem'> Membership Status : </MembershipStatus> */}
-                            <AccountTag account={currentAccount} />
+                            <AccountTag account={currentUser.id} />
                         </ProfileWrapper>
                         </ProfileContainer>
                     </>
