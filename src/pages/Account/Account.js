@@ -13,6 +13,12 @@ import StorageService from '../../services/storage-service';
 
 const Account = ({ }) => {
 
+    // const currentUser = {
+    //     uid: '0xa38730a865eD8f3a1877Ad99DD8F21A1734661aF',
+    //     name: 'Test User',
+    //     usertype: 'sponsee'
+    // }
+
     const { currentUser } = useAuth();
 
     const [profileImg, setProfileImg] = useState(null);
@@ -45,10 +51,12 @@ const Account = ({ }) => {
     }
 
     useEffect(() => {
+        console.log('current User', currentUser);
         currentUser && setViewUser(currentUser);
     }, [currentUser])
 
     useEffect(() => {
+        console.log('viewUser', viewUser);
         viewUser && getUserProfileImgs();
     }, [viewUser])
 
@@ -59,7 +67,7 @@ const Account = ({ }) => {
 
     useEffect(() => {
         // check if login
-        // user && navigate("/login");
+        !currentUser && navigate("/login");
     }, [])
 
     return (

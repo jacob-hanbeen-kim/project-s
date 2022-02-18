@@ -1,6 +1,5 @@
 import {
-    Container,
-    SectionContainer
+    Container
 } from './Sponsee.styled';
 
 // sections
@@ -16,7 +15,7 @@ const Sponsee = ({ user, profileImg, profileBg }) => {
             <Tabs>
                 <ProfileSection label="Profile" />
                 <LockerRoomSection label="Locker Room" />
-                <div label="Past Partnerships">Past PartnerShips Sectione</div>
+                <div label="Past Partnerships"></div>
             </Tabs>
         </Container>
     )

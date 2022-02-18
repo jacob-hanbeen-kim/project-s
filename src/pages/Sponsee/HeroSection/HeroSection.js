@@ -63,47 +63,6 @@ const HeroSection = ({ currentAccount, username, profileImg, profileBg }) => {
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque vitae tempus quam pellentesque nec nam aliquam sem. Facilisi etiam dignissim diam quis enim lobortis scelerisque.
                             </Details>
                         </TextWrapper>
-                        <SponsorList>
-                            <SponsorItem>
-                                <ProfileImg size={'3rem'}><FaRegLifeRing /></ProfileImg>
-                            </SponsorItem>
-                            <SponsorItem>
-                                <ProfileImg size={'3rem'}><FaRegLifeRing /></ProfileImg>
-                            </SponsorItem>
-                            <SponsorItem>
-                                <ProfileImg size={'3rem'}><FaRegLifeRing /></ProfileImg>
-                            </SponsorItem>
-                            <SponsorItem>
-                                <ProfileImg size={'3rem'}><FaRegLifeRing /></ProfileImg>
-                            </SponsorItem>
-                            <SponsorItem>
-                                <ProfileImg size={'3rem'}><FaRegLifeRing /></ProfileImg>
-                            </SponsorItem>
-                            <SponsorItem>
-                                <ProfileImg size={'3rem'}><FaRegLifeRing /></ProfileImg>
-                            </SponsorItem>
-                            <SponsorItem>
-                                <ProfileImg size={'3rem'}><FaRegLifeRing /></ProfileImg>
-                            </SponsorItem>
-                            <SponsorItem>
-                                <ProfileImg size={'3rem'}><FaRegLifeRing /></ProfileImg>
-                            </SponsorItem>
-                            <SponsorItem>
-                                <ProfileImg size={'3rem'}><FaRegLifeRing /></ProfileImg>
-                            </SponsorItem>
-                            <SponsorItem>
-                                <ProfileImg size={'3rem'}><FaRegLifeRing /></ProfileImg>
-                            </SponsorItem>
-                            <SponsorItem>
-                                <ProfileImg size={'3rem'}><FaRegLifeRing /></ProfileImg>
-                            </SponsorItem>
-                            <SponsorItem>
-                                <ProfileImg size={'3rem'}><FaRegLifeRing /></ProfileImg>
-                            </SponsorItem>
-                            <SponsorItem>
-                                <ProfileImg size={'3rem'}><FaRegLifeRing /></ProfileImg>
-                            </SponsorItem>
-                        </SponsorList>
                     </BioWrapper>
                 </HeroContent>
             </HeroWrapper>
