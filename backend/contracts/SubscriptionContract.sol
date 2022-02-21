@@ -146,6 +146,7 @@ contract SubscriptionContract is Ownable {
 
     // [USER] called to renew subscription and pay the fee. called every payment cycle.
     // Note: CANNOT implement automatic subscription every month. Needs user signing every time.
+    // TODO: implement escrow method to hold certain amount of eth and take from that?
     function renewSubscription() external payable {
         Subscription storage subscription = subscriptions[msg.sender];
         Plan storage plan = plans[subscription.planId];
