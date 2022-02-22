@@ -4,6 +4,7 @@ import {
 } from './Background.styled';
 
 const ImageBackground = ({ src, opacity }) => {
+
     return (
         <BackgroundContainer>
             <ImageBg src={src} opacity={opacity} />

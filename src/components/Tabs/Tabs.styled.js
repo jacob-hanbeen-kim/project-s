@@ -12,7 +12,7 @@ export const TabContainer = styled.nav`
     width: 100vw;
 
     position: sticky;
-    top: 4.5rem;
+    top: 4.2rem;
     overflow: hidden;
 
     background-color: ${({ theme }) => theme.colors.navbar};
@@ -58,12 +58,9 @@ export const Tab = styled.a`
 
 export const TabPanel = styled.div`
     min-height: 400px;
-
-    border: 0;
-    margin: 0;
-    padding: 0;
     width: 100vw;
-    max-width: 1500px;
-    font-size: 100%;
-    vertical-align: baseline;
+
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
 `

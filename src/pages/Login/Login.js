@@ -17,20 +17,23 @@ const Login = ({ }) => {
 
     const { currentUser, login } = useAuth();
 
+    const [isConnecting, setIsConnecting] = useState(false);
+    const [selectedWallet, setWallet] = useState(null);
+
     const navigate = useNavigate();
 
     useEffect(() => {
         currentUser && navigate("/account");
-    })
+    }, [currentUser])
 
-    const [isConnecting, setIsConnecting] = useState(false);
-    const [selectedWallet, setWallet] = useState(null);
 
     const onLoginHandler = async (wallet) => {
         setIsConnecting(true);
         setWallet(wallet);
 
-        login();
+        const response = await login();
+
+        console.log('login response', response);
 
         setWallet(null);
         setIsConnecting(false);

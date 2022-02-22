@@ -3,26 +3,35 @@ import styled from 'styled-components';
 export const ProfileContainer = styled.div`
     display: flex;
     flex-direction: row;
-    /* flex-wrap: wrap; */
-    padding: 20px 48px ;
+    justify-content: center;
+    padding: 20px 80px ;
     /* height: 100vh; */
 
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
         flex-direction: column;
     }
 `
 
 export const ContentContainer = styled.div`
-    overflow-y: auto;
+    /* max-height: 100%; */
+
     padding: 0px 30px;
+    flex: 2;
+
+    align-items: flex-start;
+    position: relative;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
+        flex: 1;
+    }
 `
 
 export const Section = styled.section`
     text-align: start;
+    width: inherit;
 `
 
 export const TextWrapper = styled.div`
-    max-width: 540px;
     padding-top: 0;
     padding-bottom: 60px;
 `
@@ -50,7 +59,6 @@ export const Heading = styled.h1`
 `
 
 export const ImgWrap = styled.div`
-    max-width: 555px;
     height: 100%;
 `
 
@@ -61,6 +69,26 @@ export const Img = styled.img`
 `
 
 export const SupportContainer = styled.div`
+    align-items: flex-start;
+    position: relative;
+`
+
+export const SupportSticky = styled.div`
     overflow-y: auto;
+    position: sticky;
+    top: 10rem;
+    bottom: 0;
+
     padding: 0px 30px;
+
+    height: 90vh;
+
+    border-left: 2px solid ${({ theme }) => theme.colors.border};
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
+        border: 0px;
+        border-top: 2px solid ${({ theme }) => theme.colors.border};
+        padding-top: 30px;
+        margin-top: 30px;
+    }
 `

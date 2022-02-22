@@ -32,6 +32,9 @@ import ImageMap from './ImageMap/ImageMap'
 
 import Tag from './Tag/Tag';
 
+import SearchBox from './SearchBox/SearchBox';
+import Input from './Input/Input';
+
 export {
     Card, Card2,
     Carousel,
@@ -49,5 +52,7 @@ export {
     Tabs,
     FileUploader,
     ImageMap,
-    Tag
+    Tag,
+    SearchBox,
+    Input
 };

@@ -38,9 +38,6 @@ function App() {
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
 
-  const [currentAccount, setCurrentAccount] = useState(null);
-  const [user, setUser] = useState(null);
-
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const onSidebarToggle = () => {
@@ -64,10 +61,10 @@ function App() {
                   <Route path="/login" element={<Login />} />
                   <Route path="/brands" element={<Brand />} />
                   <Route path="/agents" element={<Agents />} />
-                  <Route path="/account" element={<Account user={user} />} />
+                  <Route path="/account" element={<Account />} />
                   <Route path="/account/:username" element={<Account />} />
                   <Route path="/membership" element={<Membership />} />
-                  <Route path="/account/settings" element={<Settings currentAccount={currentAccount} userType={"sponsee"} />} />
+                  <Route path="/account/settings" element={<Settings userType={"sponsee"} />} />
                   <Route path="*" element={<ErrorPage />} />
                 </Routes>
               </PageWrapper>

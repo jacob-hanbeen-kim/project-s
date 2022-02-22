@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div`
     display: flex;
-    margin: 40px 0;
-    padding: 60px;
+    /* margin: 40px 0; */
+    padding: 10px;
 
     /* & > div {
         flex: 1;

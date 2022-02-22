@@ -12,7 +12,7 @@ export const BackgroundContainer = styled.div`
 `
 
 export const ImageBg = styled.div`
-    background-image: ${({ src }) => src && `url(${src})`};
+    background-image: ${({ src }) => src && `url(${src}), url(${process.env.PUBLIC_URL}/images/account/background.jpeg)`};
     background-size: cover;
     background-position: center center;
     opacity: ${({ opacity }) => opacity ? opacity : '0.4'};
