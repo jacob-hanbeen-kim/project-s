@@ -1,6 +1,7 @@
 const chai = require("chai");
 const { solidity } = require("ethereum-waffle");
 const { ethers } = require("hardhat");
+const { features } = require("process");
 chai.use(solidity);
 chai.use(require("chai-datetime"));
 const { expect } = chai;
@@ -93,20 +94,24 @@ describe("Unidirectional payment contract from clientA to clientB", function () 
   });
 
   it("clientA should fail to cancel the contract - contract live duration has not passed yet", async () => {
+    const prevBalanceClientB = await clientB.getBalance();
+
     const UniContract = await ethers.getContractFactory(
       "UniDirectionalPaymentChannel"
     );
+
     unicontract = await UniContract.connect(clientA).deploy(clientB.address, {
       value: ethers.utils.parseEther("1"),
     });
+
     const contractCode = await ethers.provider.getCode(unicontract.address);
     await unicontract.connect(clientA).getHash(ethers.utils.parseEther("1"));
 
-    // expect revert on request to cancel the contract
-    await expect(unicontract.connect(clientA).cancel()).to.reverted;
+    // expect revert on cancel call
+    await expect(unicontract.connect(clientA).cancel()).to.be.reverted;
 
-    // TODO: check clientA's balance to be down 1 eth (remaining in the contract)
-    // TODO: check clientB's balance to not change at all
+    // check clientB's balance to not change at all
+    expect(await clientB.getBalance()).to.equal(prevBalanceClientB);
 
     // check self-destruct not happening after failed transaction
     expect(await ethers.provider.getCode(unicontract.address)).to.equal(
@@ -115,25 +120,50 @@ describe("Unidirectional payment contract from clientA to clientB", function () 
   });
 
   it("clientA should successfully cancel the contract", async () => {
+    const prevBalanceClientB = await clientB.getBalance();
+    const prevBalanceClientA = await clientA.getBalance();
+
     const UniContract = await ethers.getContractFactory(
       "UniDirectionalPaymentChannel"
     );
     unicontract = await UniContract.connect(clientA).deploy(clientB.address, {
       value: ethers.utils.parseEther("1"),
     });
+
+    // calculate contract deployment gas cost
+    const contractReceipt = await unicontract.deployTransaction.wait();
+    const totalGasCostForContract = contractReceipt.effectiveGasPrice.mul(
+      contractReceipt.gasUsed
+    );
+
+    // clientA gets the hash
     await unicontract.connect(clientA).getHash(ethers.utils.parseEther("1"));
 
+    // increase block time by a week and a second, so the next payment date has arrived
     let block = await ethers.provider.getBlock();
-    // increase block time by a week and a second, so the next payment date has come
     await ethers.provider.send("evm_mine", [
       block.timestamp + DAY_IN_SECONDS * 7 + 1,
     ]);
 
-    // expect successful request to cancel the contract
-    await unicontract.connect(clientA).cancel();
+    // expect successful request to cancel the contract. Contract balance (1 ether) should have returned to clientA
+    const tx = await unicontract.connect(clientA).cancel();
 
-    // TODO: check clientA's balance to return to original (minus gas fee)
-    // TODO: check clientB's balance to not change at all
+    // calculate cancel call gas cost
+    const receipt = await tx.wait();
+    const totalGasCostForCancel = receipt.effectiveGasPrice.mul(
+      receipt.gasUsed
+    );
+
+    // check clientA's balance to still own the 1 ether. But transaction gas costs for deploying contract and cancelling would still be used.
+    const afterBalanceClientA = await clientA.getBalance();
+    const clientAFee = prevBalanceClientA
+      .sub(totalGasCostForContract)
+      .sub(totalGasCostForCancel);
+
+    expect(afterBalanceClientA).to.equal(clientAFee);
+
+    // check clientB's balance to not have changed.
+    expect(await clientB.getBalance()).to.equal(prevBalanceClientB);
 
     // correctly self-destruct after successful cancellation
     expect(await ethers.provider.getCode(unicontract.address)).to.equal("0x");
