@@ -8,7 +8,17 @@ import {
 } from './Card.styled'
 import { Button } from '../../styles/Button.styled';
 
-const Card = ({ image, title, details, buttonTxt, backgroundColor, color, layout, children }) => {
+const Card = ({
+    image,
+    title,
+    details,
+    buttonTxt,
+    backgroundColor,
+    color,
+    layout,
+    children,
+    onClick
+}) => {
     return (
         <CardContainer>
             <CardFlex backgroundColor={backgroundColor} layout={layout}>
@@ -21,7 +31,7 @@ const Card = ({ image, title, details, buttonTxt, backgroundColor, color, layout
                     {title && <h2>{title}</h2>}
                     {details && <p>{details}</p>}
                     {children}
-                    <Button color={color} bg={backgroundColor}>
+                    <Button color={color} bg={backgroundColor} onClick={onClick}>
                         {buttonTxt}
                     </Button>
                 </CardContent>

@@ -36,7 +36,7 @@ export const ContentContainer = styled.div`
 `
 
 export const Header = styled.h2`
-    font-size: ${({ theme }) => theme.fontSizes.default};
+    font-size: ${({ theme }) => theme.fontSizes.use('standard')};
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.onSurface};
     margin: 0px;
@@ -65,19 +65,19 @@ export const Price = styled.h1`
 export const Recurrence = styled.p`
     margin: 0px;
     margin-left: 5px;
-    font-size: ${({ theme }) => theme.fontSizes.small};
+    font-size: ${({ theme }) => theme.fontSizes.use('smaller')};
 `
 
 export const Conjunction = styled.p`
     margin: 0px;
-    font-size: ${({ theme }) => theme.fontSizes.small};
+    font-size: ${({ theme }) => theme.fontSizes.use('smaller')};
 `
 
 export const SubscriptionDetails = styled.ul`
     list-style: none;
     padding: 0px;
     margin: 0px;
-    font-size: ${({ theme }) => theme.fontSizes.small};
+    font-size: ${({ theme }) => theme.fontSizes.use('smaller')};
 
     color: ${({ theme }) => theme.colors.onSurface};
     opacity: 0.5;

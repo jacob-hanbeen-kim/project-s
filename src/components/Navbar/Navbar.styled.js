@@ -35,6 +35,9 @@ export const LogoLink = styled(NavLink)`
     font-weight: 500;
     padding: 8px 0px;
     position: relative;
+
+    height: 40px;
+    width: 40px;
 `
 
 export const Menu = styled.div`

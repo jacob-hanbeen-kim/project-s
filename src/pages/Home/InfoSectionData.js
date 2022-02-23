@@ -1,6 +1,6 @@
 export const connectVip = {
     id: 'connectvip',
-    topLine: 'Network',
+    subtitle: 'Network',
     headline: 'Connect to your VVIP via Name',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Metus dictum at tempor commodo ullamcorper a lacus vestibulum.',
     buttonLabel: 'Start Connecting',
@@ -13,7 +13,7 @@ export const connectVip = {
 
 export const aiGuidance = {
     id: 'aiguide',
-    topLine: 'Artificial Intelligence',
+    subtitle: 'Artificial Intelligence',
     headline: 'AI Guidance',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Neque viverra justo nec ultrices. Aenean sed adipiscing diam donec adipiscing.',
     buttonLabel: 'Learn More',
@@ -26,7 +26,7 @@ export const aiGuidance = {
 
 export const blockChain = {
     id: 'blockchain',
-    topLine: 'Blockchain',
+    subtitle: 'Blockchain',
     headline: 'Crypto & Web 3.0',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     buttonLabel: 'Get started',

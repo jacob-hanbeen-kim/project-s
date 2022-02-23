@@ -21,16 +21,16 @@ export const HeaderContainer = styled.div`
 `
 
 export const Title = styled.h1`
-    font-size: ${({ theme }) => theme.fontSizes.large};
+    font-size: ${({ theme }) => theme.fontSizes.use('larger')};
     margin: 0px;
 `
 
 export const Subtitle = styled.p`
-    font-size: ${({ theme }) => theme.fontSizes.default};
+    font-size: ${({ theme }) => theme.fontSizes.use('standard')};
     margin: 0px;
 
     & > span {
-        font-size: ${({ theme }) => theme.fontSizes.large};
+        font-size: ${({ theme }) => theme.fontSizes.use('larger')};
         font-weight: bold;
     }
 `

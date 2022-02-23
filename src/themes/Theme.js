@@ -1,13 +1,22 @@
+import createFontSizes from "./utils/createFontSizes";
+import createfontWeights from "./utils/createFontWeights";
+
+const fontSizes = createFontSizes();
+const fontWeights = createfontWeights();
+
 const theme = {
         fonts: ['sans-serif'],
-        fontSizes: {
-                default: '17px',
-                small: '15px',
-                large: '21px'
-                // small: '1em',
-                // medium: '2em',
-                // large: '3em'
-        },
+        // fontSizes: {
+        //         default: '17px',
+        //         small: '15px',
+        //         large: '21px',
+        //         // small: '1em',
+        //         // medium: '2em',
+        //         // large: '3em'
+        //         call: fontSizes
+        // },
+        fontSizes,
+        fontWeights,
         border: {
                 radius: '10px',
         },
@@ -20,7 +29,7 @@ const theme = {
         }
 }
 
-export const lightTheme = {
+export const lightTheme = Object.freeze({
         ...theme,
         colors: {
                 // A primary color is the color displayed most frequently
@@ -74,9 +83,9 @@ export const lightTheme = {
                 onSurface: '#04111d',
                 onError: '#f9fafb'
         }
-};
+});
 
-export const darkTheme = {
+export const darkTheme = Object.freeze({
         ...theme,
         colors: {
                 // A primary color is the color displayed most frequently
@@ -129,4 +138,4 @@ export const darkTheme = {
                 onSurface: '#f0f6fc',
                 onError: '#f9fafb'
         }
-};
+});
