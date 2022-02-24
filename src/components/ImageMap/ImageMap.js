@@ -9,19 +9,23 @@ import {
 
 
 const ImageMap = ({
+    id,
     image,
-    children
+    children,
+    onClick,
+    noBg
 }) => {
     return (
         <CanvasProvider>
             <ImageMapContainer>
-                <ImageMapContent image={image}>{children}</ImageMapContent>
+                <ImageMapContent id={id} image={image} onClick={onClick} noBg={noBg}>{children}</ImageMapContent>
             </ImageMapContainer>
         </CanvasProvider>
     )
 }
 
 ImageMap.propTypes = {
+    id: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
 }
 

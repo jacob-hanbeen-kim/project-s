@@ -3,22 +3,21 @@ import styled from 'styled-components'
 export const Container = styled.div`
     /* font-family: Poppins, sans-serif; */
     line-height: 1.5;
-    font-size: 15px;
-    color: rgb(53, 56, 64);
+    font-size: ${({ theme }) => theme.fontSizes.use('standard')};
     box-sizing: border-box;
-    height: 45px;
 `
 
 export const InputContainer = styled.div`
     cursor: text;
     display: flex;
-    background-color: rgb(255, 255, 255);
+    background-color: ${({ theme }) => theme.colors.surface};
     border-radius: 10px;
-    border: 1px solid rgb(229, 232, 235);
+    border: 1px solid ${({ theme }) => theme.colors.border};
     width: 100%;
-    padding: 12px;
     height: 45px;
-    max-width: 768px;
+    /* max-width: 768px; */
+
+    flex-direction: ${({ reverse }) => reverse ? 'row-reverse' : 'row'};
 `
 
 export const StyledInput = styled.input`
@@ -27,6 +26,7 @@ export const StyledInput = styled.input`
     font: inherit;
     margin: 0px;
     background-color: transparent;
+    padding: 12px;
     border: none;
     outline: none;
     width: 100%;

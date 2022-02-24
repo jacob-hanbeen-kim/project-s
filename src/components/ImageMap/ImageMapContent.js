@@ -1,12 +1,17 @@
-import { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useCanvas } from './CanvasContext';
 
 import {
-    StyledCanvas
+    StyledCanvas,
+    Img,
+    Area
 } from './ImageMap.styled'
 
 const ImageMapContent = ({
+    id,
     image,
+    onClick,
+    noBg,
     children
 }) => {
     const {
@@ -22,9 +27,11 @@ const ImageMapContent = ({
         clearSelected,
     } = useCanvas();
 
-    const [canvasCoords, setCanvasCoords] = useState(children.map((a) => a.props.coords));
+    const [canvasCoords, setCanvasCoords] = useState(React.Children.map(children, (a) => a.props.coords));
     const imageRef = useRef();
     const selected = useRef(null);
+
+    const fadeEffet = useRef(null);
 
     const markArea = (e) => {
         e.preventDefault(); // prevent href
@@ -44,7 +51,6 @@ const ImageMapContent = ({
             selected.current = null;
         }
     }
-
 
     const calculateResponsiveCoords = (prevCoords, shape) => {
         let orgW = imageRef.current.naturalWidth;
@@ -81,10 +87,10 @@ const ImageMapContent = ({
 
     const updateCoords = (init = false) => {
         let updatedCoords = [];
-        children.map((a) => {
+        React.Children.map(children, (a) => {
             const coords = calculateResponsiveCoords(a.props.coords, a.props.shape);
 
-            if (init) drawBg(coords, a.props.shape);
+            if (init && !noBg) drawBg(coords, a.props.shape);
             updatedCoords.push(coords);
         })
 
@@ -100,29 +106,77 @@ const ImageMapContent = ({
         updateCoords();
     }
 
+    const onAreaClick = (e) => {
+        if (onClick) {
+            onClick();
+        }
+
+        if (noBg === null || !noBg) {
+            markArea(e);
+        }
+    }
+
     useEffect(() => {
         window.addEventListener('resize', handleResize)
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    const onImageClick = () => {
+        if (fadeEffet.current === null) {
+
+            React.Children.map(children, (a, i) => {
+                drawHover(canvasCoords[i], a.props.shape)
+            })
+
+            setTimeout(function () {
+                const fadeTarget = canvasHoverRef.current;
+
+                fadeEffet.current = setInterval(function () {
+                    console.log(fadeTarget.style.opacity);
+                    if (!fadeTarget.style.opacity) {
+                        fadeTarget.style.opacity = 1;
+                    }
+                    if (fadeTarget.style.opacity > 0) {
+                        fadeTarget.style.opacity -= 0.02;
+                    } else {
+                        canvasHoverRef.current.style.opacity = 1;
+                        clearInterval(fadeEffet.current);
+                        fadeEffet.current = null;
+                        clearCanvas();
+                    }
+                }, 20)
+            }, 0.5);
+        }
+    }
+
+    const onAreaHover = (e) => {
+        if (fadeEffet.current !== null) {
+            canvasHoverRef.current.style.opacity = 1;
+            clearInterval(fadeEffet.current);
+            fadeEffet.current = null;
+            clearCanvas();
+        }
+
+        drawHover(e.target.coords, e.target.shape);
+    }
 
     return (
         <>
             <StyledCanvas ref={canvasBgRef} />
             <StyledCanvas ref={canvasSelectedRef} />
             <StyledCanvas ref={canvasHoverRef} />
-            <img ref={imageRef} src={image} useMap="#image-map" id="uniform" onLoad={onLoad} />
-            <map name="image-map">
+            <Img ref={imageRef} src={image} useMap={`#${id}`} id={id} onLoad={onLoad} onClick={onImageClick} />
+            <map name={id}>
                 {
-                    children.map((a, i) => {
+                    React.Children.map(children, (a, i) => {
                         return (
-                            <area
+                            <Area
                                 href={a.props.href}
                                 coords={canvasCoords[i]}
                                 shape={a.props.shape}
-                                onMouseOver={(e) => { drawHover(e.target.coords, e.target.shape) }}
+                                onMouseOver={onAreaHover}
                                 onMouseOut={clearCanvas}
-                                onClick={markArea}
+                                onClick={onAreaClick}
                                 key={a.props.href}
                             />
                         )

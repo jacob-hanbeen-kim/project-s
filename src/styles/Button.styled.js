@@ -7,8 +7,10 @@ export const Button = styled.button`
     padding: ${({ big }) => big ? '14px 48px' : '12px 30px'};
     cursor: pointer;
 
-    font-size: ${({ big }) => big ? '20px' : '16px'};
-    font-weight: 700;
+    /* font-size: ${({ big }) => big ? '20px' : '16px'}; */
+    font-size: ${props => props.big ? props.theme.fontSizes.use('larger') : props.theme.fontSizes.use('standard')};
+    /* font-weight: 700; */
+    font-weight: ${({ theme }) => theme.fontWeights.use('bolder')};
 
     background-color: ${props => props.invert ? props.theme.colors.invert : props.theme.colors.primary};
     color: ${props => props.invert ? props.theme.colors.onInvert : props.theme.colors.onPrimary};
@@ -19,6 +21,6 @@ export const Button = styled.button`
     }
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeS}) {
-        font-size: ${({ big }) => big ? '16px' : '14px'};
+        font-size: ${props => props.big ? props.theme.fontSizes.use('standard') : props.theme.fontSizes.use('smaller')};
     }
 `

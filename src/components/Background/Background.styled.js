@@ -27,3 +27,16 @@ export const VideoBg = styled.video`
     object-fit: cover;
     background: #232a34;
 `
+
+export const FixedBg = styled.div`
+    background-image: ${({ src }) => src && `url(${src}), url(${process.env.PUBLIC_URL}/images/account/background.jpeg)`};
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    opacity: ${({ opacity }) => opacity ? opacity : '0.4'};
+    height: inherit;
+    filter: blur(1px);
+    mask: linear-gradient(#fff, transparent);
+`

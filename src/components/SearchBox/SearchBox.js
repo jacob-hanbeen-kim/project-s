@@ -1,24 +1,17 @@
+import { Input } from '..';
 import {
-    Container,
-    SearchBoxConatiner,
     SearchIconContainer,
-    SearchIcon,
-    SearchInput
+    SearchIcon
 } from './SearchBox.styled';
 
 
 const SearchBox = ({ }) => {
     return (
-        <Container>
-            <SearchBoxConatiner>
-                <SearchIconContainer>
-                    <SearchIcon />
-                </SearchIconContainer>
-                <SearchInput>
-                    {/* Search */}
-                </SearchInput>
-            </SearchBoxConatiner>
-        </Container>
+        <Input reverse={true}>
+            <SearchIconContainer>
+                <SearchIcon />
+            </SearchIconContainer>
+        </Input>
     )
 }
 

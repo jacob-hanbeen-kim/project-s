@@ -5,7 +5,7 @@ export const StyledFooter = styled.footer`
   color: ${({ theme }) => theme.colors.onSecondary};
   padding: 100px 0 60px;
 
-  ul {
+  /* ul {
     list-style-type: none;
   }
 
@@ -33,5 +33,34 @@ export const StyledFooter = styled.footer`
     p {
       text-align: center;
     }
+  } */
+`
+
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 40px;
+
+  @media (max-width: ${({ theme }) => theme.screen.sizeM}) {
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
   }
+`
+
+export const ImgWrap = styled.div`
+  max-width: 150px;
+
+  @media (max-width: ${({ theme }) => theme.screen.sizeM}) {
+    margin: 10px 0px;
+  }
+`
+
+export const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding-right: 0;
 `
