@@ -38,5 +38,5 @@ export const FixedBg = styled.div`
     opacity: ${({ opacity }) => opacity ? opacity : '0.4'};
     height: inherit;
     filter: blur(1px);
-    mask: linear-gradient(#fff, transparent);    
+    mask: linear-gradient(#fff, transparent);
 `

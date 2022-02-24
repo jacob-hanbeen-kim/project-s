@@ -28,22 +28,22 @@ const defaultVariantMapping = {
     label: 'span',
 }
 
-const Text = ({ variant, children, invert, transform }) => {
+const Text = ({ variant, children, invert, transform, color }) => {
 
     const getVariant = () => {
         switch (variant) {
-            case "display1": return <Display1 invert={invert}>{children}</Display1>
-            case "display2": return <Display2 invert={invert}>{children}</Display2>
-            case "display3": return <Display3 invert={invert}>{children}</Display3>
-            case "h1": return <H1 invert={invert}>{children}</H1>
-            case "h2": return <H2 invert={invert}>{children}</H2>
-            case "subtitle": return <Subtitle invert={invert}>{children}</Subtitle>
-            case "body": return <Body invert={invert}>{children}</Body>
-            case "button": return <Button invert={invert}>{children}</Button>
-            case "caption": return <Caption invert={invert}>{children}</Caption>
-            case "overline": return <Overline invert={invert}>{children}</Overline>
-            case "label": return <Label invert={invert}>{children}</Label>
-            default: return <Body invert={invert}>{children}</Body>
+            case "display1": return <Display1 invert={invert} color={color}>{children}</Display1>
+            case "display2": return <Display2 invert={invert} color={color}>{children}</Display2>
+            case "display3": return <Display3 invert={invert} color={color}>{children}</Display3>
+            case "h1": return <H1 invert={invert} color={color}>{children}</H1>
+            case "h2": return <H2 invert={invert} color={color}>{children}</H2>
+            case "subtitle": return <Subtitle invert={invert} color={color}>{children}</Subtitle>
+            case "body": return <Body invert={invert} color={color}>{children}</Body>
+            case "button": return <Button invert={invert} color={color}>{children}</Button>
+            case "caption": return <Caption invert={invert} color={color}>{children}</Caption>
+            case "overline": return <Overline invert={invert} color={color}>{children}</Overline>
+            case "label": return <Label invert={invert} color={color}>{children}</Label>
+            default: return <Body invert={invert} color={color}>{children}</Body>
         }
     }
 
