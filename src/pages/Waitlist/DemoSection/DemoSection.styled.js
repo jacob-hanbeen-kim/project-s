@@ -25,7 +25,6 @@ function hexToRgb(hex) {
 
 const getGradient = (color, layout) => {
     color = hexToRgb(color.substring(1));
-    console.log(color);
 
     let deg = '90deg';
 
@@ -33,6 +32,7 @@ const getGradient = (color, layout) => {
     else if (layout === 'right') deg = '-90deg';
 
     return `linear-gradient(${deg}, rgba(${color},1) 0%, rgba(${color},0.8) 65%, rgba(${color},0) 100%)`;
+    // return `linear-gradient(180deg, rgba(${color},1) 0%, rgba(${color},0.8) 65%, rgba(${color},0) 100%)`;
 }
 
 export const TextContainer = styled.div`
@@ -57,7 +57,7 @@ export const TextContainer = styled.div`
     word-break: keep-all;
     word-wrap: break-word;
     
-    transform: translate3d(0px, 100px, 0px);
+    transform: translate3d(0px, 90px, 0px);
     animation: 0.5s ease-in-out 0s 1 normal forwards running animation-1x3fevv;    
 
     z-index: 2;

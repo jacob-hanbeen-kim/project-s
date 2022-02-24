@@ -20,9 +20,16 @@ export const StyledCanvas = styled.canvas`
     position:absolute;
 
     /* background-color: rgba(255,0,0,.1); */
-    background-color: ${({ theme }) => theme.colors.background + '12'};
+    background-color: ${({ theme }) => theme.colors.background + '01'};
 `
 
 export const Img = styled.img`
     border-radius: inherit;
+`
+
+export const Area = styled.area`
+
+    &:hover {
+        cursor: pointer;
+    }
 `
