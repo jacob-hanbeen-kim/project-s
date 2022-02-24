@@ -21,6 +21,10 @@ export const TextWrapper = styled.div`
     & > * {
         margin: 10px;
         padding: 0px;
+
+        @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+            margin: 5px;
+        }
     }
 `
 

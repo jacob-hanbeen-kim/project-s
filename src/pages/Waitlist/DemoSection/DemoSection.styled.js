@@ -9,9 +9,25 @@ export const Container = styled.div`
 
     background-color: ${props => props.invert ? props.theme.colors.surface : props.theme.colors.background};
 
-    /* @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}){
-        padding: 30px;
-    } */
+    & h2 {
+        @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}){
+            font-size: ${({ theme }) => theme.fontSizes.use('display3')};
+            line-height: ${({ theme }) => theme.lineHeights.use('display3')};
+        }
+
+        @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}){
+            font-size: ${({ theme }) => theme.fontSizes.use('heading1')};
+            line-height: ${({ theme }) => theme.lineHeights.use('heading1')};
+        }
+    }
+
+    & h1 {
+        
+        @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}){
+            font-size: ${({ theme }) => theme.fontSizes.use('heading2')};
+            line-height: ${({ theme }) => theme.lineHeights.use('heading2')};
+        }
+    }
 `
 
 function hexToRgb(hex) {

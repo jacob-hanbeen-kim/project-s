@@ -48,7 +48,7 @@ function App() {
         <Router basename={'/project-s'}>
           <AuthProvider>
             <FlexWropper>
-              <Navbar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} />
+              {/* <Navbar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} /> */}
               {
                 isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} />
               }

@@ -1,8 +1,10 @@
+import createLineHeight from "./utils/createFontSizes";
 import createFontSizes from "./utils/createFontSizes";
 import createfontWeights from "./utils/createFontWeights";
 
 const fontSizes = createFontSizes();
 const fontWeights = createfontWeights();
+const lineHeights = createLineHeight();
 
 const theme = {
         fonts: ['sans-serif'],
@@ -17,6 +19,7 @@ const theme = {
         // },
         fontSizes,
         fontWeights,
+        lineHeights,
         border: {
                 radius: '10px',
         },
