@@ -6,11 +6,11 @@ import {
 import { Input } from ".."
 
 
-const InputWithButton = ({ inputPlaceHolder, btnText }) => {
+const InputWithButton = ({ onChange, onClick, inputPlaceHolder, btnText, type }) => {
     return (
-        <Input placeholder={inputPlaceHolder}>
+        <Input onChange={(e) => onChange(e.target.value)} placeholder={inputPlaceHolder} type={type}>
             <ButtonContainer>
-                <Button>{btnText}</Button>
+                <Button onClick={onClick} >{btnText}</Button>
             </ButtonContainer>
         </Input>
     )

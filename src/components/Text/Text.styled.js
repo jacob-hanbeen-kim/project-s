@@ -18,6 +18,8 @@ export const TextWrapper = styled.div`
 
     text-transform: ${props => props.transform};
 
+    font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+
     & > * {
         margin: 10px;
         padding: 0px;

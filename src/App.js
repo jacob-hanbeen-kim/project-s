@@ -45,7 +45,7 @@ function App() {
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
-        <Router basename={'/project-s'}>
+        <Router basename={process.env.PUBLIC_URL}>
           <AuthProvider>
             <FlexWropper>
               {/* <Navbar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} /> */}
