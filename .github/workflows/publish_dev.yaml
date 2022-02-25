@@ -1,0 +1,35 @@
+name: github-pages
+
+on:
+  push:
+    branches: dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      homepage: "https://jacob-hanbeen-kim.github.io/project-s"
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          
+      - name: Install Dependencies
+        run: npm install
+      
+      - name: Build
+        run: CI=false PUBLIC_URL=${{ env.homepage }} npm run build
+      
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build

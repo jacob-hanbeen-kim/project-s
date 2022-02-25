@@ -8,7 +8,7 @@ const GlobalStyles = createGlobalStyle`
     body {
         background: ${({ theme }) => theme.colors.background};
         color: ${({ theme }) => theme.colors.fontDefault};
-        font-family: sans-serif;
+        font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
         /* font-size: 1.15em; */
         /* font-size: 67.5%; */
         margin: 0;
