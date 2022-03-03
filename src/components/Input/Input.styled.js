@@ -5,6 +5,7 @@ export const Container = styled.div`
     line-height: 1.5;
     font-size: ${({ theme }) => theme.fontSizes.use('standard')};
     box-sizing: border-box;
+    width: inherit;
 `
 
 export const InputContainer = styled.div`

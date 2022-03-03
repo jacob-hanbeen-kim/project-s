@@ -1,6 +1,6 @@
 export default function createFontSizes() {
     const toRem = size => `${size}rem`
-    const fontSizes = [0.75, 0.8125, 0.875, 1, 1.25, 2.75, 3.75, 4.5].map(toRem)
+    const fontSizes = [0.75, 0.8125, 0.875, 1.0, 2.25, 2.75, 3.75, 4.5].map(toRem)
 
     /* eslint-disable prefer-destructuring */
     // Display aliases

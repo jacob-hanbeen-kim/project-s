@@ -18,18 +18,18 @@ export const InnerCircle = styled.circle`
     transform-origin: center center;
 
     @keyframes inner {
-    0% {
-        stroke-dashoffset: 187;
-    }
+        0% {
+            stroke-dashoffset: 187;
+        }
 
-    25% {
-        stroke-dashoffset: 80;
-    }
+        25% {
+            stroke-dashoffset: 80;
+        }
 
-    100% {
-        stroke-dashoffset: 187;
-        transform: rotate(360deg);
-    }
+        100% {
+            stroke-dashoffset: 187;
+            transform: rotate(360deg);
+        }
     }
 `
 
@@ -41,18 +41,18 @@ export const OuterCircle = styled.circle`
     transform-origin: center center;
 
     @keyframes outer {
-    0% {
-        stroke-dashoffset: 312;
-        transform: rotate(70deg);
-    }
+        0% {
+            stroke-dashoffset: 312;
+            transform: rotate(70deg);
+        }
 
-    25% {
-        stroke-dashoffset: -312;
-    }
+        25% {
+            stroke-dashoffset: -312;
+        }
 
-    100% {
-        stroke-dashoffset: -312;
-        transform: rotate(450deg);
-    }
+        100% {
+            stroke-dashoffset: -312;
+            transform: rotate(450deg);
+        }
     }
 `

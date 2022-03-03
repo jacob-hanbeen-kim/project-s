@@ -3,10 +3,10 @@ import {
     FixedBg
 } from './Background.styled';
 
-const FixedBackground = ({ src, opacity }) => {
+const FixedBackground = ({ src, opacity, maskColor }) => {
 
     return (
-        <BackgroundContainer>
+        <BackgroundContainer maskColor={maskColor}>
             <FixedBg src={src} opacity={opacity} />
         </BackgroundContainer>
     )

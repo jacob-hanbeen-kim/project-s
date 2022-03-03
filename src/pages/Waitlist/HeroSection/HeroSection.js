@@ -1,13 +1,14 @@
-import { useState } from 'react';
 import {
-    Section,
-    LogoContainer,
+    Container,
+    LeftSection,
+    RightSection,
+    TextWrapper,
     CallToAction,
-    TextWrapper
-} from './HeroSection.styled'
+    InputWrapper
+} from './HeroSection.styled';
 
-import { FixedBackground, InputWithButton, Logo, SearchBox, Text } from '../../../components';
-
+import { useState } from 'react';
+import { FixedBackground, InputWithButton, Logo, SearchBox, Text, Image } from '../../../components';
 import WaitlistService from '../../../services/waitlist-services';
 
 const HeroSection = () => {
@@ -52,33 +53,41 @@ const HeroSection = () => {
     }
 
     return (
-        <>
-            <FixedBackground src={process.env.PUBLIC_URL + '/images/waitlist/background.png'} opacity={0.6} />
-            <Section>
-                <LogoContainer>
-                    <Logo />
-                </LogoContainer>
+        <Container>
+            <LeftSection>
                 <TextWrapper>
-                    <Text variant='body'>Welcome to the New Pardigm of Networking and Engagement in Sports and Entertainment</Text>
-                </TextWrapper>
-                <TextWrapper>
-                    <Text variant='h1'>Compare contracts</Text>
-                    <Text variant='h1' invert={true}>Negotiate with confidence</Text>
+                    <Text variant='h1'>
+                        Welcome to the New Pardigm of
+                    </Text>
+                    <Text variant='h1'>
+                        Networking and Engagement
+                    </Text>
+                    <Text variant='h1'>
+                        in Sports and Entertainment
+                    </Text>
                 </TextWrapper>
                 <CallToAction>
-                    <TextWrapper>
-                        <Text variant='h2'>Comming March 2022</Text>
+                    <TextWrapper center={true}>
+                        <Text variant='subtitle' textAlign='center'>
+                            Join our waiting list to be part of the beta-test <br />
+                            Launching march, 2022
+                        </Text>
                     </TextWrapper>
-                    <InputWithButton
-                        onChange={setEmail}
-                        onClick={onSubmit}
-                        inputPlaceHolder='Your Email Address'
-                        btnText='Join Now'
-                        type="email"
-                    />
+                    <InputWrapper>
+                        <InputWithButton
+                            onChange={setEmail}
+                            onClick={onSubmit}
+                            inputPlaceHolder='Your Email Address'
+                            btnText='Join Now'
+                            type="email"
+                        />
+                    </InputWrapper>
                 </CallToAction>
-            </Section>
-        </>
+            </LeftSection>
+            <RightSection>
+                <Image src={process.env.PUBLIC_URL + '/images/home/contract.svg'} />
+            </RightSection>
+        </Container>
     )
 }
 

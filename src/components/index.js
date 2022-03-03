@@ -38,6 +38,7 @@ import Input from './Input/Input';
 import InputWithButton from './InputWithButton/InputWithButton';
 
 import Text from './Text/Text';
+import Image from './Image/Image';
 
 export {
     Card, Card2,
@@ -61,5 +62,6 @@ export {
     SearchBox,
     Input,
     InputWithButton,
-    Text
+    Text,
+    Image
 };

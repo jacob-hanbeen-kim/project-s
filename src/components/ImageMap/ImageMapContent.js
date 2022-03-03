@@ -132,7 +132,6 @@ const ImageMapContent = ({
                 const fadeTarget = canvasHoverRef.current;
 
                 fadeEffet.current = setInterval(function () {
-                    console.log(fadeTarget.style.opacity);
                     if (!fadeTarget.style.opacity) {
                         fadeTarget.style.opacity = 1;
                     }

@@ -9,6 +9,8 @@ export const BackgroundContainer = styled.div`
     width: 100%;
     height: inherit;
     overflow: hidden;
+
+    background-color: ${({ maskColor }) => maskColor ? 'rgb(0,0,0)' : 'transparent'};
 `
 
 export const ImageBg = styled.div`
