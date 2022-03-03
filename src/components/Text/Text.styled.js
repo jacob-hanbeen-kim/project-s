@@ -16,7 +16,8 @@ export const TextWrapper = styled.div`
     outline: none;
     border: none;
 
-    text-transform: ${props => props.transform};
+    text-transform: ${props => props.textTransform};
+    text-align: ${props => props.textAlign};
 
     font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
 
@@ -28,64 +29,85 @@ export const TextWrapper = styled.div`
             margin: 5px;
         }
     }
+
+    & span {
+        font-size: 1.5em;
+        line-height: 1.2em;
+        color: ${({ accentColor }) => accentColor ? accentColor : 'inherit'};
+    }
 `
 
 export const Display1 = styled.h2`
     font-size: ${({ theme }) => theme.fontSizes.use('display1')};
+    line-height: ${({ theme }) => theme.lineHeights.use('display1')};
     font-weight: ${({ theme }) => theme.fontWeights.use('boldest')};
-    line-height: 4.75rem;
-
+    
     color: ${props => useColor(props.invert, props.color, props.theme.colors.onInvert, props.theme.colors.fontDefault)};
 
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}){
-        font-size: ${({ theme }) => theme.fontSizes.use('display3')};
-    }
+    /* @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}){
+        font-size: ${({ theme }) => theme.fontSizes.use('display2')};
+        line-height: ${({ theme }) => theme.lineHeights.use('display2')};
+    } */
 `
 
 export const Display2 = styled.h2`
     font-size: ${({ theme }) => theme.fontSizes.use('display2')};
+    line-height: ${({ theme }) => theme.lineHeights.use('display2')};
     font-weight: ${({ theme }) => theme.fontWeights.use('boldest')};
-    line-height: 4rem;
 
     color: ${props => useColor(props.invert, props.color, props.theme.colors.onInvert, props.theme.colors.fontDefault)};
+    
+    /* @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}){
+        font-size: ${({ theme }) => theme.fontSizes.use('display3')};
+        line-height: ${({ theme }) => theme.lineHeights.use('display3')};
+    } */
 `
 
 export const Display3 = styled.h2`
     font-size: ${({ theme }) => theme.fontSizes.use('display3')};
+    line-height: ${({ theme }) => theme.lineHeights.use('display3')};
     font-weight: ${({ theme }) => theme.fontWeights.use('boldest')};
-    line-height: 3rem;
 
     color: ${props => useColor(props.invert, props.color, props.theme.colors.onInvert, props.theme.colors.fontDefault)};
+/* 
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}){
+        font-size: ${({ theme }) => theme.fontSizes.use('heading1')};
+        line-height: ${({ theme }) => theme.lineHeights.use('heading1')};
+    } */
 `
 
 
 export const H1 = styled.h1`
     font-size: ${({ theme }) => theme.fontSizes.use('heading1')};
+    line-height: ${({ theme }) => theme.lineHeights.use('heading1')};
     font-weight: ${({ theme }) => theme.fontWeights.use('boldest')};
-    line-height: 1.75rem;
 
     color: ${props => useColor(props.invert, props.color, props.theme.colors.onInvert, props.theme.colors.fontDefault)};
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}){
+        
+    }
 `
 
 export const H2 = styled.h2`
     font-size: ${({ theme }) => theme.fontSizes.use('heading2')};
+    line-height: ${({ theme }) => theme.lineHeights.use('heading2')};
     font-weight: ${({ theme }) => theme.fontWeights.use('boldest')};
-    line-height: 1.5rem;
 
     color: ${props => useColor(props.invert, props.color, props.theme.colors.onInvert, props.theme.colors.fontDefault)};
 `
 
 export const Subtitle = styled.p`
     font-size: ${({ theme }) => theme.fontSizes.use('heading2')};
+    line-height: ${({ theme }) => theme.lineHeights.use('heading2')};
     font-weight: ${({ theme }) => theme.fontWeights.use('bolder')};
-    line-height: 1.5rem;
 
     color: ${props => useColor(props.invert, props.color, props.theme.colors.onInvert, props.theme.colors.onBackground)};
 `
 
 export const Body = styled.p`
     font-size: ${({ theme }) => theme.fontSizes.use('standard')};
-    line-height: 1.25rem;
+    line-height: ${({ theme }) => theme.lineHeights.use('standard')};
 
     color: ${props => useColor(props.invert, props.color, props.theme.colors.onInvert, props.theme.colors.fontMuted)};
     opacity: 0.75;
@@ -93,29 +115,29 @@ export const Body = styled.p`
 
 export const Button = styled.span`
     font-size: ${({ theme }) => theme.fontSizes.use('standard')};
+    line-height: ${({ theme }) => theme.lineHeights.use('standard')};
     font-weight: ${({ theme }) => theme.fontWeights.use('boldest')};
-    line-height: 1.25rem;
     text-transform: capitalize;
 
     color: ${props => useColor(props.invert, props.color, props.theme.colors.onInvert, props.theme.colors.onPrimary)};
 `
 export const Caption = styled.p`
     font-size: ${({ theme }) => theme.fontSizes.use('smallest')};
-    line-height: 1rem;
+    line-height: ${({ theme }) => theme.lineHeights.use('smallest')};
 
-    color: ${props => useColor(props.invert, props.color, props.theme.colors.onInvert, props.theme.colors.onPrimary)};
+    color: ${props => useColor(props.invert, props.color, props.theme.colors.onInvert, props.theme.colors.fontMuted)};
 `
 export const Overline = styled.p`
     font-size: ${({ theme }) => theme.fontSizes.use('smallest')};
-    line-height: 1rem;
+    line-height: ${({ theme }) => theme.lineHeights.use('smallest')};
     text-transform: uppercase;
 
     color: ${props => useColor(props.invert, props.color, props.theme.colors.onInvert, props.theme.colors.onPrimary)};
 `
 export const Label = styled.span`
     font-size: ${({ theme }) => theme.fontSizes.use('smaller')};
+    line-height: ${({ theme }) => theme.lineHeights.use('smaller')};
     font-weight: ${({ theme }) => theme.fontWeights.use('boldest')};
-    line-height: 1.25rem;
 
     color: ${props => useColor(props.invert, props.color, props.theme.colors.onInvert, props.theme.colors.onPrimary)};
 `

@@ -81,6 +81,8 @@ const Negotiate = ({ offer, setState }) => {
     //     console.log(displayedMessage);
     // }, [messages.current])
 
+    // FaPaperPlane
+
     return (
         <Container>
             <MessageContainer>

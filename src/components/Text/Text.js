@@ -28,7 +28,15 @@ const defaultVariantMapping = {
     label: 'span',
 }
 
-const Text = ({ variant, children, invert, transform, color }) => {
+const Text = ({
+    variant,
+    children,
+    invert,
+    textTransform,
+    textAlign,
+    color,
+    accentColor
+}) => {
 
     const getVariant = () => {
         switch (variant) {
@@ -48,7 +56,7 @@ const Text = ({ variant, children, invert, transform, color }) => {
     }
 
     return (
-        <TextWrapper transform={transform}>
+        <TextWrapper textTransform={textTransform} textAlign={textAlign} accentColor={accentColor}>
             {getVariant()}
         </TextWrapper>
     )

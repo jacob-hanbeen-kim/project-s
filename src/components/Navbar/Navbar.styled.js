@@ -7,7 +7,7 @@ export const NavContainer = styled.div`
     max-width: 100vw;
     height: 72px;
     z-index: 110;
-    box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px;
+    /* box-shadow: rgb(4 17 29 / 25%) 0px 0px 8px 0px; */
     transition: top 0.5s ease 0s;
 
     position: sticky;

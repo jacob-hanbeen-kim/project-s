@@ -10,11 +10,15 @@ export const LogoContainer = styled.div`
 export const LogoImageContainer = styled.div`
     /* height: 40px; */
     /* width: 40px; */
-    height: 100%;
-    width: 100%;
+    /* height: 100%; */
+    /* width: 100%; */
+    flex: 1;
 `
 
 export const BrandNameContainer = styled.div`
-    height: 40px;
-    width: 160px;
+    /* height: 40px;
+    width: 160px; */
+    /* height: 100%; */
+    /* width: 100%; */
+    flex: 2;
 `
