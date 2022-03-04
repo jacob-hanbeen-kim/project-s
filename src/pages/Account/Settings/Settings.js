@@ -52,19 +52,19 @@ const Settings = ({ }) => {
                         <ProfileContainer>
                         <ProfileEditWrapper>
                             <h2>Profile Settings</h2>
-                            <ProfileEditLabel htmlFor="fname">First Name: </ProfileEditLabel>
+                            <ProfileEditLabel for="fname">First Name: </ProfileEditLabel>
                             <ProfileEditInput type="text" id="fname" name="firstname" placeholder="Your first name.." />
 
-                            <ProfileEditLabel htmlFor="lname">Last Name: </ProfileEditLabel>
+                            <ProfileEditLabel for="lname">Last Name: </ProfileEditLabel>
                             <ProfileEditInput type="text" id="fname" name="firstname" placeholder="Your last name.." />
 
-                            <ProfileEditLabel htmlFor="email">Email: </ProfileEditLabel>
+                            <ProfileEditLabel for="email">Email: </ProfileEditLabel>
                             <ProfileEditInput type="text" id="fname" name="firstname" placeholder="Your email.." />
 
-                            <ProfileEditLabel htmlFor="nname">Nickname: </ProfileEditLabel>
+                            <ProfileEditLabel for="nname">Nickname: </ProfileEditLabel>
                             <ProfileEditInput type="text" id="fname" name="firstname" placeholder="Your nickname.." />
 
-                            <ProfileEditLabel htmlFor="userType">User Type: </ProfileEditLabel>
+                            <ProfileEditLabel for="userType">User Type: </ProfileEditLabel>
                             <CheckboxWrapper>
                                 <CheckboxLabel className="container">Sponsee
                                     <CheckboxInput type="checkbox" />

@@ -1,6 +1,7 @@
 
 import { Tabs } from '../../components';
 import EditProfileTab from './EditTabs/EditProfileTab';
+import PackageSponsorTab from './EditTabs/PackageSponsorTab'
 
 import { useAuth } from '../../contexts/AuthContext';
 
@@ -12,7 +13,7 @@ const EditProfile = ({ }) => {
         <Tabs>
                 <EditProfileTab label="Edit Profile" />
                 <div label="Basic">Basic Section</div>
-                <div label="Sponsor Package">Sponsor Packages Pre-defined</div>
+                <PackageSponsorTab label="Sponsor Package" />
         </Tabs>
     )
 }

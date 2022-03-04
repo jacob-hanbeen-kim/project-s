@@ -11,6 +11,8 @@ export const HeaderWrapper = styled.div`
     padding-left: 60px;
     padding-right: 60px;
     font-size: 16px;
+    border-bottom-style: solid;
+    border-color: ${({ theme }) => theme.colors.border};
 `
 export const EditContainer = styled.div`
     display: flex;
@@ -22,8 +24,6 @@ export const ProfileTextWrapper = styled.div`
     padding-left: 60px;
     padding-right: 60px;
     font-size: 14px;
-    border-top-style: solid;
-    border-color: ${({ theme }) => theme.colors.border};
 `
 
 export const ProfileEditForm = styled.form`
@@ -39,6 +39,7 @@ export const SubmitButton = styled.input`
     width: 50%;
     padding: 10px 20px;
     margin: 10px;
+    margin-bottom: 50px;
     cursor: pointer;
 
     font-size: ${({ big }) => big ? '20px' : '16px'};
