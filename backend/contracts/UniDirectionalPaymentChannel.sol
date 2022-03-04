@@ -9,14 +9,33 @@ contract UniDirectionalPaymentChannel is ReentrancyGuard {
 
     address payable public sender;
     address payable public receiver;
-
+    address payable public platform;
     uint256 private constant DURATION = 7 * 24 * 60 * 60; // 7 days
     uint256 public expiresAt;
+    uint256 public commission_percentage; // out of 100
 
-    constructor(address payable _receiver) payable {
+    event PaymentCompleted(
+        uint256 timestamp,
+        address sender,
+        address receiver,
+        uint256 amountTransferred
+    );
+
+    event ContractClosed(uint256 timestamp);
+
+    event ContractCanceled(uint256 timestamp);
+
+    constructor(
+        address payable _receiver,
+        address payable _platform,
+        uint256 _commission_percentage
+    ) payable {
         require(_receiver != address(0), "receiver = zero address");
+        require(_platform != address(0), "platform = zero address");
         sender = payable(msg.sender);
         receiver = _receiver;
+        platform = _platform;
+        commission_percentage = _commission_percentage;
         expiresAt = block.timestamp + DURATION;
     }
 
@@ -58,14 +77,23 @@ contract UniDirectionalPaymentChannel is ReentrancyGuard {
         require(msg.sender == receiver, "!receiver");
         require(_verify(_amount, _sig), "invalid sig");
 
+        uint256 platformFee = (_amount * commission_percentage) / 100;
+        _amount -= platformFee;
+
         (bool sent, ) = receiver.call{value: _amount}("");
         require(sent, "Failed to send Ether");
+        emit PaymentCompleted(block.timestamp, sender, receiver, _amount);
+
+        payable(platform).transfer(platformFee);
+
+        emit ContractClosed(block.timestamp);
         selfdestruct(sender);
     }
 
     function cancel() external {
         require(msg.sender == sender, "!sender");
         require(block.timestamp >= expiresAt, "!expired");
+        emit ContractCanceled(block.timestamp);
         selfdestruct(sender);
     }
 }
