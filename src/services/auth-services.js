@@ -1,49 +1,20 @@
-import Web3 from 'web3';
 import UserService from './users-service';
 import { signInWithCustomToken, signOut, updateProfile } from 'firebase/auth'
 import { getFunctions, httpsCallable } from 'firebase/functions';
 import { auth } from '../firbase-config';
+import { web3Helper } from '../utils/web3';
 
 //#region helper
 
 const CustomException = (message, code) => {
     const error = new Error(message);
     error.code = code;
+
+    console.log(error);
     throw error;
 }
 
-const detectProvider = () => {
-    let provider;
-    if (window.ethereum) {
-        provider = window.ethereum;
-    } else if (window.web3) {
-        provider = window.web3.currentProvider;
-    } else {
-        throw CustomException('No Ethereum browser detected! Check out MetaMask');
-    }
-
-    if (!provider) {
-        throw CustomException('Metamask Not Found. Please install Metamask');
-    }
-
-    if (provider !== window.ethereum) {
-        throw CustomException('Not Ethereum Provider. Do you have multiple wallet installed?');
-    }
-
-    return provider;
-};
-
-async function getUser(address) {
-    const user = await UserService.getUserById(address);
-
-    if (user === null) {
-        throw CustomException('User does not exist', 'USER_NOT_EXIST');
-    }
-
-    return user;
-}
-
-async function verifySignedbody(user, sig, web3) {
+async function verifySignedbody(user, sig) {
 
     if (user === null || !sig) {
         // return response.sendStatus(400);
@@ -52,7 +23,7 @@ async function verifySignedbody(user, sig, web3) {
 
     try {
         // Recover Address for signature
-        const recoveredAddress = await web3.eth.personal.ecRecover(`0x${toHex(user.nonce)}`, sig);
+        const recoveredAddress = await web3Helper.ecRecover(`0x${toHex(user.nonce)}`, sig);
         console.log('recover', recoveredAddress);
 
         // See if that matches the address the user is claiming the signature is from
@@ -122,40 +93,41 @@ const toHex = (stringToConvert) =>
 async function signInWithMetaMask() {
 
     try {
-        // Step 1: Request (limited) access to user's ethereum account
-        const provider = detectProvider();
-
-        await provider.request({
-            method: "eth_requestAccounts",
-        });
-
-        // get accounts
-        const web3 = new Web3(provider);
-        const accounts = await web3.eth.getAccounts();
+        // Step 1: Request (limited) access to user's ethereum account and get accounts
+        const accounts = await web3Helper.getAccounts();
 
         if (accounts.length === 0) {
             throw CustomException('Error: Please connect to MetaMask!');
         }
 
         // Step 2: Retrieve the current nonce for the requested address
-        const user = await getUser(accounts[0]);
+        let user = await UserService.getUserById(accounts[0]);
+
+        if (!user) {
+            console.log('sign up new user');
+            await signUp(
+                accounts[0],
+                'USER_NAME',
+                'sponsee',
+                'basic'
+            )
+
+            user = await UserService.getUserById(accounts[0]);
+
+            if (!user) {
+                throw CustomException('Error: Failed getting user');
+            }
+        }
 
         const nonce = user.nonce
         console.log('nonce', nonce);
 
         // // Step 3: Get the user to sign the nonce with their private key
-        const signature = await provider.request({
-            method: 'personal_sign',
-            params: [
-                `0x${toHex(nonce)}`,
-                accounts[0]
-            ]
-        })
-
+        const signature = await web3Helper.sign(accounts[0], `0x${toHex(nonce)}`)
         console.log(signature);
 
         // // Step 4: Check if the signature is valid
-        const isVerified = await verifySignedbody(user, signature, web3);
+        const isVerified = await verifySignedbody(user, signature);
 
         if (isVerified) {
             // Step 5: Retrieve a custom auth token for Firebase
@@ -171,10 +143,6 @@ async function signInWithMetaMask() {
     } catch (error) {
         if (error.code === 4001) {
             console.log('denied signature');
-        }
-
-        if (error.code === 'USER_NOT_EXIST') {
-            console.log('sign up new user');
         }
 
         return error;
@@ -196,13 +164,13 @@ const update = (user, fields) => {
     updateProfile(user, fields);
 }
 
-const signUp = (address, name, usertype, membership) => {
+const signUp = async (address, name, usertype, membership) => {
     // Generate nonce
     const nonce = Math.floor(Math.random() * 1000000).toString();
 
     // Create an new user
     const userFields = new UserService.UserFields();
-    UserService.createUser(address,
+    return await UserService.createUser(address,
         userFields
             .setName(name)
             .setNonce(nonce)

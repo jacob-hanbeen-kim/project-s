@@ -45,7 +45,7 @@ const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
                         <Logo isDark={theme === 'dark'} />
                     </LogoLink>
                 </NavbarLeft>
-                {/* <Menu>
+                <Menu>
                     <MenuItems>
                         <DropdownList>
                             <DropdownItem>
@@ -95,7 +95,7 @@ const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
                                 <BarIcon />
                         }
                     </MenuBar>
-                </Menu > */}
+                </Menu >
             </Nav >
         </ NavContainer >
     )

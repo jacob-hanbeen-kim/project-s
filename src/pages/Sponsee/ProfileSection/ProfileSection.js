@@ -16,6 +16,7 @@ import Sidebar from '../StickySidebar';
 import { ImageMap, Card } from '../../../components';
 
 const ProfileSection = () => {
+
     return (
         <ProfileContainer>
             {/* <Sidebar items={["Bio", "Something"]} /> */}
