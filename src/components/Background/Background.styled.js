@@ -9,10 +9,12 @@ export const BackgroundContainer = styled.div`
     width: 100%;
     height: inherit;
     overflow: hidden;
+
+    background-color: ${({ maskColor }) => maskColor ? 'rgb(0,0,0)' : 'transparent'};
 `
 
 export const ImageBg = styled.div`
-    background-image: ${({ src }) => src && `url(${src})`};
+    background-image: ${({ src }) => src && `url(${src}), url(${process.env.PUBLIC_URL}/images/account/background.jpeg)`};
     background-size: cover;
     background-position: center center;
     opacity: ${({ opacity }) => opacity ? opacity : '0.4'};
@@ -26,4 +28,17 @@ export const VideoBg = styled.video`
     height: inherit;
     object-fit: cover;
     background: #232a34;
+`
+
+export const FixedBg = styled.div`
+    background-image: ${({ src }) => src && `url(${src}), url(${process.env.PUBLIC_URL}/images/account/background.jpeg)`};
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    opacity: ${({ opacity }) => opacity ? opacity : '0.4'};
+    height: inherit;
+    filter: blur(1px);
+    mask: linear-gradient(#fff, transparent);
 `

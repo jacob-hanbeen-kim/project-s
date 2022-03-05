@@ -1,5 +1,5 @@
 require("@nomiclabs/hardhat-waffle");
-require('@openzeppelin/hardhat-upgrades');
+// require('@openzeppelin/hardhat-upgrades');
 require('dotenv').config();
 require("@nomiclabs/hardhat-ethers");
 require('@openzeppelin/test-helpers');
@@ -23,8 +23,17 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  * @type import('hardhat/config').HardhatUserConfig
  */
  module.exports = {
-  solidity: "0.8.6",
-  defaultNetwork: "ropsten",
+  solidity: {
+    compilers: [
+      {
+        version: "0.8.6"
+      },
+      // {
+      //   version: "0.8.10"
+      // },
+    ]
+  },
+  // defaultNetwork: "ropsten",
   networks: {
      hardhat: {},
      ropsten: {

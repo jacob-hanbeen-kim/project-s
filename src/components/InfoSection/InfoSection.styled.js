@@ -1,23 +1,8 @@
 import styled from 'styled-components'
 
-const themes = {
-    light: {
-        background: '#f9f9f9',
-        toplineColor: 'primary',
-        headingColor: '#010606',
-        subtitleColor: '#010606'
-
-    },
-    dark: {
-        background: '#535DCA',
-        headingColor: '#f7f8fa',
-        subtitleColor: '#fff',
-    }
-}
-
 export const InfoContainer = styled.div`
     color: #fff;
-    background-color: ${props => props.invert ? props.theme.colors.onInvert : props.theme.colors.background};
+    background-color: ${props => props.invert ? props.theme.colors.surface : props.theme.colors.background};
 
     @media screen and (max-width: 768px) {
         padding: 100px 0;
@@ -65,35 +50,35 @@ export const TextWrapper = styled.div`
     padding-bottom: 60px;
 `
 
-export const TopLine = styled.p`
-    color: ${props => props.invert ? props.theme.colors.invert : props.theme.colors.fontDefault};
-    font-size: 16px;
-    line-height: 16px;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-`
+// export const TopLine = styled.p`
+//     color: ${props => props.invert ? props.theme.colors.onSurface : props.theme.colors.fontDefault};
+//     font-size: 16px;
+//     line-height: 16px;
+//     font-weight: 700;
+//     letter-spacing: 1.4px;
+//     text-transform: uppercase;
+//     margin-bottom: 16px;
+// `
 
-export const Heading = styled.h1`
-    margin-bottom: 24px;
-    font-size: 48px;
-    line-height: 1.1;
-    font-weight: 600;
-    color: ${props => props.invert ? props.theme.colors.invert : props.theme.colors.fontDefault};
+// export const Heading = styled.h1`
+//     margin-bottom: 24px;
+//     font-size: 48px;
+//     line-height: 1.1;
+//     font-weight: 600;
+//     color: ${props => props.invert ? props.theme.colors.onSurface : props.theme.colors.fontDefault};
 
-    @media screen and (max-width: 480px) {
-        font-size: 32px;
-    }
-`
+//     @media screen and (max-width: 480px) {
+//         font-size: 32px;
+//     }
+// `
 
-export const Subtitle = styled.p`
-    max-width: 440px;
-    margin-bottom: 35px;
-    font-size: 18px;
-    line-height: 24px;
-    color: ${props => props.invert ? props.theme.colors.invert : props.theme.colors.fontDefault};
-`
+// export const Subtitle = styled.p`
+//     max-width: 440px;
+//     margin-bottom: 35px;
+//     font-size: 18px;
+//     line-height: 24px;
+//     color: ${props => props.invert ? props.theme.colors.onSurface : props.theme.colors.fontDefault};
+// `
 
 export const BtnWrapper = styled.div`
     display: flex;

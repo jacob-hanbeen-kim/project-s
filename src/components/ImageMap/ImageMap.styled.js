@@ -4,6 +4,7 @@ export const ImageMapContainer = styled.div`
     width: 100%;
     height: 100%;
     position: relative;
+    border-radius: inherit;
 `
 export const CanvasContainer = styled.div`
     width: 100px;
@@ -19,5 +20,16 @@ export const StyledCanvas = styled.canvas`
     position:absolute;
 
     /* background-color: rgba(255,0,0,.1); */
-    background-color: ${({ theme }) => theme.colors.background + '12'};
+    background-color: ${({ theme }) => theme.colors.background + '01'};
+`
+
+export const Img = styled.img`
+    border-radius: inherit;
+`
+
+export const Area = styled.area`
+
+    &:hover {
+        cursor: pointer;
+    }
 `

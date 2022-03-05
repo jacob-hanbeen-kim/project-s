@@ -6,7 +6,3 @@ export const Container = styled(Flex)`
     flex-direction: column;
     position: relative;
 `
-
-export const SectionContainer = styled.div`
-
-`

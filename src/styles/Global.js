@@ -8,17 +8,16 @@ const GlobalStyles = createGlobalStyle`
     body {
         background: ${({ theme }) => theme.colors.background};
         color: ${({ theme }) => theme.colors.fontDefault};
-        font-family: sans-serif;
-        font-size: 1.15em;
+        font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+        /* font-size: 1.15em; */
         /* font-size: 67.5%; */
         margin: 0;
         padding: 0;
     }
 
     p {
-        color: ${({ theme }) => theme.colors.fontMuted};
-        opacity: 0.75;
-        line-height: 1.5;
+        /* color: ${({ theme }) => theme.colors.fontMuted}; */
+        /* opacity: 0.75; */
     }
 
     img {

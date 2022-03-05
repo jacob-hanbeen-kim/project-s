@@ -28,7 +28,6 @@ const getPackageById = async (id) => {
 const postPackage = async (fields) => {
     const packageRef = await addDoc(packageCollectionRef);
     const id = packageRef.id;
-
     const packageDoc = await setDoc(packageRef, id, fields);
 
     console.log(packageDoc.data, packageDoc.id);

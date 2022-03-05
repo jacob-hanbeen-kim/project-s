@@ -9,65 +9,54 @@ import {
     Heading,
     Subtitle,
     BtnWrapper,
-
     ImgWrap,
     Img
 } from './InfoSection.styled'
-import {
-    Button
-} from '../../styles/Button.styled'
+import { Button } from '../../styles/Button.styled'
+import { Text } from '../';
 
 const InfoSection = ({
     id,
     imgStart,
-    topLine,
+    subtitle,
     headline,
     description,
     buttonLabel,
     img,
     alt,
-    primary,
     invert,
-    onClick
+    onClick,
+    children
 }) => {
     return (
-        <>
-            <InfoContainer invert={invert} id={id}>
-                <InfoWrapper>
-                    <InfoRow hasImage={img ? true : false} imgStart={imgStart}>
-                        <Column1>
-                            <TextWrapper>
-                                <TopLine invert={invert}>{topLine}</TopLine>
-                                <Heading invert={invert}>{headline}</Heading>
-                                <Subtitle invert={invert}>{description}</Subtitle>
+        <InfoContainer invert={invert} id={id}>
+            <InfoWrapper>
+                <InfoRow hasImage={img ? true : false} imgStart={imgStart}>
+                    <Column1>
+                        <TextWrapper>
+                            {headline && <Text variant='display2' invert={invert}>{headline}</Text>}
+                            {subtitle && <Text variant='h2' textTranform='uppercase'>{subtitle}</Text>}
+                            {description && <Text variant='body'>{description}</Text>}
+                            {buttonLabel &&
                                 <BtnWrapper>
-                                    <Button
-                                        // to='home'
-                                        // smooth={true}
-                                        // duration={500}
-                                        // spy={true}
-                                        // exact="true"
-                                        // offset={-80}
-                                        // primary={primary ? 1 : 0}
-                                        invert={invert}
-                                        onClick={onClick}
-                                    >
+                                    <Button onClick={onClick}>
                                         {buttonLabel}
                                     </Button>
                                 </BtnWrapper>
-                            </TextWrapper>
-                        </Column1>
-                        {img &&
-                            <Column2>
-                                <ImgWrap>
-                                    <Img src={process.env.PUBLIC_URL + img} alt={alt} />
-                                </ImgWrap>
-                            </Column2>
-                        }
-                    </InfoRow>
-                </InfoWrapper>
-            </InfoContainer>
-        </>
+                            }
+                        </TextWrapper>
+                    </Column1>
+                    {img &&
+                        <Column2>
+                            <ImgWrap>
+                                <Img src={process.env.PUBLIC_URL + img} alt={alt} />
+                            </ImgWrap>
+                        </Column2>
+                    }
+                    {children && <Column2>{children}</Column2>}
+                </InfoRow>
+            </InfoWrapper>
+        </InfoContainer >
     )
 }
 

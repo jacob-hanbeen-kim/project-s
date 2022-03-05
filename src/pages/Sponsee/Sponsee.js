@@ -1,21 +1,21 @@
 import {
-    Container,
-    SectionContainer
+    Container
 } from './Sponsee.styled';
 
 // sections
 import HeroSection from './HeroSection/HeroSection';
 import { Tabs } from '../../components';
 import ProfileSection from './ProfileSection/ProfileSection';
+import LockerRoomSection from './LockerRoomSection/LockerRoomSection';
 
 const Sponsee = ({ user, profileImg, profileBg }) => {
     return (
         <Container>
-            <HeroSection currentAccount={user.id} />
+            <HeroSection currentAccount={user?.id} username={user?.name} profileImg={profileImg} profileBg={profileBg} />
             <Tabs>
                 <ProfileSection label="Profile" />
-                <div label="Locker Room">Locker Room Section</div>
-                <div label="Past Partnerships">Past PartnerShips Sectione</div>
+                <LockerRoomSection label="Locker Room" />
+                <div label="Past Partnerships"></div>
             </Tabs>
         </Container>
     )

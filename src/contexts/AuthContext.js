@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-// import { auth } from '../firbase-config';
+import { auth } from '../firbase-config';
 import { AuthServices } from '../services/auth-services';
 import UserService, { userFields } from '../services/users-service';
 
@@ -17,15 +17,18 @@ export function AuthProvider({ children }) {
         // return auth.createUserWithEmailAndPassword(email, password)
     }
 
-    async function login() {
-        const account = await AuthServices.signInWithMetaMask()
-        await fetchUesr(account);
-        setLoading(false)
-
-        // return auth.signInWithEmailAndPassword(email, password)
+    function login() {
+        console.log('logging in');
+        return AuthServices.signInWithMetaMask();
     }
 
-    async function fetchUesr(account) {
+    async function fetchUesr(user) {
+
+        if (user === null) {
+            return setCurrentUser(null);
+        }
+
+        const account = user.uid;
 
         if (currentUser === null || account !== currentUser.id) {
 
@@ -49,37 +52,34 @@ export function AuthProvider({ children }) {
 
             // Store current account in state and localstorage
             setCurrentUser(user);
-            window.localStorage.setItem('userAccount', account);
+            // window.localStorage.setItem('userAccount', account);
         }
     }
 
     function logout() {
         console.log('logging out');
-
-        setCurrentUser(null);
-        window.localStorage.removeItem('userAccount');
-        setLoading(false)
-
-        // return auth.signOut()
-        return false;
+        return AuthServices.signOutOfFirebase();
+        // if (response.status === 200) {
+        //     setCurrentUser(null);
+        //     window.localStorage.removeItem('userAccount');
+        // } else {
+        //     window.alert(response.message);
+        // }
     }
 
-    // useEffect(() => {
-    //     const unsubscribe = auth.onAuthStateChanged(user => {
-    //         setCurrentUser(user)
-    //         setLoading(false)
-    //     })
-
-    //     return unsubscribe
-    // }, [])
     useEffect(() => {
-        const account = window.localStorage.getItem('userAccount');
-        console.log('mount', account);
-        if (account !== null) {
-            fetchUesr(account);
-        }
-        setLoading(false);
+        const unsubscribe = auth.onAuthStateChanged(user => {
+
+            console.log('on auth state changed', user);
+            fetchUesr(user);
+            // const account = window.localStorage.getItem('userAccount');
+
+            setLoading(false)
+        })
+
+        return unsubscribe
     }, [])
+
 
     // useEffect(() => {
     //     if (currentAccount && user === null) {

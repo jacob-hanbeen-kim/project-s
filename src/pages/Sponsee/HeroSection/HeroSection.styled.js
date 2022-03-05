@@ -23,6 +23,16 @@ export const HeroWrapper = styled.div`
     padding: 0 24px;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        /* grid-template-areas: 'col1 col1' 'col2 col2'; */
+        height: 50vh;
+    }
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeS}) {
+        /* grid-template-areas: 'col1 col1' 'col2 col2'; */
+        height: 70vh;
+    }
 `
 
 export const HeroContent = styled.div`
@@ -77,6 +87,10 @@ export const TopLine = styled.h1`
 export const BioWrapper = styled.div`
     margin: 0px;
     padding: 0 15px;
+    
+    /* @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        margin: 30px 0px;
+    } */
 `
 
 export const TagWrapper = styled.div`

@@ -4,13 +4,15 @@ import { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 // styles
-import { lightTheme, darkTheme } from './Theme';
+import { lightTheme, darkTheme } from './themes/Theme';
 import GlobalStyles from './styles/Global';
 import styled from 'styled-components';
 
 // componenets
 import { Footer, Navbar, Sidebar } from './components/'
+
 // pages
+import Waitlist from './pages/Waitlist/Waitlist';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Account from './pages/Account/Account';
@@ -20,11 +22,6 @@ import Membership from './pages/Membership/Membership';
 import EditProfile from './pages/Profile/EditProfile';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import Settings from './pages/Account/Settings/Settings';
-// web3
-import Web3 from 'web3';
-
-// UserService
-import UserService, { userFields } from './services/users-service';
 import { AuthProvider } from './contexts/AuthContext';
 
 // const accBalanceEth = web3.utils.fromWei(
@@ -39,9 +36,6 @@ function App() {
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
 
-  const [currentAccount, setCurrentAccount] = useState(null);
-  const [user, setUser] = useState(null);
-
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const onSidebarToggle = () => {
@@ -52,24 +46,25 @@ function App() {
     <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
-        <Router basename={'/project-s'}>
+        <Router basename={process.env.PUBLIC_URL}>
           <AuthProvider>
             <FlexWropper>
-              <Navbar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} />
+              {/* <Navbar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} /> */}
               {
                 isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} />
               }
               <PageWrapper isSidebarOpen={isSidebarOpen} >
                 <Routes>
-                  <Route path="/" element={<Home />} />
+                  {/* <Route path="/" element={<Home />} /> */}
+                  <Route path="/" element={<Waitlist />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/brands" element={<Brand />} />
                   <Route path="/agents" element={<Agents />} />
-                  <Route path="/account" element={<Account user={user} />} />
+                  <Route path="/account" element={<Account />} />
                   <Route path="/account/:username" element={<Account />} />
                   <Route path="/membership" element={<Membership />} />
-                  <Route path="/account/settings" element={<Settings />} />
                   <Route path="/account/edit" element={<EditProfile />} />
+                  <Route path="/account/settings" element={<Settings userType={"sponsee"} />} />
                   <Route path="*" element={<ErrorPage />} />
                 </Routes>
               </PageWrapper>

@@ -17,6 +17,7 @@ import SocialIcons from './SocialIcons/SocialIcons';
 
 import VideoBackground from './Background/VideoBackground';
 import ImageBackground from './Background/ImageBackground';
+import FixedBackground from './Background/FixedBackground';
 
 import ProfileImg from './ProfileImg/ProfileImg';
 
@@ -32,6 +33,13 @@ import ImageMap from './ImageMap/ImageMap'
 
 import Tag from './Tag/Tag';
 
+import SearchBox from './SearchBox/SearchBox';
+import Input from './Input/Input';
+import InputWithButton from './InputWithButton/InputWithButton';
+
+import Text from './Text/Text';
+import Image from './Image/Image';
+
 export {
     Card, Card2,
     Carousel,
@@ -42,6 +50,7 @@ export {
     SocialIcons,
     VideoBackground,
     ImageBackground,
+    FixedBackground,
     ProfileImg,
     MembershipStatus,
     AccountTag,
@@ -49,5 +58,10 @@ export {
     Tabs,
     FileUploader,
     ImageMap,
-    Tag
+    Tag,
+    SearchBox,
+    Input,
+    InputWithButton,
+    Text,
+    Image
 };
