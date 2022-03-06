@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import  PackageService  from '../../../services/package-service';
 import {
     PackageSponsorContainer,
     HeaderWrapper,
@@ -24,13 +25,16 @@ import {
     NoPackageWrapper,
     SaveDescriptionButton,
     PacakgeDescription,
-    DescriptionButtonWrapper
+    DescriptionButtonWrapper,
+    PreviewWrapper,
+    PreviewDescriptionList
 } from './PackageSponsorTab.styled'
 
 import { useAuth } from '../../../contexts/AuthContext';
 
 const PackageSponsorTab = ({ }) => {
     const { currentUser } = useAuth();
+    const packageFields = new PackageService.PackageFields();
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -41,6 +45,7 @@ const PackageSponsorTab = ({ }) => {
     const [showAddButton, setShowAddButton] = useState(true);
     const [showNewItem, setShowNewItem] = useState(false);
     const [showPackage, setShowPackage] = useState(false);
+    const [render, setRender] = useState(false);
 
     const showAddItemForm = () => {
         setShowNewItem(true);
@@ -53,37 +58,45 @@ const PackageSponsorTab = ({ }) => {
         setPrice(0);
         setDescription('');
         setShowNewItem(false);
+        setShowAddButton(true);
     }
 
-    const submitNewItems = (event) => {
+    const submitNewItems = async (event) => {
         event.preventDefault();
         setShowPackage(true);
-        // packages.current.push(title, price, descriptions);
-        console.log(title);
-        console.log(price);
-        console.log(descriptions);
+        setShowNewItem(false);
+        const val =  packageFields
+            .setTitle(title)
+            .setPrice(price)
+            .setDescription(descriptions.current)
+        await PackageService.postPackage(val.fields);
+        setTitle("");
+        setPrice(0);
+        setDescription('');
     }
 
     const addDescription = (e) => {
         e.preventDefault();
         setShowAddButton(false);
+        setDescription('');
     }
     
-    // const removeDescription = (e) => {
-    //     e.preventDefault();
-    //     const values = descriptions;
-    //     if(descriptions.length > 1) {
-    //         values.splice(-1)
-    //         setDescription(values);
-    //     }
-    // }
+    const removeDescription = (e, index) => {
+        e.preventDefault();
+        // console.log(descriptions)
+        // console.log(descriptions.current)
+        if(descriptions.current.length > 0) {
+            descriptions.current.splice(index, 1);
+            setDescription(null);
+        }
+    }
 
     const saveDescription = (e) => {
         e.preventDefault();
         descriptions.current.push(description);
         setShowAddButton(true);
+        setRender(false);
         setDescription("");
-        console.log(descriptions)
     }
 
     const handleChangeDescription = (event) => {
@@ -138,30 +151,31 @@ const PackageSponsorTab = ({ }) => {
                                 <PriceInput type="number" min="0" id="price" name="price" placeholder="Enter price" value={price} onChange={event => {handleChangePrice(event)}}></PriceInput>
                             </div>
                             <AddNewItemLabel> Package Description</AddNewItemLabel>
-                                {
-                                    descriptions.current.map((des, i) => {
-                                        return (
-                                            <div key={i}>
-                                                <PacakgeDescription>
-                                                    <p>{des}</p>
-                                                </PacakgeDescription>
-                                            </div>
-                                        )
-                                    })
-                                }
-                                { !showAddButton &&
-                                <DescriptionWrapper>
-                                    <AddNewItemInput 
-                                        type="text" 
-                                        id="description" 
-                                        name="description" 
-                                        placeholder="Package Description" 
-                                        value={description}
-                                        onChange={event => handleChangeDescription(event)}
-                                    />
-                                    <SaveDescriptionButton onClick={saveDescription}>Save</SaveDescriptionButton>
-                                </DescriptionWrapper>
-                                }
+                            {
+                                descriptions.current.map((des, i) => {
+                                    return (
+                                        <div key={i}>
+                                            <PacakgeDescription>
+                                                <p>{des}</p>
+                                                <RemoveButton onClick={event => removeDescription(event, i)}> X </RemoveButton>
+                                            </PacakgeDescription>
+                                        </div>
+                                    )
+                                })
+                            }
+                            { !showAddButton &&
+                            <DescriptionWrapper>
+                                <AddNewItemInput 
+                                    type="text" 
+                                    id="description" 
+                                    name="description" 
+                                    placeholder="Package Description" 
+                                    value={description}
+                                    onChange={event => handleChangeDescription(event)}
+                                />
+                                <SaveDescriptionButton onClick={saveDescription}>Save</SaveDescriptionButton>
+                            </DescriptionWrapper>
+                            }
                             { showAddButton &&
                                 <AddDescriptionButton onClick={addDescription}>+ Add Description</AddDescriptionButton>
                             }
@@ -175,7 +189,7 @@ const PackageSponsorTab = ({ }) => {
                             <CancelButton onClick={cancelNewItems}>Cancel</CancelButton>
                         </FormButtonWrapper>
                     </AddItemForm>
-                    <div>
+                    <PreviewWrapper>
                         <h4>Preview</h4>
                         <p>Title: {title}</p>
                         <p>Price: ${price}</p>
@@ -184,12 +198,12 @@ const PackageSponsorTab = ({ }) => {
                             <ul>
                                 {
                                     descriptions.current.map((des, i) => {
-                                        return <li key={i}>{des}</li>
+                                        return <PreviewDescriptionList key={i}>{des}</PreviewDescriptionList>
                                     })
                                 }
                             </ul>
                         </div>
-                    </div>
+                    </PreviewWrapper>
                 </NewItemWrapper>
                 }
                 { !showNewItem &&

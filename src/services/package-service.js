@@ -1,4 +1,4 @@
-import { collection, getDocs, getDoc, setDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore'
+import { collection, getDocs, getDoc, setDoc, updateDoc, addDoc, deleteDoc, doc } from 'firebase/firestore'
 // firebase
 import { db } from '../firbase-config';
 
@@ -16,9 +16,9 @@ const getPackageById = async (id) => {
     const data = await getDoc(packageDoc);
 
     if (data.data()) {
-        const package = { ...data.data(), id: data.id };
-        console.log('res', package);
-        return package;
+        const pack = { ...data.data(), id: data.id };
+        console.log('res', pack);
+        return pack;
     } else {
         console.log({ ...data.data(), id: data.id });
         return false;
@@ -26,20 +26,26 @@ const getPackageById = async (id) => {
 }
 
 const postPackage = async (fields) => {
-    const packageRef = await addDoc(packageCollectionRef);
-    const id = packageRef.id;
-    const packageDoc = await setDoc(packageRef, id, fields);
+    await addDoc(collection(db, 'packages'), fields);
+    // const id = packageRef.id;
+    // console.log(id);
+    // const packageDoc = await setDoc(packageRef, id, fields);
 
-    console.log(packageDoc.data, packageDoc.id);
+    // console.log(packageDoc.data, packageDoc.id);
+    console.log('test')
 }
 
-const putPackage = (id, fields) => {
+const putPackage = async (id, fields) => {
     const packageDoc = doc(packageCollectionRef, id);
     await updateDoc(packageDoc, fields);
     //setDoc
 }
 
-export class PackageFields {
+const deletePackage = async () => {
+
+}
+
+class PackageFields {
     fields = {}
 
     clear() {
@@ -62,10 +68,15 @@ export class PackageFields {
         return this;
     }
 }
+export const packageFields = new PackageFields();
 
-export const PackageService = {
+const PackageService = {
     getPackages,
     getPackageById,
     postPackage,
-    putPackage
+    putPackage,
+    deletePackage,
+    PackageFields,
 }
+
+export default PackageService

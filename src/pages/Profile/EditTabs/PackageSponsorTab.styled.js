@@ -39,6 +39,7 @@ export const SubmitButton = styled(Button)`
 
 export const CancelButton = styled(Button)`
     margin: 10px;
+    background-color: #b3b3b3;
 `
 
 export const FormButtonWrapper = styled.div`
@@ -83,8 +84,14 @@ export const AddNewItemInput = styled(InputBox)`
 `
 
 export const RemoveButton = styled(Button)`
-    padding: 10px;
+    padding: 4px;
     height: 80%;
+    background-color: #b3b3b3;
+    margin-right: 5px;
+    
+    &:hover {
+        background-color: red;
+    }
 `
 
 export const DescriptionWrapper = styled.div`
@@ -119,6 +126,7 @@ export const AddDescriptionButton = styled(Button)`
     display: flex;
     text-align: center;
     justify-content: center;
+    background-color: #b3b3b3;
 `
 
 export const PackageList = styled.div`
@@ -154,8 +162,28 @@ export const DescriptionButtonWrapper = styled.div`
 export const PacakgeDescription = styled.div`
     display: flex;
     flex-direction: row;
-    width: 70%;
-    margin: 10px;
+    font-size: 12px;
+    width: 100%;
+    margin-bottom: 10px;
     padding-left: 10px;
-    background-color: #e1e0e0;
+    background-color: #ededed;
+    border-radius: 4px 4px 4px 4px;
+    overflow: scroll;
+    justify-content: space-between;
+    align-items: center;
+`
+
+export const PreviewWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: #ededed;
+    width: 40%;
+    height: 60%;
+    border-radius: 6px 6px 6px 6px;
+    overflow: scroll;
+`
+
+export const PreviewDescriptionList = styled.li`
+    margin: 10px;
+    text-align:left;
 `
