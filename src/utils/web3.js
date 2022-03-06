@@ -40,9 +40,9 @@ class Web3Helper {
     }
 
     async getAccounts() {
-        // const sig = await this.provider.request({
-        //     method: "eth_requestAccounts",
-        // });
+        const sig = await this.provider.request({
+            method: "eth_requestAccounts",
+        });
         const accounts = await this.web3.eth.getAccounts();
         console.log('get accounts', accounts);
         return accounts;

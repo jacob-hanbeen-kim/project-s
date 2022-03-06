@@ -29,8 +29,6 @@ const Settings = ({ }) => {
     return (
 
         <ProfileSettingContainer>
-            {
-                currentUser ?
                     <>
                         <SidebarContainer>
                             <SidebarWrapper>
@@ -87,9 +85,6 @@ const Settings = ({ }) => {
                         </ProfileWrapper>
                         </ProfileContainer>
                     </>
-                    :
-                    <ErrorPage />
-            }
         </ProfileSettingContainer>
     )
 }
