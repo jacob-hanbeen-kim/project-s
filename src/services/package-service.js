@@ -41,8 +41,9 @@ const putPackage = async (id, fields) => {
     //setDoc
 }
 
-const deletePackage = async () => {
-
+const deletePackage = async (id) => {
+    const packageDoc = doc(db, "packages", id);
+    await deleteDoc(packageDoc);
 }
 
 class PackageFields {
