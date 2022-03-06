@@ -1,37 +1,6 @@
 import styled from 'styled-components';
-import { Button } from '../../../styles/Button.styled'
-import { InputBox } from '../../../styles/InputBox.styled';
-
-export const PackageSponsorContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-`
-
-export const HeaderWrapper = styled.div`
-    text-align: center;
-    margin: 10px 60px;
-    padding-left: 60px;
-    padding-right: 60px;
-    font-size: 16px;
-    border-bottom-style: solid;
-    border-color: ${({ theme }) => theme.colors.border};
-`
-
-export const NewItemContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin: 10px 60px;
-    padding-left: 60px;
-    padding-right: 60px;
-    font-size: 16px;
-`
-
-export const NewItemWrapper = styled.div`
-    display: flex;
-    flex-direction: row;  
-
-`
+import { Button } from '../../styles/Button.styled'
+import { InputBox } from '../../styles/InputBox.styled';
 
 export const SubmitButton = styled(Button)`
     margin: 10px;
@@ -135,18 +104,6 @@ export const PackageList = styled.div`
     text-align: left
 `
 
-export const NoPackageWrapper = styled.div`
-    display: flex;
-`
-
-export const PackageWrapper = styled.div`
-    display: flex;
-`
-
-export const ExpandButton = styled(Button)`
-
-`
-
 export const SaveDescriptionButton = styled(Button)`
     display:flex;
     text-align: center;
@@ -171,4 +128,19 @@ export const PacakgeDescription = styled.div`
     overflow: scroll;
     justify-content: space-between;
     align-items: center;
+`
+
+export const PreviewWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    background-color: #ededed;
+    width: 40%;
+    height: 60%;
+    border-radius: 6px 6px 6px 6px;
+    overflow: scroll;
+`
+
+export const PreviewDescriptionList = styled.li`
+    margin: 10px;
+    text-align:left;
 `

@@ -7,30 +7,14 @@ import {
     NewItemWrapper,
     AddItemButton,
     ButtonWrapper,
-    AddItemForm,
-    FormNewItems,
-    RemoveButton,
-    AddDescriptionButton,
-    PricePrefix,
-    DescriptionWrapper,
-    FormButtonWrapper,
-    SubmitButton,
-    CancelButton,
-    AddNewItemInput,
-    AddNewItemLabel,
-    PriceInput,
     PackageList,
     PackageWrapper,
     ExpandButton,
     NoPackageWrapper,
-    SaveDescriptionButton,
-    PacakgeDescription,
-    DescriptionButtonWrapper,
-    PreviewWrapper,
-    PreviewDescriptionList
 } from './PackageSponsorTab.styled'
 
 import { useAuth } from '../../../contexts/AuthContext';
+import PackageForm from '../../../components/PackageForm/PackageForm';
 
 const PackageSponsorTab = ({ }) => {
     const { currentUser } = useAuth();
@@ -45,7 +29,6 @@ const PackageSponsorTab = ({ }) => {
     const [showAddButton, setShowAddButton] = useState(true);
     const [showNewItem, setShowNewItem] = useState(false);
     const [showPackage, setShowPackage] = useState(false);
-    const [render, setRender] = useState(false);
 
     const showAddItemForm = () => {
         setShowNewItem(true);
@@ -95,7 +78,6 @@ const PackageSponsorTab = ({ }) => {
         e.preventDefault();
         descriptions.current.push(description);
         setShowAddButton(true);
-        setRender(false);
         setDescription("");
     }
 
@@ -141,69 +123,7 @@ const PackageSponsorTab = ({ }) => {
                 </PackageList>
                 { showNewItem &&
                     <NewItemWrapper id="new_item">
-                    <AddItemForm id="new_item_form">
-                        <FormNewItems>
-                            <AddNewItemLabel> Title of Package</AddNewItemLabel>
-                            <AddNewItemInput type="text" id="title" name="title" placeholder="Title" value={title} onChange={event => handleChangeTitle(event)}/>
-                            <AddNewItemLabel> Price of the Package</AddNewItemLabel>
-                            <div>
-                                <PricePrefix>$</PricePrefix>
-                                <PriceInput type="number" min="0" id="price" name="price" placeholder="Enter price" value={price} onChange={event => {handleChangePrice(event)}}></PriceInput>
-                            </div>
-                            <AddNewItemLabel> Package Description</AddNewItemLabel>
-                            {
-                                descriptions.current.map((des, i) => {
-                                    return (
-                                        <div key={i}>
-                                            <PacakgeDescription>
-                                                <p>{des}</p>
-                                                <RemoveButton onClick={event => removeDescription(event, i)}> X </RemoveButton>
-                                            </PacakgeDescription>
-                                        </div>
-                                    )
-                                })
-                            }
-                            { !showAddButton &&
-                            <DescriptionWrapper>
-                                <AddNewItemInput 
-                                    type="text" 
-                                    id="description" 
-                                    name="description" 
-                                    placeholder="Package Description" 
-                                    value={description}
-                                    onChange={event => handleChangeDescription(event)}
-                                />
-                                <SaveDescriptionButton onClick={saveDescription}>Save</SaveDescriptionButton>
-                            </DescriptionWrapper>
-                            }
-                            { showAddButton &&
-                                <AddDescriptionButton onClick={addDescription}>+ Add Description</AddDescriptionButton>
-                            }
-                        </FormNewItems>
-                        <FormButtonWrapper>
-                            <SubmitButton 
-                                type="submit" 
-                                value="submit" 
-                                onClick={submitNewItems}>Submit
-                            </SubmitButton>
-                            <CancelButton onClick={cancelNewItems}>Cancel</CancelButton>
-                        </FormButtonWrapper>
-                    </AddItemForm>
-                    <PreviewWrapper>
-                        <h4>Preview</h4>
-                        <p>Title: {title}</p>
-                        <p>Price: ${price}</p>
-                        <div>
-                            <p>Descriptions:</p>
-                            <ul>
-                                {
-                                    descriptions.current.map((des, i) => {
-                                        return <PreviewDescriptionList key={i}>{des}</PreviewDescriptionList>
-                                    })
-                                }
-                            </ul>
-                        </div>
-                    </PreviewWrapper>
+                    <PackageForm/>
                 </NewItemWrapper>
                 }
                 { !showNewItem &&
