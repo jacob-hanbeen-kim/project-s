@@ -9,10 +9,13 @@ export const TabContainer = styled.nav`
     border-bottom: 1px solid ${({ theme }) => theme.colors.border};
     z-index: 9;
 
-    width: 100vw;
+    /* width: 100vw; */
+    width: 100%;
 
-    position: sticky;
-    top: 4.2rem;
+    position: ${props => props.sticky ? 'sticky' : 'relative'};
+    ${props => props.sticky && `
+        top: 4.2rem;   
+    `}
     overflow: hidden;
 
     background-color: ${({ theme }) => theme.colors.navbar};
@@ -57,10 +60,11 @@ export const Tab = styled.a`
 `
 
 export const TabPanel = styled.div`
-    min-height: 400px;
-    width: 100vw;
+    /* min-height: 400px; */
+    /* width: 100vw; */
+    /* height: 100vh; */
 
-    border: 0px;
-    margin: 0px;
-    padding: 0px;
+    /* border: 0px; */
+    /* margin: 0px; */
+    /* padding: 0px; */
 `

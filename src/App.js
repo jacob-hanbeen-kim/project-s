@@ -15,6 +15,7 @@ import { Footer, Navbar, Sidebar } from './components/'
 import Waitlist from './pages/Waitlist/Waitlist';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
+import Explore from './pages/Explore/Explore';
 import Account from './pages/Account/Account';
 import Brand from './pages/Brands/Brands';
 import Agents from './pages/Agents/Agents';
@@ -31,6 +32,8 @@ import { AuthProvider } from './contexts/AuthContext';
 // setBalance(Number(accBalanceEth).toFixed(6));
 
 function App() {
+
+  console.log(process.env.PUBLIC_URL)
 
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
@@ -61,6 +64,7 @@ function App() {
                   <Route path="/agents" element={<Agents />} />
                   <Route path="/account" element={<Account />} />
                   <Route path="/account/:username" element={<Account />} />
+                  <Route path="/explore" element={<Explore />} />
                   <Route path="/membership" element={<Membership />} />
                   <Route path="/account/settings" element={<Settings userType={"sponsee"} />} />
                   <Route path="*" element={<ErrorPage />} />

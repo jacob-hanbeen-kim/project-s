@@ -1,9 +1,18 @@
-import { collection, getDocs, getDoc, setDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore'
+import { collection, getDocs, getDoc, query, where, setDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore'
 // firebase
 import { db } from '../firbase-config';
 
-const getUsers = async () => {
+const getUsers = async (filter = null) => {
     const usersCollectionRef = collection(db, "users");
+
+    if (filter) {
+        const w = [];
+        filter.forEach((f) => {
+            w.push(f.key, '==', f.value);
+        })
+        usersCollectionRef = query(usersCollectionRef, w)
+    }
+
     const data = await getDocs(usersCollectionRef);
     const users = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     return users;
