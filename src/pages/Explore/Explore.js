@@ -11,10 +11,13 @@ import ExploreList from './ExploreList/ExploreList'
 import { Tabs } from '../../components'
 import UserService from '../../services/users-service'
 
-const localData = require('./data.json');;
+// const localData = require('./data.json');;
+const localData = require('./ExploreList/data.json');;
 
 const filterData = ({ tableData, filters }) => {
     console.log(filters, !filters);
+
+    return tableData;
     if (!filters) return tableData;
 
     let filteredData = [];

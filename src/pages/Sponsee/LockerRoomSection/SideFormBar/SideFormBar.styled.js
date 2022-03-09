@@ -8,37 +8,50 @@ export const Container = styled.aside`
     display: flex;
     flex-direction: column;
 
-    height: 100vh;
+    /* height: 100vh; */
+    height: 100%;
     min-width: 20vw;
 
-    margin-right: 50px;
-    
-    border-right: 2px solid ${({ theme }) => theme.colors.border};
-    background-color: ${({ theme }) => theme.colors.sidebar};
 
     /* @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
         flex-direction: column;
     } */
 `
 
-export const TeamDesignContainer = styled.div`
+export const UploadContainer = styled.div`
     padding: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    height: 25%;
 `
 
-export const SponsorDesignContainer = styled.div`
+export const Uploader = styled.div`
+    width: 250px;
+    height: 100%;
+    border: 1px dashed;
+`
+
+export const ApparelListContainer = styled.div`
     margin: 0px;
     padding: 20px;
-    height: 100%;
+    height: 75%;
 
-    border-top: 2px solid ${({ theme }) => theme.colors.border};
-    background-color: ${({ theme }) => theme.colors.primary};
+    position:relative;
+
+    /* border-top: 2px solid ${({ theme }) => theme.colors.border}; */
+    /* background-color: ${({ theme }) => theme.colors.primary}; */
 `
 
-export const Or = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
+export const ApparelList = styled.div`
+    position: sticky;
+    top: 0;
+    height: 100%;
+    overflow-y: scroll;
+`
 
-    margin: 30px;
+export const ApparelItem = styled.div`
+    width: 250px;
+    height: 200px;
+
+    padding: 20px;
+    ${(props) => props.selected && `background-color: ${props.theme.colors.border};`};
 `

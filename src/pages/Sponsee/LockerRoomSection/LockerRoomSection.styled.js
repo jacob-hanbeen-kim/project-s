@@ -5,7 +5,7 @@ export const Container = styled.div`
     flex-direction: row;
     /* flex-wrap: wrap; */
     padding: 20px 48px ;
-    /* height: 100vh; */
+    height: 100vh;
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
         flex-direction: column;
@@ -13,11 +13,13 @@ export const Container = styled.div`
 `
 
 export const SideBarContainer = styled.div`
-    
+    border-right: 2px solid ${({ theme }) => theme.colors.border};
+    background-color: ${({ theme }) => theme.colors.sidebar};
 
+    margin-right: 50px;
+    /* height: 100vh; */
 `
 
 export const ApparelContainer = styled.div`
     
-
 `
