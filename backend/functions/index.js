@@ -1,10 +1,10 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin')
 const serviceAccount = require('./ServiceAccountKey.json');
-// const cors = require('cors');
-// const app = require('./stripeserver')();
 
-
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+});
 
 // This is your test secret API key.
 const stripe = require('stripe')('sk_test_51KY5NXLufHWgSCuMPZB2PoCXl8z5TDkM5vWOWk7xu16gGGwfakArJieMFU1idt7Du09YYW50e6rHFf0a2MhyCX9p00aYwrGqXz');
@@ -12,20 +12,21 @@ const stripe = require('stripe')('sk_test_51KY5NXLufHWgSCuMPZB2PoCXl8z5TDkM5vWOW
 // If you are testing with the CLI, find the secret by running 'stripe listen'
 // If you are using an endpoint defined with the API or dashboard, look in your webhook settings
 // at https://dashboard.stripe.com/webhooks
-// const endpointSecret = 'whsec_...';
-const endpointSecret = "whsec_2ddc73e72983d0f2530966141f54fa3e27fb92e9e3487f4ce8fc2cf0a4dca701";
+const endpointSecret = "whsec_2ddc73e72983d0f2530966141f54fa3e27fb92e9e3487f4ce8fc2cf0a4dca701"; // for cli testing
+// const endpointSecret = "whsec_O4IUVzanRmyp71KyWC1nTThfW6OGVyjV"; // for defiact stripe
 const express = require('express');
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
-// module.exports = function() {
-  const app = express();
+const app = express();
   app.use(cors({origin:true}));
-  
+  app.use(bodyParser.raw({type: "*/*"}));
+  app.use(bodyParser.json());
+
   app.get('/', (req, res) => {
       res.send('Hello from server!');
   });
-
-  app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
+  app.post('/webhook', bodyParser.raw({type: 'application/json'}), (request, response) => {
     let event = request.body;
     // Only verify the event if you have an endpoint secret defined.
     // Otherwise use the basic event deserialized with JSON.parse
@@ -34,7 +35,7 @@ const cors = require('cors');
       const signature = request.headers['stripe-signature'];
       try {
         event = stripe.webhooks.constructEvent(
-          request.body,
+          request.rawBody, // local testing 일때는 request.body, deploy할때는 request.rawBody. Cloud Function이 json body parsing을 자동으로 하기 때문.
           signature,
           endpointSecret
         );
@@ -66,23 +67,21 @@ const cors = require('cors');
     response.send();
   });
 
-  exports.stripeServerApp = functions.https.onRequest(app);
+//   exports.stripeServerApp = functions.https.onRequest(app);
 
 
-// }
-  // app.listen(4242, () => console.log('Running on port 4242'));
-
-
-
+// for local testing
+  app.listen(4242, () => console.log('Running on port 4242')); 
 
 
 
 
 
 
-// admin.initializeApp({
-//     credential: admin.credential.cert(serviceAccount)
-// });
+
+
+
+
 
 // const uid = 'some-uid';
 // admin.auth().createCustomToken(uid)
