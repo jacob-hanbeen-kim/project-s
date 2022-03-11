@@ -51,7 +51,7 @@ function App() {
         <Router basename={process.env.PUBLIC_URL}>
           <AuthProvider>
             <FlexWropper>
-              {/* <Navbar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} /> */}
+              <Navbar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} />
               {
                 isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} />
               }
@@ -60,8 +60,6 @@ function App() {
                   {/* <Route path="/" element={<Home />} /> */}
                   <Route path="/" element={<Waitlist />} />
                   <Route path="/login" element={<Login />} />
-                  <Route path="/brands" element={<Brand />} />
-                  <Route path="/agents" element={<Agents />} />
                   <Route path="/account" element={<Account />} />
                   <Route path="/account/:username" element={<Account />} />
                   <Route path="/explore" element={<Explore />} />
