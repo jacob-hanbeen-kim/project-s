@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import  PackageService  from '../../../services/package-service';
+import  UserPackageService  from '../../../services/user-package-service';
 import {
     PackageSponsorContainer,
     HeaderWrapper,
@@ -17,13 +17,6 @@ import { useAuth } from '../../../contexts/AuthContext';
 import PackageForm from '../../../components/PackageForm/PackageForm';
 
 const PackageSponsorTab = ({ }) => {
-    const { currentUser } = useAuth();
-    const packageFields = new PackageService.PackageFields();
-
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [price, setPrice] = useState(0);
-    const descriptions = useRef([]);
     const packages = useRef([]);
 
     const [showAddButton, setShowAddButton] = useState(true);
@@ -33,65 +26,6 @@ const PackageSponsorTab = ({ }) => {
     const showAddItemForm = () => {
         setShowNewItem(true);
     };
-
-    const cancelNewItems = (e) => {
-        e.preventDefault();
-        descriptions.current = [];
-        setTitle("");
-        setPrice(0);
-        setDescription('');
-        setShowNewItem(false);
-        setShowAddButton(true);
-    }
-
-    const submitNewItems = async (event) => {
-        event.preventDefault();
-        setShowPackage(true);
-        setShowNewItem(false);
-        const val =  packageFields
-            .setTitle(title)
-            .setPrice(price)
-            .setDescription(descriptions.current)
-        await PackageService.postPackage(val.fields);
-        setTitle("");
-        setPrice(0);
-        setDescription('');
-    }
-
-    const addDescription = (e) => {
-        e.preventDefault();
-        setShowAddButton(false);
-        setDescription('');
-    }
-    
-    const removeDescription = (e, index) => {
-        e.preventDefault();
-        // console.log(descriptions)
-        // console.log(descriptions.current)
-        if(descriptions.current.length > 0) {
-            descriptions.current.splice(index, 1);
-            setDescription(null);
-        }
-    }
-
-    const saveDescription = (e) => {
-        e.preventDefault();
-        descriptions.current.push(description);
-        setShowAddButton(true);
-        setDescription("");
-    }
-
-    const handleChangeDescription = (event) => {
-        setDescription(event.target.value);
-    }
-
-    const handleChangeTitle = (event) => {
-        setTitle(event.target.value);
-    }
-
-    const handleChangePrice = (event) => {
-        setPrice(event.target.value);
-    }
 
     return (
         <PackageSponsorContainer>
@@ -122,9 +56,9 @@ const PackageSponsorTab = ({ }) => {
                 }   
                 </PackageList>
                 { showNewItem &&
-                    <NewItemWrapper id="new_item">
-                    <PackageForm/>
-                </NewItemWrapper>
+                    <NewItemWrapper>
+                        <PackageForm/>
+                    </NewItemWrapper>
                 }
                 { !showNewItem &&
                     <ButtonWrapper>

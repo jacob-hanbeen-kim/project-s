@@ -17,11 +17,12 @@ import {
     PreviewWrapper,
     PreviewDescriptionList
 } from './PackageForm.styled'
-import PackageService  from '../../services/package-service';
+import { useAuth } from '../../contexts/AuthContext';
+import UserPackageService, {packageFields} from '../../services/user-package-service';
 
 const PackageForm = () => {
 
-    const packageFields = new PackageService.PackageFields();
+    const { currentUser } = useAuth();
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -32,15 +33,17 @@ const PackageForm = () => {
     const [showAddButton, setShowAddButton] = useState(true);
     const [showNewItem, setShowNewItem] = useState(false);
     const [showPackage, setShowPackage] = useState(false);
+    const [cancelPackage, setCancelPackage] = useState(true);
 
     const cancelNewItems = (e) => {
         e.preventDefault();
+        setShowNewItem(false);
+        setShowAddButton(true);
+        setCancelPackage(false);
         descriptions.current = [];
         setTitle("");
         setPrice(0);
         setDescription('');
-        setShowNewItem(false);
-        setShowAddButton(true);
     }
 
     const submitNewItems = async (event) => {
@@ -51,7 +54,7 @@ const PackageForm = () => {
             .setTitle(title)
             .setPrice(price)
             .setDescription(descriptions.current)
-        await PackageService.postPackage(val.fields);
+        await UserPackageService.postUserPackage(currentUser.id, val.fields)
         setTitle("");
         setPrice(0);
         setDescription('');
@@ -89,7 +92,10 @@ const PackageForm = () => {
     const handleChangePrice = (event) => {
         setPrice(event.target.value);
     }
+
     return (
+        <>
+        { cancelPackage &&
         <>
         <AddItemForm id="new_item_form">
             <FormNewItems>
@@ -154,6 +160,8 @@ const PackageForm = () => {
                 </ul>
             </div>
         </PreviewWrapper>
+        </>
+        }
         </>
     );
 }
