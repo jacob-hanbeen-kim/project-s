@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import  UserPackageService  from '../../../services/user-package-service';
 import {
     PackageSponsorContainer,
     HeaderWrapper,
@@ -9,11 +8,9 @@ import {
     ButtonWrapper,
     PackageList,
     PackageWrapper,
-    ExpandButton,
     NoPackageWrapper,
 } from './PackageSponsorTab.styled'
 
-import { useAuth } from '../../../contexts/AuthContext';
 import PackageForm from '../../../components/PackageForm/PackageForm';
 
 const PackageSponsorTab = ({ }) => {

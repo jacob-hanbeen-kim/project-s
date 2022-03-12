@@ -45,8 +45,12 @@ class UserFields {
         return this;
     }
 
-    setName(name) {
-        this.fields['name'] = name;
+    setFirstName(firstName) {
+        this.fields['firstName'] = firstName;
+        return this;
+    }
+    setLastName(lastName) {
+        this.fields['lastName'] = lastName;
         return this;
     }
 

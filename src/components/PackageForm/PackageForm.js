@@ -95,8 +95,6 @@ const PackageForm = () => {
 
     return (
         <>
-        { cancelPackage &&
-        <>
         <AddItemForm id="new_item_form">
             <FormNewItems>
                 <AddNewItemLabel> Title of Package</AddNewItemLabel>
@@ -160,8 +158,6 @@ const PackageForm = () => {
                 </ul>
             </div>
         </PreviewWrapper>
-        </>
-        }
         </>
     );
 }
