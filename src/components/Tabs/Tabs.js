@@ -7,12 +7,14 @@ import {
 
 import React, { useState } from 'react';
 
-const Tabs = ({ children, sticky, top }) => {
+const Tabs = ({ children, onClick, sticky, top }) => {
 
     const [activeTab, setActiveTab] = useState(children[0].props.label);
 
     const handleClick = (e, newActiveTab) => {
         e.preventDefault();
+        console.log('current', activeTab);
+        onClick && onClick(newActiveTab);
         setActiveTab(newActiveTab);
     };
 

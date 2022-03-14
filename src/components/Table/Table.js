@@ -11,7 +11,7 @@ import {
     TableDataSticky
 } from './Table.styled'
 
-const Table = ({ headers, datas }) => {
+const Table = ({ headers, datas, onClick }) => {
     return (
         <Container>
             <TableWrapper>
@@ -34,7 +34,7 @@ const Table = ({ headers, datas }) => {
                         {datas.map((row) => {
                             return (
                                 <TableRow key={row.id}>
-                                    <TableDataSticky>{row.name}</TableDataSticky>
+                                    <TableDataSticky data-id={row.id} onClick={onClick}>{row.name}</TableDataSticky>
                                     <TableData>{row.sports}</TableData>
                                     <TableData>{row.location}</TableData>
                                     <TableData>{row.description}</TableData>

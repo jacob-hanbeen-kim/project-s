@@ -3,14 +3,18 @@ import { collection, getDocs, getDoc, query, where, setDoc, updateDoc, deleteDoc
 import { db } from '../firbase-config';
 
 const getUsers = async (filter = null) => {
-    const usersCollectionRef = collection(db, "users");
+    let usersCollectionRef = collection(db, "users");
 
     if (filter) {
-        const w = [];
-        filter.forEach((f) => {
-            w.push(f.key, '==', f.value);
-        })
-        usersCollectionRef = query(usersCollectionRef, w)
+        // const w = [];
+        // filter.forEach((f) => {
+        //     w.push(f.key, '==', f.value);
+        // })
+
+        const key = Object.keys(filter)[0];
+        const value = filter[key].toLowerCase();
+        console.log(key, value);
+        usersCollectionRef = query(usersCollectionRef, where(key, '==', value));
     }
 
     const data = await getDocs(usersCollectionRef);

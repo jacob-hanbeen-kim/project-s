@@ -3,6 +3,7 @@ import {
 } from './ExploreList.styled'
 
 import { useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Table } from '../../../components';
 
 
@@ -28,8 +29,12 @@ const sortData = ({ tableData, sortKey, reverse }) => {
 
 const ExploreList = ({ data }) => {
 
+    const navigate = useNavigate();
+
     const [sortKey, setSortKey] = useState('name');
     const [sortOrder, setSortOrder] = useState(SORT_ORDER.Ascending);
+
+    console.log(data);
 
     const headers = [
         { key: "name", label: "Name" },
@@ -43,9 +48,17 @@ const ExploreList = ({ data }) => {
         [data, sortKey, sortOrder]
     );
 
+    const navigateToAccount = (e) => {
+        // console.log();
+        // console.log(e.target.innerText);
+        const userId = e.target.dataset.id;
+        const accountName = e.target.innerText;
+        navigate(`/account/${accountName}`, { state: { userId: userId } });
+    }
+
     return (
         <TableContainer>
-            <Table headers={headers} datas={sortedData()} />
+            <Table headers={headers} datas={sortedData()} onClick={navigateToAccount} />
         </TableContainer>
     )
 }

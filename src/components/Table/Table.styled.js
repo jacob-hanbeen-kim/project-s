@@ -40,6 +40,12 @@ export const StyledTable = styled.table`
         border-right: 1px solid ${borderColor};
     }
 
+    & td:first-child:hover {
+        /* border: 1px solid red; */
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
     & th,
     & td {
         padding: 0px 20px;

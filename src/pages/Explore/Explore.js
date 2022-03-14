@@ -12,45 +12,29 @@ import { Tabs } from '../../components'
 import UserService from '../../services/users-service'
 
 // const localData = require('./data.json');;
-const localData = require('./ExploreList/data.json');;
-
-const filterData = ({ tableData, filters }) => {
-    console.log(filters, !filters);
-
-    return tableData;
-    if (!filters) return tableData;
-
-    let filteredData = [];
-
-    // UserService.getUsers().then((res) => {
-    //     filteredData = res;
-    //     console.log('res', res);
-    // })
-
-    // const filteredData = tableData.filter((data) => {
-    //     return data;
-    // });
-
-    return filteredData;
-}
+const localData = require('./ExploreList/data.json');
 
 const Explore = () => {
 
     const [data, setData] = useState([]);
     const [filters, setFilters] = useState(null);
 
-    const filteredData = useCallback(
-        () => filterData({ tableData: data, filters }),
-        [data, filters]
-    );
+    const onClickFilter = (label) => {
+        const filter = label === 'All' ? null : { usertype: label };
+
+        UserService.getUsers(filter).then((res) => {
+            setData(res);
+            console.log('filtered', res);
+        });
+    }
 
     useEffect(() => {
-        console.log('res', localData);
-        setData(localData);
-        // UserService.getUsers().then((res) => {
-        //     setData(res);
-        //     console.log('data', res);
-        // })
+        // console.log('res', localData);
+        // setData(localData);
+        UserService.getUsers().then((res) => {
+            setData(res);
+            console.log('data', res);
+        })
     }, [])
 
     return (
@@ -59,12 +43,16 @@ const Explore = () => {
                 <Sidebar setFilters={setFilters} />
             </SidebarContainer>
             <ContentContainer>
-                <Tabs sticky={false}>
-                    <ExploreList label="All" data={filteredData()} />
-                    <div label="Sponsor"></div>
+                <Tabs sticky={false} onClick={onClickFilter}>
+                    <ExploreList label="All" data={data} />
+                    <ExploreList label="Sponsor" data={data} />
+                    <ExploreList label="Team" data={data} />
+                    <ExploreList label="Athelete" data={data} />
+                    <ExploreList label="Other" data={data} />
+                    {/* <div label="Sponsor"></div>
                     <div label="Team"></div>
                     <div label="Athelete"></div>
-                    <div label="Other"></div>
+                    <div label="Other"></div> */}
                 </Tabs>
             </ContentContainer>
         </Container>
