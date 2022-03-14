@@ -20,8 +20,8 @@ import Account from './pages/Account/Account';
 import Brand from './pages/Brands/Brands';
 import Agents from './pages/Agents/Agents';
 import Membership from './pages/Membership/Membership';
+import EditProfile from './pages/Profile/EditProfile';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
-import Settings from './pages/Account/Settings/Settings';
 import { AuthProvider } from './contexts/AuthContext';
 
 // const accBalanceEth = web3.utils.fromWei(
@@ -64,7 +64,7 @@ function App() {
                   <Route path="/account/:username" element={<Account />} />
                   <Route path="/explore" element={<Explore />} />
                   <Route path="/membership" element={<Membership />} />
-                  <Route path="/account/settings" element={<Settings userType={"sponsee"} />} />
+                  <Route path="/account/edit" element={<EditProfile />} />
                   <Route path="*" element={<ErrorPage />} />
                 </Routes>
               </PageWrapper>

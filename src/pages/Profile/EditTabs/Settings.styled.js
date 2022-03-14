@@ -1,19 +1,17 @@
 import styled from 'styled-components';
-import { FaTimes } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
 import { Flex } from '../../../styles/Flex.styled';
 import { InputBox } from '../../../styles/InputBox.styled';
-import { Button } from '../../../styles/Button.styled';
 
 export const SidebarContainer = styled.aside`
-    width: 20%;
     z-index: 100;
+    width:20%;
 
-    position: left;
+    position: right;
+    overflow: auto;
     right: 0px;
     bottom: 0px;
     background-color: ${({ theme }) => theme.colors.sidebar};
-    overflow: auto;
     filter: drop-shadow(rgba(0, 0, 0, 0.25) 0px 4px 4px);
     transition: transform 0.3s ease 0s, opacity 0.3s ease 0s;
     visibility: visible;
@@ -22,12 +20,17 @@ export const SidebarContainer = styled.aside`
 
     // animation
     transform: translate3d(0px, 0px, 0px) translate3d(0px, 0px, 0px);
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        font-size: ${({ big }) => big ? '16px' : '14px'};
+        width:25%;
+    }
 `
 
 export const SidebarWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100%;
+    width: 10%;
 `
 export const SidebarMenu = styled.div`
     background-color: ${({ theme }) => theme.colors.sidebar};
@@ -62,6 +65,10 @@ export const MenuList = styled.ul`
         font-size: 16px;
         flex-shrink: 0;
     }
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        font-size: ${({ big }) => big ? '16px' : '14px'};
+    }
 `
 export const SidebarLink = styled(NavLink)`
     -webkit-box-align: center;
@@ -73,7 +80,6 @@ export const SidebarLink = styled(NavLink)`
     height: 100%;
     padding: 0px 20px;
     position: relative;
-    /* width: 100%; */
     text-decoration: none;
     cursor: pointer;
 
@@ -82,20 +88,31 @@ export const SidebarLink = styled(NavLink)`
         opacity: 1.0;
     } 
 `
-//Profile Edit Container
-export const ProfileEditContainer = styled.form`
+
+export const ProfileContainer = styled.div`
     display: flex;
-    width: 40%;
-    background-color: red;
+    align-items: center;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        font-size: ${({ big }) => big ? '16px' : '14px'};
+        flex-direction: column-reverse;
+        justify-content: space-between;
+
+    }
 `
 
 export const ProfileEditWrapper = styled.form`
     display: flex;
     width: 40%;
-    /* background-color: red; */
     flex-direction: column;
     height: 100%;
     padding: 0px 50px;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        font-size: ${({ big }) => big ? '16px' : '14px'};
+        width: 100%;
+        margin: 20px 10px;
+    }
 `
 
 export const ProfileEditInput = styled(InputBox)`
@@ -107,7 +124,14 @@ export const ProfileEditLabel = styled.label`
 `
 
 export const ProfileSettingContainer = styled(Flex)`
+    display:flex;
     flex-direction: row;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        font-size: ${({ big }) => big ? '16px' : '14px'};
+        text-align: left;
+        flex-direction: row;
+    }
 `
 
 export const CheckboxWrapper = styled.div`
@@ -132,7 +156,6 @@ export const SubmitButton = styled.input`
     border-radius: ${({ theme }) => theme.border.radius};
     border: 1px solid ${props => props.invert ? props.theme.colors.invert : props.theme.colors.primary};
     
-    /* padding: ${({ big }) => big ? '14px 48px' : '12px 30px'}; */
     padding: 10px 20px;
     margin: 10px;
     cursor: pointer;
@@ -148,7 +171,7 @@ export const SubmitButton = styled.input`
         transform: scale(0.98);
     }
 
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeS}) {
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
         font-size: ${({ big }) => big ? '16px' : '14px'};
     }
 `
@@ -163,11 +186,13 @@ export const ProfileWrapper = styled.div`
     align-items: center;
     justify-content: center;
     justify-items: center;
-`
 
-export const UploadButton = styled.button`
-    padding: 10px 20px;
-    margin: 10px;
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        font-size: ${({ big }) => big ? '16px' : '14px'};
+        justify-content: flex-start;
+        margin-top: 50px;
+        width: 100%;
+    }
 `
 
 export const TopLine = styled.h1`
