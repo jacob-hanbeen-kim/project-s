@@ -1,6 +1,6 @@
 import { collection, getDocs, getDoc, setDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore'
 // firebase
-import { db } from '../firbase-config';
+import { db } from '../firebase-config';
 
 const getUsers = async () => {
     const usersCollectionRef = collection(db, "users");

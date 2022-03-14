@@ -16,8 +16,10 @@
     "body-parser": "^1.19.2",
     "cors": "^2.8.5",
     "express": "^4.17.3",
+    "firebase": "^9.6.8",
     "firebase-admin": "^10.0.2",
     "firebase-functions": "^3.18.0",
+    "node-fetch": "^2.6.7",
     "stripe": "^8.207.0"
   },
   "devDependencies": {
