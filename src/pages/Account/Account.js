@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 
 import { useAuth } from '../../contexts/AuthContext';
 import StorageService from '../../services/storage-service';
+import UserService from '../../services/users-service';
 
 const Account = ({ }) => {
 
@@ -62,7 +63,11 @@ const Account = ({ }) => {
 
     useEffect(() => {
         console.log('chainging user to ', currentUser?.name, state);
-        state && setViewUser(state.user);
+        if (state) {
+            UserService.getUserById(state.userId).then((user) => {
+                setViewUser(user);
+            });
+        }
     }, [state])
 
     useEffect(() => {

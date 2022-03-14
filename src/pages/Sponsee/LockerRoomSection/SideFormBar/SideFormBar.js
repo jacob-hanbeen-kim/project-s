@@ -1,8 +1,10 @@
 import {
     Container,
-    TeamDesignContainer,
-    SponsorDesignContainer,
-    Or
+    UploadContainer,
+    ApparelListContainer,
+    ApparelList,
+    ApparelItem,
+    Uploader
 } from './SideFormBar.styled';
 
 import { SearchBox, Input } from '../../../../components';
@@ -11,24 +13,28 @@ import { SearchBox, Input } from '../../../../components';
 const SideFormBar = ({ }) => {
     return (
         <Container>
-            <TeamDesignContainer>
-                <p>Your Team</p>
-                <SearchBox />
-                <p>Color 1</p>
-                <Input />
-                <p>Color 2</p>
-                <Input />
-                <p>Color 3</p>
-                <Input />
-            </TeamDesignContainer>
-            <SponsorDesignContainer>
-                <p>Find Sponsor</p>
-                <SearchBox />
-                <Or>or</Or>
-                <div>
-                    upload photo
-                </div>
-            </SponsorDesignContainer>
+            <UploadContainer>
+                <Uploader />
+            </UploadContainer>
+            <ApparelListContainer>
+                <ApparelList>
+                    <ApparelItem selected={true}>
+                        Home
+                    </ApparelItem>
+                    <ApparelItem>
+                        Away
+                    </ApparelItem>
+                    <ApparelItem>
+                        Training Kit
+                    </ApparelItem>
+                    <ApparelItem>
+                        Training Kit 2
+                    </ApparelItem>
+                    <ApparelItem>
+                        Training Kit 3
+                    </ApparelItem>
+                </ApparelList>
+            </ApparelListContainer>
         </Container>
     )
 }

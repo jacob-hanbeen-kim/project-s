@@ -35,16 +35,22 @@ export const CanvasProvider = ({ children }) => {
         contextRef.current = context;
     }
 
-    function drawPolygon(coOrdStr, context) {
+    function drawPolygon(coOrdStr, context, isHover) {
         var mCoords = coOrdStr.split(',');
         var i, n;
         n = mCoords.length;
 
-        context.moveTo(mCoords[0], mCoords[1]);
+        context.moveTo(mCoords[0] - 0, mCoords[1] - 0);
         for (i = 2; i < n; i += 2) {
-            context.lineTo(mCoords[i], mCoords[i + 1]);
+            context.lineTo(mCoords[i] - 0, mCoords[i + 1] - 0);
         }
-        context.lineTo(mCoords[0], mCoords[1]);
+        context.lineTo(mCoords[0] - 0, mCoords[1] - 0);
+
+        if (!isHover) {
+            context.fill();
+        } else {
+            context.stroke();
+        }
     }
 
     function drawRect(coOrdStr, context, isHover) {
@@ -55,9 +61,68 @@ export const CanvasProvider = ({ children }) => {
         right = mCoords[2];
         bot = mCoords[3];
 
-        isHover ?
-            context.strokeRect(left, top, right - left, bot - top) :
-            context.fillRect(left, top, right - left, bot - top);
+        // isHover ?
+        //     context.strokeRect(left, top, right - left, bot - top) :
+        //     context.fillRect(left, top, right - left, bot - top);
+
+        const x = left - 0;
+        const y = top - 0;
+        const width = right - left;
+        const height = bot - top;
+
+        drawRoundRect(context, x, y, width, height, 5, isHover, isHover);
+    }
+
+    /**
+     * Draws a rounded rectangle using the current state of the canvas.
+     * If you omit the last three params, it will draw a rectangle
+     * outline with a 5 pixel border radius
+     * @param {CanvasRenderingContext2D} ctx
+     * @param {Number} x The top left x coordinate
+     * @param {Number} y The top left y coordinate
+     * @param {Number} width The width of the rectangle
+     * @param {Number} height The height of the rectangle
+     * @param {Number} [radius = 5] The corner radius; It can also be an object 
+     *                 to specify different radii for corners
+     * @param {Number} [radius.tl = 0] Top left
+     * @param {Number} [radius.tr = 0] Top right
+     * @param {Number} [radius.br = 0] Bottom right
+     * @param {Number} [radius.bl = 0] Bottom left
+     * @param {Boolean} [fill = false] Whether to fill the rectangle.
+     * @param {Boolean} [stroke = true] Whether to stroke the rectangle.
+     */
+    function drawRoundRect(ctx, x, y, width, height, radius, fill, stroke) {
+        if (typeof stroke === 'undefined') {
+            stroke = true;
+        }
+        if (typeof radius === 'undefined') {
+            radius = 5;
+        }
+        if (typeof radius === 'number') {
+            radius = { tl: radius, tr: radius, br: radius, bl: radius };
+        } else {
+            var defaultRadius = { tl: 0, tr: 0, br: 0, bl: 0 };
+            for (var side in defaultRadius) {
+                radius[side] = radius[side] || defaultRadius[side];
+            }
+        }
+
+        ctx.moveTo(x + radius.tl, y);
+        ctx.lineTo(x + width - radius.tr, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + radius.tr);
+        ctx.lineTo(x + width, y + height - radius.br);
+        ctx.quadraticCurveTo(x + width, y + height, x + width - radius.br, y + height);
+        ctx.lineTo(x + radius.bl, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - radius.bl);
+        ctx.lineTo(x, y + radius.tl);
+        ctx.quadraticCurveTo(x, y, x + radius.tl, y);
+
+        if (fill) {
+            ctx.fill();
+        }
+        if (stroke) {
+            ctx.stroke();
+        }
     }
 
     function drawCircle(coordon, context, isHover) {

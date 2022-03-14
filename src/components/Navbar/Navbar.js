@@ -49,21 +49,22 @@ const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
                     <MenuItems>
                         <DropdownList>
                             <DropdownItem>
-                                <StyledNavLink to="/brands">Brands</StyledNavLink>
+                                <StyledNavLink to="/explore">Explore</StyledNavLink>
+                                {/* <StyledNavLink to="/brands">Brands</StyledNavLink> */}
                                 <DropdownContent>
                                     <SubNavLink to="/brands/tiers">By Tiers</SubNavLink>
                                     <SubNavLink to="/brands/nations">By Nations</SubNavLink>
                                     <SubNavLink to="/brands/sports">By Sports</SubNavLink>
                                 </DropdownContent>
                             </DropdownItem>
-                            <DropdownItem>
+                            {/* <DropdownItem>
                                 <StyledNavLink to="/agents">Agents</StyledNavLink>
                                 <DropdownContent>
                                     <SubNavLink to="/agents/tiers">By Tiers</SubNavLink>
                                     <SubNavLink to="/agents/nations">By Nations</SubNavLink>
                                     <SubNavLink to="/agents/sports">By Sports</SubNavLink>
                                 </DropdownContent>
-                            </DropdownItem>
+                            </DropdownItem> */}
                         </DropdownList>
                     </MenuItems>
                     <DropdownItem>

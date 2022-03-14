@@ -40,6 +40,8 @@ import InputWithButton from './InputWithButton/InputWithButton';
 import Text from './Text/Text';
 import Image from './Image/Image';
 
+import Table from './Table/Table';
+
 export {
     Card, Card2,
     Carousel,
@@ -63,5 +65,6 @@ export {
     Input,
     InputWithButton,
     Text,
-    Image
+    Image,
+    Table
 };
