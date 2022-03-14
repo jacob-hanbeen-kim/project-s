@@ -3,20 +3,12 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
-
-// TODO: put all secret keys in .env.
-
-// This is your test secret API key.
 const stripe = require("stripe")(
-  "sk_test_51KY5NXLufHWgSCuMPZB2PoCXl8z5TDkM5vWOWk7xu16gGGwfakArJieMFU1idt7Du09YYW50e6rHFf0a2MhyCX9p00aYwrGqXz"
+  process.env.STRIPE_TEST_SECRET_API_KEY
 );
+require('dotenv').config();
 
-// Replace this endpoint secret with your endpoint's unique secret
-// If you are testing with the CLI, find the secret by running 'stripe listen'
-// If you are using an endpoint defined with the API or dashboard, look in your webhook settings
-// at https://dashboard.stripe.com/webhooks
-// const endpointSecret = "whsec_2ddc73e72983d0f2530966141f54fa3e27fb92e9e3487f4ce8fc2cf0a4dca701"; // for cli testing
-const endpointSecret = "whsec_O4IUVzanRmyp71KyWC1nTThfW6OGVyjV";
+const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET;
 
 const app = express();
 app.use(cors({ origin: true }));
@@ -24,7 +16,7 @@ app.use(bodyParser.raw({ type: "*/*" }));
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
-  res.send("Hello from server!");
+  res.send("Hello from stripe server!");
   handlePaymentIntentSucceeded(null);
 });
 
@@ -82,18 +74,23 @@ app.post(
 );
 
 function handlePaymentIntentSucceeded(paymentIntent) {
-  // Customer completed payment on your checkout page
-  // Give user subscription level (elite / vip) on firestore database - api call to cloud functions?
+  // Customer completed payment on checkout page
   // TODO: payment intent 안에 있는 user information을 이용해서 db에서 해당 유저를 찾고 membership을 업데이트 해줘야한다.
-  // payment intent의 유저 정보와 DB의 유저 정보를 어떻게 매칭해야하나? 이름만으로는 부족.
-  // payment intent에서 elite로 업그레이드인지, vip로 업그레이드인지 알 수 있어야한다.
+  // payment intent의 유저 정보와 DB의 유저 정보를 어떻게 매칭해야하나? 이름만으로는 부족..
+  // payment intent에서 elite로 업그레이드인지, vip로 업그레이드인지 알 수 있어야한다 (stripe payment link subscription product에 정보를 넣어야함)
+  
+  const userId = "0x8E4124DD649198F41D1443D0253de7d4F7438648";
+  const url = new URL(`/userServiceApp/user/update/${userId}`, process.env.CLOUD_FUNCTIONS_URL);
+  const membershipTo = "elite";
+
+  // update membership through rest api call
   fetch(
-    "https://us-central1-project-s-backend.cloudfunctions.net/userServiceApp/user/update/0x8E4124DD649198F41D1443D0253de7d4F7438648",
+    url,
     {
       method: "PATCH",
       body: JSON.stringify({
         fields: {
-          membership: "basic",
+          membership: membershipTo,
         },
       }),
       headers: {
@@ -107,7 +104,7 @@ function handlePaymentIntentSucceeded(paymentIntent) {
 
 function handlePaymentIntentFailed(paymentIntent) {
   // Customer’s payment was declined by card network or otherwise expired
-  // Reach out to your customer through email or push notification and prompt them to provide another payment method
+  // Reach out to customer through email or push notification and prompt them to provide another payment method
   // 유저가 보고있는 페이지에 notification block 띄우기?
 }
 

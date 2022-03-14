@@ -8,7 +8,6 @@ const {
   doc,
   getFirestore,
 } = require("firebase/firestore");
-// firebase
 const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
