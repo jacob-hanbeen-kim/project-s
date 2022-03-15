@@ -5,7 +5,8 @@ import { db } from '../firbase-config';
 let chatRoomCoolectionRef = collection(db, "chatroom");
 
 const getChatrooms = async (uid) => {
-    chatRoomCoolectionRef = query(chatRoomCoolectionRef, where('members', 'array_contains', uid));
+    console.log(uid);
+    chatRoomCoolectionRef = query(chatRoomCoolectionRef, where('members', 'array-contains', uid));
     const data = await getDocs(chatRoomCoolectionRef);
     const chatrooms = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     return chatrooms;
