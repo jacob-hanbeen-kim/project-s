@@ -51,6 +51,10 @@ export const SendButton = styled.div`
     height: 50px;
     width: 50px;
     padding: 15px;
+
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 export const SendIcon = styled(FaPaperPlane)`

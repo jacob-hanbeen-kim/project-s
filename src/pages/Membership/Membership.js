@@ -53,8 +53,9 @@ const Membership = () => {
                 </HeaderContainer>
                 <MembershipContainer>
                     {
-                        memberships.map((membership) => {
+                        memberships.map((membership, idx) => {
                             return <MembershipCard
+                                key={idx}
                                 membershipType={membership.id}
                                 price={membership.monthly_price}
                                 priceYearly={membership.yearly_price}

@@ -66,7 +66,7 @@ function App() {
                   <Route path="/explore" element={<Explore />} />
                   <Route path="/membership" element={<Membership />} />
                   <Route path="/account/edit" element={<EditProfile />} />
-                  <Route path="/account/message" element={<Negotiate />} />
+                  <Route path="/messages/inbox" element={<Negotiate />} />
                   <Route path="*" element={<ErrorPage />} />
                 </Routes>
               </PageWrapper>

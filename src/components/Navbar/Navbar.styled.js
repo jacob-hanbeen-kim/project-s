@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
-import { FaBars, FaTimes, FaRegUserCircle } from 'react-icons/fa'
+import { FaBars, FaTimes, FaRegUserCircle, FaRegCommentDots, FaCommentDots } from 'react-icons/fa'
 
 export const NavContainer = styled.div`
     background: ${({ theme }) => theme.colors.navbar};
@@ -189,6 +189,30 @@ export const CloseIcon = styled(FaTimes)`
     color: ${({ theme }) => theme.colors.onNavbar};
     opacity: 0.75;
     transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transition: all 0.2s ease-in-out;
+        opacity: 1.0;
+    }
+`
+
+export const MessagesLink = styled(NavLink)`
+    color: ${({ theme }) => theme.colors.onNavbar};
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeS}) {
+        display: none;
+    }
+`
+
+export const MessagesIcon = styled(FaRegCommentDots)`
+    font-size: 2rem;
+    transition: all 0.2s ease-in-out;
+
+    color: ${({ theme }) => theme.colors.onNavbar};
+    opacity: 0.75;
 
     &:hover {
         transition: all 0.2s ease-in-out;

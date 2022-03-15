@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Container,
     SidebarContainer,
@@ -14,21 +14,25 @@ import { useAuth } from '../../contexts/AuthContext';
 
 const Negotiate = () => {
     const { currentUser } = useAuth();
+    const [chatRooms, setChatRooms] = useState([]);
+    const [displayChatRoom, setDisplayChatroom] = useState(null);
 
     useEffect(() => {
         console.log('currentUser', currentUser);
         currentUser && ChatroomService.getChatrooms(currentUser.id).then((res) => {
             console.log(res);
+            setChatRooms(res);
+            setDisplayChatroom(res[0]);
         });
     }, [currentUser])
 
     return (
         <Container>
             <SidebarContainer>
-                <ChatList />
+                <ChatList chatrooms={chatRooms} setDisplayChatroom={setDisplayChatroom} />
             </SidebarContainer>
             <ChatContainer>
-                <ChatBox />
+                <ChatBox chatroom={displayChatRoom} />
             </ChatContainer>
             <PreviewContainer>
                 <ContractPreview />

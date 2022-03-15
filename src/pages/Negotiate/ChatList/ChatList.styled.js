@@ -17,6 +17,7 @@ export const ChatItem = styled.div`
     height: 60px;
 
     &:hover {
-        background-color: red;
+        background-color: ${({ theme }) => theme.colors.surface};
+        cursor: pointer;
     }
 `

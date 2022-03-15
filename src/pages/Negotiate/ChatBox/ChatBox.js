@@ -1,5 +1,8 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useState } from 'react'
+import { useAuth } from '../../../contexts/AuthContext';
+import ChatroomService from '../../../services/chatroom-services';
+import { onSnapshot } from 'firebase/firestore';
 import {
     Container,
     MessageContainer,
@@ -10,44 +13,62 @@ import {
 } from './ChatBox.styled';
 import Message from './Message/Message';
 
-const ChatBox = () => {
+const ChatBox = ({ chatroom }) => {
+    const { currentUser } = useAuth();
     const [formValue, setFormValue] = useState('');
     const [loading, setLoading] = useState(false);
+    const [messages, setMessages] = useState([]);
 
     const dummy = useRef();
 
-    const sendMessage = async (e) => {
+    const sendMessage = (e) => {
         e.preventDefault();
 
-        // 1. get Current User
+        if (formValue) {
+            const fields = ChatroomService.messageFields
+                .setMessage(formValue)
+                .setSender(currentUser.id)
+                .getFields();
 
-        // 2. write to database
-
-        setFormValue('');
-        dummy.current.scrollIntoView({ behavior: 'smooth' });
+            ChatroomService.addMessage(chatroom.id, fields).then(() => {
+                setFormValue('');
+                // dummy.current.scrollIntoView({ behavior: 'smooth' });
+            });
+        }
     }
 
     const onFormValueChange = (e) => {
-        // setLoading(true);
         setFormValue(e.target.value)
-        // dummy.current.scrollIntoView({ behavior: 'smooth' });
     }
+
+    useEffect(() => {
+        console.log('chatroom', chatroom);
+        if (chatroom) {
+            const q = ChatroomService.getMessageByIdQuery(chatroom.id);
+            const unsubscribe = onSnapshot(q, (snapshot) => {
+                const msgs = snapshot.docs.map(doc => doc.data());
+                setMessages(msgs);
+            });
+
+            return unsubscribe;
+        }
+    }, [chatroom])
 
     return (
         <Container>
             <MessageContainer>
-                <Message key={1} message={'hello my name is Jacob. I sent you an offer'} isSender={false} isOffer={true} />
-                <Message key={1} message={'hello my name is Jacob. I sent you an offer'} isSender={true} isOffer={true} />
-                <Message key={1} message={'hello my name is Jacob. I sent you an offer'} isSender={false} isOffer={true} />
-                <Message key={1} message={'hello my name is Jacob. I sent you an offer'} isSender={true} isOffer={true} />
-                <Message key={1} message={'hello my name is Jacob. I sent you an offer'} isSender={true} isOffer={true} />
+                {
+                    messages.map((msg, idx) => (
+                        < Message key={idx} message={msg.message} isSender={msg.sender === currentUser.id} isOffer={false} />
+                    ))
+                }
 
                 <div ref={dummy} />
             </MessageContainer>
             <Form onSubmit={sendMessage}>
                 <Input value={formValue} onChange={(e) => onFormValueChange(e)} placeholder="Message..." />
                 {/* <button type="submit" disabled={!formValue}>Send</button> */}
-                <SendButton>
+                <SendButton onClick={sendMessage}>
                     <SendIcon />
                 </SendButton>
             </Form>
