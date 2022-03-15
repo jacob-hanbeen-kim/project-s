@@ -13,43 +13,53 @@ import {
     SubscriptionIcon,
     BtnWrapper
 } from './MembershipCard.styled';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const MembershipCard = ({
-    option,
+    membershipType,
     price,
     priceYearly,
-    save,
     benefits,
-    isCurrentPlan
+    isCurrentPlan,
+    onClick
 }) => {
+    const [save, setSave] = useState(null);
+
+    useEffect(() => {
+        const orgPrice = price * 12;
+        const saveRate = Math.ceil((1 - priceYearly / orgPrice) * 100);
+        setSave(saveRate);
+    }, [])
+
     return (
         <Container>
             <ContentContainer>
-                <Header>{option}</Header>
+                <Header>{membershipType}</Header>
                 <PriceContainer>
                     <PriceWrap>
-                        {price === null ?
+                        {price === 0 ?
                             <Price>Free</Price> :
                             <>
-                                <Price>{price}</Price>
+                                <Price>${price / 100}</Price>
                                 <Recurrence>/month</Recurrence>
                             </>
                         }
                     </PriceWrap>
-                    {priceYearly &&
+                    {priceYearly > 0 &&
                         <>
                             <Conjunction>or</Conjunction>
                             <PriceWrap>
-                                <Price>{priceYearly}</Price>
+                                <Price>${priceYearly / 100}</Price>
                                 <Recurrence>/year</Recurrence>
                             </PriceWrap>
                         </>
                     }
                 </PriceContainer>
                 {
-                    save &&
+                    save > 0 &&
                     <Tag>
-                        {save}
+                        {save}%
                     </Tag>
                 }
             </ContentContainer>
@@ -65,7 +75,7 @@ const MembershipCard = ({
                     })}
                 </SubscriptionDetails>
                 <BtnWrapper>
-                    <Button disabled={isCurrentPlan}>
+                    <Button disabled={isCurrentPlan} onClick={onClick}>
                         {isCurrentPlan ?
                             'Current Plan' :
                             'Subscribe'
