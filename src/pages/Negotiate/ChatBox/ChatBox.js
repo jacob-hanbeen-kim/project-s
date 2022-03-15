@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useState } from 'react'
 import {
     Container,
@@ -13,26 +14,17 @@ const ChatBox = () => {
     const [formValue, setFormValue] = useState('');
     const [loading, setLoading] = useState(false);
 
+    const dummy = useRef();
+
     const sendMessage = async (e) => {
         e.preventDefault();
 
-        // await messagesRef.add({
-        //     text: formValue,
-        //     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        //     uid,
-        //     photoURL
-        // })
+        // 1. get Current User
 
-        // messages.current.push({
-        //     msg: formValue,
-        //     isSender: sender,
-        // })
+        // 2. write to database
 
-        // console.log(messages.current);
-        // setSender(!sender);
         setFormValue('');
-        // setLoading(false);
-        // setDisplayedMessage(getMessage())
+        dummy.current.scrollIntoView({ behavior: 'smooth' });
     }
 
     const onFormValueChange = (e) => {
@@ -49,6 +41,8 @@ const ChatBox = () => {
                 <Message key={1} message={'hello my name is Jacob. I sent you an offer'} isSender={false} isOffer={true} />
                 <Message key={1} message={'hello my name is Jacob. I sent you an offer'} isSender={true} isOffer={true} />
                 <Message key={1} message={'hello my name is Jacob. I sent you an offer'} isSender={true} isOffer={true} />
+
+                <div ref={dummy} />
             </MessageContainer>
             <Form onSubmit={sendMessage}>
                 <Input value={formValue} onChange={(e) => onFormValueChange(e)} placeholder="Message..." />
