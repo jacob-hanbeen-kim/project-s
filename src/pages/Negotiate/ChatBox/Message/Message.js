@@ -5,8 +5,8 @@ import {
     ButtonContainer
 } from './Message.styled'
 
-import { ProfileImg } from '../../../components';
-import { Button } from '../../../styles/Button.styled';
+import { ProfileImg } from '../../../../components';
+import { Button } from '../../../../styles/Button.styled';
 
 const Message = ({ message, isSender, isOffer, setState }) => {
 
@@ -19,17 +19,19 @@ const Message = ({ message, isSender, isOffer, setState }) => {
 
     return (
         <Container isSender={isSender}>
-            <ProfileImg hasProfileImg={!isSender} src={getProfileImg()} />
+            {
+                !isSender && <ProfileImg hasProfileImg={!isSender} src={getProfileImg()} />
+            }
             <TextContainer isSender={isSender}>
                 <Text>{message}</Text>
-                {
+                {/* {
                     isOffer &&
                     <ButtonContainer>
                         <Button invert={isSender} onClick={setState}>Accept</Button>
                         <Button invert={isSender}>Edit</Button>
                         <Button invert={isSender}>Decline</Button>
                     </ButtonContainer>
-                }
+                } */}
             </TextContainer>
 
         </Container>

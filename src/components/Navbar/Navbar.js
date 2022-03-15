@@ -17,7 +17,9 @@ import {
     CloseIcon,
     // ProfileIcon,
     // ProfileImg,
-    DropdownContent
+    DropdownContent,
+    MessagesLink,
+    MessagesIcon
 } from './Navbar.styled';
 import { Logo } from '../';
 import { Toggler } from '../../styles/Toggle.styled';
@@ -57,14 +59,6 @@ const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
                                     <SubNavLink to="/brands/sports">By Sports</SubNavLink>
                                 </DropdownContent>
                             </DropdownItem>
-                            {/* <DropdownItem>
-                                <StyledNavLink to="/agents">Agents</StyledNavLink>
-                                <DropdownContent>
-                                    <SubNavLink to="/agents/tiers">By Tiers</SubNavLink>
-                                    <SubNavLink to="/agents/nations">By Nations</SubNavLink>
-                                    <SubNavLink to="/agents/sports">By Sports</SubNavLink>
-                                </DropdownContent>
-                            </DropdownItem> */}
                         </DropdownList>
                     </MenuItems>
                     <DropdownItem>
@@ -82,6 +76,9 @@ const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
                             </ProfileDropDown>
                         }
                     </DropdownItem >
+                    <MessagesLink to='/messages/inbox'>
+                        <MessagesIcon />
+                    </MessagesLink>
                     <Toggler onClick={() => toggleTheme()}>
                         {
                             theme === 'light' ?

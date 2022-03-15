@@ -23,6 +23,7 @@ import Membership from './pages/Membership/Membership';
 import EditProfile from './pages/Profile/EditProfile';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { AuthProvider } from './contexts/AuthContext';
+import Negotiate from './pages/Negotiate/Negotiate';
 
 // const accBalanceEth = web3.utils.fromWei(
 //   await web3.eth.getBalance(accounts[0]),
@@ -65,6 +66,7 @@ function App() {
                   <Route path="/explore" element={<Explore />} />
                   <Route path="/membership" element={<Membership />} />
                   <Route path="/account/edit" element={<EditProfile />} />
+                  <Route path="/messages/inbox" element={<Negotiate />} />
                   <Route path="*" element={<ErrorPage />} />
                 </Routes>
               </PageWrapper>
