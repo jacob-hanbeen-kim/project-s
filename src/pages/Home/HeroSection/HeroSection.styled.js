@@ -1,8 +1,13 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    height: 90vh;
+    height: 100vh;
     width: 100vw;
+
+    display: flex;
+`
+
+export const Content = styled.div`
     padding: 7vh 7vw;
 
     z-index: 1;
@@ -21,7 +26,6 @@ export const ContentWapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 `
 
 export const TextWrapper = styled.div`
@@ -61,12 +65,12 @@ export const CardContainer = styled.div`
 
     margin: 60px 0px;
 
-    /* @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}){
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}){
         display: none;
         flex-direction: column;
 
         & > div {
             margin: 40px 0px;
         }
-    } */
+    }
 `

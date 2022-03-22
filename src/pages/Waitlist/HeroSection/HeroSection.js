@@ -68,7 +68,7 @@ const HeroSection = () => {
                 </TextWrapper>
                 <CallToAction>
                     <TextWrapper center={true}>
-                        <Text variant='subtitle' textAlign='center'>
+                        <Text variant='h4' textAlign='center'>
                             Join our waiting list to be part of the beta-test <br />
                             Launching march, 2022
                         </Text>

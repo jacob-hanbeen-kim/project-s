@@ -38,7 +38,7 @@ export const IconWrapper = styled.div`
     overflow: hidden;
     
     border-radius: 50%;
-    background-color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.primaryDark};
     /* border: 10px solid transparent; */
     box-shadow: rgb(4 17 29 / 25%) 0px 0px 2px 0px;
 
@@ -46,8 +46,6 @@ export const IconWrapper = styled.div`
     max-width: 100%;
     height: 120px;
     width: 120px;
-
-    
 `
 
 export const Image = styled.div`

@@ -1,5 +1,6 @@
 import {
     Container,
+    Content,
     ContentWapper,
     TextWrapper,
     CallToAction,
@@ -53,7 +54,7 @@ const HeroSection = () => {
     }
 
     return (
-        <>
+        <Container>
             <ImageBackground
                 src='images/home/background.png'
                 opacity={1}
@@ -62,16 +63,16 @@ const HeroSection = () => {
                 bgPositionY='top'
                 blur='0'
             />
-            <Container>
+            <Content>
                 <ContentWapper>
                     <TextWrapper>
-                        <Text variant='h2' color='white'>
+                        <Text variant='h3' color='rgba(200,200,200,1)'>
                             WELCOME TO SPORTS - DECENTRALIZED
                         </Text>
-                        <Text variant='h1' color='white'>
+                        <Text variant='h2' color='white'>
                             Find, Negotiate, and Sign
                         </Text>
-                        <Text variant='h1' color='white'>
+                        <Text variant='h2' color='white'>
                             Sports Sponsorships Deals. Digitally.
                         </Text>
                     </TextWrapper>
@@ -85,7 +86,7 @@ const HeroSection = () => {
                                 type="email"
                             />
                         </InputWrapper>
-                        <Text variant='subtitle' textAlign='center' color='white'>
+                        <Text variant='h4' textAlign='center' color='white'>
                             beta test launch | march 2022
                         </Text>
                     </CallToAction>
@@ -107,13 +108,13 @@ const HeroSection = () => {
                         />
                     </CardContainer>
                     <TextWrapper>
-                        <Text variant='subtitle' color='white'>
+                        <Text variant='h3' color='rgba(200,200,200,1)'>
                             The New Paradigm of Network and Engagement in Sports and Entertainment
                         </Text>
                     </TextWrapper>
                 </ContentWapper>
-            </Container>
-        </>
+            </Content>
+        </Container>
     )
 }
 

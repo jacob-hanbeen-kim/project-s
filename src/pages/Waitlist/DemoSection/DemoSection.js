@@ -174,7 +174,7 @@ const DemoSection = React.forwardRef(({
                                 </Text>
                             </TextWrap>
                             <TextWrap>
-                                <Text variant='subtitle'>
+                                <Text variant='h4'>
                                     {getSection().description()}
                                 </Text>
                             </TextWrap>

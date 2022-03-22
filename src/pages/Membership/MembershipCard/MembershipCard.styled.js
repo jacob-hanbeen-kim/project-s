@@ -65,19 +65,19 @@ export const Price = styled.h1`
 export const Recurrence = styled.p`
     margin: 0px;
     margin-left: 5px;
-    font-size: ${({ theme }) => theme.fontSizes.use('smaller')};
+    font-size: ${({ theme }) => theme.fontSizes.use('h5')};
 `
 
 export const Conjunction = styled.p`
     margin: 0px;
-    font-size: ${({ theme }) => theme.fontSizes.use('smaller')};
+    font-size: ${({ theme }) => theme.fontSizes.use('h5')};
 `
 
 export const SubscriptionDetails = styled.ul`
     list-style: none;
     padding: 0px;
     margin: 0px;
-    font-size: ${({ theme }) => theme.fontSizes.use('smaller')};
+    font-size: ${({ theme }) => theme.fontSizes.use('h5')};
 
     color: ${({ theme }) => theme.colors.onSurface};
     opacity: 0.5;

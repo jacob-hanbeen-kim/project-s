@@ -23,7 +23,7 @@ const Sidebar = ({ setFilters }) => {
         <Aside>
             <Header>
                 <Text variant='h2'>Filters</Text>
-                <Text variant='subtitle'>clear</Text>
+                <Text variant='h4'>clear</Text>
             </Header>
             <Container>
                 <FilterContainer>
