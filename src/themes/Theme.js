@@ -39,7 +39,8 @@ export const lightTheme = Object.freeze({
                 // across your app's screens and components.
                 // primary: '#535dca', // primary 400
                 // primaryVariant: '#2c38b5', // primary 600
-                primary: 'rgba(187, 161, 79, 0.8)', // change
+                // primary: 'rgba(187, 161, 79, 0.8)', // change
+                primary: '#AE7ACC',
                 invert: '#f9fafb',
 
                 // A secondary color provides more ways to
@@ -80,7 +81,8 @@ export const lightTheme = Object.freeze({
                 // surfaces that use the above colors
                 onPrimary: '#f9fafb',
                 // onInvert: '#535dca',
-                onInvert: 'rgba(187, 161, 79, 0.8)', // change
+                // onInvert: 'rgba(187, 161, 79, 0.8)', // change
+                onInvert: '#AE7ACC',
                 onSecondary: '#f9fafb',
                 onNavbar: '#04111d',
                 onSurface: '#04111d',
@@ -94,7 +96,8 @@ export const darkTheme = Object.freeze({
                 // A primary color is the color displayed most frequently
                 // across your app's screens and components.
                 // primary: '#535dca', // darkGray 800
-                primary: 'rgba(187, 161, 79, 0.8)', // change
+                // primary: 'rgba(187, 161, 79, 0.8)', // change
+                primary: '#AE7ACC',
                 primaryVariant: '#181b2f', // darkGray 900
                 invert: '#0d1117',
 

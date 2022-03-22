@@ -1,6 +1,10 @@
 import styled from 'styled-components'
-import { Flex } from '../../styles/Flex.styled'
 
-export const HomeContainer = styled.div`
-    
+export const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 100%;
 `

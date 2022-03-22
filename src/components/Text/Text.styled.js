@@ -30,11 +30,11 @@ export const TextWrapper = styled.div`
         }
     }
 
-    & span {
+    /* & span {
         font-size: 1.5em;
         line-height: 1.2em;
         color: ${({ accentColor }) => accentColor ? accentColor : 'inherit'};
-    }
+    } */
 `
 
 export const Display1 = styled.h2`

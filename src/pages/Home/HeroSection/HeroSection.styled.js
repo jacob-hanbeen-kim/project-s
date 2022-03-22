@@ -1,93 +1,72 @@
-import styled, { keyframes } from 'styled-components';
-import { Flex } from '../../../styles/Flex.styled'
+import styled from 'styled-components'
 
-const bottomLimit = '100px';
+export const Container = styled.div`
+    height: 90vh;
+    width: 100vw;
+    padding: 7vh 7vw;
 
-export const Section = styled.section`
-    height: calc(100vh - ${bottomLimit});
+    z-index: 1;
+    /* z-index: 1; */
+    /* background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 20%), linear-gradient(180deg, rgba(255,235,187,0.5) 20%, rgba(255,253,248,1) 100%); */
+    /* #FFEBBB; rgba(255,235,187,1)*/
+    /* #FFFDF8; rgba(255,253,248,1)*/
+
+    /* @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}){
+        flex-direction: column-reverse;
+    } */
+`
+
+export const ContentWapper = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+`
+
+export const TextWrapper = styled.div`
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
 `
 
-export const SectionFlex = styled(Flex)`
-    :before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: ${bottomLimit};
-        /* background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%), linear-gradient(180deg, rgba(0,0,0,0.1) 0%, transparent 100%); */
-        background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(50,50,50,0.8) 100%), linear-gradient(180deg, rgba(50,50,50,0.1) 0%, transparent 100%);
-        z-index: 2;
-    }
-`
-export const animation = keyframes`
-    0% {opacity: 0; transform: translateY(-10px); filter: blur(10px);}
-    100% {opacity: 1; transform: translateY(0px); filter: blur(0px);}
-`
+export const CallToAction = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-export const ConentContainer = styled.div`
-    /* max-width: 360px; */
-    z-index: 3;
-    gap: 30px;
-    display: grid;
-    text-align: center;
-    justify-items: center;
+    margin: 30px 0px;
+    width: 100%;
 
-    & > * {
-        opacity: 0;
-        animation: ${animation} 1s forwards;
-
-        :nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        :nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        :nth-child(3) {
-            animation-delay: 0.4s;
-        }
-    }
-
-    & > button {
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}){
         margin-top: 20px;
     }
 `
 
-export const Title = styled.h1`
-    margin: 0px;
-    font-size: 3rem;
+export const InputWrapper = styled.div`
+    width: 100%;
+    max-width: 650px;
+    margin: 10px 0px;
+`
 
-    /* color: ${({ theme }) => theme.colors.base}; */
-    color: #fff;
-    background: linear-gradient(110deg, #EEF7FB 20%, #535DCA 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+export const CardContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 
-    
-    /* span {
-        background: linear-gradient(90deg, #EEF7FB 30%, #003333 100%);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
+    margin: 60px 0px;
+
+    /* @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}){
+        display: none;
+        flex-direction: column;
+
+        & > div {
+            margin: 40px 0px;
+        }
     } */
-
-    @media (max-width: 785px) {
-        font-size: 2.5rem;
-    }
-`
-
-export const Description = styled.p`
-    margin: 0px;
-    color: #a0a0a0;
-`
-
-export const ImageContainer = styled.div`
-
 `
