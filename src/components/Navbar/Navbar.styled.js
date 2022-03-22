@@ -40,7 +40,7 @@ export const LogoLink = styled(NavLink)`
     width: 40px;
 `
 
-export const Menu = styled.div`
+export const StyledMenu = styled.div`
     display: flex;
     align-items: center;
     /* margin-right: -24px; */

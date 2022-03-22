@@ -20,7 +20,7 @@ const FeaturesSection = () => {
                         <span>Identify</span> teams, athletes, agents, brands, and sponsors to partner with - <span>in a matter of seconds</span>
                     </>
                 }
-                image='images/home/searchEngine.svg'
+                image='images/home/features/searchEngine.svg'
             />
             <Feature
                 title='DECENTRALIZED SMART CONTRACTS'
@@ -29,7 +29,7 @@ const FeaturesSection = () => {
                         <span>Secure</span> your contracts and assets via our <span>smart contracts</span> system enabled by <span>Web 3.0</span> infrastructure
                     </>
                 }
-                image='images/home/smartContract.svg'
+                image='images/home/features/smartContract.svg'
                 imageFirst={true}
             />
             <Feature
@@ -39,7 +39,7 @@ const FeaturesSection = () => {
                         <span>Buy/sell</span> exclusive sports and entertainment NFTs on <span>our platform</span>
                     </>
                 }
-                image='images/home/nft.svg'
+                image='images/home/features/nft.png'
             />
             <Feature
                 title='AI-GUIDED LEAD SCORING SYSTEM'
@@ -48,7 +48,7 @@ const FeaturesSection = () => {
                         Measure your <span>marketability</span>
                     </>
                 }
-                image='images/home/aiGuidance.svg'
+                image='images/home/features/aiGuidance.svg'
                 imageFirst={true}
             />
         </Container>
