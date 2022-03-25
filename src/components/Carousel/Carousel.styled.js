@@ -50,8 +50,12 @@ export const Inner = styled.div`
 
 export const CarouselItem = styled.div`
     flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     padding: 20px;
-    max-height: 300px;
+    /* max-height: 300px; */
     height: 100%;
 
     transition: transform 300ms;

@@ -4,12 +4,11 @@ import {
     ContentWapper,
     TextWrapper,
     CallToAction,
-    InputWrapper,
-    CardContainer
+    InputWrapper
 } from './HeroSection.styled';
 
 import { useState } from 'react';
-import { FixedBackground, ImageBackground, InputWithButton, Text, CardWithIcon } from '../../../components';
+import { ImageBackground, InputWithButton, Text } from '../../../components';
 import WaitlistService from '../../../services/waitlist-services';
 
 const HeroSection = () => {
@@ -90,28 +89,6 @@ const HeroSection = () => {
                             beta test launch | march 2022
                         </Text>
                     </CallToAction>
-                    <CardContainer>
-                        <CardWithIcon
-                            image={"images/home/increaseIcon.svg"}
-                            title={"More Exposure"}
-                            detail={"Find potential sponsor and create more oportunities"}
-                        />
-                        <CardWithIcon
-                            image={"images/home/contractIcon.svg"}
-                            title={"More Exposure"}
-                            detail={"Find potential sponsor and create more oportunities"}
-                        />
-                        <CardWithIcon
-                            image={"images/home/feeIcon.svg"}
-                            title={"More Exposure"}
-                            detail={"Find potential sponsor and create more oportunities"}
-                        />
-                    </CardContainer>
-                    <TextWrapper>
-                        <Text variant='h3' color='rgba(200,200,200,1)'>
-                            The New Paradigm of Network and Engagement in Sports and Entertainment
-                        </Text>
-                    </TextWrapper>
                 </ContentWapper>
             </Content>
         </Container>

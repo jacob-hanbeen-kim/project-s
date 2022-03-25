@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    height: 100vh;
+    height: 80vh;
     width: 100vw;
 
     display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 export const Content = styled.div`
@@ -54,23 +56,4 @@ export const InputWrapper = styled.div`
     width: 100%;
     max-width: 650px;
     margin: 10px 0px;
-`
-
-export const CardContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-
-    margin: 60px 0px;
-
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}){
-        display: none;
-        flex-direction: column;
-
-        & > div {
-            margin: 40px 0px;
-        }
-    }
 `

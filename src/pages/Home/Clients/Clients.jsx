@@ -1,5 +1,6 @@
 import {
     Container,
+    Content,
     TextWrapper,
     ImageContainer,
     ImageWrapper
@@ -19,27 +20,29 @@ const images = [
 const Clients = () => {
     return (
         <Container>
-            <TextWrapper>
-                <Text variant='h1'>
-                    Our Clients
-                </Text>
-            </TextWrapper>
-            <Carousel
-                width='80vw'
-                displayCount={4}
-                noOpacity={true}
-                noScale={true}
-            >
-                {
-                    images.map((image, idx) =>
-                        <ImageContainer>
-                            <ImageWrapper>
-                                <img src={image} alt={image} />
-                            </ImageWrapper>
-                        </ImageContainer>
-                    )
-                }
-            </Carousel>
+            <Content>
+                <TextWrapper>
+                    <Text variant='h1'>
+                        Our Clients
+                    </Text>
+                </TextWrapper>
+                <Carousel
+                    width='80vw'
+                    displayCount={4}
+                    noOpacity={true}
+                    noScale={true}
+                >
+                    {
+                        images.map((image, idx) =>
+                            <ImageContainer key={idx}>
+                                <ImageWrapper>
+                                    <img src={image} alt={image} />
+                                </ImageWrapper>
+                            </ImageContainer>
+                        )
+                    }
+                </Carousel>
+            </Content>
         </Container>
     )
 }

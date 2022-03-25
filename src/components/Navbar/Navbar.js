@@ -5,20 +5,20 @@ import {
     LogoLink
 } from './Navbar.styled';
 import { Logo } from '../';
-import Menu from './Menu';
+// import Menu from './Menu';
 
-import { useAuth } from '../../contexts/AuthContext';
+// import { useAuth } from '../../contexts/AuthContext';
 
 
 const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
 
-    const { currentUser, logout } = useAuth();
+    // const { currentUser, logout } = useAuth();
 
-    const getUsername = () => {
-        console.log(currentUser);
-        if (currentUser) return currentUser.name;
-        return '';
-    }
+    // const getUsername = () => {
+    //     console.log(currentUser);
+    //     if (currentUser) return currentUser.name;
+    //     return '';
+    // }
 
     return (
         <NavContainer>

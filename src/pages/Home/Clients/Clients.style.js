@@ -1,10 +1,15 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
     width: 100vw;
     height: 100%;
+`
+
+export const Content = styled.div`
+    display: flex;
+    flex-direction: column;
+    
+    margin: 50px 10px;
 `
 
 export const TextWrapper = styled.div`

@@ -34,5 +34,6 @@ export const ApparelContainer = styled.div`
 `
 
 export const ImageWrapper = styled.div`
-    height: 300px;
+    height: 100%;
+    max-height: 300px;
 `
