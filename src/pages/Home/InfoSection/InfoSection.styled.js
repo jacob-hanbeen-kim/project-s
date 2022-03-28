@@ -52,12 +52,23 @@ export const CardContainer = styled.div`
     max-width: 95vw;
     overflow-x: auto;
 
-    & > div > div {
-        width: 200px;
-        height: 400px;
-    }
+    /* & > div {
+        min-width: 200px;
+    } */
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}){
-        justify-content: left;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-top: 50px;
+
+        & > div {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+/* 
+        & > div > div {
+            width: 100%;
+            height: 300px;
+        } */
     }
 `

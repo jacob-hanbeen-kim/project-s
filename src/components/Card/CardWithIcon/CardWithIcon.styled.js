@@ -20,7 +20,6 @@ export const CardWrapper = styled.div`
     flex-direction: ${({ layout }) => layout || 'column'};
     align-items: center;
     justify-content: center;
-    
 
     margin-top: -60px;
 
@@ -79,6 +78,8 @@ export const Icon = styled.div`
 
 export const CardContent = styled.div`
     width: 100%;
+    height: 100%;
+    max-height: 200px;
     font-weight: 600;
     padding: 20px;
     color: ${({ color, theme }) => color || theme.colors.onSurface};
@@ -98,6 +99,9 @@ export const Detail = styled.p`
     font-weight: 400;
     font-size: 17px;
     line-height: 30px;
+
+    height: 90px;
+    overflow-y: scroll;
 
     color: ${({ theme }) => theme.colors.fontMuted};
 `
