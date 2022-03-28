@@ -19,6 +19,11 @@ export const Content = styled.div`
     height: 100%;
 
     /* padding: 6vh 15vw; */
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        grid-gap: 0;
+        grid-template-columns: 40vw 40vw;
+        grid-template-areas: 'col1 col1' 'col2 col2';
+    }
 `
 
 export const TextContainer = styled.div`

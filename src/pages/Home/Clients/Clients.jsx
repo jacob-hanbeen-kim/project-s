@@ -27,8 +27,8 @@ const Clients = () => {
                     </Text>
                 </TextWrapper>
                 <Carousel
-                    width='80vw'
-                    displayCount={4}
+                    width='100vw'
+                    displayCount={5}
                     noOpacity={true}
                     noScale={true}
                     align='left'

@@ -1,13 +1,15 @@
 import createLineHeight from "./utils/createLineHeight";
 import createFontSizes from "./utils/createFontSizes";
 import createfontWeights from "./utils/createFontWeights";
+import createFonts from "./utils/createFonts";
 
 const fontSizes = createFontSizes();
 const fontWeights = createfontWeights();
 const lineHeights = createLineHeight();
+const fonts = createFonts();
 
 const theme = {
-        fonts: ['sans-serif'],
+        fonts,
         // fontSizes: {
         //         default: '17px',
         //         small: '15px',

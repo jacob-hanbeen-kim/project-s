@@ -48,7 +48,7 @@ const FeaturesSection = () => {
                         Measure your <span>marketability</span>
                     </>
                 }
-                image='images/home/features/aiGuidance.svg'
+                image='images/home/features/aiGuidance.png'
                 imageFirst={true}
             />
         </Container>

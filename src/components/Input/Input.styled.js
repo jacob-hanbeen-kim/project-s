@@ -31,7 +31,7 @@ export const StyledInput = styled.input`
     border: none;
     outline: none;
     width: 100%;
-    font-size: inherit;
+    font-size: ${({ fontSize }) => fontSize ? fontSize : 'inherit'};
     line-height: inherit;
     min-height: inherit;
     cursor: text;

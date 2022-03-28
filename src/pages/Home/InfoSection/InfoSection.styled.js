@@ -60,6 +60,7 @@ export const CardContainer = styled.div`
         flex-direction: column;
         justify-content: flex-start;
         margin-top: 50px;
+        margin-bottom: 50px;
 
         & > div {
             margin-top: 50px;

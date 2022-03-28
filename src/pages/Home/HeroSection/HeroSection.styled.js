@@ -13,14 +13,6 @@ export const Content = styled.div`
     padding: 7vh 7vw;
 
     z-index: 1;
-    /* z-index: 1; */
-    /* background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 20%), linear-gradient(180deg, rgba(255,235,187,0.5) 20%, rgba(255,253,248,1) 100%); */
-    /* #FFEBBB; rgba(255,235,187,1)*/
-    /* #FFFDF8; rgba(255,253,248,1)*/
-
-    /* @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}){
-        flex-direction: column-reverse;
-    } */
 `
 
 export const ContentWapper = styled.div`

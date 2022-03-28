@@ -19,7 +19,7 @@ export const TextWrapper = styled.div`
     text-transform: ${props => props.textTransform};
     text-align: ${props => props.textAlign};
 
-    font-family: 'lucida grande', tahoma, verdana, arial, sans-serif;
+    /* font-family: 'lucida grande', tahoma, verdana, arial, sans-serif; */
 
     & > * {
         margin: 10px;

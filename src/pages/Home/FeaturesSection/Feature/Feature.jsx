@@ -15,7 +15,7 @@ const Feature = ({ title, description, image, imageFirst }) => {
         <Conatiner>
             <Content imageFirst={imageFirst}>
                 <TextContainer>
-                    <Text variant='h4' color={theme.colors.primaryDark}>
+                    <Text variant='h4'>
                         {title}
                     </Text>
                     <Text variant='h2' color='rgba(150, 150, 150, 1)' fontWeight='normal'>

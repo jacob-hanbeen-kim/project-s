@@ -33,6 +33,8 @@ export const ImageWrapper = styled.div`
     border-radius: 20px;
     padding: 20px;
 
-    height: 15vw;
-    width: 15vw;
+    height: 13vw;
+    width: 13vw;
+
+    /* margin: 20px 0px; */
 `

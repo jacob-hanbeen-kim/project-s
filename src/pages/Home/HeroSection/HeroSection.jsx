@@ -83,9 +83,10 @@ const HeroSection = () => {
                                 inputPlaceHolder='Your Email'
                                 btnText='Join Wait List'
                                 type="email"
+                                fontSize='15px'
                             />
                         </InputWrapper>
-                        <Text variant='h4' textAlign='center' color='white'>
+                        <Text variant='h4' textAlign='center' color='rgba(200,200,200,1)'>
                             beta test launch | march 2022
                         </Text>
                     </CallToAction>
