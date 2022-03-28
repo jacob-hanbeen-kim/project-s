@@ -22,13 +22,13 @@ const InfoSection = () => {
                 />
                 <CardWithIcon
                     image={"images/home/contractIcon.svg"}
-                    title={"More Exposure"}
-                    detail={"Find potential sponsor and create more oportunities"}
+                    title={"Risk Management"}
+                    detail={"Compare contracts and know your value Negotiate with confidence"}
                 />
                 <CardWithIcon
                     image={"images/home/feeIcon.svg"}
-                    title={"More Exposure"}
-                    detail={"Find potential sponsor and create more oportunities"}
+                    title={"Minimal Fees"}
+                    detail={"Cost-efficient platform via Eth-2.0"}
                 />
             </CardContainer>
         </Container>
