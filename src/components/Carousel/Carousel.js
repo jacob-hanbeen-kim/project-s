@@ -16,7 +16,8 @@ const Carousel = ({
     displayCount,
     noScale,
     noOpacity,
-    width
+    width,
+    align
 }) => {
     // const [items, setItems] = useState([]);
     const [activeIndex, setActiveIndex] = useState(1);
@@ -39,7 +40,7 @@ const Carousel = ({
                     updateIndex(activeIndex - 1);
                 }} />
                 <View maxWidth={width}>
-                    <Inner activeIndex={activeIndex} displayCount={displayCount}>
+                    <Inner activeIndex={activeIndex} displayCount={displayCount} align={align}>
                         {
                             React.Children.map(children, (child, index) => {
                                 return (
@@ -68,7 +69,8 @@ Carousel.defaultProps = {
     displayCount: 3,
     noScale: false,
     noOpacity: false,
-    width: '900px'
+    width: '900px',
+    align: 'center'
 }
 
 export default Carousel

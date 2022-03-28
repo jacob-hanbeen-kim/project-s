@@ -20,7 +20,7 @@ const FeaturesSection = () => {
                         <span>Identify</span> teams, athletes, agents, brands, and sponsors to partner with - <span>in a matter of seconds</span>
                     </>
                 }
-                image='images/home/features/searchEngine.svg'
+                image='images/home/features/searchEngine.png'
             />
             <Feature
                 title='DECENTRALIZED SMART CONTRACTS'

@@ -19,8 +19,8 @@ export const TextWrapper = styled.div`
     margin-top: 100px;
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeXL}){
-        margin-left:120px;
-        margin-right:120px;
+        margin-left: 120px;
+        margin-right: 120px;
     }
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}){

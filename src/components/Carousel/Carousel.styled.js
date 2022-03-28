@@ -37,10 +37,12 @@ export const Inner = styled.div`
     position: relative;
     white-space: nowrap;
 
-    transform: ${({ activeIndex, displayCount }) =>
+    transform: ${({ activeIndex, displayCount, align }) =>
         activeIndex > 0 ?
             `translate3d(-${(activeIndex - 1) * (100 / displayCount)}%, 0, 0);` :
-            `translate3d(${100 / displayCount}%, 0 ,0);`
+            align === 'center' ?
+                `translate3d(${100 / displayCount}%, 0 ,0);` :
+                `translate3d(0, 0 ,0);`
     };
     transition: transform 0.3s;
 

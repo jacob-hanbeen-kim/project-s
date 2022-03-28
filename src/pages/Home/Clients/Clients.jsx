@@ -31,6 +31,7 @@ const Clients = () => {
                     displayCount={4}
                     noOpacity={true}
                     noScale={true}
+                    align='left'
                 >
                     {
                         images.map((image, idx) =>

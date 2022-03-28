@@ -60,7 +60,8 @@ export const lightTheme = Object.freeze({
                 accent: '#2081e2',
 
                 // background-color
-                background: '#f9fafb',
+                // background: '#f9fafb',
+                background: '#ffffff',
                 // surface: '#fcfdfe', // surface components - cards, sheets, section
                 surface: '#F7F9FA',
                 navbar: '#ffffff',
