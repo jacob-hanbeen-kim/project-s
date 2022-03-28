@@ -12,18 +12,21 @@ require('dotenv').config();
 
 // Firebase configuration - for Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_CONFIG_APIKEY,
-  authDomain: process.env.FIREBASE_CONFIG_AUTHDOMAIN,
-  projectId: process.env.FIREBASE_CONFIG_PROJECTID,
-  storageBucket: process.env.FIREBASE_CONFIG_STORAGEBUCKET,
-  messagingSenderId: process.env.FIREBASE_CONFIG_MESSAGINGSENDERID,
-  appId: process.env.FIREBASE_CONFIG_APPID,
-  measurementId: process.env.FIREBASE_CONFIG_MEASUREMENTID,
+  apiKey: process.env._FIREBASE_CONFIG_APIKEY,
+  authDomain: process.env._FIREBASE_CONFIG_AUTHDOMAIN,
+  projectId: process.env._FIREBASE_CONFIG_PROJECTID,
+  storageBucket: process.env._FIREBASE_CONFIG_STORAGEBUCKET,
+  messagingSenderId: process.env._FIREBASE_CONFIG_MESSAGINGSENDERID,
+  appId: process.env._FIREBASE_CONFIG_APPID,
+  measurementId: process.env._FIREBASE_CONFIG_MEASUREMENTID,
   credential: admin.credential.cert(serviceAccount),
 };
 
 // initialize Firebase
 initializeApp(firebaseConfig);
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+})
 
 // import each cloud function in src folder
 const getCustomTokenFunction = require("./src/getcustomtokenfunction");

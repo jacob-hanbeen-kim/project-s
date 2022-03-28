@@ -20,6 +20,38 @@ app.get("/", (req, res) => {
   handlePaymentIntentSucceeded(null);
 });
 
+app.post("/paymentlink", async (req, res) => {
+  try {
+    let payload = req.body;
+    console.log("starting payment linke creation");
+    const product = await stripe.products.create({
+      name: payload.membership,
+    });
+  
+    const price = await stripe.prices.create({
+      unit_amount: payload.price,
+      currency: 'usd',
+      recurring: {interval: payload.recurring},
+      product: product.id,
+    });
+
+    const paymentLink = await stripe.paymentLinks.create({
+      line_items: [{price: price.id, quantity: 1}],
+      metadata: {
+        "membership": payload.membership,
+        "recurring": payload.recurring,
+        "price": payload.price,
+        "account_id": payload.account_id,
+      }
+    });
+  
+    res.status(200).send({'url': paymentLink.url});
+  } catch {
+    console.log("payment link creation failed!");
+    return res.sendStatus(400);
+  }
+});
+
 app.post(
   "/webhook",
   bodyParser.raw({ type: "application/json" }),
@@ -44,25 +76,32 @@ app.post(
 
     // Handle the event
     switch (event.type) {
-      case "payment_intent.succeeded":
-        const paymentIntentSucceeded = event.data.object;
+      case "checkout.session.completed":
+        const checkoutSessionCompleted = event.data.object;
         console.log(
-          `PaymentIntent for ${paymentIntentSucceeded.amount} was successful!`
+          `CheckoutSession with payment intent ${checkoutSessionCompleted.payment_intent} completed!`
         );
-        handlePaymentIntentSucceeded(paymentIntentSucceeded);
+        handleCheckoutSessionCompleted(checkoutSessionCompleted);
         break;
-      case "payment_intent.failed":
-        const paymentIntentFailed = event.data.object;
-        console.log(`PaymentIntent for ${paymentIntentFailed.amount} failed!`);
-        handlePaymentIntentFailed(paymentIntentFailed);
-        break;
-      case "payment_intent.processing":
-        const paymentIntentProcessing = event.data.object;
-        console.log(
-          `PaymentIntent for ${paymentIntentProcessing.amount} is processing. Customer's payment was submitted to Stripe successfully. Waiting for initiated payment to pass or fail. Typically due to ACH debit purchase which delays the payment itself.`
-        );
-        handlePaymentIntentProcessing(paymentIntentProcessing);
-        break;
+      // case "payment_intent.succeeded":
+      //   const paymentIntentSucceeded = event.data.object;
+      //   console.log(
+      //     `PaymentIntent for ${paymentIntentSucceeded.amount} was successful!`
+      //   );
+      //   handlePaymentIntentSucceeded(paymentIntentSucceeded);
+      //   break;
+      // case "payment_intent.failed":
+      //   const paymentIntentFailed = event.data.object;
+      //   console.log(`PaymentIntent for ${paymentIntentFailed.amount} failed!`);
+      //   handlePaymentIntentFailed(paymentIntentFailed);
+      //   break;
+      // case "payment_intent.processing":
+      //   const paymentIntentProcessing = event.data.object;
+      //   console.log(
+      //     `PaymentIntent for ${paymentIntentProcessing.amount} is processing. Customer's payment was submitted to Stripe successfully. Waiting for initiated payment to pass or fail. Typically due to ACH debit purchase which delays the payment itself.`
+      //   );
+      //   handlePaymentIntentProcessing(paymentIntentProcessing);
+      //   break;
       default:
         // Unexpected, unhandled event type
         console.log(`Unhandled event type ${event.type}.`);
@@ -73,33 +112,43 @@ app.post(
   }
 );
 
+function handleCheckoutSessionCompleted(checkoutSession) {
+  
+  if(checkoutSession.payment_status == "paid") {
+    const userId = checkoutSession.metadata.account_id;
+    const membershipTo = checkoutSession.metadata.membership;
+  
+    const url = new URL(`/userServiceApp/user/update/${userId}`, process.env.CLOUD_FUNCTIONS_URL);
+  
+    // update membership through rest api call
+    fetch(
+      url,
+      {
+        method: "PATCH",
+        body: JSON.stringify({
+          fields: {
+            membership: membershipTo,
+          },
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+  } else {
+    console.log("Checkout Session NOT PAID!");
+  }
+
+}
+
 function handlePaymentIntentSucceeded(paymentIntent) {
   // Customer completed payment on checkout page
   // TODO: payment intent 안에 있는 user information을 이용해서 db에서 해당 유저를 찾고 membership을 업데이트 해줘야한다.
   // payment intent의 유저 정보와 DB의 유저 정보를 어떻게 매칭해야하나? 이름만으로는 부족..
   // payment intent에서 elite로 업그레이드인지, vip로 업그레이드인지 알 수 있어야한다 (stripe payment link subscription product에 정보를 넣어야함)
   
-  const userId = "0x8E4124DD649198F41D1443D0253de7d4F7438648";
-  const url = new URL(`/userServiceApp/user/update/${userId}`, process.env.CLOUD_FUNCTIONS_URL);
-  const membershipTo = "elite";
-
-  // update membership through rest api call
-  fetch(
-    url,
-    {
-      method: "PATCH",
-      body: JSON.stringify({
-        fields: {
-          membership: membershipTo,
-        },
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    }
-  )
-    .then((response) => response.json())
-    .then((json) => console.log(json));
 }
 
 function handlePaymentIntentFailed(paymentIntent) {
