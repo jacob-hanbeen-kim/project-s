@@ -61,8 +61,8 @@ function getCustomToken(address) {
     //         console.log(result);
     //     })
 
-    const baseUrl = "https://us-central1-project-s-backend.cloudfunctions.net";
-    // const baseUrl = "http://localhost:5001/project-s-backend/us-central1";
+    // const baseUrl = "https://us-central1-project-s-backend.cloudfunctions.net";
+    const baseUrl = "http://localhost:5001/project-s-backend/us-central1";
 
     return fetch(`${baseUrl}/getCustomToken`,
         {

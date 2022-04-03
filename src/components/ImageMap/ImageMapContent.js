@@ -71,6 +71,7 @@ const ImageMapContent = ({
                 newCoord.push(Math.floor(coordinates[1] * yRatio));
                 newCoord.push(Math.floor(coordinates[2] * xRatio));
                 return newCoord.join(',');
+            case 'poly':
             case 'rect':
                 for (let i = 0; i < coordinates.length; i++) {
                     if (i % 2 === 0) { // x
@@ -80,7 +81,8 @@ const ImageMapContent = ({
                     }
                 }
                 return newCoord.join(',');
-            case 'polygon':
+            // case 'polygon':
+            //     console.log('polygon', newCoord);
             default: return prevCoords;
         }
     }
@@ -186,4 +188,7 @@ const ImageMapContent = ({
     )
 }
 
+ImageMapContent.defaultProps = {
+    noBg: false
+}
 export default ImageMapContent;

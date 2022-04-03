@@ -1,0 +1,65 @@
+[
+    {
+        "membership": "basic",
+        "nonce": "827294",
+        "name": "USER_NAME",
+        "usertype": "sponsee",
+        "id": "0x8E4124DD649198F41D1443D0253de7d4F7438648"
+    },
+    {
+        "email": "",
+        "name": "nike",
+        "usertype": "sponsor",
+        "nonce": "476396",
+        "membership": "basic",
+        "id": "0xCf8207B2fEABDbBDf8C56B41906ed29687a80C0E"
+    },
+    {
+        "membership": "basic",
+        "nonce": "19301",
+        "email": "",
+        "name": "user1",
+        "usertype": "sponsee",
+        "id": "0xa38730a865eD8f3a1877Ad99DD8F21A1734661aF"
+    },
+    {
+        "email": "",
+        "name": "Daniel",
+        "usertype": "sponsee",
+        "membership": "basic",
+        "nonce": "374563",
+        "id": "0xe4436bac6ac98e27156FC597607485FEfeE23f8c"
+    },
+    {
+        "nonce": "159176",
+        "membership": "basic",
+        "email": "",
+        "name": "Adidas",
+        "usertype": "sponsor",
+        "id": "IdlBQ5TCF5qfQoYQGnrG"
+    },
+    {
+        "membership": "vip",
+        "nonce": "449176",
+        "usertype": "sponsor",
+        "name": "New Balance",
+        "email": "",
+        "id": "QZShkoYPf1Z3GopS5jJ2"
+    },
+    {
+        "name": "jacob",
+        "usertype": "sponsee",
+        "nonce": "629176",
+        "membership": "elite",
+        "email": "",
+        "id": "Y6XV4OlisWRjXuiAImuQ"
+    },
+    {
+        "name": "S Agency",
+        "usertype": "agent",
+        "email": "",
+        "nonce": "410676",
+        "membership": "basic",
+        "id": "tNgWEHga0EP7hyKsVqH4"
+    }
+]

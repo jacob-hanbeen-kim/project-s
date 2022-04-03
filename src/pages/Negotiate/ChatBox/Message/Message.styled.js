@@ -18,11 +18,15 @@ export const TextContainer = styled.div`
     padding: 10px 20px;
     border-radius: 25px;
     position: relative;
-    text-align: center;
-
-    color: ${({ isSender }) => isSender ? 'white' : 'black'};
-    background: ${props => props.isSender ? props.theme.colors.primary : '#e5e5ea'};
+    text-align: ${({ isSender }) => isSender ? 'left' : 'right'};;
+    color: ${({ isSender, theme }) => isSender ? theme.colors.onPrimary : theme.colors.onSurface};
+    background: ${props => props.isSender ? props.theme.colors.primary : 'transparent'};
+    border: 1px solid ${({ theme }) => theme.colors.primary};
     align-self: ${({ isSender }) => !isSender && 'flex-end'};
+
+    ${({ isSender }) => isSender && `
+        margin-left: 60px;
+    `};;
 
     display: flex;
     flex-direction: column;

@@ -29,6 +29,8 @@ export const Img = styled.img`
 
 export const Area = styled.area`
 
+    border-radius: 4px;
+
     &:hover {
         cursor: pointer;
     }

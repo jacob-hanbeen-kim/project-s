@@ -15,13 +15,15 @@ import { Footer, Navbar, Sidebar } from './components/'
 import Waitlist from './pages/Waitlist/Waitlist';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
+import Explore from './pages/Explore/Explore';
 import Account from './pages/Account/Account';
 import Brand from './pages/Brands/Brands';
 import Agents from './pages/Agents/Agents';
 import Membership from './pages/Membership/Membership';
+import EditProfile from './pages/Profile/EditProfile';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
-import Settings from './pages/Account/Settings/Settings';
 import { AuthProvider } from './contexts/AuthContext';
+import Negotiate from './pages/Negotiate/Negotiate';
 
 // const accBalanceEth = web3.utils.fromWei(
 //   await web3.eth.getBalance(accounts[0]),
@@ -31,6 +33,8 @@ import { AuthProvider } from './contexts/AuthContext';
 // setBalance(Number(accBalanceEth).toFixed(6));
 
 function App() {
+
+  console.log(process.env.PUBLIC_URL)
 
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
@@ -48,7 +52,7 @@ function App() {
         <Router basename={process.env.PUBLIC_URL}>
           <AuthProvider>
             <FlexWropper>
-              {/* <Navbar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} /> */}
+              <Navbar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} />
               {
                 isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} />
               }
@@ -57,12 +61,12 @@ function App() {
                   {/* <Route path="/" element={<Home />} /> */}
                   <Route path="/" element={<Waitlist />} />
                   <Route path="/login" element={<Login />} />
-                  <Route path="/brands" element={<Brand />} />
-                  <Route path="/agents" element={<Agents />} />
                   <Route path="/account" element={<Account />} />
                   <Route path="/account/:username" element={<Account />} />
+                  <Route path="/explore" element={<Explore />} />
                   <Route path="/membership" element={<Membership />} />
-                  <Route path="/account/settings" element={<Settings userType={"sponsee"} />} />
+                  <Route path="/account/edit" element={<EditProfile />} />
+                  <Route path="/messages/inbox" element={<Negotiate />} />
                   <Route path="*" element={<ErrorPage />} />
                 </Routes>
               </PageWrapper>

@@ -1,9 +1,22 @@
-import { collection, getDocs, getDoc, setDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore'
+import { collection, getDocs, getDoc, query, where, setDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore'
 // firebase
 import { db } from '../firebase-config';
 
-const getUsers = async () => {
-    const usersCollectionRef = collection(db, "users");
+const getUsers = async (filter = null) => {
+    let usersCollectionRef = collection(db, "users");
+
+    if (filter) {
+        // const w = [];
+        // filter.forEach((f) => {
+        //     w.push(f.key, '==', f.value);
+        // })
+
+        const key = Object.keys(filter)[0];
+        const value = filter[key].toLowerCase();
+        console.log(key, value);
+        usersCollectionRef = query(usersCollectionRef, where(key, '==', value));
+    }
+
     const data = await getDocs(usersCollectionRef);
     const users = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     return users;
@@ -45,8 +58,12 @@ class UserFields {
         return this;
     }
 
-    setName(name) {
-        this.fields['name'] = name;
+    setFirstName(firstName) {
+        this.fields['firstName'] = firstName;
+        return this;
+    }
+    setLastName(lastName) {
+        this.fields['lastName'] = lastName;
         return this;
     }
 
