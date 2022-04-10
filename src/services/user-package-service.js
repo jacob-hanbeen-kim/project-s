@@ -1,5 +1,5 @@
 import { collection, getDocs, getDoc, setDoc, updateDoc, addDoc, deleteDoc, doc } from 'firebase/firestore'
-import { db } from '../firbase-config';
+import { db } from '../firebase-config';
 
 const userPackageRef = collection(db, "userPackage");
 

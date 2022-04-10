@@ -1,6 +1,6 @@
 import { collection, getDocs, getDoc, query, where, setDoc, updateDoc, deleteDoc, doc, addDoc, orderBy, limit, serverTimestamp } from 'firebase/firestore'
 // firebase
-import { db } from '../firbase-config';
+import { db } from '../firebase-config';
 
 let chatRoomCoolectionRef = collection(db, "chatroom");
 

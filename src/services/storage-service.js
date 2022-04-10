@@ -1,5 +1,5 @@
 import { getStorage, ref, uploadBytes, getDownloadURL, listAll } from 'firebase/storage';
-import { db } from '../firbase-config';
+import { db } from '../firebase-config';
 
 const storage = getStorage();
 

@@ -1,7 +1,7 @@
 import UserService from './users-service';
 import { signInWithCustomToken, signOut, updateProfile } from 'firebase/auth'
 import { getFunctions, httpsCallable } from 'firebase/functions';
-import { auth } from '../firbase-config';
+import { auth } from '../firebase-config';
 import { web3Helper } from '../utils/web3';
 
 //#region helper
