@@ -1,6 +1,6 @@
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 // firebase
-import { db } from '../firbase-config';
+import { db } from '../firebase-config';
 
 const getMemberships = async () => {
     let membershipRef = collection(db, "membership");

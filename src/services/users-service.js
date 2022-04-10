@@ -5,16 +5,26 @@ import { db } from '../firebase-config';
 const getUsers = async (filter = null) => {
     let usersCollectionRef = collection(db, "users");
 
-    if (filter) {
-        // const w = [];
-        // filter.forEach((f) => {
-        //     w.push(f.key, '==', f.value);
-        // })
+    /* 
+    Filter example
 
-        const key = Object.keys(filter)[0];
-        const value = filter[key].toLowerCase();
-        console.log(key, value);
-        usersCollectionRef = query(usersCollectionRef, where(key, '==', value));
+    {
+        "membership": "basic",
+        "userstype:" sponsor"
+    }
+
+    */
+    if (filter) {
+        var i = Object.keys(filter).length;
+        var key;
+        var value;
+        while (i > 0) {
+            key = Object.keys(filter)[i - 1];
+            value = filter[key].toLowerCase();
+            console.log(key, value);
+            usersCollectionRef = query(usersCollectionRef, where(key, '==', value));
+            i--;
+        }
     }
 
     const data = await getDocs(usersCollectionRef);

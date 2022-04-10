@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { auth } from '../firbase-config';
+import { auth } from '../firebase-config';
 import { AuthServices } from '../services/auth-services';
 import UserService, { userFields } from '../services/users-service';
 
