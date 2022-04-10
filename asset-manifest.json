@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/project-s/static/js/main.ab6bf511.js",
-    "static/js/787.31f67439.chunk.js": "/project-s/static/js/787.31f67439.chunk.js",
-    "index.html": "/project-s/index.html",
-    "main.ab6bf511.js.map": "/project-s/static/js/main.ab6bf511.js.map",
-    "787.31f67439.chunk.js.map": "/project-s/static/js/787.31f67439.chunk.js.map"
+    "main.js": "https://jacob-hanbeen-kim.github.io/project-s/static/js/main.4d2eb8fc.js",
+    "static/js/787.31f67439.chunk.js": "https://jacob-hanbeen-kim.github.io/project-s/static/js/787.31f67439.chunk.js",
+    "index.html": "https://jacob-hanbeen-kim.github.io/project-s/index.html",
+    "main.4d2eb8fc.js.map": "https://jacob-hanbeen-kim.github.io/project-s/static/js/main.4d2eb8fc.js.map",
+    "787.31f67439.chunk.js.map": "https://jacob-hanbeen-kim.github.io/project-s/static/js/787.31f67439.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.ab6bf511.js"
+    "static/js/main.4d2eb8fc.js"
   ]
 }
