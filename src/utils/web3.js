@@ -33,10 +33,16 @@ class Web3Helper {
     web3;
 
     constructor() {
-        this.provider = detectProvider();
-        this.web3 = new Web3(this.provider);
+        // #TODO: Need better way to handle
+        // error should display in login page only and not in home
+        try {
+            this.provider = detectProvider();
+            this.web3 = new Web3(this.provider);
 
-        console.log('web3 helper constructor');
+            console.log('web3 helper constructor');
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     async getAccounts() {

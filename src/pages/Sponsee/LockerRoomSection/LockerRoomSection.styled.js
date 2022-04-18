@@ -32,3 +32,8 @@ export const ApparelContainer = styled.div`
     justify-content: center;
     align-items: center;
 `
+
+export const ImageWrapper = styled.div`
+    height: 100%;
+    max-height: 300px;
+`

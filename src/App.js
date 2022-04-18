@@ -58,8 +58,8 @@ function App() {
               }
               <PageWrapper isSidebarOpen={isSidebarOpen} >
                 <Routes>
-                  {/* <Route path="/" element={<Home />} /> */}
-                  <Route path="/" element={<Waitlist />} />
+                  <Route path="/" element={<Home />} />
+                  {/* <Route path="/" element={<Waitlist />} /> */}
                   <Route path="/login" element={<Login />} />
                   <Route path="/account" element={<Account />} />
                   <Route path="/account/:username" element={<Account />} />

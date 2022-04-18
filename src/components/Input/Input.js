@@ -6,7 +6,7 @@ import {
 import PropTypes from 'prop-types'
 
 // https://www.w3schools.com/tags/tag_input.asp
-const Input = ({ onChange, type, name, placeholder, pattern, children, reverse }) => {
+const Input = ({ onChange, type, name, placeholder, pattern, children, reverse, fontSize }) => {
     return (
         <Container>
             <InputContainer reverse={reverse}>
@@ -16,6 +16,7 @@ const Input = ({ onChange, type, name, placeholder, pattern, children, reverse }
                     placeholder={placeholder}
                     pattern={pattern}
                     onChange={onChange}
+                    fontSize={fontSize}
                 />
                 {children}
             </InputContainer>

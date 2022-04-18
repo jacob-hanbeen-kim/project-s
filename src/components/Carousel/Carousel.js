@@ -11,7 +11,14 @@ import {
 
 // https://medium.com/tinyso/how-to-create-the-responsive-and-swipeable-carousel-slider-component-in-react-99f433364aa0
 
-const Carousel = ({ children }) => {
+const Carousel = ({
+    children,
+    displayCount,
+    noScale,
+    noOpacity,
+    width,
+    align
+}) => {
     // const [items, setItems] = useState([]);
     const [activeIndex, setActiveIndex] = useState(1);
 
@@ -32,12 +39,17 @@ const Carousel = ({ children }) => {
                 <LeftButton onClick={() => {
                     updateIndex(activeIndex - 1);
                 }} />
-                <View>
-                    <Inner activeIndex={activeIndex}>
+                <View maxWidth={width}>
+                    <Inner activeIndex={activeIndex} displayCount={displayCount} align={align}>
                         {
                             React.Children.map(children, (child, index) => {
                                 return (
-                                    <CarouselItem active={activeIndex === index}>
+                                    <CarouselItem
+                                        active={activeIndex === index}
+                                        displayCount={displayCount}
+                                        noScale={noScale}
+                                        noOpacity={noOpacity}
+                                    >
                                         {child}
                                     </CarouselItem>
                                 )
@@ -51,6 +63,14 @@ const Carousel = ({ children }) => {
             </CarouselContainer>
         </Container >
     )
+}
+
+Carousel.defaultProps = {
+    displayCount: 3,
+    noScale: false,
+    noOpacity: false,
+    width: '900px',
+    align: 'center'
 }
 
 export default Carousel

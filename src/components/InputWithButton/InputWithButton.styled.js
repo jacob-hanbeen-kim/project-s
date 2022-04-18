@@ -21,4 +21,6 @@ export const Button = styled(StyledBtn)`
 
     border: none;
     border-left: inherit;
+
+    font-size: ${({ fontSize }) => fontSize ? fontSize : 'inherit'};
 `

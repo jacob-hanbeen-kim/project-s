@@ -1,5 +1,6 @@
 import Card from './Card/Card';
 import Card2 from './Card/Card2';
+import CardWithIcon from './Card/CardWithIcon/CardWithIcon';
 
 import Carousel from './Carousel/Carousel';
 
@@ -43,7 +44,7 @@ import Image from './Image/Image';
 import Table from './Table/Table';
 
 export {
-    Card, Card2,
+    Card, Card2, CardWithIcon,
     Carousel,
     Footer,
     InfoSection,

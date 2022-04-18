@@ -21,7 +21,7 @@ export const CarouselContainer = styled.div`
 
 export const View = styled.div`
     overflow: hidden;
-    max-width: 900px;
+    max-width: ${({ maxWidth }) => maxWidth};
     width: 100%;
     height: 100%;
 
@@ -37,36 +37,50 @@ export const Inner = styled.div`
     position: relative;
     white-space: nowrap;
 
-    transform: ${({ activeIndex }) =>
+    transform: ${({ activeIndex, displayCount, align }) =>
         activeIndex > 0 ?
-            `translate3d(-${(activeIndex - 1) * (100 / 3)}%, 0, 0);` :
-            `translate3d(${100 / 3}%, 0 ,0);`
+            `translate3d(-${(activeIndex - 1) * (100 / displayCount)}%, 0, 0);` :
+            align === 'center' ?
+                `translate3d(${100 / displayCount}%, 0 ,0);` :
+                `translate3d(0, 0 ,0);`
     };
     transition: transform 0.3s;
+
+    width: 100%;
     height: 100%;
 `
 
 export const CarouselItem = styled.div`
     flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     padding: 20px;
-    height: 300px;
+    /* max-height: 300px; */
+    height: 100%;
 
     transition: transform 300ms;
 
-    width: calc(100% / 3);
+    width: ${({ displayCount }) => `calc(100% / ${displayCount})`};
 
-    ${props => props.active ? `
+    ${props => !props.noScale ? (props.active ? `
         transform: scale(1.2);
+    `: `
+        transform: scale(0.9);
+    `) : 'transform: scale(1.0);'
+    }
+
+    ${props => !props.noOpacity ? (props.active ? `
         opacity: 1;
     `: `
-        transform: scale(0.9);   
         opacity: 0.5;
-    `
+    `) : 'opacity: 1.0;'
     }
 
     * {
         width: 100%;
-        height: 100%
+        height: 100%;
     }
 `
 

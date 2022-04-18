@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BackgroundContainer = styled.div`
     position: absolute;
-    top: 0;
+    top: ${({ offset }) => offset ? offset : '0'};
     right: 0;
     bottom: 0;
     left: 0;
@@ -10,17 +10,25 @@ export const BackgroundContainer = styled.div`
     height: inherit;
     overflow: hidden;
 
-    background-color: ${({ maskColor }) => maskColor ? 'rgb(0,0,0)' : 'transparent'};
+    background-color: ${({ backgroundColor }) => backgroundColor ? backgroundColor : 'transparent'};
 `
 
 export const ImageBg = styled.div`
-    background-image: ${({ src }) => src && `url(${src}), url(${process.env.PUBLIC_URL}/images/account/background.jpeg)`};
+    background-image: ${({ src }) => src && `url(${src})`};
     background-size: cover;
-    background-position: center center;
+    background-position-x: ${({ bgPositionX }) => bgPositionX ? bgPositionX : 'center'};
+    background-position-y: ${({ bgPositionY }) => bgPositionY ? bgPositionY : 'center'};;
     opacity: ${({ opacity }) => opacity ? opacity : '0.4'};
     height: inherit;
-    filter: blur(1px);
-    mask: linear-gradient(#fff, transparent);
+    filter: ${({ blur }) => blur ? 'blur(' + blur + ')' : 'blur(1px)'};
+    ${({ noMask }) => !noMask || noMask === null && `
+        mask: linear-gradient(#fff, transparent);
+    `}
+`
+
+export const FixedBg = styled(ImageBg)`
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 `
 
 export const VideoBg = styled.video`
@@ -28,17 +36,4 @@ export const VideoBg = styled.video`
     height: inherit;
     object-fit: cover;
     background: #232a34;
-`
-
-export const FixedBg = styled.div`
-    background-image: ${({ src }) => src && `url(${src}), url(${process.env.PUBLIC_URL}/images/account/background.jpeg)`};
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
-    opacity: ${({ opacity }) => opacity ? opacity : '0.4'};
-    height: inherit;
-    filter: blur(1px);
-    mask: linear-gradient(#fff, transparent);
 `

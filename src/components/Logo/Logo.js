@@ -16,14 +16,14 @@ const Logo = ({ isDark }) => {
                         <img src={process.env.PUBLIC_URL + '/images/icon.png'} alt='logo' />
                 }
             </LogoImageContainer>
-            <BrandNameContainer>
+            {/* <BrandNameContainer>
                 {
                     isDark ?
                         <img src={process.env.PUBLIC_URL + '/images/brand_name_dark.svg'} alt='brand-name' /> :
                         // <img src={process.env.PUBLIC_URL + '/images/brand_name.svg'} alt='brand-name' />
                         <img src={process.env.PUBLIC_URL + '/images/brand_name.png'} alt='brand-name' />
                 }
-            </BrandNameContainer>
+            </BrandNameContainer> */}
         </LogoContainer>
     )
 }

@@ -1,7 +1,8 @@
 import {
     Container,
     SideBarContainer,
-    ApparelContainer
+    ApparelContainer,
+    ImageWrapper
 } from './LockerRoomSection.styled';
 
 import SideFormBar from './SideFormBar/SideFormBar';
@@ -41,10 +42,10 @@ const LockerRoomSection = ({ user }) => {
                         {/* <area alt="left arm bottom" title="left arm bottom" coords="10,193,31,203,43,173,18,160" shape="poly" /> */}
                         {/* <area alt="left arm top" title="left arm top" coords="27,136,53,148,62,128,38,114" shape="poly" /> */}
                     </ImageMap>
-                    <img src={images[0].src} alt={images[0].alt} />
-                    <img src={images[1].src} alt={images[1].alt} />
-                    <img src={images[2].src} alt={images[2].alt} />
-                    <img src={images[0].src} alt={images[0].alt} />
+                    <ImageWrapper><img src={images[0].src} alt={images[0].alt} /></ImageWrapper>
+                    <ImageWrapper><img src={images[1].src} alt={images[1].alt} /></ImageWrapper>
+                    <ImageWrapper><img src={images[2].src} alt={images[2].alt} /></ImageWrapper>
+                    <ImageWrapper><img src={images[0].src} alt={images[0].alt} /></ImageWrapper>
                 </Carousel>
             </ApparelContainer>
         </Container>

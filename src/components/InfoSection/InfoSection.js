@@ -34,7 +34,7 @@ const InfoSection = ({
                 <InfoRow hasImage={img ? true : false} imgStart={imgStart}>
                     <Column1>
                         <TextWrapper>
-                            {headline && <Text variant='display2' invert={invert}>{headline}</Text>}
+                            {headline && <Text variant='h1' invert={invert}>{headline}</Text>}
                             {subtitle && <Text variant='h2' textTranform='uppercase'>{subtitle}</Text>}
                             {description && <Text variant='body'>{description}</Text>}
                             {buttonLabel &&
