@@ -31,6 +31,7 @@ const Explore = () => {
     useEffect(() => {
         // console.log('res', localData);
         // setData(localData);
+        console.log("HERE!!");
         UserService.getUsers().then((res) => {
             setData(res);
             console.log('data', res);

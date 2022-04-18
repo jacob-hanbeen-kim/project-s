@@ -87,7 +87,7 @@ const HeroSection = () => {
                             />
                         </InputWrapper>
                         <Text variant='h4' textAlign='center' color='rgba(200,200,200,1)'>
-                            beta test launch | march 2022
+                            beta test launch | may 2022
                         </Text>
                     </CallToAction>
                 </ContentWapper>

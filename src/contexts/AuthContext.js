@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { auth } from '../firbase-config';
-// import { AuthServices } from '../services/auth-services';
+import { auth } from '../firebase-config';
+import { AuthServices } from '../services/auth-services';
 import UserService, { userFields } from '../services/users-service';
 
 const AuthContext = React.createContext()
@@ -14,12 +14,12 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true)
 
     function signup(email, password) {
-        // return auth.createUserWithEmailAndPassword(email, password)
+        return auth.createUserWithEmailAndPassword(email, password)
     }
 
     function login() {
         console.log('logging in');
-        // return AuthServices.signInWithMetaMask();
+        return AuthServices.signInWithMetaMask();
     }
 
     async function fetchUesr(user) {
@@ -58,7 +58,7 @@ export function AuthProvider({ children }) {
 
     function logout() {
         console.log('logging out');
-        // return AuthServices.signOutOfFirebase();
+        return AuthServices.signOutOfFirebase();
         // if (response.status === 200) {
         //     setCurrentUser(null);
         //     window.localStorage.removeItem('userAccount');
