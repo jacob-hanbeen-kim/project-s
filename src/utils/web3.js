@@ -32,20 +32,21 @@ class Web3Helper {
     provider;
     web3;
 
-    constructor() {
-        // #TODO: Need better way to handle
-        // error should display in login page only and not in home
+    isInitialized() {
         try {
-            this.provider = detectProvider();
-            this.web3 = new Web3(this.provider);
-
-            console.log('web3 helper constructor');
+            if (!(this.provider && this.web3)) {
+                this.provider = detectProvider();
+                this.web3 = new Web3(this.provider);
+            }
+            return true;
         } catch (e) {
-            console.log(e);
+            window.alert(e);
+            return false;
         }
     }
 
     async getAccounts() {
+        if (!this.isInitialized()) return null;
         // request account access 
         await this.provider.request({
             method: "eth_requestAccounts",
@@ -57,6 +58,7 @@ class Web3Helper {
     }
 
     async sign(account, message) {
+        if (!this.isInitialized()) return null;
         // const signature = await this.provider.request({
         //     method: 'personal_sign',
         //     params: [
@@ -71,6 +73,8 @@ class Web3Helper {
     }
 
     async ecRecover(dataThatWasSigned, signature) {
+        if (!this.isInitialized()) return null;
+
         const account = await this.web3.eth.personal.ecRecover(dataThatWasSigned, signature)
         return account;
     }

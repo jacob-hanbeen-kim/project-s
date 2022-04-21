@@ -96,7 +96,7 @@ async function signInWithMetaMask() {
         // Step 1: Request (limited) access to user's ethereum account and get accounts
         const accounts = await web3Helper.getAccounts();
 
-        if (accounts.length === 0) {
+        if (accounts === null || accounts.length === 0) {
             throw CustomException('Error: Please connect to MetaMask!');
         }
 
