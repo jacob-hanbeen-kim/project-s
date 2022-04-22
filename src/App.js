@@ -20,6 +20,8 @@ import Brand from './pages/Brands/Brands';
 import Agents from './pages/Agents/Agents';
 import Membership from './pages/Membership/Membership';
 import EditProfile from './pages/Profile/EditProfile';
+import Onboarding from './pages/Onboarding/Onboarding'
+import OnboardingSponsee from './pages/Onboarding/Sponsee/OnboardSponsee'
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { AuthProvider } from './contexts/AuthContext';
 
@@ -63,6 +65,8 @@ function App() {
                   <Route path="/account/:username" element={<Account />} />
                   <Route path="/membership" element={<Membership />} />
                   <Route path="/account/edit" element={<EditProfile />} />
+                  <Route path="/onboarding" element={<Onboarding />} />
+                  <Route path="/onboarding/sponsee" element={<OnboardingSponsee />} />
                   <Route path="*" element={<ErrorPage />} />
                 </Routes>
               </PageWrapper>
