@@ -8,7 +8,7 @@ firebase emulators:start -> Emulator 작동. localhost로 cloud functions 테스
 const { initializeApp } = require("firebase/app");
 const admin = require("firebase-admin");
 const serviceAccount = require("./ServiceAccountKey.json"); // TODO:maybe put this in .env too?
-require('dotenv').config();
+require('dotenv').config({ path: require('find-config')('.env') })
 
 // Firebase configuration - for Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {

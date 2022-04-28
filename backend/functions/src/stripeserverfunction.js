@@ -6,7 +6,7 @@ const fetch = require("node-fetch");
 const stripe = require("stripe")(
   process.env.STRIPE_TEST_SECRET_API_KEY
 );
-require('dotenv').config();
+require('dotenv').config()
 
 const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET;
 
