@@ -3,8 +3,8 @@ LOCATION=us-central1\
     PROJECT_ID=project-s-backend\
     ALGOLIA_APP_ID=4HRSAU1M6D\
     ALGOLIA_API_KEY=5239e8618e6ef8a417bf6a213ce2ec96\
-    ALGOLIA_INDEX_NAME=users\
-    COLLECTION_PATH=users\
+    ALGOLIA_INDEX_NAME=profile\
+    COLLECTION_PATH=users/{user_id}/profile\
     GOOGLE_APPLICATION_CREDENTIALS=/Users/seunghunjang/Documents/PersonalProjects/ProjectS/project-s/backend/functions/ServiceAccountKey.json\
     npx firestore-algolia-search
 
