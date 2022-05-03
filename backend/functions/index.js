@@ -8,7 +8,7 @@ firebase emulators:start -> Emulator 작동. localhost로 cloud functions 테스
 const { initializeApp } = require("firebase/app");
 const admin = require("firebase-admin");
 const serviceAccount = require("./ServiceAccountKey.json"); // TODO:maybe put this in .env too?
-require('dotenv').config();
+require('dotenv').config()
 
 // Firebase configuration - for Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -33,6 +33,10 @@ const getCustomTokenFunction = require("./src/getcustomtokenfunction");
 const stripeServerFunction = require("./src/stripeserverfunction");
 const userServiceFunction = require("./src/userservicefunction");
 
-exports.getCustomToken = getCustomTokenFunction.getCustomToken;
-exports.stripeServerApp = stripeServerFunction.stripeServerApp;
+
+// Un-comment below to update! 
+// ** Important: When it asks if you would like to proceed with deletion of these commented items, say No **
+
+// exports.getCustomToken = getCustomTokenFunction.getCustomToken;
+// exports.stripeServerApp = stripeServerFunction.stripeServerApp;
 exports.userServiceApp = userServiceFunction.userServiceFunctionApp;
