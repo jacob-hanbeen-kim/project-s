@@ -23,7 +23,7 @@ const theme = {
         fontWeights,
         lineHeights,
         border: {
-                radius: '10px',
+                radius: '5px',
         },
         screen: {
                 sizeXS: '320px',

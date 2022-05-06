@@ -1,13 +1,12 @@
 import styled from 'styled-components'
-import { FaUserAlt } from 'react-icons/fa';
 
-const borderColor = '#D4D4D4';
+const borderColor = 'rgba(0, 0, 0, 0.5)';
 
 export const Container = styled.div`
     height: 100%;
     position: relative;
 
-    /* background-color: ${({ theme }) => theme.colors.background}; */
+    background-color: ${({ theme }) => theme.colors.background};
 `
 
 export const TableWrapper = styled.div`
@@ -21,8 +20,8 @@ export const TableWrapper = styled.div`
 
     overflow: auto;
 
-    /* border: 1px solid ${borderColor}; */
-    /* border-radius: ${({ theme }) => theme.border.radius}; */
+    border: 1px solid ${borderColor};
+    border-radius: ${({ theme }) => theme.border.radius};
 `
 
 export const StyledTable = styled.table`
@@ -38,12 +37,12 @@ export const StyledTable = styled.table`
     & th:first-child,
     & td:first-child {
         /* Apply a right border on the first <td> or <th> in a row */
-        /* border-right: 1px solid ${borderColor}; */
+        border-right: 1px solid ${borderColor};
     }
 
     & td:first-child:hover {
         /* border: 1px solid red; */
-        /* text-decoration: underline; */
+        text-decoration: underline;
         cursor: pointer;
     }
 
@@ -51,6 +50,7 @@ export const StyledTable = styled.table`
     & td {
         padding: 0px 20px;
         border-bottom: 1px solid ${borderColor};
+        background-color: ${({ theme }) => theme.colors.surface};
 
         text-align: left;
         
@@ -58,19 +58,13 @@ export const StyledTable = styled.table`
         min-width: 200px;
         max-width: 200px;
 
-        height: 150px;
-        min-height: 150px;
-        max-height: 150px;
+        height: 50px;
+        min-height: 50px;
+        max-height: 50px;
         
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
-    }
-
-    & th {
-        height: 50px;
-        min-height: 50px;
-        max-height: 50px;
     }
 `
 
@@ -81,9 +75,6 @@ export const TableHead = styled.thead`
 `
 
 export const TableHeader = styled.th`
-    font-size: ${({ theme }) => theme.fontSizes.use('h5')};
-    color: #8B8B9F;
-    background-color: ${({ theme }) => theme.colors.surface};x
 `
 
 export const TableHeaderSticky = styled(TableHeader)`
@@ -96,7 +87,6 @@ export const TableBody = styled.tbody`
 `
 
 export const TableRow = styled.tr`
-    background-color: ${({ isOdd }) => isOdd && '#ffffff'};
 `
 
 export const TableData = styled.td`
@@ -106,15 +96,4 @@ export const TableDataSticky = styled(TableData)`
     position: sticky;
     z-index: 1;
     left: 0;
-`
-
-export const ProfilePhoto = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
-
-export const ProfileIcon = styled(FaUserAlt)`
-    font-size: 100px;
-    color: #8B8B9F;
 `

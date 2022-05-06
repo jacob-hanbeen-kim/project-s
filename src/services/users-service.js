@@ -32,6 +32,20 @@ const getUsers = async (filter = null) => {
     return users;
 }
 
+const getUserProfiles = async (filter = null) => {
+    let users = await getUsers();
+    console.log('users', users);
+    const profiles = [];
+    users.forEach(async (user) => {
+        const profileCollectionRef = collection(db, "users", user.id, 'profile');
+        const data = await getDocs(profileCollectionRef);
+        const profile = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))[0];
+        profile && profiles.push(profile);
+    })
+
+    return profiles;
+}
+
 const getUserById = async (id) => {
     const userDoc = doc(db, "users", id);
     const data = await getDoc(userDoc);
@@ -106,6 +120,7 @@ export const userFields = new UserFields();
 const UserService = {
     getUsers,
     getUserById,
+    getUserProfiles,
     createUser,
     updateUser,
     deleteUser,

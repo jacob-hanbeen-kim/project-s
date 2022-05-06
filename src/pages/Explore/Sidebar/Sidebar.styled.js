@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FaSlidersH } from 'react-icons/fa';
 
 export const Aside = styled.aside`
     position: sticky;
@@ -14,11 +15,16 @@ export const Header = styled.div`
     display: flex;
     flex-direction: row;
 
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    margin-left: 10px;
 
-    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-    margin-bottom: 20px;
+    /* border-bottom: 1px solid ${({ theme }) => theme.colors.border}; */
+    /* margin-bottom: 20px; */
+`
+
+export const FilterIcon = styled(FaSlidersH)`
+    
 `
 
 export const Container = styled.div`
@@ -40,4 +46,8 @@ export const FilterContainer = styled.div`
 
     width: 100%;
     margin: 10px 0px;
+`
+
+export const InputContainer = styled.div`
+    margin-left: 20px;
 `

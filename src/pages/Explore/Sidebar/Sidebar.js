@@ -4,47 +4,60 @@ import {
     Aside,
     Header,
     Container,
-    FilterContainer
+    FilterContainer,
+    InputContainer,
+    FilterIcon
 } from './Sidebar.styled'
 
 const Sidebar = ({ setFilters }) => {
 
-    const [search, setSearch] = useState('');
-    const [category, setCategory] = useState('');
+    const [sports, setSports] = useState('');
     const [country, setCountry] = useState('');
-    const [numbContract, setNumbContract] = useState('');
-    const [socialMedialScore, setSocialMedialScore] = useState('');
+    const [league, setLeague] = useState('');
+    const [team, setTeam] = useState('');
+    const [age, setAge] = useState('');
 
     useEffect(() => {
-        setFilters({ search, category, country, numbContract, socialMedialScore });
-    }, [search, category, country, numbContract, socialMedialScore])
+        setFilters({ sports, country, league, team, age });
+    }, [sports, country, league, team, age])
 
     return (
         <Aside>
             <Header>
-                <Text variant='h2'>Filters</Text>
-                <Text variant='h4'>clear</Text>
+                <FilterIcon></FilterIcon>
+                <Text variant='h4'>Filters</Text>
+                {/* <Text variant='h4'>clear</Text> */}
             </Header>
             <Container>
                 <FilterContainer>
-                    <Text>Search</Text>
-                    <Input onChange={(e) => setSearch(e.target.value)} />
+                    <Text>SPORTS</Text>
+                    <InputContainer>
+                        <Input onChange={(e) => setSports(e.target.value)} />
+                    </InputContainer>
                 </FilterContainer>
                 <FilterContainer>
-                    <Text>Sports Category</Text>
-                    <Input onChange={(e) => setCategory(e.target.value)} />
+                    <Text>COUNTRY</Text>
+                    <InputContainer>
+                        <Input onChange={(e) => setCountry(e.target.value)} />
+                    </InputContainer>
                 </FilterContainer>
                 <FilterContainer>
-                    <Text>Country</Text>
-                    <Input onChange={(e) => setCountry(e.target.value)} />
+                    <Text>LEAGUE</Text>
+                    <InputContainer>
+                        <Input onChange={(e) => setLeague(e.target.value)} />
+                    </InputContainer>
                 </FilterContainer>
                 <FilterContainer>
-                    <Text># of Current Contracts</Text>
-                    <Input onChange={(e) => setNumbContract(e.target.value)} />
+                    <Text>TEAM</Text>
+                    <InputContainer>
+                        <Input onChange={(e) => setTeam(e.target.value)} />
+                    </InputContainer>
                 </FilterContainer>
                 <FilterContainer>
-                    <Text>Social Media Score</Text>
-                    <Input onChange={(e) => setSocialMedialScore(e.target.value)} />
+                    <Text>AGE</Text>
+                    <InputContainer>
+                        <Input onChange={(e) => setAge(e.target.value)} />
+                    </InputContainer>
                 </FilterContainer>
             </Container>
         </Aside>

@@ -6,13 +6,12 @@ import {
 } from './Explore.styled'
 
 import Sidebar from './Sidebar/Sidebar'
-import ExploreList from './ExploreList/ExploreList'
 
-import { Tabs } from '../../components'
 import UserService from '../../services/users-service'
+import View from './View/View'
 
-// const localData = require('./data.json');;
-const localData = require('./ExploreList/data.json');
+// const localData = require('./data.json');
+const localData = require('./View/ListView/data.json');
 
 const Explore = () => {
 
@@ -32,9 +31,9 @@ const Explore = () => {
         // console.log('res', localData);
         // setData(localData);
         console.log("HERE!!");
-        UserService.getUsers().then((res) => {
-            setData(res);
+        UserService.getUserProfiles().then((res) => {
             console.log('data', res);
+            setData(res);
         })
     }, [])
 
@@ -44,17 +43,12 @@ const Explore = () => {
                 <Sidebar setFilters={setFilters} />
             </SidebarContainer>
             <ContentContainer>
-                <Tabs sticky={false} onClick={onClickFilter}>
-                    <ExploreList label="All" data={data} />
-                    <ExploreList label="Sponsor" data={data} />
-                    <ExploreList label="Team" data={data} />
-                    <ExploreList label="Athelete" data={data} />
-                    <ExploreList label="Other" data={data} />
-                    {/* <div label="Sponsor"></div>
+                {/* <div label="Sponsor"></div>
                     <div label="Team"></div>
                     <div label="Athelete"></div>
                     <div label="Other"></div> */}
-                </Tabs>
+                {/* </Tabs> */}
+                <View data={data} />
             </ContentContainer>
         </Container>
     )

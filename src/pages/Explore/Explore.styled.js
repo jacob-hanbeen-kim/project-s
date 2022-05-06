@@ -11,8 +11,7 @@ export const Container = styled.div`
 export const SidebarContainer = styled.div`
     flex: 1;
     position: relative;
-    /* border-right: 1px solid ${({ theme }) => theme.colors.border}; */
-    border-right: 1px solid black;
+    border-right: 1px solid ${({ theme }) => theme.colors.border};
 `
 
 export const ContentContainer = styled.div`

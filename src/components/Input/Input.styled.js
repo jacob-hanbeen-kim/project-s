@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const InputContainer = styled.div`
     cursor: text;
     display: flex;
-    background-color: ${({ theme }) => theme.colors.surface};
+    background-color: ${({ theme }) => theme.colors.background};
     border-radius: 10px;
     border: 1px solid ${({ theme }) => theme.colors.border};
     width: 100%;
