@@ -225,6 +225,51 @@ const deleteProfile = async (req, res) => {
   }
 };
 
+const getSponsors = async (req, res) => {
+  try {
+    const usersCollectionRef = collection(db, "users");
+    const data = await getDocs(usersCollectionRef);
+    const sponsors = data.docs.filter((x) => x.data().usertype == 'sponsor').map((doc) => ({ ...doc.data(), id: doc.id }));
+    res.status(200).send({
+      status: "success",
+      message: "fetched all sponsors successfully",
+      data: sponsors,
+    });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+const getSponsees = async (req, res) => {
+  try {
+    const usersCollectionRef = collection(db, "users");
+    const data = await getDocs(usersCollectionRef);
+    const sponsors = data.docs.filter((x) => x.data().usertype == 'sponsee').map((doc) => ({ ...doc.data(), id: doc.id }));
+    res.status(200).send({
+      status: "success",
+      message: "fetched all sponsees successfully",
+      data: sponsors,
+    });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+const getAgencies = async (req, res) => {
+  try {
+    const usersCollectionRef = collection(db, "users");
+    const data = await getDocs(usersCollectionRef);
+    const sponsors = data.docs.filter((x) => x.data().usertype == 'agency').map((doc) => ({ ...doc.data(), id: doc.id }));
+    res.status(200).send({
+      status: "success",
+      message: "fetched all agencies successfully",
+      data: sponsors,
+    });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
 const app = express();
 app.use(cors({ origin: true }));
 app.get("/user/all", getUsers);
@@ -236,5 +281,8 @@ app.get("/user/:id/profile", getProfile);
 app.post("/user/:id/profile", createProfile);
 app.put("/user/:id/profile", updateProfile);
 app.delete("/user/:id/profile", deleteProfile);
+app.get("/user/sponsor/all", getSponsors);
+app.get("/user/sponsee/all", getSponsees);
+app.get("/user/agency/all", getAgencies);
 
 exports.userServiceFunctionApp = functions.https.onRequest(app);
