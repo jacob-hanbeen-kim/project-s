@@ -13,7 +13,6 @@ const Tabs = ({ children, onClick, sticky, top }) => {
 
     const handleClick = (e, newActiveTab) => {
         e.preventDefault();
-        console.log('current', activeTab);
         onClick && onClick(newActiveTab);
         setActiveTab(newActiveTab);
     };

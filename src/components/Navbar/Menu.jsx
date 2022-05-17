@@ -10,7 +10,7 @@ import {
     MenuBar,
     BarIcon,
     CloseIcon,
-    DropdownContent,
+    // DropdownContent,
     MessagesLink,
     MessagesIcon
 } from './Navbar.styled';
@@ -26,11 +26,11 @@ const Menu = ({ logout, toggleTheme, getUsername, currentUser, onSidebarToggle, 
                     <DropdownItem>
                         <StyledNavLink to="/explore">Explore</StyledNavLink>
                         {/* <StyledNavLink to="/brands">Brands</StyledNavLink> */}
-                        <DropdownContent>
+                        {/* <DropdownContent>
                             <SubNavLink to="/brands/tiers">By Tiers</SubNavLink>
                             <SubNavLink to="/brands/nations">By Nations</SubNavLink>
                             <SubNavLink to="/brands/sports">By Sports</SubNavLink>
-                        </DropdownContent>
+                        </DropdownContent> */}
                     </DropdownItem>
                 </DropdownList>
             </MenuItems>
@@ -41,7 +41,7 @@ const Menu = ({ logout, toggleTheme, getUsername, currentUser, onSidebarToggle, 
                 {currentUser &&
                     <ProfileDropDown>
                         <SubNavLink to="/account">Profile</SubNavLink>
-                        <SubNavLink to="/account/settings">Settings</SubNavLink>
+                        <SubNavLink to="/account/edit">Settings</SubNavLink>
                         {
                             currentUser &&
                             <SubNavLink to="/" onClick={() => { logout(); }}>Logout</SubNavLink>

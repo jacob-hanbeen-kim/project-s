@@ -23,7 +23,7 @@ const theme = {
         fontWeights,
         lineHeights,
         border: {
-                radius: '10px',
+                radius: '5px',
         },
         screen: {
                 sizeXS: '320px',
@@ -80,7 +80,8 @@ export const lightTheme = Object.freeze({
                 info: '#',
 
                 // border-color
-                border: '#e5e8eb',
+                // border: '#e5e8eb',
+                border: '#D4D4D4',
 
                 // "on" colors
                 // refers to the color elements that appear “on” top of

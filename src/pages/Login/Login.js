@@ -33,7 +33,7 @@ const Login = ({ }) => {
 
         const response = await login();
 
-        console.log('login response', response);
+        // console.log('login response', response);
 
         setWallet(null);
         setIsConnecting(false);

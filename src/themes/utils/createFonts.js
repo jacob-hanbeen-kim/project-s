@@ -26,7 +26,7 @@ const createFont = ({ family, metrics }) => {
 
 export const montserratDisplayFont = createFont({
     family: 'neue-haas-grotesk-display, Helvetica, "Open Sans", sans-serif',
-    family: 'montserrat, "lucida grande", Helvetica, Verdana, sans-serif',
+    family: 'montserrat, Lato, Helvetica, Verdana, sans-serif',
     metrics: {
         capitalHeight: 715,
         emSize: 1000,
@@ -36,7 +36,7 @@ export const montserratDisplayFont = createFont({
 })
 
 export const montserratTextFont = createFont({
-    family: 'montserrat, "lucida grande", Helvetica, Verdana, sans-serif',
+    family: 'montserrat, Lato, Helvetica, Verdana, sans-serif',
     metrics: {
         capitalHeight: 727,
         emSize: 1000,
