@@ -34,8 +34,6 @@ import Negotiate from './pages/Negotiate/Negotiate';
 
 function App() {
 
-  console.log(process.env.PUBLIC_URL)
-
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
 
@@ -59,7 +57,6 @@ function App() {
               <PageWrapper isSidebarOpen={isSidebarOpen} >
                 <Routes>
                   <Route path="/" element={<Home />} />
-                  {/* <Route path="/" element={<Waitlist />} /> */}
                   <Route path="/login" element={<Login />} />
                   <Route path="/account" element={<Account />} />
                   <Route path="/account/:username" element={<Account />} />

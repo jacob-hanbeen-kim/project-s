@@ -41,17 +41,14 @@ const Explore = () => {
         setActiveTab(tab);
         if (tab === 'Athletes' || tab === 'Team' || tab === 'Brand') {
             UserService.getAllSponsee().then((res) => {
-                console.log('sponsee', res.data);
                 setData(res.data);
             })
         } else if (tab === 'Sponsors') {
             UserService.getAllSponsor().then((res) => {
-                console.log('sponsor', res.data);
                 setData(res.data);
             })
         } else if (tab === 'Agents') {
             UserService.getAllAgent().then((res) => {
-                console.log('agency', res.data);
                 setData(res.data);
             })
         }

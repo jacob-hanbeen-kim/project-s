@@ -44,7 +44,7 @@ const Account = ({ }) => {
             switch (viewUser.usertype) {
                 case "sponsee": return <Sponsee user={viewUser} profileImg={profileImg} profileBg={profileBg} />;
                 case "sponsor": return <Sponsor user={viewUser} profileImg={profileImg} profileBg={profileBg} />;
-                case "agent": return <Sponsee user={viewUser} profileImg={profileImg} profileBg={profileBg} />;
+                case "agency": return <Sponsee user={viewUser} profileImg={profileImg} profileBg={profileBg} />;
                 default: return <div>
                     Page Not Found
                 </div>

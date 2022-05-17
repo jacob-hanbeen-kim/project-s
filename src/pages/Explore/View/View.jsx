@@ -67,7 +67,6 @@ const View = ({ data, tabs, filters, clearFilter, activeTab, onClickTab }) => {
         let sortKey = 'nonce';
 
         const sortedData = data.sort((a, b) => {
-            console.log(a, b);
             return a[sortKey] > b[sortKey] ? 1 : -1;
         });
 
