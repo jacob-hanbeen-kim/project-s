@@ -5,14 +5,14 @@ import {
 import Sponsee from '../Sponsee/Sponsee';
 import Sponsor from '../Sponsor/Sponsor';
 
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { useAuth } from '../../contexts/AuthContext';
-import StorageService from '../../services/storage-service';
+// import StorageService from '../../services/storage-service';
 import UserService from '../../services/users-service';
 
-const Account = ({ }) => {
+const Account = () => {
 
     // const currentUser = {
     //     uid: '0xa38730a865eD8f3a1877Ad99DD8F21A1734661aF',

@@ -29,21 +29,21 @@ import ListView from './ListView/ListView.jsx';
 import GridView from './GridView/GridView';
 import { FaSortAlphaDown, FaSortAmountDown } from 'react-icons/fa';
 
-const users = [
-    { name: "Jacob Kim", age: 26, sports: "Soccer", location: "GA, USA", mediaScore: "1,800" },
-    { name: "Daniel Lee", age: 25, sports: "Soccer", location: "GA, USA", mediaScore: "2,500" },
-    { name: "Seunghun Jang", age: 26, sports: "Golf", location: "CA, USA", mediaScore: "3,00" },
-    { name: "Minseok", age: 24, sports: "Golf", location: "GA, USA", mediaScore: "3,000" },
-    { name: "James Jang", age: 23, sports: "Soccer", location: "GA, USA", mediaScore: "2,00" },
-    { name: "James Jang", age: 23, sports: "Soccer", location: "GA, USA", mediaScore: "2,00" },
-    { name: "James Jang", age: 23, sports: "Soccer", location: "GA, USA", mediaScore: "2,00" },
-    { name: "James Jang", age: 23, sports: "Soccer", location: "GA, USA", mediaScore: "2,00" },
-]
+// const users = [
+//     { name: "Jacob Kim", age: 26, sports: "Soccer", location: "GA, USA", mediaScore: "1,800" },
+//     { name: "Daniel Lee", age: 25, sports: "Soccer", location: "GA, USA", mediaScore: "2,500" },
+//     { name: "Seunghun Jang", age: 26, sports: "Golf", location: "CA, USA", mediaScore: "3,00" },
+//     { name: "Minseok", age: 24, sports: "Golf", location: "GA, USA", mediaScore: "3,000" },
+//     { name: "James Jang", age: 23, sports: "Soccer", location: "GA, USA", mediaScore: "2,00" },
+//     { name: "James Jang", age: 23, sports: "Soccer", location: "GA, USA", mediaScore: "2,00" },
+//     { name: "James Jang", age: 23, sports: "Soccer", location: "GA, USA", mediaScore: "2,00" },
+//     { name: "James Jang", age: 23, sports: "Soccer", location: "GA, USA", mediaScore: "2,00" },
+// ]
 
 const sortOptions = [
     { label: 'Relevance', reverseLayout: false, icon: null },
     { label: 'Newest', reverseLayout: false, icon: null },
-    { label: 'Market Score', reverseLayout: false, icon: <img src={process.env.PUBLIC_URL + '/images/account/marketScore.svg'} /> },
+    { label: 'Market Score', reverseLayout: false, icon: <img src={process.env.PUBLIC_URL + '/images/account/marketScore.svg'} alt='MarketScore Icon' /> },
     { label: 'Name', reverseLayout: true, icon: <FaSortAlphaDown /> },
     { label: 'Price', reverseLayout: true, icon: <FaSortAmountDown /> },
 ]
@@ -151,6 +151,7 @@ const View = ({ data, tabs, filters, clearFilter, activeTab, onClickTab }) => {
                                         </Filter>
                                     )
                                 }
+                                return <></>;
                             })}
                         </FilterList>
                         <ClearBtn onClick={clearFilter}>Clear All</ClearBtn>

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
     Container,
     SidebarContainer,
@@ -10,7 +10,7 @@ import UserService from '../../services/users-service'
 import View from './View/View'
 
 // const localData = require('./data.json');
-const localData = require('./View/ListView/data.json');
+// const localData = require('./View/ListView/data.json');
 const tabs = [
     'Athletes',
     'Team',

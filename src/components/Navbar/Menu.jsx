@@ -10,7 +10,7 @@ import {
     MenuBar,
     BarIcon,
     CloseIcon,
-    DropdownContent,
+    // DropdownContent,
     MessagesLink,
     MessagesIcon
 } from './Navbar.styled';
@@ -41,7 +41,7 @@ const Menu = ({ logout, toggleTheme, getUsername, currentUser, onSidebarToggle, 
                 {currentUser &&
                     <ProfileDropDown>
                         <SubNavLink to="/account">Profile</SubNavLink>
-                        <SubNavLink to="/account/settings">Settings</SubNavLink>
+                        <SubNavLink to="/account/edit">Settings</SubNavLink>
                         {
                             currentUser &&
                             <SubNavLink to="/" onClick={() => { logout(); }}>Logout</SubNavLink>
