@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import { FaUserAlt } from 'react-icons/fa';
 
-const borderColor = '#D4D4D4';
-
 export const Container = styled.div`
     height: 100%;
     position: relative;
@@ -21,7 +19,7 @@ export const TableWrapper = styled.div`
 
     overflow: auto;
 
-    /* border: 1px solid ${borderColor}; */
+    /* border: 1px solid ${({ theme }) => theme.colors.border}; */
     /* border-radius: ${({ theme }) => theme.border.radius}; */
 `
 
@@ -33,12 +31,12 @@ export const StyledTable = styled.table`
     box-sizing: border-box;
     flex-direction: column;
     min-width: 100%;
-    min-height: 100%;
+    /* min-height: 100%; */
     
     & th:first-child,
     & td:first-child {
         /* Apply a right border on the first <td> or <th> in a row */
-        /* border-right: 1px solid ${borderColor}; */
+        /* border-right: 1px solid ${({ theme }) => theme.colors.border}; */
     }
 
     & td:first-child:hover {
@@ -50,17 +48,17 @@ export const StyledTable = styled.table`
     & th,
     & td {
         padding: 0px 20px;
-        border-bottom: 1px solid ${borderColor};
+        border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 
         text-align: left;
         
-        width: 200px;
-        min-width: 200px;
-        max-width: 200px;
-
         height: 150px;
         min-height: 150px;
         max-height: 150px;
+
+        width: 200px;
+        min-width: 200px;
+        max-width: 200px;
         
         overflow: hidden;
         white-space: nowrap;
@@ -83,7 +81,7 @@ export const TableHead = styled.thead`
 export const TableHeader = styled.th`
     font-size: ${({ theme }) => theme.fontSizes.use('h5')};
     color: #8B8B9F;
-    background-color: ${({ theme }) => theme.colors.surface};x
+    background-color: ${({ theme }) => theme.colors.surface};
 `
 
 export const TableHeaderSticky = styled(TableHeader)`

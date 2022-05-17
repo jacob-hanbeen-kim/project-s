@@ -40,14 +40,6 @@ const users = [
     { name: "James Jang", age: 23, sports: "Soccer", location: "GA, USA", mediaScore: "2,00" },
 ]
 
-const tabs = [
-    'Athletes',
-    'Team',
-    'Brand',
-    'Agents',
-    'Sponsors'
-]
-
 const sortOptions = [
     { label: 'Relevance', reverseLayout: false, icon: null },
     { label: 'Newest', reverseLayout: false, icon: null },
@@ -62,10 +54,31 @@ const ViewOption = {
     LIST: 'list'
 }
 
-const View = ({ data }) => {
-    const [activeTab, setActiveTab] = useState(tabs[0]);
+const View = ({ data, tabs, filters, clearFilter, activeTab, onClickTab }) => {
     const [activeViewOption, setActiveViewOption] = useState(ViewOption.GRID);
     const [activeSortOption, setActiveSortOption] = useState(sortOptions[0].label);
+
+    const handleSort = (label) => {
+        setActiveSortOption(label);
+
+        // if (!sortKey) return tableData;
+
+        // #TODO: label 에 따라서 sortKey 정해주기
+        let sortKey = 'nonce';
+
+        const sortedData = data.sort((a, b) => {
+            console.log(a, b);
+            return a[sortKey] > b[sortKey] ? 1 : -1;
+        });
+
+        data = sortedData;
+
+        // if (reverse) {
+        //     return sortedData.reverse();
+        // }
+
+        // setData(sortedData);
+    }
 
     const getActiveView = () => {
         if (activeViewOption === ViewOption.GRID) {
@@ -83,7 +96,7 @@ const View = ({ data }) => {
                         <TabContainer key={idx}>
                             <Tab
                                 isActive={tab === activeTab}
-                                onClick={() => setActiveTab(tab)}
+                                onClick={() => onClickTab(tab)}
                             >
                                 {tab}
                             </Tab>
@@ -106,7 +119,7 @@ const View = ({ data }) => {
                                 isActive={option.label === activeSortOption}
                                 isFirst={idx === 0}
                                 isLast={idx === sortOptions.length - 1}
-                                onClick={() => setActiveSortOption(option.label)}
+                                onClick={() => handleSort(option.label)}
                                 reverseLayout={option.reverseLayout}
                             >
                                 {option.icon &&
@@ -123,19 +136,25 @@ const View = ({ data }) => {
             <Content>
                 <AppliedFilters>
                     <ItemCount>
-                        50 items
+                        {data.length} items
                     </ItemCount>
                     <Filters>
                         <FilterIcon />
                         <FilterList>
-                            <Filter>
-                                <FilterText>
-                                    age: 18 ~ 52
-                                </FilterText>
-                                <FilterXBtn />
-                            </Filter>
+                            {Object.keys(filters).map((key, idx) => {
+                                if (filters[key]) {
+                                    return (
+                                        <Filter key={idx}>
+                                            <FilterText>
+                                                {`${key}: ${filters[key]}`}
+                                            </FilterText>
+                                            <FilterXBtn />
+                                        </Filter>
+                                    )
+                                }
+                            })}
                         </FilterList>
-                        <ClearBtn>Clear All</ClearBtn>
+                        <ClearBtn onClick={clearFilter}>Clear All</ClearBtn>
                     </Filters>
                 </AppliedFilters>
                 <ListContainer>

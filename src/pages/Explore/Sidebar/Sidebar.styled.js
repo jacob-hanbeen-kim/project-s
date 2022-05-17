@@ -5,10 +5,13 @@ export const Aside = styled.aside`
     position: sticky;
     top: 0;
     padding: 30px;
-    /* background-color: ${({ theme }) => theme.colors.sidebar}; */
-    background-color: ${({ theme }) => theme.colors.background};
-    overflow-y: scroll;
+    
     height: 100vh;
+    min-width: 380px;
+    
+    overflow-y: scroll;
+
+    background-color: ${({ theme }) => theme.colors.background};
 `
 
 export const Header = styled.div`
@@ -18,16 +21,13 @@ export const Header = styled.div`
     justify-content: flex-start;
     align-items: center;
     margin-left: 10px;
-
-    /* border-bottom: 1px solid ${({ theme }) => theme.colors.border}; */
-    /* margin-bottom: 20px; */
 `
 
 export const FilterIcon = styled(FaSlidersH)`
     
 `
 
-export const Container = styled.div`
+export const Form = styled.form`
     display: flex;
     flex-direction: column;
 
@@ -49,5 +49,6 @@ export const FilterContainer = styled.div`
 `
 
 export const InputContainer = styled.div`
-    margin-left: 20px;
+    padding-left: 20px;
+    width: 100%;
 `

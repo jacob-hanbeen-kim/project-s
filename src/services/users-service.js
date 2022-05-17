@@ -2,6 +2,69 @@ import { collection, getDocs, getDoc, query, where, setDoc, updateDoc, deleteDoc
 // firebase
 import { db } from '../firebase-config';
 
+const getAllSponsor = () => {
+    const baseUrl = "https://us-central1-project-s-backend.cloudfunctions.net/userServiceApp";
+
+    return fetch(`${baseUrl}/user/sponsor/all`,
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    ).then(response => response.json()
+    ).then(data => {
+        // return `Bearer ${data.token}`
+        console.log('get all sponsee', data);
+        return data;
+    }).catch(err => {
+        // Do something for an error here
+        console.log("Error Reading data " + err);
+    });
+}
+
+const getAllSponsee = () => {
+    const baseUrl = "https://us-central1-project-s-backend.cloudfunctions.net/userServiceApp";
+
+    return fetch(`${baseUrl}/user/sponsee/all`,
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    ).then(response => response.json()
+    ).then(data => {
+        // return `Bearer ${data.token}`
+        console.log('get all sponsee', data);
+        return data;
+    }).catch(err => {
+        // Do something for an error here
+        console.log("Error Reading data " + err);
+    });
+}
+
+const getAllAgent = () => {
+    const baseUrl = "https://us-central1-project-s-backend.cloudfunctions.net/userServiceApp";
+
+    return fetch(`${baseUrl}/user/agency/all`,
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    ).then(response => response.json()
+    ).then(data => {
+        // return `Bearer ${data.token}`
+        console.log('get all sponsee', data);
+        return data;
+    }).catch(err => {
+        // Do something for an error here
+        console.log("Error Reading data " + err);
+    });
+}
+
 const getUsers = async (filter = null) => {
     let usersCollectionRef = collection(db, "users");
 
@@ -125,6 +188,10 @@ const UserService = {
     updateUser,
     deleteUser,
     UserFields,
+
+    getAllSponsor,
+    getAllSponsee,
+    getAllAgent
 }
 
 export default UserService;

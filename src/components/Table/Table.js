@@ -20,7 +20,7 @@ const Table = ({ headers, datas, onClick }) => {
             if (idx === 0) {
                 // return <TableDataSticky data-id={row.id} onClick={onClick}>{row[col.key]}</TableDataSticky>
                 return (
-                    <TableData>
+                    <TableData key={idx}>
                         <ProfilePhoto>
                             <ProfileIcon></ProfileIcon>
                         </ProfilePhoto>

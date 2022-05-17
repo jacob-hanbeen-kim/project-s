@@ -3,63 +3,61 @@ import { Text, Input } from '../../../components'
 import {
     Aside,
     Header,
-    Container,
+    Form,
     FilterContainer,
     InputContainer,
     FilterIcon
 } from './Sidebar.styled'
 
-const Sidebar = ({ setFilters }) => {
+const filterItems = {
+    sports: '',
+    country: '',
+    leaguge: '',
+    team: '',
+    age: '',
+}
 
-    const [sports, setSports] = useState('');
-    const [country, setCountry] = useState('');
-    const [league, setLeague] = useState('');
-    const [team, setTeam] = useState('');
-    const [age, setAge] = useState('');
+const Sidebar = ({ applyFilter }) => {
 
-    useEffect(() => {
-        setFilters({ sports, country, league, team, age });
-    }, [sports, country, league, team, age])
+    const [values, setValues] = useState(filterItems);
+
+
+    const handleInputChange = (e) => {
+        setValues({ ...values, [e.target.name]: e.target.value });
+    }
+
+    const resetValues = () => {
+        setValues(filterItems);
+    }
 
     return (
         <Aside>
             <Header>
                 <FilterIcon></FilterIcon>
                 <Text variant='h4'>Filters</Text>
-                {/* <Text variant='h4'>clear</Text> */}
             </Header>
-            <Container>
-                <FilterContainer>
-                    <Text>SPORTS</Text>
-                    <InputContainer>
-                        <Input onChange={(e) => setSports(e.target.value)} />
-                    </InputContainer>
-                </FilterContainer>
-                <FilterContainer>
-                    <Text>COUNTRY</Text>
-                    <InputContainer>
-                        <Input onChange={(e) => setCountry(e.target.value)} />
-                    </InputContainer>
-                </FilterContainer>
-                <FilterContainer>
-                    <Text>LEAGUE</Text>
-                    <InputContainer>
-                        <Input onChange={(e) => setLeague(e.target.value)} />
-                    </InputContainer>
-                </FilterContainer>
-                <FilterContainer>
-                    <Text>TEAM</Text>
-                    <InputContainer>
-                        <Input onChange={(e) => setTeam(e.target.value)} />
-                    </InputContainer>
-                </FilterContainer>
-                <FilterContainer>
-                    <Text>AGE</Text>
-                    <InputContainer>
-                        <Input onChange={(e) => setAge(e.target.value)} />
-                    </InputContainer>
-                </FilterContainer>
-            </Container>
+            <Form onSubmit={(e) => applyFilter(e, values, resetValues)}>
+                {
+                    Object.keys(values).map((key, idx) => {
+                        return (
+                            <FilterContainer key={idx}>
+                                <Text>{key.toUpperCase()}</Text>
+                                <InputContainer>
+                                    <Input
+                                        name={key}
+                                        type="text"
+                                        value={values[key]}
+                                        placeholder={`Filter by ${key}`}
+                                        onChange={handleInputChange}
+                                    />
+                                </InputContainer>
+                            </FilterContainer>
+                        )
+                    })
+                }
+
+                <button type='submit' style={{ display: 'none' }} />
+            </Form>
         </Aside>
     )
 }

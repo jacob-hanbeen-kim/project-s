@@ -3,8 +3,6 @@ import { FaUserAlt } from 'react-icons/fa';
 import { AiFillHeart } from 'react-icons/ai';
 import { BiMap } from 'react-icons/bi';
 
-const borderColor = '#D4D4D4';
-
 export const Container = styled.div`
     padding: 0px 20px 20px;
 `
@@ -20,7 +18,7 @@ export const Wrapper = styled.div`
     width: 260px;
     
     border-radius: ${({ theme }) => theme.border.radius};
-    border: 1px solid ${borderColor};
+    border: 1px solid ${({ theme }) => theme.colors.border};
     
     background-color: ${({ theme }) => theme.colors.background};
 `
@@ -37,7 +35,7 @@ export const ProfilePhoto = styled.div`
     border-top-left-radius: ${({ theme }) => theme.border.radius};
     border-top-right-radius: ${({ theme }) => theme.border.radius};
 
-    border-bottom: 1px solid ${borderColor};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
     position: relative;
 `
 

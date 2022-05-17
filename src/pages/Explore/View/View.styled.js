@@ -117,7 +117,7 @@ export const SortOptionItem = styled.div`
     background-color: ${({ isActive }) => isActive && '#666666'};
     color: ${({ isActive }) => isActive && 'white'};
 
-    border: 2px solid #D4D4D4;
+    border: 2px solid ${({ theme }) => theme.colors.border};
     border-right: ${({ isLast }) => !isLast && 'none'};
     border-top-left-radius: ${({ isFirst, theme }) => isFirst && theme.border.radius};
     border-bottom-left-radius: ${({ isFirst, theme }) => isFirst && theme.border.radius};
@@ -180,6 +180,10 @@ export const FilterIcon = styled(FaSlidersH)`
 
 export const FilterList = styled.div`
     margin: 0px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 `
 
 export const Filter = styled.div`
@@ -188,7 +192,7 @@ export const Filter = styled.div`
     align-items: center;
     justify-content: center;
 
-    border: 1px solid #D4D4D4;
+    border: 1px solid ${({ theme }) => theme.colors.border};
     background-color: white;
     height: 25px;
 
@@ -206,7 +210,7 @@ export const FilterText = styled.div`
     font-size: ${({ theme }) => theme.fontSizes.use('h6')};
     height: inherit;
 
-    border-right: 1px solid #D4D4D4;
+    border-right: 1px solid ${({ theme }) => theme.colors.border};
 
     padding: 0px 7px;
 `
@@ -228,6 +232,8 @@ export const ClearBtn = styled.a`
     font-size: ${({ theme }) => theme.fontSizes.use('h6')};
     color: ${({ theme }) => theme.colors.fontMuted};
     opacity: 0.8;
+
+    cursor: pointer;
 `
 
 export const ListContainer = styled.div`
