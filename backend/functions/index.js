@@ -5,10 +5,11 @@ npm run deploy -> firebase cloud functions에 배포
 firebase emulators:start -> Emulator 작동. localhost로 cloud functions 테스트 가능. deploy하기 전 테스트 추천. 작동시키고 postman으로 http request testing.
 */
 
+require('dotenv').config();
+
 const { initializeApp } = require("firebase/app");
 const admin = require("firebase-admin");
-const serviceAccount = require("./ServiceAccountKey.json"); // TODO:maybe put this in .env too?
-require('dotenv').config()
+const serviceAccount = require(process.env._FIREBASE_SERVICEACCOUNTKEY_PATH);
 
 // Firebase configuration - for Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
