@@ -1,27 +1,33 @@
 import styled from 'styled-components'
+import { FaSlidersH } from 'react-icons/fa';
 
 export const Aside = styled.aside`
     position: sticky;
     top: 0;
     padding: 30px;
-    /* background-color: ${({ theme }) => theme.colors.sidebar}; */
-    background-color: ${({ theme }) => theme.colors.background};
-    overflow-y: scroll;
+    
     height: 100vh;
+    min-width: 380px;
+    
+    overflow-y: scroll;
+
+    background-color: ${({ theme }) => theme.colors.background};
 `
 
 export const Header = styled.div`
     display: flex;
     flex-direction: row;
 
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-
-    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-    margin-bottom: 20px;
+    margin-left: 10px;
 `
 
-export const Container = styled.div`
+export const FilterIcon = styled(FaSlidersH)`
+    
+`
+
+export const Form = styled.form`
     display: flex;
     flex-direction: column;
 
@@ -40,4 +46,9 @@ export const FilterContainer = styled.div`
 
     width: 100%;
     margin: 10px 0px;
+`
+
+export const InputContainer = styled.div`
+    padding-left: 20px;
+    width: 100%;
 `

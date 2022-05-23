@@ -15,6 +15,8 @@ import MembershipStatus from './MembershipStatus/MembershipStatus';
 import Navbar from './Navbar/Navbar';
 
 import SocialIcons from './SocialIcons/SocialIcons';
+import SocialIcon from './SocialIcon/SocialIcon';
+import SportIcon from './SportIcon/SportIcon';
 
 import VideoBackground from './Background/VideoBackground';
 import ImageBackground from './Background/ImageBackground';
@@ -51,6 +53,8 @@ export {
     Logo,
     Navbar,
     SocialIcons,
+    SocialIcon,
+    SportIcon,
     VideoBackground,
     ImageBackground,
     FixedBackground,

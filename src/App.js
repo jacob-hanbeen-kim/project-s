@@ -1,6 +1,6 @@
 // packages
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useState, useEffect } from 'react';
+import { useState, } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 // styles
@@ -12,13 +12,10 @@ import styled from 'styled-components';
 import { Footer, Navbar, Sidebar } from './components/'
 
 // pages
-import Waitlist from './pages/Waitlist/Waitlist';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
 import Explore from './pages/Explore/Explore';
 import Account from './pages/Account/Account';
-import Brand from './pages/Brands/Brands';
-import Agents from './pages/Agents/Agents';
 import Membership from './pages/Membership/Membership';
 import EditProfile from './pages/Profile/EditProfile';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
@@ -33,8 +30,6 @@ import Negotiate from './pages/Negotiate/Negotiate';
 // setBalance(Number(accBalanceEth).toFixed(6));
 
 function App() {
-
-  console.log(process.env.PUBLIC_URL)
 
   const [theme, setTheme] = useState("light");
   const toggleTheme = () => { theme === "light" ? setTheme("dark") : setTheme("light") }
@@ -59,7 +54,6 @@ function App() {
               <PageWrapper isSidebarOpen={isSidebarOpen} >
                 <Routes>
                   <Route path="/" element={<Home />} />
-                  {/* <Route path="/" element={<Waitlist />} /> */}
                   <Route path="/login" element={<Login />} />
                   <Route path="/account" element={<Account />} />
                   <Route path="/account/:username" element={<Account />} />

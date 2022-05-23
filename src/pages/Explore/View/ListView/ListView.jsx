@@ -1,11 +1,12 @@
 import {
-    TableContainer
-} from './ExploreList.styled'
+    Container,
+    Wrapper
+} from './ListView.styled'
+
+import { Table } from '../../../../components';
 
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Table } from '../../../components';
-
 
 const SORT_ORDER = {
     Ascending: 'asc',
@@ -27,40 +28,41 @@ const sortData = ({ tableData, sortKey, reverse }) => {
     return sortedData;
 }
 
-const ExploreList = ({ data }) => {
+const ListView = ({ users }) => {
 
     const navigate = useNavigate();
 
     const [sortKey, setSortKey] = useState('name');
     const [sortOrder, setSortOrder] = useState(SORT_ORDER.Ascending);
 
-    console.log(data);
-
     const headers = [
+        { key: "uerType", label: "Athletes" },
         { key: "name", label: "Name" },
         { key: "sports", label: "Sports" },
+        { key: "team", label: "Team" },
+        { key: "age", label: "Age" },
         { key: "location", label: "Location" },
-        { key: "description", label: "Description" }
+        { key: "mediaScore", label: "Market Score" }
     ]
 
     const sortedData = useCallback(
-        () => sortData({ tableData: data, sortKey, reverse: sortOrder === SORT_ORDER.Descending }),
-        [data, sortKey, sortOrder]
+        () => sortData({ tableData: users, sortKey, reverse: sortOrder === SORT_ORDER.Descending }),
+        [users, sortKey, sortOrder]
     );
 
     const navigateToAccount = (e) => {
-        // console.log();
-        // console.log(e.target.innerText);
         const userId = e.target.dataset.id;
         const accountName = e.target.innerText;
         navigate(`/account/${accountName}`, { state: { userId: userId } });
     }
 
     return (
-        <TableContainer>
-            <Table headers={headers} datas={sortedData()} onClick={navigateToAccount} />
-        </TableContainer>
+        <Container>
+            <Wrapper>
+                <Table headers={headers} datas={sortedData()} onClick={navigateToAccount} />
+            </Wrapper>
+        </Container>
     )
 }
 
-export default ExploreList
+export default ListView

@@ -8,10 +8,30 @@ import {
     TableBody,
     TableRow,
     TableData,
-    TableDataSticky
+    TableDataSticky,
+    ProfilePhoto,
+    ProfileIcon
 } from './Table.styled'
 
 const Table = ({ headers, datas, onClick }) => {
+
+    const populateRow = (row) => {
+        return headers.map((col, idx) => {
+            if (idx === 0) {
+                // return <TableDataSticky data-id={row.id} onClick={onClick}>{row[col.key]}</TableDataSticky>
+                return (
+                    <TableData key={idx}>
+                        <ProfilePhoto>
+                            <ProfileIcon></ProfileIcon>
+                        </ProfilePhoto>
+                    </TableData>
+                )
+            } else {
+                return <TableData key={idx}>{row[col.key]}</TableData>
+            }
+        });
+    }
+
     return (
         <Container>
             <TableWrapper>
@@ -20,24 +40,21 @@ const Table = ({ headers, datas, onClick }) => {
                         <TableRow>
                             {
                                 headers.map((col) => {
-                                    if (col.key === 'name') {
-                                        return <TableHeaderSticky key={col.key}>{col.label}</TableHeaderSticky>
-                                    } else {
-                                        return <TableHeader key={col.key}>{col.label}</TableHeader>
-                                    }
+                                    // if (col.key === 'name') {
+                                    // return <TableHeaderSticky key={col.key}>{col.label}</TableHeaderSticky>
+                                    // } else {
+                                    return <TableHeader key={col.key}>{col.label}</TableHeader>
+                                    // }
                                 })
                             }
 
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {datas.map((row) => {
+                        {datas.map((row, idx) => {
                             return (
-                                <TableRow key={row.id}>
-                                    <TableDataSticky data-id={row.id} onClick={onClick}>{row.name}</TableDataSticky>
-                                    <TableData>{row.sports}</TableData>
-                                    <TableData>{row.location}</TableData>
-                                    <TableData>{row.description}</TableData>
+                                <TableRow key={row.id} isOdd={idx % 2 === 0}>
+                                    {populateRow(row)}
                                 </TableRow>
                             )
                         })}

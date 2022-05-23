@@ -2,6 +2,69 @@ import { collection, getDocs, getDoc, query, where, setDoc, updateDoc, deleteDoc
 // firebase
 import { db } from '../firebase-config';
 
+const getAllSponsor = () => {
+    const baseUrl = "https://us-central1-project-s-backend.cloudfunctions.net/userServiceApp";
+
+    return fetch(`${baseUrl}/user/sponsor/all`,
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    ).then(response => response.json()
+    ).then(data => {
+        // return `Bearer ${data.token}`
+        console.log('get all sponsee', data);
+        return data;
+    }).catch(err => {
+        // Do something for an error here
+        console.log("Error Reading data " + err);
+    });
+}
+
+const getAllSponsee = () => {
+    const baseUrl = "https://us-central1-project-s-backend.cloudfunctions.net/userServiceApp";
+
+    return fetch(`${baseUrl}/user/sponsee/all`,
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    ).then(response => response.json()
+    ).then(data => {
+        // return `Bearer ${data.token}`
+        console.log('get all sponsee', data);
+        return data;
+    }).catch(err => {
+        // Do something for an error here
+        console.log("Error Reading data " + err);
+    });
+}
+
+const getAllAgent = () => {
+    const baseUrl = "https://us-central1-project-s-backend.cloudfunctions.net/userServiceApp";
+
+    return fetch(`${baseUrl}/user/agency/all`,
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    ).then(response => response.json()
+    ).then(data => {
+        // return `Bearer ${data.token}`
+        console.log('get all sponsee', data);
+        return data;
+    }).catch(err => {
+        // Do something for an error here
+        console.log("Error Reading data " + err);
+    });
+}
+
 const getUsers = async (filter = null) => {
     let usersCollectionRef = collection(db, "users");
 
@@ -30,6 +93,20 @@ const getUsers = async (filter = null) => {
     const data = await getDocs(usersCollectionRef);
     const users = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     return users;
+}
+
+const getUserProfiles = async (filter = null) => {
+    let users = await getUsers();
+    console.log('users', users);
+    const profiles = [];
+    users.forEach(async (user) => {
+        const profileCollectionRef = collection(db, "users", user.id, 'profile');
+        const data = await getDocs(profileCollectionRef);
+        const profile = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))[0];
+        profile && profiles.push(profile);
+    })
+
+    return profiles;
 }
 
 const getUserById = async (id) => {
@@ -106,10 +183,15 @@ export const userFields = new UserFields();
 const UserService = {
     getUsers,
     getUserById,
+    getUserProfiles,
     createUser,
     updateUser,
     deleteUser,
     UserFields,
+
+    getAllSponsor,
+    getAllSponsee,
+    getAllAgent
 }
 
 export default UserService;
