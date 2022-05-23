@@ -8,6 +8,8 @@ const {
   deleteDoc,
   doc,
   getFirestore,
+  arrayRemove,
+  arrayUnion,
 } = require("firebase/firestore");
 const functions = require("firebase-functions");
 const express = require("express");
@@ -229,7 +231,9 @@ const getSponsors = async (req, res) => {
   try {
     const usersCollectionRef = collection(db, "users");
     const data = await getDocs(usersCollectionRef);
-    const sponsors = data.docs.filter((x) => x.data().usertype == 'sponsor').map((doc) => ({ ...doc.data(), id: doc.id }));
+    const sponsors = data.docs
+      .filter((x) => x.data().usertype == "sponsor")
+      .map((doc) => ({ ...doc.data(), id: doc.id }));
     res.status(200).send({
       status: "success",
       message: "fetched all sponsors successfully",
@@ -244,7 +248,9 @@ const getSponsees = async (req, res) => {
   try {
     const usersCollectionRef = collection(db, "users");
     const data = await getDocs(usersCollectionRef);
-    const sponsors = data.docs.filter((x) => x.data().usertype == 'sponsee').map((doc) => ({ ...doc.data(), id: doc.id }));
+    const sponsors = data.docs
+      .filter((x) => x.data().usertype == "sponsee")
+      .map((doc) => ({ ...doc.data(), id: doc.id }));
     res.status(200).send({
       status: "success",
       message: "fetched all sponsees successfully",
@@ -259,11 +265,83 @@ const getAgencies = async (req, res) => {
   try {
     const usersCollectionRef = collection(db, "users");
     const data = await getDocs(usersCollectionRef);
-    const sponsors = data.docs.filter((x) => x.data().usertype == 'agency').map((doc) => ({ ...doc.data(), id: doc.id }));
+    const sponsors = data.docs
+      .filter((x) => x.data().usertype == "agency")
+      .map((doc) => ({ ...doc.data(), id: doc.id }));
     res.status(200).send({
       status: "success",
       message: "fetched all agencies successfully",
       data: sponsors,
+    });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+const getFavorites = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const userDoc = doc(db, "users", id);
+    const userSnap = await getDoc(userDoc);
+    const userFavoriteArray = await userSnap.get("favorites");
+
+    var responseArray = await Promise.all(
+      userFavoriteArray.map((x) => {
+        return getDoc(x);
+      })
+    );
+
+    var result = [];
+    responseArray.forEach((doc) => {
+      result.push({
+        ...doc.data(),
+        id: doc.id,
+      });
+    });
+
+    res.status(200).send({
+      status: "success",
+      message: "fetched user's favorites successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+const addFavorite = async (req, res) => {
+  const {
+    params: { id, incomingId },
+  } = req;
+  try {
+    const userDocRef = doc(db, "users", id);
+    await updateDoc(userDocRef, {
+      favorites: arrayUnion(doc(db, "users", incomingId)),
+    });
+    res.status(200).send({
+      status: "success",
+      message: "added user's favorite successfully",
+    });
+  } catch (error) {
+    res.status(500).json(error.message);
+  }
+};
+
+const removeFavorite = async (req, res) => {
+  const {
+    params: { id, incomingId },
+  } = req;
+  try {
+    const userDocRef = doc(db, "users", id);
+    await updateDoc(userDocRef, {
+      favorites: arrayRemove(doc(db, "users", incomingId)),
+    });
+
+    res.status(200).send({
+      status: "success",
+      message: "removed user's favorite successfully",
     });
   } catch (error) {
     res.status(500).json(error.message);
@@ -284,5 +362,8 @@ app.delete("/user/:id/profile", deleteProfile);
 app.get("/user/sponsor/all", getSponsors);
 app.get("/user/sponsee/all", getSponsees);
 app.get("/user/agency/all", getAgencies);
+app.get("/user/:id/favorite/all", getFavorites);
+app.put("/user/:id/favorite/:incomingId", addFavorite);
+app.delete("/user/:id/favorite/:incomingId", removeFavorite);
 
 exports.userServiceFunctionApp = functions.https.onRequest(app);
