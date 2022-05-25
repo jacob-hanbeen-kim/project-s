@@ -9,8 +9,8 @@ const color = {
 
 
 export const Container = styled.div`
-    width: 18px;
-    height: 18px;
+    width: ${({ size }) => size ? size : '18px'};
+    height: ${({ size }) => size ? size : '18px'};
 `
 
 export const Wrapper = styled.div`
@@ -30,7 +30,7 @@ export const Icon = styled.div`
     width: inherit;
     height: inherit;
 
-    font-size: 12px;
+    font-size: ${({ fontSize }) => fontSize ? fontSize : '12px'};
 
     color: #fff;
 `

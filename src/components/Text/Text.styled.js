@@ -22,11 +22,11 @@ export const TextWrapper = styled.div`
     /* font-family: 'lucida grande', tahoma, verdana, arial, sans-serif; */
 
     & > * {
-        margin: 10px;
+        margin: 10px 0px;
         padding: 0px;
 
         @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
-            margin: 5px;
+            margin: 5px 0px;
         }
     }
 

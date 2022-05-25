@@ -7,7 +7,15 @@ import {
 
 import { FaRegUserCircle } from 'react-icons/fa'
 
-const ProfileImg = ({ src, children, size, hasProfileImg }) => {
+const ProfileImg = ({
+    src,
+    children,
+    size,
+    hasProfileImg,
+    hasBorder,
+    borderSize,
+    borderColor
+}) => {
 
     //in your component
     function addDefaultSrc(ev) {
@@ -18,8 +26,20 @@ const ProfileImg = ({ src, children, size, hasProfileImg }) => {
         <>
             {
                 hasProfileImg ?
-                    <Image src={src} size={size} onError={addDefaultSrc} /> :
-                    <Icon size={size}>
+                    <Image
+                        src={src}
+                        size={size}
+                        onError={addDefaultSrc}
+                        hasBorder={hasBorder}
+                        borderSize={borderSize}
+                        borderColor={borderColor}
+                    /> :
+                    <Icon
+                        size={size}
+                        hasBorder={hasBorder}
+                        borderSize={borderSize}
+                        borderColor={borderColor}
+                    >
                         {children}
                     </Icon>
 
@@ -31,7 +51,10 @@ const ProfileImg = ({ src, children, size, hasProfileImg }) => {
 ProfileImg.defaultProps = {
     src: process.env.PUBLIC_URL + '/images/account/profileImg.png',
     children: <FaRegUserCircle />,
-    hasProfileImg: false
+    hasProfileImg: false,
+    hasBorder: false,
+    borderSize: '5px',
+    borderColor: 'white'
 }
 
 ProfileImg.propTypes = {

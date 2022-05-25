@@ -9,6 +9,8 @@ export const Icon = styled.div`
 
     /* max-width:100%;
     max-height:100%; */
+    ${({ hasBorder }) => hasBorder &&
+        `border: ${({ borderSize }) => borderSize ? borderSize : '5px'} solid ${({ borderColor }) => borderColor ? borderColor : 'white'};`}
 
     &:hover {
         transition: all 0.2s ease-in-out;
@@ -23,4 +25,8 @@ export const Image = styled.img`
     width: ${({ size }) => size ? size : '2rem'};
     min-height: ${({ size }) => size ? size : '2rem'};
     height: ${({ size }) => size ? size : '2rem'};
+
+    ${({ hasBorder, borderSize, borderColor }) => hasBorder &&
+        `border: ${borderSize} solid ${borderColor}`
+    }
 `
