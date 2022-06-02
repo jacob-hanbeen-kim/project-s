@@ -32,7 +32,7 @@ admin.initializeApp({
 // import each cloud function in src folder
 const getCustomTokenFunction = require("./src/getcustomtokenfunction");
 const stripeServerFunction = require("./src/stripeserverfunction");
-const userServiceFunction = require("./src/userservicefunction");
+const dbServiceFunction = require("./src/dbservicefunction");
 
 
 // Un-comment below to update! 
@@ -40,4 +40,4 @@ const userServiceFunction = require("./src/userservicefunction");
 
 // exports.getCustomToken = getCustomTokenFunction.getCustomToken;
 // exports.stripeServerApp = stripeServerFunction.stripeServerApp;
-exports.userServiceApp = userServiceFunction.userServiceFunctionApp;
+exports.dbServiceApp = dbServiceFunction.userServiceFunctionApp;
