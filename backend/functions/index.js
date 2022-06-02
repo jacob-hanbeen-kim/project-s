@@ -33,11 +33,12 @@ admin.initializeApp({
 const getCustomTokenFunction = require("./src/getcustomtokenfunction");
 const stripeServerFunction = require("./src/stripeserverfunction");
 const dbServiceFunction = require("./src/dbservicefunction");
-
+const migrateServiceFunction = require("./src/migrateservicefunction");
 
 // Un-comment below to update! 
 // ** Important: When it asks if you would like to proceed with deletion of these commented items, say No **
 
 // exports.getCustomToken = getCustomTokenFunction.getCustomToken;
 // exports.stripeServerApp = stripeServerFunction.stripeServerApp;
-exports.dbServiceApp = dbServiceFunction.userServiceFunctionApp;
+exports.dbServiceApp = dbServiceFunction.dbServiceFunctionApp;
+exports.migrateServiceApp = migrateServiceFunction.migrateServiceFunctionApp;

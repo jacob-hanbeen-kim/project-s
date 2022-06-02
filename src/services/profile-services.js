@@ -54,12 +54,12 @@ class SponsorFields {
     return this;
   }
 
-  setRepresentativeFirstName(representativeFirstName) {
-    this.fields["representativeFirstName"] = representativeFirstName;
+  setFirstName(firstName) {
+    this.fields["firstName"] = firstName;
     return this;
   }
-  setRepresentativeLastName(representativeLastName) {
-    this.fields["representativeLastName"] = representativeLastName;
+  setLastName(lastName) {
+    this.fields["lastName"] = lastName;
     return this;
   }
 
@@ -127,12 +127,12 @@ class SponseeFields {
     return this;
   }
 
-  setFirstName(FirstName) {
-    this.fields["FirstName"] = FirstName;
+  setFirstName(firstName) {
+    this.fields["firstName"] = firstName;
     return this;
   }
-  setLastName(LastName) {
-    this.fields["LastName"] = LastName;
+  setLastName(lastName) {
+    this.fields["lastName"] = lastName;
     return this;
   }
 
@@ -195,12 +195,12 @@ class AgencyFields {
     return this;
   }
 
-  setFirstName(FirstName) {
-    this.fields["FirstName"] = FirstName;
+  setFirstName(firstName) {
+    this.fields["firstName"] = firstName;
     return this;
   }
-  setLastName(LastName) {
-    this.fields["LastName"] = LastName;
+  setLastName(lastName) {
+    this.fields["lastName"] = lastName;
     return this;
   }
 
