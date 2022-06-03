@@ -32,12 +32,13 @@ admin.initializeApp({
 // import each cloud function in src folder
 const getCustomTokenFunction = require("./src/getcustomtokenfunction");
 const stripeServerFunction = require("./src/stripeserverfunction");
-const userServiceFunction = require("./src/userservicefunction");
-
+const dbServiceFunction = require("./src/dbservicefunction");
+const migrateServiceFunction = require("./src/migrateservicefunction");
 
 // Un-comment below to update! 
 // ** Important: When it asks if you would like to proceed with deletion of these commented items, say No **
 
 // exports.getCustomToken = getCustomTokenFunction.getCustomToken;
 // exports.stripeServerApp = stripeServerFunction.stripeServerApp;
-exports.userServiceApp = userServiceFunction.userServiceFunctionApp;
+exports.dbServiceApp = dbServiceFunction.dbServiceFunctionApp;
+exports.migrateServiceApp = migrateServiceFunction.migrateServiceFunctionApp;
