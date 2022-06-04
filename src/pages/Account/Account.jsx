@@ -19,6 +19,7 @@ const Account = () => {
     const navigate = useNavigate();
 
     const [profile, setProfile] = useState(null);
+    const [userType, setUsertype] = useState(null);
 
     const [profileImg, setProfileImg] = useState(null);
     const [profileBg, setProfileBg] = useState(null);
@@ -34,7 +35,7 @@ const Account = () => {
     }
 
     const displayProfilePage = () => {
-        switch (currentUser.usertype) {
+        switch (userType) {
             case "sponsee":
                 return <Sponsee user={profile} profileImg={profileImg} profileBg={profileBg} />;
             case "sponsor":
@@ -48,6 +49,7 @@ const Account = () => {
     }
 
     const getUserProfile = (user) => {
+        setUsertype(user?.usertype);
         switch (user?.usertype) {
             case "sponsee":
                 UserService.getSponseeProfile(user.id).then((res) => {
