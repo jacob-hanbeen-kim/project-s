@@ -1,13 +1,15 @@
-import createLineHeight from "./utils/createFontSizes";
+import createLineHeight from "./utils/createLineHeight";
 import createFontSizes from "./utils/createFontSizes";
 import createfontWeights from "./utils/createFontWeights";
+import createFonts from "./utils/createFonts";
 
 const fontSizes = createFontSizes();
 const fontWeights = createfontWeights();
 const lineHeights = createLineHeight();
+const fonts = createFonts();
 
 const theme = {
-        fonts: ['sans-serif'],
+        fonts,
         // fontSizes: {
         //         default: '17px',
         //         small: '15px',
@@ -21,7 +23,7 @@ const theme = {
         fontWeights,
         lineHeights,
         border: {
-                radius: '10px',
+                radius: '5px',
         },
         screen: {
                 sizeXS: '320px',
@@ -39,7 +41,10 @@ export const lightTheme = Object.freeze({
                 // across your app's screens and components.
                 // primary: '#535dca', // primary 400
                 // primaryVariant: '#2c38b5', // primary 600
-                primary: 'rgba(187, 161, 79, 0.8)', // change
+                // primary: 'rgba(187, 161, 79, 0.8)', // change
+                primary: '#AE7ACC',
+                primaryDark: '#6D4D80',
+                primaryLight: '#F6E5FF',
                 invert: '#f9fafb',
 
                 // A secondary color provides more ways to
@@ -57,8 +62,10 @@ export const lightTheme = Object.freeze({
                 accent: '#2081e2',
 
                 // background-color
-                background: '#f9fafb',
-                surface: '#fcfdfe', // surface components - cards, sheets, section
+                // background: '#f9fafb',
+                background: '#ffffff',
+                // surface: '#fcfdfe', // surface components - cards, sheets, section
+                surface: '#F7F9FA',
                 navbar: '#ffffff',
                 sidebar: '#f9fafb',
 
@@ -73,14 +80,16 @@ export const lightTheme = Object.freeze({
                 info: '#',
 
                 // border-color
-                border: '#e5e8eb',
+                // border: '#e5e8eb',
+                border: '#D4D4D4',
 
                 // "on" colors
                 // refers to the color elements that appear “on” top of
                 // surfaces that use the above colors
                 onPrimary: '#f9fafb',
                 // onInvert: '#535dca',
-                onInvert: 'rgba(187, 161, 79, 0.8)', // change
+                // onInvert: 'rgba(187, 161, 79, 0.8)', // change
+                onInvert: '#AE7ACC',
                 onSecondary: '#f9fafb',
                 onNavbar: '#04111d',
                 onSurface: '#04111d',
@@ -94,8 +103,11 @@ export const darkTheme = Object.freeze({
                 // A primary color is the color displayed most frequently
                 // across your app's screens and components.
                 // primary: '#535dca', // darkGray 800
-                primary: 'rgba(187, 161, 79, 0.8)', // change
-                primaryVariant: '#181b2f', // darkGray 900
+                // primary: 'rgba(187, 161, 79, 0.8)', // change
+                primary: '#AE7ACC',
+                // primaryVariant: '#181b2f', // darkGray 900
+                primaryDark: '#6D4D80',
+                primaryLight: '#F6E5FF',
                 invert: '#0d1117',
 
                 // A secondary color provides more ways to

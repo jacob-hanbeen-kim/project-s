@@ -21,6 +21,6 @@ export const Button = styled.button`
     }
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeS}) {
-        font-size: ${props => props.big ? props.theme.fontSizes.use('standard') : props.theme.fontSizes.use('smaller')};
+        font-size: ${props => props.big ? props.theme.fontSizes.use('standard') : props.theme.fontSizes.use('h5')};
     }
 `

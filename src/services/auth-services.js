@@ -1,7 +1,7 @@
 import UserService from './users-service';
 import { signInWithCustomToken, signOut, updateProfile } from 'firebase/auth'
 import { getFunctions, httpsCallable } from 'firebase/functions';
-import { auth } from '../firbase-config';
+import { auth } from '../firebase-config';
 import { web3Helper } from '../utils/web3';
 
 //#region helper
@@ -61,8 +61,8 @@ function getCustomToken(address) {
     //         console.log(result);
     //     })
 
-    const baseUrl = "https://us-central1-project-s-backend.cloudfunctions.net";
-    // const baseUrl = "http://localhost:5001/project-s-backend/us-central1";
+    // const baseUrl = "https://us-central1-project-s-backend.cloudfunctions.net";
+    const baseUrl = "http://localhost:5001/project-s-backend/us-central1";
 
     return fetch(`${baseUrl}/getCustomToken`,
         {
@@ -96,7 +96,7 @@ async function signInWithMetaMask() {
         // Step 1: Request (limited) access to user's ethereum account and get accounts
         const accounts = await web3Helper.getAccounts();
 
-        if (accounts.length === 0) {
+        if (accounts === null || accounts.length === 0) {
             throw CustomException('Error: Please connect to MetaMask!');
         }
 

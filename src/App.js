@@ -1,6 +1,6 @@
 // packages
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useState, useEffect } from 'react';
+import { useState, } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 // styles
@@ -12,12 +12,10 @@ import styled from 'styled-components';
 import { Footer, Navbar, Sidebar } from './components/'
 
 // pages
-import Waitlist from './pages/Waitlist/Waitlist';
 import Home from './pages/Home/Home';
 import Login from './pages/Login/Login';
+import Explore from './pages/Explore/Explore';
 import Account from './pages/Account/Account';
-import Brand from './pages/Brands/Brands';
-import Agents from './pages/Agents/Agents';
 import Membership from './pages/Membership/Membership';
 import EditProfile from './pages/Profile/EditProfile';
 import Onboarding from './pages/Onboarding/Onboarding'
@@ -30,6 +28,7 @@ import OnboardAgency from './pages/Onboarding/Agent/OnboardAgency'
 import OnboardAgencyTwo from './pages/Onboarding/Agent/OnboardAgencyTwo'
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { AuthProvider } from './contexts/AuthContext';
+import Negotiate from './pages/Negotiate/Negotiate';
 
 // const accBalanceEth = web3.utils.fromWei(
 //   await web3.eth.getBalance(accounts[0]),
@@ -56,19 +55,17 @@ function App() {
         <Router basename={process.env.PUBLIC_URL}>
           <AuthProvider>
             <FlexWropper>
-              {/* <Navbar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} /> */}
+              <Navbar isSidebarOpen={isSidebarOpen} onSidebarToggle={onSidebarToggle} theme={theme} toggleTheme={toggleTheme} />
               {
                 isSidebarOpen && <Sidebar onSidebarToggle={onSidebarToggle} />
               }
               <PageWrapper isSidebarOpen={isSidebarOpen} >
                 <Routes>
-                  {/* <Route path="/" element={<Home />} /> */}
-                  <Route path="/" element={<Waitlist />} />
+                  <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} />
-                  <Route path="/brands" element={<Brand />} />
-                  <Route path="/agents" element={<Agents />} />
                   <Route path="/account" element={<Account />} />
                   <Route path="/account/:username" element={<Account />} />
+                  <Route path="/explore" element={<Explore />} />
                   <Route path="/membership" element={<Membership />} />
                   <Route path="/account/edit" element={<EditProfile />} />
                   <Route path="/onboarding" element={<Onboarding />} />
@@ -79,6 +76,7 @@ function App() {
                   <Route path="/onboarding/sponsorThree" element={<OnboardSponsorThree />} />
                   <Route path="/onboarding/agency" element={<OnboardAgency />} />
                   <Route path="/onboarding/agencyTwo" element={<OnboardAgencyTwo />} />
+                  <Route path="/messages/inbox" element={<Negotiate />} />
                   <Route path="*" element={<ErrorPage />} />
                 </Routes>
               </PageWrapper>

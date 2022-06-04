@@ -18,11 +18,8 @@ const Sidebar = ({ onSidebarToggle }) => {
             <SidebarWrapper>
                 <SidebarMenu>
                     <MenuList>
-                        <li><SidebarLink to="/brands" onClick={onSidebarToggle} >Brands</SidebarLink></li>
-                        <li><SidebarLink to="/agents" onClick={onSidebarToggle} >Agents</SidebarLink></li>
-                        <li><SidebarLink to="/corporates" onClick={onSidebarToggle} >Corportaes</SidebarLink></li>
-                        <li><SidebarLink to="/crowdfunding" onClick={onSidebarToggle} >Crowdfunding</SidebarLink></li>
                         <li><SidebarLink to="/account" onClick={onSidebarToggle} >Account</SidebarLink></li>
+                        <li><SidebarLink to="/explore" onClick={onSidebarToggle} >Explore</SidebarLink></li>
                         {
                             currentUser &&
                             <li><SidebarLink to="/" onClick={() => { onSidebarToggle(); logout(); }} >Log Out</SidebarLink></li>

@@ -1,10 +1,10 @@
 import {
-    Display1,
-    Display2,
-    Display3,
     H1,
     H2,
-    Subtitle,
+    H3,
+    H4,
+    H5,
+    H6,
     Body,
     Button,
     Caption,
@@ -14,20 +14,6 @@ import {
 } from './Text.styled';
 import PropTypes from 'prop-types'
 
-const defaultVariantMapping = {
-    display1: 'h2',
-    display2: 'h2',
-    display3: 'h2',
-    h1: 'h1',
-    h2: 'h2',
-    subtitle: 'h6',
-    body: 'p',
-    button: 'span',
-    caption: 'p',
-    overline: 'p',
-    label: 'span',
-}
-
 const Text = ({
     variant,
     children,
@@ -35,23 +21,24 @@ const Text = ({
     textTransform,
     textAlign,
     color,
-    accentColor
+    accentColor,
+    fontWeight
 }) => {
 
     const getVariant = () => {
         switch (variant) {
-            case "display1": return <Display1 invert={invert} color={color}>{children}</Display1>
-            case "display2": return <Display2 invert={invert} color={color}>{children}</Display2>
-            case "display3": return <Display3 invert={invert} color={color}>{children}</Display3>
-            case "h1": return <H1 invert={invert} color={color}>{children}</H1>
-            case "h2": return <H2 invert={invert} color={color}>{children}</H2>
-            case "subtitle": return <Subtitle invert={invert} color={color}>{children}</Subtitle>
-            case "body": return <Body invert={invert} color={color}>{children}</Body>
-            case "button": return <Button invert={invert} color={color}>{children}</Button>
-            case "caption": return <Caption invert={invert} color={color}>{children}</Caption>
-            case "overline": return <Overline invert={invert} color={color}>{children}</Overline>
-            case "label": return <Label invert={invert} color={color}>{children}</Label>
-            default: return <Body invert={invert} color={color}>{children}</Body>
+            case "h1": return <H1 invert={invert} color={color} fontWeight={fontWeight}>{children}</H1>
+            case "h2": return <H2 invert={invert} color={color} fontWeight={fontWeight}>{children}</H2>
+            case "h3": return <H3 invert={invert} color={color} fontWeight={fontWeight}>{children}</H3>
+            case "h4": return <H4 invert={invert} color={color} fontWeight={fontWeight}>{children}</H4>
+            case "h5": return <H5 invert={invert} color={color} fontWeight={fontWeight}>{children}</H5>
+            case "h6": return <H6 invert={invert} color={color} fontWeight={fontWeight}>{children}</H6>
+            case "body": return <Body invert={invert} color={color} fontWeight={fontWeight}>{children}</Body>
+            case "button": return <Button invert={invert} color={color} fontWeight={fontWeight}>{children}</Button>
+            case "caption": return <Caption invert={invert} color={color} fontWeight={fontWeight}>{children}</Caption>
+            case "overline": return <Overline invert={invert} color={color} fontWeight={fontWeight}>{children}</Overline>
+            case "label": return <Label invert={invert} color={color} fontWeight={fontWeight}>{children}</Label>
+            default: return <Body invert={invert} color={color} fontWeight={fontWeight}>{children}</Body>
         }
     }
 
@@ -67,12 +54,12 @@ Text.propTypes = {
         'body',
         'button',
         'caption',
-        'display1',
-        'display2',
-        'display3',
         'h1',
         'h2',
-        'subtitle',
+        'h3',
+        'h4',
+        'h5',
+        'h6',
         'overline',
         'label',
     ]),

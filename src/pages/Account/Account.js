@@ -5,13 +5,14 @@ import {
 import Sponsee from '../Sponsee/Sponsee';
 import Sponsor from '../Sponsor/Sponsor';
 
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { useAuth } from '../../contexts/AuthContext';
-import StorageService from '../../services/storage-service';
+// import StorageService from '../../services/storage-service';
+import UserService from '../../services/users-service';
 
-const Account = ({ }) => {
+const Account = () => {
 
     // const currentUser = {
     //     uid: '0xa38730a865eD8f3a1877Ad99DD8F21A1734661aF',
@@ -43,7 +44,7 @@ const Account = ({ }) => {
             switch (viewUser.usertype) {
                 case "sponsee": return <Sponsee user={viewUser} profileImg={profileImg} profileBg={profileBg} />;
                 case "sponsor": return <Sponsor user={viewUser} profileImg={profileImg} profileBg={profileBg} />;
-                case "agent": return <Sponsee user={viewUser} profileImg={profileImg} profileBg={profileBg} />;
+                case "agency": return <Sponsee user={viewUser} profileImg={profileImg} profileBg={profileBg} />;
                 default: return <div>
                     Page Not Found
                 </div>
@@ -62,7 +63,11 @@ const Account = ({ }) => {
 
     useEffect(() => {
         console.log('chainging user to ', currentUser?.name, state);
-        state && setViewUser(state.user);
+        if (state) {
+            UserService.getUserById(state.userId).then((user) => {
+                setViewUser(user);
+            });
+        }
     }, [state])
 
     useEffect(() => {

@@ -32,23 +32,33 @@ class Web3Helper {
     provider;
     web3;
 
-    constructor() {
-        this.provider = detectProvider();
-        this.web3 = new Web3(this.provider);
-
-        console.log('web3 helper constructor');
+    isInitialized() {
+        try {
+            if (!(this.provider && this.web3)) {
+                this.provider = detectProvider();
+                this.web3 = new Web3(this.provider);
+            }
+            return true;
+        } catch (e) {
+            window.alert(e);
+            return false;
+        }
     }
 
     async getAccounts() {
-        const sig = await this.provider.request({
+        if (!this.isInitialized()) return null;
+        // request account access 
+        await this.provider.request({
             method: "eth_requestAccounts",
         });
+
         const accounts = await this.web3.eth.getAccounts();
         console.log('get accounts', accounts);
         return accounts;
     }
 
     async sign(account, message) {
+        if (!this.isInitialized()) return null;
         // const signature = await this.provider.request({
         //     method: 'personal_sign',
         //     params: [
@@ -63,6 +73,8 @@ class Web3Helper {
     }
 
     async ecRecover(dataThatWasSigned, signature) {
+        if (!this.isInitialized()) return null;
+
         const account = await this.web3.eth.personal.ecRecover(dataThatWasSigned, signature)
         return account;
     }

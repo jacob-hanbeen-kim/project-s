@@ -71,7 +71,7 @@ const HeroSection = ({ toDemoSection }) => {
                 </TopSection>
                 <MiddleSection>
                     <TextWrapper>
-                        <Text variant='display3' color={theme.colors.onPrimary}>
+                        <Text variant='h2' color={theme.colors.onPrimary}>
                             Welcome to the New Pardigm of <br />
                             Networking and Engagement
                             in Sports and Entertainment
@@ -86,7 +86,7 @@ const HeroSection = ({ toDemoSection }) => {
                 <BottomSection>
                     <CallToAction>
                         <TextWrapper>
-                            <Text variant='subtitle' color={theme.colors.onPrimary}>Coming March 2022</Text>
+                            <Text variant='h4' color={theme.colors.onPrimary}>Coming March 2022</Text>
                         </TextWrapper>
                         <InputWrapper>
                             <InputWithButton

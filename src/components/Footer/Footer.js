@@ -19,7 +19,7 @@ const Footer = ({ isDark }) => {
                 {/* <Flex>
                     <SocialIcons />
                 </Flex> */}
-                <p>&copy; 2022 Project S. All rights reserved</p>
+                <p>&copy; 2022 Defiact All rights reserved</p>
             </Container>
         </StyledFooter>
     )

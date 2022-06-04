@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const InputContainer = styled.div`
     cursor: text;
     display: flex;
-    background-color: ${({ theme }) => theme.colors.surface};
+    background-color: ${({ theme }) => theme.colors.background};
     border-radius: 10px;
     border: 1px solid ${({ theme }) => theme.colors.border};
     width: 100%;
@@ -23,16 +23,33 @@ export const InputContainer = styled.div`
 
 export const StyledInput = styled.input`
     box-sizing: border-box;
-    color: inherit;
-    font: inherit;
+    
     margin: 0px;
-    background-color: transparent;
     padding: 12px;
+    
     border: none;
     outline: none;
+    
     width: 100%;
-    font-size: inherit;
+    
+    font: inherit;
+    font-size: ${({ fontSize }) => fontSize ? fontSize : 'inherit'};
     line-height: inherit;
     min-height: inherit;
+    
+    color: inherit;
+    background-color: transparent;
     cursor: text;
+
+    &::placeholder {
+        color: #A4A4A4;
+    }
+
+    /* &:invalid {
+        ${({ focused }) => focused && 'border: 1px solid red;'}
+    }
+
+    &:invalid ~ span {
+        ${({ focused }) => focused && 'display: block;'}
+    } */
 `

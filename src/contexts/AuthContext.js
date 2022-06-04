@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { auth } from '../firbase-config';
+import { auth } from '../firebase-config';
 import { AuthServices } from '../services/auth-services';
 import UserService, { userFields } from '../services/users-service';
 
@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true)
 
     function signup(email, password) {
-        // return auth.createUserWithEmailAndPassword(email, password)
+        return auth.createUserWithEmailAndPassword(email, password)
     }
 
     function login() {

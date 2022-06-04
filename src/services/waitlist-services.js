@@ -1,6 +1,6 @@
 import { collection, getDocs, getDoc, setDoc, addDoc, doc, serverTimestamp } from 'firebase/firestore'
 // firebase
-import { db } from '../firbase-config';
+import { db } from '../firebase-config';
 const waitlistCollectionRef = collection(db, "waitlist");
 
 const getWaitlist = async () => {

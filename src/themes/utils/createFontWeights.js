@@ -1,11 +1,12 @@
 export default function createfontWeights() {
-    const fontWeights = [400, 500, 700]
+    // const fontWeights = [400, 500, 700]
+    let fontWeights = {};
 
     /* eslint-disable prefer-destructuring */
     // Size aliases
-    fontWeights.regular = fontWeights[0]
-    fontWeights.bolder = fontWeights[1]
-    fontWeights.boldest = fontWeights[2]
+    fontWeights.standard = 400
+    fontWeights.bolder = 500
+    fontWeights.boldest = 700
     /* eslint-enable prefer-destructuring */
 
     fontWeights.use = type => {

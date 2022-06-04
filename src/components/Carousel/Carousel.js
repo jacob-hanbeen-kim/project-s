@@ -1,133 +1,76 @@
+import React, { useState } from 'react'
 import {
-    StyledCarousel,
+    Container,
     CarouselContainer,
-    SlickSlider,
-    ButtonSlider,
-    SlickList,
-    SlickSlide,
-    SlickTrack,
-    SlickDots,
+    View,
+    Inner,
+    CarouselItem,
+    LeftButton,
+    RightButton
+} from './Carousel.styled'
 
+// https://medium.com/tinyso/how-to-create-the-responsive-and-swipeable-carousel-slider-component-in-react-99f433364aa0
 
-    CarouselCard,
-    CarouselCardImage,
-    CarouselCardContent
-} from './Carousel.styled';
+const Carousel = ({
+    children,
+    displayCount,
+    noScale,
+    noOpacity,
+    width,
+    align
+}) => {
+    // const [items, setItems] = useState([]);
+    const [activeIndex, setActiveIndex] = useState(1);
 
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
+    const updateIndex = (newIndex) => {
+        if (newIndex < 0) {
+            newIndex = React.Children.count(children) - 1;
+        } else if (newIndex >= React.Children.count(children)) {
+            newIndex = 0;
+        }
 
-import { Card } from '../';
+        console.log(newIndex);
+        setActiveIndex(newIndex);
+    }
 
-const Carousel = ({ children }) => {
     return (
-        <StyledCarousel>
+        <Container>
             <CarouselContainer>
-                <SlickSlider>
-                    <ButtonSlider direction="left">
-                        <FaAngleLeft />
-                    </ButtonSlider>
-                    <SlickList>
-                        <SlickTrack>
-                            {/* <SlickSlide>
-                                <CarouselCard>
-                                    <a href="/">
-                                        <CarouselCardImage>
-                                            <img src="images/uniform.jpg"></img>
-                                        </CarouselCardImage>
-                                        <CarouselCardContent>
-                                            <h1>Content Title</h1>
-                                            <p>Content Details Content Details Content Details Content Details Content Details Content Details Content Details</p>
-                                        </CarouselCardContent>
-                                    </a>
-                                </CarouselCard>
-                            </SlickSlide>
-                            <SlickSlide>
-                                <CarouselCard>
-                                    <a href="/">
-                                        <CarouselCardImage>
-                                            <img src="images/uniform.jpg"></img>
-                                        </CarouselCardImage>
-                                        <CarouselCardContent>
-                                            <h1>Content Title</h1>
-                                            <p>Content Details Content Details Content Details Content Details Content Details Content Details Content Details</p>
-                                        </CarouselCardContent>
-                                    </a>
-                                </CarouselCard>
-                            </SlickSlide> */}
-                            {/* <SlickSlide>
-                                <CarouselCard>
-                                    <a href="/">
-                                        <CarouselCardImage>
-                                            <img src="images/uniform.jpg"></img>
-                                        </CarouselCardImage>
-                                        <CarouselCardContent>
-                                            <h1>Content Title</h1>
-                                            <p>Content Details Content Details Content Details Content Details Content Details Content Details Content Details</p>
-                                        </CarouselCardContent>
-                                    </a>
-                                </CarouselCard>
-                            </SlickSlide>
-                            <SlickSlide>
-                                <CarouselCard>
-                                    <a href="/">
-                                        <CarouselCardImage>
-                                            <img src="images/uniform.jpg"></img>
-                                        </CarouselCardImage>
-                                        <CarouselCardContent>
-                                            <h1>Content Title</h1>
-                                            <p>Content Details Content Details Content Details Content Details Content Details Content Details Content Details</p>
-                                        </CarouselCardContent>
-                                    </a>
-                                </CarouselCard>
-                            </SlickSlide> */}
-                            <SlickSlide>
-                                <Card
-                                    image="/images/uniform.jpg"
-                                    title="Uniform Logo"
-                                    details="add custom logo to our team's uniform"
-                                    buttonTxt="Learn More"
-                                />
-                            </SlickSlide>
-                            <SlickSlide>
-                                <Card
-                                    image="/images/uniform.jpg"
-                                    title="Uniform Logo"
-                                    details="add custom logo to our team's uniform"
-                                    buttonTxt="Learn More"
-                                />
-                            </SlickSlide>
-                            <SlickSlide>
-                                <Card
-                                    image="/images/uniform.jpg"
-                                    title="Uniform Logo"
-                                    details="add custom logo to our team's uniform"
-                                    buttonTxt="Learn More"
-                                />
-                            </SlickSlide>
-                            <SlickSlide>
-                                <Card
-                                    image="/images/uniform.jpg"
-                                    title="Uniform Logo"
-                                    details="add custom logo to our team's uniform"
-                                    buttonTxt="Learn More"
-                                />
-                            </SlickSlide>
-                        </SlickTrack>
-                    </SlickList>
-                    <ButtonSlider direction="right">
-                        <FaAngleRight />
-                    </ButtonSlider>
-                    <SlickDots>
-                        <li><button></button></li>
-                        <li><button></button></li>
-                        <li><button></button></li>
-                        <li><button></button></li>
-                        <li><button></button></li>
-                    </SlickDots>
-                </SlickSlider>
+                <LeftButton onClick={() => {
+                    updateIndex(activeIndex - 1);
+                }} />
+                <View maxWidth={width}>
+                    <Inner activeIndex={activeIndex} displayCount={displayCount} align={align}>
+                        {
+                            React.Children.map(children, (child, index) => {
+                                return (
+                                    <CarouselItem
+                                        active={activeIndex === index}
+                                        displayCount={displayCount}
+                                        noScale={noScale}
+                                        noOpacity={noOpacity}
+                                    >
+                                        {child}
+                                    </CarouselItem>
+                                )
+                            })
+                        }
+                    </Inner>
+                </View>
+                <RightButton onClick={() => {
+                    updateIndex(activeIndex + 1);
+                }} />
             </CarouselContainer>
-        </StyledCarousel>
+        </Container >
     )
+}
+
+Carousel.defaultProps = {
+    displayCount: 3,
+    noScale: false,
+    noOpacity: false,
+    width: '900px',
+    align: 'center'
 }
 
 export default Carousel

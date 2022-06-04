@@ -1,5 +1,6 @@
 import Card from './Card/Card';
 import Card2 from './Card/Card2';
+import CardWithIcon from './Card/CardWithIcon/CardWithIcon';
 
 import Carousel from './Carousel/Carousel';
 
@@ -14,6 +15,8 @@ import MembershipStatus from './MembershipStatus/MembershipStatus';
 import Navbar from './Navbar/Navbar';
 
 import SocialIcons from './SocialIcons/SocialIcons';
+import SocialIcon from './SocialIcon/SocialIcon';
+import SportIcon from './SportIcon/SportIcon';
 
 import VideoBackground from './Background/VideoBackground';
 import ImageBackground from './Background/ImageBackground';
@@ -40,14 +43,18 @@ import InputWithButton from './InputWithButton/InputWithButton';
 import Text from './Text/Text';
 import Image from './Image/Image';
 
+import Table from './Table/Table';
+
 export {
-    Card, Card2,
+    Card, Card2, CardWithIcon,
     Carousel,
     Footer,
     InfoSection,
     Logo,
     Navbar,
     SocialIcons,
+    SocialIcon,
+    SportIcon,
     VideoBackground,
     ImageBackground,
     FixedBackground,
@@ -63,5 +70,6 @@ export {
     Input,
     InputWithButton,
     Text,
-    Image
+    Image,
+    Table
 };
