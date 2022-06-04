@@ -2,13 +2,13 @@ import {
     NavContainer,
     Nav,
     NavbarLeft,
-    LogoLink
+    LogoLink,
+    SearchBoxContainer
 } from './Navbar.styled';
-import { Logo } from '..';
-import Menu from './Menu';
+import { Logo, SearchBox } from '..';
+import Menu from './Menu/Menu';
 
 import { useAuth } from '../../contexts/AuthContext';
-
 
 const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
 
@@ -27,6 +27,9 @@ const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
                     <LogoLink to="/" onClick={() => { isSidebarOpen && onSidebarToggle() }}>
                         <Logo isDark={theme === 'dark'} />
                     </LogoLink>
+                    <SearchBoxContainer>
+                        <SearchBox />
+                    </SearchBoxContainer>
                 </NavbarLeft>
                 <Menu
                     logout={logout}

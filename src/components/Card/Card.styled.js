@@ -22,7 +22,8 @@ export const CardFlex = styled.div`
 
     background-color: ${({ backgroundColor, theme }) => backgroundColor || theme.colors.background};
     border-radius: ${({ theme }) => theme.border.radius};
-    box-shadow: rgb(4 17 29 / 25%) 0px 0px 10px 0px;
+    border: 1px solid ${({ theme }) => theme.colors.border};
+    /* box-shadow: rgb(4 17 29 / 25%) 0px 0px 10px 0px; */
 
     @media(max-width: ${({ theme }) => theme.screen.sizeM}) {
         flex-direction: ${({ layout }) => (layout === 'column' || layout === 'column-reverse') ? layout : 'column'};
@@ -51,9 +52,28 @@ export const CardImage = styled.div`
 `
 
 export const CardContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: left;
+
     width: 100%;
-    font-weight: 600;
     padding: 16px;
     color: ${({ color, theme }) => color || theme.colors.onSurface};
-    text-align: center;
+    
+    text-align: left;
+
+    & h3 {
+        margin: 0px;
+        padding: 0px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    & p {
+        margin: 0px;
+        padding: 0px;
+    }
 `

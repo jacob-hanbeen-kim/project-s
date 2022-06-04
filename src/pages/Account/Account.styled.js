@@ -1,6 +1,7 @@
 import styled from 'styled-components'
-import { Flex } from '../../styles/Flex.styled'
 
-export const AccountContainer = styled(Flex)`
+export const AccountContainer = styled.div`
+    display: flex;
+    align-items: center;
     flex-direction: column;
 `

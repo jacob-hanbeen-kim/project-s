@@ -7,7 +7,14 @@ import {
 
 import React, { useState } from 'react';
 
-const Tabs = ({ children, onClick, sticky, top }) => {
+const Tabs = ({
+    children,
+    align,
+    onClick,
+    sticky,
+    top,
+    noBorder
+}) => {
 
     const [activeTab, setActiveTab] = useState(children[0].props.label);
 
@@ -19,8 +26,8 @@ const Tabs = ({ children, onClick, sticky, top }) => {
 
     return (
         <>
-            <TabContainer sticky={sticky} stickAt={top}>
-                <TabItems>
+            <TabContainer sticky={sticky} stickAt={top} noBorder={noBorder}>
+                <TabItems align={align}>
                     {
                         React.Children.map(children, function (child) {
                             const label = child.props.label;
@@ -47,7 +54,8 @@ const Tabs = ({ children, onClick, sticky, top }) => {
 }
 
 Tabs.defaultProps = {
-    sticky: true
+    sticky: true,
+    variant: 'default'
 }
 
 export default Tabs

@@ -30,7 +30,7 @@ const HeroSection = ({ currentAccount, username, profileImg, profileBg }) => {
     console.log(profileBg);
     return (
         <HeroContainer>
-            <ImageBackground src={profileBg} opacity={0.6} />
+            {/* <ImageBackground src={profileBg} opacity={0.6} /> */}
             <HeroWrapper>
                 <HeroContent>
                     <ProfileInfoWrapper>
