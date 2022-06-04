@@ -23,7 +23,7 @@ import { Button } from '../../../styles/Button.styled';
 import { FaRegCommentDots, FaUserAlt } from 'react-icons/fa'
 import Tag from './Tag/Tag';
 
-const HeroSection = ({ currentAccount, username, profileImg, profileBg }) => {
+const HeroSection = ({ user, profileImg, profileBg }) => {
     return (
         <Container>
             <Wrapper>
@@ -65,20 +65,12 @@ const HeroSection = ({ currentAccount, username, profileImg, profileBg }) => {
                     </MediaWrapper>
                     <InfoWrapper>
                         <TopLine>
-                            <Name>Defiact</Name>
+                            <Name>{`${user?.firstName} ${user?.lastName}`}</Name>
                             <TagWrapper>
                                 <Tag text='Team' />
                                 <Tag text='League' />
                                 <VerticalLine />
                                 <Tag text='Sports' />
-                                {/* <TagContainer isLeft={true}>
-                                    <Img src={process.env.PUBLIC_URL + '/images/account/tottenham_logo.png'} />
-                                    <Img src={process.env.PUBLIC_URL + '/images/account/fifa_logo.png'} />
-                                </TagContainer>
-                                <VerticalLine />
-                                <TagContainer isLeft={false}>
-                                    <Img src={process.env.PUBLIC_URL + '/images/account/soccer_ball.png'} />
-                                </TagContainer> */}
                             </TagWrapper>
                         </TopLine>
                         <MetricWrapper>
