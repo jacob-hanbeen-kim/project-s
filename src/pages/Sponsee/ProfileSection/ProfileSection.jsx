@@ -63,29 +63,32 @@ const ProfileSection = () => {
                         <area alt="sleeve" title="sleeve" href="sleeve" coords="512,131,551,146" shape="rect" />
                         <area alt="neckline" title="neckline" href="neckline" coords="316,33,357,42" shape="rect" />
                     </ImageMap> */}
-
                     <Card title="Packge 1" details="Includes Followings" buttonTxt="Offer">
                         <ul>
                             <li>Metion in Sns</li>
                             <li>Participate in 1 event</li>
                         </ul>
                     </Card>
-
                     <Card title="Packge 2" details="Includes Followings" buttonTxt="Offer">
                         <ul>
                             <li>Metion in Sns</li>
                             <li>Participate in 1 event</li>
                         </ul>
                     </Card>
-
                     <Card title="Packge 3" details="Includes Followings" buttonTxt="Offer">
                         <ul>
                             <li>Metion in Sns</li>
                             <li>Participate in 1 event</li>
                         </ul>
                     </Card>
-
                     <Card title="Packge 4" details="Includes Followings" buttonTxt="Offer">
+                        <ul>
+                            <li>Metion in Sns</li>
+                            <li>Participate in 1 event</li>
+                        </ul>
+                    </Card>
+
+                    <Card title="Packge 5" details="Includes Followings" buttonTxt="Offer">
                         <ul>
                             <li>Metion in Sns</li>
                             <li>Participate in 1 event</li>

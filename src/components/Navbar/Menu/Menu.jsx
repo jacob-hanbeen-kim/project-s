@@ -6,35 +6,42 @@ import {
     DropdownItem,
     StyledNavLink,
     SubNavLink,
-    ProfileLink,
     MenuBar,
     BarIcon,
     CloseIcon,
-    // DropdownContent,
-    MessagesLink,
-    MessagesIcon
-} from './Navbar.styled';
-import { Toggler } from '../../styles/Toggle.styled';
+    NavLinkCaption,
+    NavLinkIcon
+} from './Menu.styled';
+import { Toggler } from '../../../styles/Toggle.styled';
 import { FiSun, FiMoon } from 'react-icons/fi';
-import { ProfileImg } from '../';
+import { FaRegCommentDots, FaHome, FaRegBell } from 'react-icons/fa'
+import { IoIosGlobe } from "react-icons/io";
+import { ProfileImg } from '../..';
 
 const Menu = ({ logout, toggleTheme, getUsername, currentUser, onSidebarToggle, isSidebarOpen, theme }) => {
     return (
         <StyledMenu>
-            <MenuItems>
-                <DropdownList>
-                    <DropdownItem>
-                        <StyledNavLink to="/explore">Explore</StyledNavLink>
-                        {/* <StyledNavLink to="/brands">Brands</StyledNavLink> */}
-                        {/* <DropdownContent>
-                            <SubNavLink to="/brands/tiers">By Tiers</SubNavLink>
-                            <SubNavLink to="/brands/nations">By Nations</SubNavLink>
-                            <SubNavLink to="/brands/sports">By Sports</SubNavLink>
-                        </DropdownContent> */}
-                    </DropdownItem>
-                </DropdownList>
-            </MenuItems>
-            <DropdownItem>
+            <StyledNavLink to='/'>
+                <NavLinkIcon><FaHome /></NavLinkIcon>
+                <NavLinkCaption>Home</NavLinkCaption>
+            </StyledNavLink>
+            <StyledNavLink to='/explore'>
+                <NavLinkIcon><IoIosGlobe /></NavLinkIcon>
+                <NavLinkCaption>Explore</NavLinkCaption>
+            </StyledNavLink>
+            <StyledNavLink to='/messages/inbox'>
+                <NavLinkIcon><FaRegCommentDots /></NavLinkIcon>
+                <NavLinkCaption>Message</NavLinkCaption>
+            </StyledNavLink>
+            <StyledNavLink to='/notifcation'>
+                <NavLinkIcon><FaRegBell /></NavLinkIcon>
+                <NavLinkCaption>Notification</NavLinkCaption>
+            </StyledNavLink>
+            <StyledNavLink to='/login'>
+                <ProfileImg hasProfileImg={currentUser !== null} src={process.env.PUBLIC_URL + `/images/account/${getUsername()}/profileImg.png`} />
+                <NavLinkCaption>Profile</NavLinkCaption>
+            </StyledNavLink>
+            {/* <DropdownItem>
                 <ProfileLink to='/login'>
                     <ProfileImg hasProfileImg={currentUser !== null} src={process.env.PUBLIC_URL + `/images/account/${getUsername()}/profileImg.png`} />
                 </ProfileLink >
@@ -48,17 +55,14 @@ const Menu = ({ logout, toggleTheme, getUsername, currentUser, onSidebarToggle, 
                         }
                     </ProfileDropDown>
                 }
-            </DropdownItem >
-            <MessagesLink to='/messages/inbox'>
-                <MessagesIcon />
-            </MessagesLink>
-            <Toggler onClick={() => toggleTheme()}>
+            </DropdownItem > */}
+            {/* <Toggler onClick={() => toggleTheme()}>
                 {
                     theme === 'light' ?
                         <FiMoon /> :
                         <FiSun />
                 }
-            </Toggler>
+            </Toggler> */}
             <MenuBar onClick={onSidebarToggle}>
                 {
                     isSidebarOpen ?

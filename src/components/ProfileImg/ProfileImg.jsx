@@ -11,6 +11,8 @@ const ProfileImg = ({
     src,
     children,
     size,
+    maxSize,
+    minSize,
     hasProfileImg,
     hasBorder,
     borderSize,
@@ -29,6 +31,8 @@ const ProfileImg = ({
                     <Image
                         src={src}
                         size={size}
+                        maxSize={maxSize}
+                        minSize={minSize}
                         onError={addDefaultSrc}
                         hasBorder={hasBorder}
                         borderSize={borderSize}
@@ -36,6 +40,8 @@ const ProfileImg = ({
                     /> :
                     <Icon
                         size={size}
+                        maxSize={maxSize}
+                        minSize={minSize}
                         hasBorder={hasBorder}
                         borderSize={borderSize}
                         borderColor={borderColor}

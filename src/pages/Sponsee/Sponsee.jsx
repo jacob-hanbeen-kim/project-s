@@ -12,7 +12,7 @@ const Sponsee = ({ user, profileImg, profileBg }) => {
     return (
         <Container>
             <HeroSection currentAccount={user?.id} username={user?.name} profileImg={profileImg} profileBg={profileBg} />
-            <Tabs>
+            <Tabs noBorder={true} align='flex-start'>
                 <ProfileSection label="Profile" />
                 <LockerRoomSection label="Locker Room" />
                 <div label="Past Partnerships"></div>

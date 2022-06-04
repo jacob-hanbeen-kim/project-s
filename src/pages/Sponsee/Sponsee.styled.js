@@ -1,9 +1,9 @@
-import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import { Flex } from '../../styles/Flex.styled'
 
-export const Container = styled(Flex)`
+export const Container = styled.div`
+    display: flex;
     flex-direction: column;
+    align-items: center;
     position: relative;
     width: 100%;
 `

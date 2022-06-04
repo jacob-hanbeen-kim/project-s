@@ -15,7 +15,7 @@ export const InputContainer = styled.div`
     border-radius: 10px;
     border: 1px solid ${({ theme }) => theme.colors.border};
     width: 100%;
-    height: 45px;
+    height: 40px;
     /* max-width: 768px; */
 
     flex-direction: ${({ reverse }) => reverse ? 'row-reverse' : 'row'};

@@ -1,20 +1,31 @@
 import styled from 'styled-components'
 
+const getBorder = (props) => {
+    if (props.noBorder) {
+        return ''
+    } else {
+        return `
+            border-top: 1px solid ${props.theme.colors.border};
+            border-bottom: 1px solid ${props.theme.colors.border};
+        `
+    }
+}
+
 export const TabContainer = styled.nav`
     display: flex;
     flex-direction: row;
     justify-content: center;
 
-    border-top: 1px solid ${({ theme }) => theme.colors.border};
-    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
     z-index: 9;
+    ${(props) => getBorder(props)}
 
     /* width: 100vw; */
     width: 100%;
+    padding: 0px 5vw;
 
     position: ${props => props.sticky ? 'sticky' : 'relative'};
     ${props => props.sticky && `
-        top: 4.2rem;   
+        top: 3.4rem;   
     `}
     overflow: hidden;
 
@@ -24,14 +35,14 @@ export const TabContainer = styled.nav`
 export const TabItems = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: ${({align}) => align ? align : 'center'};
     align-items: center;
     
     width: 100%;
-    max-width: 1100px;
+    /* max-width: 1100px; */
 
-    padding: 0px 10px;
-    margin: 0px 30px;
+    /* padding: 0px 10px; */
+    /* margin: 0px 30px; */
 
     // make scrollable
     overflow-x: auto;
@@ -47,11 +58,11 @@ export const Tab = styled.a`
     color: ${({ theme }) => theme.colors.onSurface};
     opacity: ${({ isActive }) => isActive ? '1.0' : '0.75'};
     border-bottom: ${({ isActive, theme }) =>
-        isActive ? `3px solid ${theme.colors.onSurface}` : 'none'
+        isActive ? `3px solid ${theme.colors.primary}` : 'none'
     };
 
     margin: 0px 1.8rem;
-    padding: 25px 5px 22px 5px;
+    padding: 15px 5px 10px 5px;
     text-decoration: none;
 
     &:hover {

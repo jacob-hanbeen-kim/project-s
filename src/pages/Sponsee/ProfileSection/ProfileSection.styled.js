@@ -76,14 +76,14 @@ export const SupportContainer = styled.div`
 export const SupportSticky = styled.div`
     overflow-y: auto;
     position: sticky;
-    top: 10rem;
+    top: 7rem;
     bottom: 0;
 
     padding: 0px 30px;
 
     height: 90vh;
 
-    border-left: 2px solid ${({ theme }) => theme.colors.border};
+    /* border-left: 2px solid ${({ theme }) => theme.colors.border}; */
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
         border: 0px;
