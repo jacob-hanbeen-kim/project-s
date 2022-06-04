@@ -1,6 +1,10 @@
 import {
     OnboardingContainer,
     TitleContainer,
+    ProgressBarContainer,
+    ProgressCurrent,
+    ProgressBarCircle,
+    ProgressLine,
     OnboardingCardContainer
 } from './Onboarding.styled'
 import { useAuth } from "../../contexts/AuthContext";
@@ -16,6 +20,13 @@ const Onboarding = () => {
                 <h3> Find, Negotiate, and Sign Sports Sponsorships Deals. Digitally.</h3>
                 <h3> Let’s get started! Tell us who you are: </h3>
             </TitleContainer>
+            <ProgressBarContainer>
+                <ProgressCurrent />
+                <ProgressLine />
+                <ProgressBarCircle />
+                <ProgressLine />
+                <ProgressBarCircle />
+            </ProgressBarContainer>
             <OnboardingCardContainer>
                 <OnboardingCard {...sponsee} isCurrentPlan={true} />
                 <OnboardingCard {...sponsor} />

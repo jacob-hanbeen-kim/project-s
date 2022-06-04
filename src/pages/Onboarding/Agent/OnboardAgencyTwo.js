@@ -1,41 +1,44 @@
 import { useState } from 'react';
 import {
-    OnboardSponseeContainer,
+    OnboardAgencyContainer,
     TitleContainer,
     TitleDescription,
     DescriptionContainer,
+    Header,
     ProgressBarContainer,
     ProgressCurrent,
-    ProgressBarCircle,
     ProgressLine,
-    Header,
-    CheckboxWrapper,
-    SelectWrapper,
+    ProgressBarCircle,
     FormContainer,
     PageOneForm,
-    FormInputLabel,
-    FormInput,
+    Label,
     FormButtonContainer,
+    RadioButtonContainer,
+    RadioButtonWrapper,
+    RadioLabel,
     BackButton,
     NextButton,
-    OnboardingSponsorCardContainer
-} from './OnboardSponsee.styled';
+    OnboardingAgencyCardContainer
+} from './OnboardAgency.styled';
 
 import OnboardingCard from '../OnboardingCard/OnboardingCard';
 import { firstCard, secondCard, thirdCard, fourthCard, fifthCard, sixthCard} from '../OnboardingCard/OnboardingCardData'
 
-const OnboardSponseeTwo = ({}) => {
+const OnboardAgencyTwo = ({}) => {
+
+    const [checked, setChecked] = useState({ yes: false, no: false});
+
 
     return (
-        <OnboardSponseeContainer>
+        <OnboardAgencyContainer>
             <TitleContainer>
                 <Header>
-                    Sponsee
+                    Agency
                 </Header>
             </TitleContainer>
             <DescriptionContainer>
                 <TitleDescription>
-                    Compare contracts and know your value
+                    Defiact helps you close deals 87% faster
                 </TitleDescription>
             </DescriptionContainer>
             <ProgressBarContainer>
@@ -47,39 +50,36 @@ const OnboardSponseeTwo = ({}) => {
             </ProgressBarContainer>
             <FormContainer>
                 <PageOneForm>
-                    <label>What is your association? Which league do you play in?</label>
-                    <CheckboxWrapper>
-                        <SelectWrapper name="league" id="league">
-                            <optgroup label="league">
-                                <option>Choose Option</option>
-                                <option value="NCAA">NCAA</option>
-                                <option value="EPL">EPL</option>
-                                <option value="LCK">LCK</option>
-                            </optgroup>
-                        </SelectWrapper>
-                    </CheckboxWrapper>
-                    <OnboardingSponsorCardContainer>
+                    <Label>What kind of deals are you looking for?</Label>
+                    <OnboardingAgencyCardContainer>
                         <OnboardingCard {...firstCard}/>
                         <OnboardingCard {...secondCard}/>
                         <OnboardingCard {...thirdCard}/>
-                    </OnboardingSponsorCardContainer>
-                    <OnboardingSponsorCardContainer>
+                    </OnboardingAgencyCardContainer>
+                    <OnboardingAgencyCardContainer>
                         <OnboardingCard {...fourthCard}/>
                         <OnboardingCard {...fifthCard}/>
                         <OnboardingCard {...sixthCard}/>
-                    </OnboardingSponsorCardContainer>
-                    
-
-                    <FormInputLabel for="fname">Estimated Sponsorship Amount (optional)</FormInputLabel>
-                    <FormInput type="number" id="amount" name="amount" placeholder="Enter amount" />
+                    </OnboardingAgencyCardContainer>
+                    <Label>What is your pay based on?</Label>
+                    <RadioButtonContainer>
+                        <RadioButtonWrapper>
+                            <input type="radio" id="commission" name="commission" value="commission" />
+                            <RadioLabel for="commission">Commission</RadioLabel><br />
+                        </RadioButtonWrapper>
+                        <RadioButtonWrapper>
+                            <input type="radio" id="flat_rate" name="flat_rate" value="flat_rate"/>
+                            <RadioLabel for="flat_rate">Flat Rate</RadioLabel><br />
+                        </RadioButtonWrapper>
+                    </RadioButtonContainer>
                 </PageOneForm>
             </FormContainer>
             <FormButtonContainer>
                 <BackButton>Back</BackButton>
                 <NextButton>Submit</NextButton>
             </FormButtonContainer>
-        </OnboardSponseeContainer>
+        </OnboardAgencyContainer>
     )
 }
 
-export default OnboardSponseeTwo
+export default OnboardAgencyTwo

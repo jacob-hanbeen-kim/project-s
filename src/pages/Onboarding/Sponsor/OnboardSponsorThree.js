@@ -1,44 +1,43 @@
 import { useState } from 'react';
 import {
-    OnboardSponseeContainer,
+    OnboardSponsorContainer,
     TitleContainer,
     TitleDescription,
     DescriptionContainer,
+    Header,
     ProgressBarContainer,
     ProgressCurrent,
-    ProgressBarCircle,
     ProgressLine,
-    Header,
-    CheckboxWrapper,
-    SelectWrapper,
+    ProgressBarCircle,
+    Label,
     FormContainer,
     PageOneForm,
-    FormInputLabel,
-    FormInput,
     FormButtonContainer,
     BackButton,
     NextButton,
     OnboardingSponsorCardContainer
-} from './OnboardSponsee.styled';
+} from './OnboardSponsor.styled';
 
 import OnboardingCard from '../OnboardingCard/OnboardingCard';
 import { firstCard, secondCard, thirdCard, fourthCard, fifthCard, sixthCard} from '../OnboardingCard/OnboardingCardData'
 
-const OnboardSponseeTwo = ({}) => {
+const OnboardSponsorThree = ({}) => {
 
     return (
-        <OnboardSponseeContainer>
+        <OnboardSponsorContainer>
             <TitleContainer>
                 <Header>
-                    Sponsee
+                    Sponsor
                 </Header>
             </TitleContainer>
             <DescriptionContainer>
                 <TitleDescription>
-                    Compare contracts and know your value
+                    Defiact helps you close deals 87% faster
                 </TitleDescription>
             </DescriptionContainer>
             <ProgressBarContainer>
+                <ProgressBarCircle />
+                <ProgressLine />
                 <ProgressBarCircle />
                 <ProgressLine />
                 <ProgressBarCircle />
@@ -47,17 +46,7 @@ const OnboardSponseeTwo = ({}) => {
             </ProgressBarContainer>
             <FormContainer>
                 <PageOneForm>
-                    <label>What is your association? Which league do you play in?</label>
-                    <CheckboxWrapper>
-                        <SelectWrapper name="league" id="league">
-                            <optgroup label="league">
-                                <option>Choose Option</option>
-                                <option value="NCAA">NCAA</option>
-                                <option value="EPL">EPL</option>
-                                <option value="LCK">LCK</option>
-                            </optgroup>
-                        </SelectWrapper>
-                    </CheckboxWrapper>
+                    <Label>What kind of deals are you looking for?</Label>
                     <OnboardingSponsorCardContainer>
                         <OnboardingCard {...firstCard}/>
                         <OnboardingCard {...secondCard}/>
@@ -68,18 +57,14 @@ const OnboardSponseeTwo = ({}) => {
                         <OnboardingCard {...fifthCard}/>
                         <OnboardingCard {...sixthCard}/>
                     </OnboardingSponsorCardContainer>
-                    
-
-                    <FormInputLabel for="fname">Estimated Sponsorship Amount (optional)</FormInputLabel>
-                    <FormInput type="number" id="amount" name="amount" placeholder="Enter amount" />
                 </PageOneForm>
             </FormContainer>
             <FormButtonContainer>
                 <BackButton>Back</BackButton>
                 <NextButton>Submit</NextButton>
             </FormButtonContainer>
-        </OnboardSponseeContainer>
+        </OnboardSponsorContainer>
     )
 }
 
-export default OnboardSponseeTwo
+export default OnboardSponsorThree

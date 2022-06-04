@@ -4,6 +4,10 @@ import {
     OnboardSponseeContainer,
     TitleContainer,
     TitleDescription,
+    ProgressBarContainer,
+    ProgressCurrent,
+    ProgressLine,
+    ProgressBarCircle,
     DescriptionContainer,
     Header,
     CheckboxWrapper,
@@ -13,6 +17,7 @@ import {
     SponseeInfoContainer,
     RadioButtonContainer,
     RadioButtonWrapper,
+    SelectOption,
     FormInput,
     FormButtonContainer,
     BackButton,
@@ -44,7 +49,31 @@ const OnboardSponsee = ({}) => {
     };
 
     const onNext = (e) => {
-        setFirstName(firstName)
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
+        setOccupation(occupation)
+        setMobile(mobile)
+        var myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+        var raw = JSON.stringify({
+        'fields': {
+            "firstName": `${firstName}`,
+            "lastName": `${lastName}`,
+            "occupation": `${occupation}`
+        }
+        });
+        var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+        };
+        fetch("https://us-central1-project-s-backend.cloudfunctions.net/userServiceApp/user/0xe4436bac6ac98e27156FC597607485FEfeE23f8c/profile", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+        
         navigateTo()
     };
 
@@ -68,7 +97,7 @@ const OnboardSponsee = ({}) => {
     }
 
     const handleChangeSport = (event) => {
-        setChecked(event.target.value);
+        setSport(event.target.value);
     }
 
     const handleChangeAgency= (event) => {
@@ -87,18 +116,25 @@ const OnboardSponsee = ({}) => {
                     Find potential sponsors and create more opportunities
                 </TitleDescription>
             </DescriptionContainer>
+            <ProgressBarContainer>
+                <ProgressBarCircle />
+                <ProgressLine />
+                <ProgressCurrent />
+                <ProgressLine />
+                <ProgressBarCircle />
+            </ProgressBarContainer>
             <FormContainer>
                 <PageOneForm>
                     <label>Are you an...</label>
                     <CheckboxWrapper>
-                        <select value={occupation} name="userJob" id="userJob" onChange={event => handleChangeOccupation(event)}>
+                        <SelectOption value={occupation} name="userJob" id="userJob" onChange={event => handleChangeOccupation(event)}>
                             <optgroup label="userJob">
                                 <option>Choose Option</option>
                                 <option value="Athlete">Athlete</option>
                                 <option value="Sponsor">Sponsor</option>
                                 <option value="Agent">Agent</option>
                             </optgroup>
-                        </select>
+                        </SelectOption>
                     </CheckboxWrapper>
                     <SponseeInfoContainer>
                         <FormInputLabel for="fname">First Name</FormInputLabel>
@@ -116,14 +152,14 @@ const OnboardSponsee = ({}) => {
 
                     <label>What sport do you play?</label>
                     <CheckboxWrapper>
-                        <select value={sport} onChange={event => handleChangeSport(event)} name="sport" id="sport">
+                        <SelectOption value={sport} name="sport" id="sport" onChange={event => handleChangeSport(event)}>
                             <optgroup label="sport">
                                 <option>Choose Option</option>
                                 <option value="Basketball">Basketball</option>
                                 <option value="Soccer">Soccer</option>
                                 <option value="Baseball">Baseball</option>
                             </optgroup>
-                        </select>
+                        </SelectOption>
                     </CheckboxWrapper>
 
                     <label>Do you have an existing agency representing your brand?</label>
@@ -141,7 +177,7 @@ const OnboardSponsee = ({}) => {
             </FormContainer>
             <FormButtonContainer>
                 <BackButton>Back</BackButton>
-                <NextButton onClick={navigateTo}>Next</NextButton>
+                <NextButton onClick={onNext}>Next</NextButton>
             </FormButtonContainer>
         </OnboardSponseeContainer>
     )

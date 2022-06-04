@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { InputBox } from '../../../styles/InputBox.styled';
 import { Button } from '../../../styles/Button.styled';
 
-export const OnboardSponseeContainer = styled.div`
+export const OnboardAgencyContainer = styled.div`
     display: flex;
     flex-direction: column;
 `
@@ -16,6 +16,19 @@ export const TitleContainer = styled.div`
 export const SelectWrapper = styled.select`
     margin-left : 30px;
     margin-top: 20px;
+`
+
+export const DescriptionContainer = styled.div`
+    display: flex;
+    justify-content: center;
+`
+
+export const Header = styled.h2`
+    
+`
+
+export const TitleDescription = styled.p`
+    
 `
 
 export const ProgressBarContainer = styled.div`
@@ -48,19 +61,6 @@ export const ProgressBarCircle = styled.div`
     display: inline-block;
 `
 
-export const DescriptionContainer = styled.div`
-    display: flex;
-    justify-content: center;
-`
-
-export const Header = styled.h2`
-    
-`
-
-export const TitleDescription = styled.p`
-    
-`
-
 export const FormContainer = styled.div`
     display : flex;
     margin-left: 100px;
@@ -79,21 +79,36 @@ export const CheckboxWrapper = styled.div`
     flex-direction: row;
     padding: 10px;
     margin-bottom: 30px;
+    margin-left: 40px;
 `
 
-export const SponseeInfoContainer = styled.div`
+export const AgencyInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-left: 50px;
     margin-bottom: 30px;
 `
 
-export const FormInputLabel = styled.label`
-    font-size: 14px;
+export const SendEmailContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+    margin-bottom: 30px;
 `
 
-export const FormInput = styled(InputBox)`
-    margin-bottom: 10px
+export const SendEmailButton = styled(Button)`
+    display: flex;
+    width:10%;
+    height:10%;
+    justify-content: center;
+    background-color: #b3b3b3;
+    margin-left: 5px;
+`
+
+export const SendEmailWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 `
 
 export const RadioButtonContainer = styled.div`
@@ -106,6 +121,24 @@ export const RadioButtonWrapper = styled.div`
     display: flex;
     flex-direction: row;
     margin: 10px;
+`
+
+export const FormInputLabel = styled.label`
+    font-size: 14px;
+`
+
+export const Label = styled.label`
+    margin-bottom: 30px;
+`
+
+export const RadioLabel = styled.label`
+    margin-left: 5px;
+    font-size: 14px;
+`
+
+export const FormInput = styled(InputBox)`
+    margin-bottom: 10px;
+    width: 80%;
 `
 
 export const SelectOption = styled.select`
@@ -131,7 +164,7 @@ export const NextButton = styled(Button)`
     background-color: #ae7acc;
 `
 
-export const OnboardingSponsorCardContainer = styled.div`
+export const OnboardingAgencyCardContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;

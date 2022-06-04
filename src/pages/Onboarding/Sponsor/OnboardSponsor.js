@@ -1,24 +1,24 @@
 import { useState } from 'react';
 import {
-    OnboardSponseeContainer,
+    OnboardSponsorContainer,
     TitleContainer,
     TitleDescription,
     DescriptionContainer,
     Header,
-    CheckboxWrapper,
+    ProgressBarContainer,
+    ProgressCurrent,
+    ProgressLine,
+    ProgressBarCircle,
+    EnterpriseWrapper,
     FormContainer,
     PageOneForm,
     FormInputLabel,
-    SponseeInfoContainer,
-    RadioButtonContainer,
-    RadioButtonWrapper,
+    SponsorInfoContainer,
     FormInput,
     FormButtonContainer,
     BackButton,
     NextButton,
 } from './OnboardSponsor.styled';
-
-
 
 const OnboardSponsor = ({}) => {
 
@@ -26,7 +26,7 @@ const OnboardSponsor = ({}) => {
 
 
     return (
-        <OnboardSponseeContainer>
+        <OnboardSponsorContainer>
             <TitleContainer>
                 <Header>
                     Sponsor
@@ -37,63 +37,49 @@ const OnboardSponsor = ({}) => {
                     Defiact helps you close deals 87% faster
                 </TitleDescription>
             </DescriptionContainer>
+            <ProgressBarContainer>
+                <ProgressBarCircle />
+                <ProgressLine />
+                <ProgressCurrent />
+                <ProgressLine />
+                <ProgressBarCircle />
+                <ProgressLine />
+                <ProgressBarCircle />
+            </ProgressBarContainer>
             <FormContainer>
                 <PageOneForm>
-                    <label>Are you an...</label>
-                    <CheckboxWrapper>
-                        <select name="userJob" id="userJob">
-                            <optgroup label="userJob">
-                                <option>Choose Option</option>
-                                <option value="Athlete">Athlete</option>
-                                <option value="Sponsor">Sponsor</option>
-                                <option value="Agent">Agent</option>
-                            </optgroup>
-                        </select>
-                    </CheckboxWrapper>
-                    <SponseeInfoContainer>
-                        <FormInputLabel for="fname">First Name</FormInputLabel>
-                        <FormInput type="text" id="fname" name="firstname" placeholder="Your first name.." />
+                    <label>Find your enterprise</label>
+                    <EnterpriseWrapper>
+                        <FormInput type="text" id="enterprise" name="enterprise" placeholder="Your enterprise" />
+                        <p>or</p>
+
+                    </EnterpriseWrapper>
+                    <SponsorInfoContainer>
+                        <FormInputLabel for="name">Name or Title</FormInputLabel>
+                        <FormInput type="text" id="name" name="name" placeholder="Name or Title.." />
                         
-                        <FormInputLabel for="lname">Last Name</FormInputLabel>
-                        <FormInput type="text" id="lname" name="lastname" placeholder="Your last name.." />
+                        <FormInputLabel for="location">Location</FormInputLabel>
+                        <FormInput type="text" id="location" name="location" placeholder="Enterprise location.." />
 
-                        <FormInputLabel for="email">Email</FormInputLabel>
-                        <FormInput type="text" id="email" name="email" placeholder="Your email.." />
+                        <FormInputLabel for="industry">Industry</FormInputLabel>
+                        <FormInput type="text" id="industry" name="industry" placeholder="Enterprise industry.." />
 
-                        <FormInputLabel for="phone">Phone Number</FormInputLabel>
-                        <FormInput type="text" id="phone" name="phone" placeholder="Your number.." />
-                    </SponseeInfoContainer>
+                        <FormInputLabel for="revenue">Yearly Revenue</FormInputLabel>
+                        <FormInput type="number" id="revenue" name="revenue" placeholder="Enterprise revenue.." />
 
-                    <label>What sport do you play?</label>
-                    <CheckboxWrapper>
-                        <select name="userType" id="userType">
-                            <optgroup label="userType">
-                                <option>Choose Option</option>
-                                <option value="Sponsee">Basketball</option>
-                                <option value="Sponsor">Soccer</option>
-                                <option value="Agent">Baseball</option>
-                            </optgroup>
-                        </select>
-                    </CheckboxWrapper>
+                        <FormInputLabel for="url">Company Website Url</FormInputLabel>
+                        <FormInput type="text" id="url" name="url" placeholder="Enterprise url.." />
 
-                    <label>Do you have an existing agency representing your brand?</label>
-                    <RadioButtonContainer>
-                        <RadioButtonWrapper>
-                            <input type="radio" id="YesAgency" name="YesAgency" value="YesAgency" />
-                            <label for="YesAgency">Yes</label><br />
-                        </RadioButtonWrapper>
-                        <RadioButtonWrapper>
-                            <input type="radio" id="NoAgency" name="NoAgency" value="NoAgency" />
-                            <label for="NoAgency">No</label><br />
-                        </RadioButtonWrapper>
-                    </RadioButtonContainer>
+                        <FormInputLabel for="email">E-mail</FormInputLabel>
+                        <FormInput type="number" id="email" name="email" placeholder="Enterprise email.." />
+                    </SponsorInfoContainer>
                 </PageOneForm>
             </FormContainer>
             <FormButtonContainer>
-                        <BackButton>Back</BackButton>
-                        <NextButton>Next</NextButton>
-                    </FormButtonContainer>
-        </OnboardSponseeContainer>
+                <BackButton>Back</BackButton>
+                <NextButton>Next</NextButton>
+            </FormButtonContainer>
+        </OnboardSponsorContainer>
     )
 }
 

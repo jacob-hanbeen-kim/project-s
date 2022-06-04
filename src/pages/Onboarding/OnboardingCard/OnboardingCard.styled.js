@@ -9,7 +9,7 @@ export const Container = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    width: 300px;
+    min-width: 180px;
     min-height: 300px;
     
     text-align: center;
@@ -33,6 +33,7 @@ export const Container = styled.div`
 
 export const ContentContainer = styled.div`
     margin-bottom: 10px;
+    width:100%;
 `
 
 export const Header = styled.h2`
