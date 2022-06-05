@@ -5,20 +5,8 @@ import {
 
     ProfileInfoWrapper,
     ProfileInfoFlex,
-
-    BioWrapper,
-
     TextWrapper,
     TopLine,
-    Details,
-
-    VerticalLine,
-    TagContainer,
-    TagWrapper,
-    Img,
-
-    SponsorList,
-    SponsorItem
 } from './HeroSection.styled';
 import { Button } from '../../../styles/Button.styled';
 import { ImageBackground, ProfileImg, AccountTag, MembershipStatus } from '../../../components';
@@ -30,7 +18,7 @@ const HeroSection = ({ currentAccount, username, profileImg, profileBg }) => {
 
     return (
         <HeroContainer>
-            <ImageBackground src={profileBg} opacity={0.6} />
+            {/* <ImageBackground src={profileBg} opacity={0.6} /> */}
             <HeroWrapper>
                 <HeroContent>
                     <ProfileInfoWrapper>
@@ -40,8 +28,6 @@ const HeroSection = ({ currentAccount, username, profileImg, profileBg }) => {
                             </TextWrapper>
                             <TextWrapper>
                                 <TopLine>{username}</TopLine>
-                                <AccountTag account={currentAccount} />
-                                {/* <MembershipStatus size='1.5rem'> Membership Status : </MembershipStatus> */}
                             </TextWrapper>
                         </ProfileInfoFlex>
                     </ProfileInfoWrapper>

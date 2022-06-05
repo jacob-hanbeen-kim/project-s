@@ -18,6 +18,14 @@ import Explore from './pages/Explore/Explore';
 import Account from './pages/Account/Account';
 import Membership from './pages/Membership/Membership';
 import EditProfile from './pages/Profile/EditProfile';
+import Onboarding from './pages/Onboarding/Onboarding'
+import OnboardingSponsee from './pages/Onboarding/Sponsee/OnboardSponsee'
+import OnboardSponseeTwo from './pages/Onboarding/Sponsee/OnboardSponseeTwo'
+import OnboardingSponsor from './pages/Onboarding/Sponsor/OnboardSponsor'
+import OnboardSponsorTwo from './pages/Onboarding/Sponsor/OnboardSponsorTwo'
+import OnboardSponsorThree from './pages/Onboarding/Sponsor/OnboardSponsorThree'
+import OnboardAgency from './pages/Onboarding/Agent/OnboardAgency'
+import OnboardAgencyTwo from './pages/Onboarding/Agent/OnboardAgencyTwo'
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { AuthProvider } from './contexts/AuthContext';
 import Negotiate from './pages/Negotiate/Negotiate';
@@ -55,11 +63,20 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} />
-                  <Route path="/account" element={<Account />} />
-                  <Route path="/account/:username" element={<Account />} />
+                  <Route path="/account" element={<Account />}>
+                    <Route path=":accountId" element={<Account />} />
+                  </Route>
                   <Route path="/explore" element={<Explore />} />
                   <Route path="/membership" element={<Membership />} />
                   <Route path="/account/edit" element={<EditProfile />} />
+                  <Route path="/onboarding" element={<Onboarding />} />
+                  <Route path="/onboarding/sponsee" element={<OnboardingSponsee />} />
+                  <Route path="/onboarding/sponseeTwo" element={<OnboardSponseeTwo />} />
+                  <Route path="/onboarding/sponsor" element={<OnboardingSponsor />} />
+                  <Route path="/onboarding/sponsorTwo" element={<OnboardSponsorTwo />} />
+                  <Route path="/onboarding/sponsorThree" element={<OnboardSponsorThree />} />
+                  <Route path="/onboarding/agency" element={<OnboardAgency />} />
+                  <Route path="/onboarding/agencyTwo" element={<OnboardAgencyTwo />} />
                   <Route path="/messages/inbox" element={<Negotiate />} />
                   <Route path="*" element={<ErrorPage />} />
                 </Routes>

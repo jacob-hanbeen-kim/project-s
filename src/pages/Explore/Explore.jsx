@@ -40,24 +40,24 @@ const Explore = () => {
     const handleTabToggle = (tab) => {
         setActiveTab(tab);
         if (tab === 'Athletes' || tab === 'Team' || tab === 'Brand') {
-            UserService.getAllSponsee().then((res) => {
-                setData(res.data);
+            UserService.getAllSponseeProfiles().then((res) => {
+                setData(res);
             })
         } else if (tab === 'Sponsors') {
-            UserService.getAllSponsor().then((res) => {
-                setData(res.data);
+            UserService.getAllSponsorProfiles().then((res) => {
+                setData(res);
             })
         } else if (tab === 'Agents') {
-            UserService.getAllAgent().then((res) => {
-                setData(res.data);
+            UserService.getAllAgencyProfiles().then((res) => {
+                setData(res);
             })
         }
     }
 
     useEffect(() => {
-        UserService.getAllSponsee().then((res) => {
-            console.log('data', res.data);
-            setData(res.data);
+        UserService.getAllSponseeProfiles().then((res) => {
+            console.log('data', res);
+            setData(res);
         })
     }, [])
 

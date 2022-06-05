@@ -1,26 +1,51 @@
 import styled from 'styled-components';
 
-export const Icon = styled.div`
-    font-size: ${({ size }) => size ? size : '2rem'};
-    transition: all 0.2s ease-in-out;
-
-    color: ${({ theme }) => theme.colors.onBackground};
-    opacity: 0.6;
-
-    /* max-width:100%;
-    max-height:100%; */
-
-    &:hover {
-        transition: all 0.2s ease-in-out;
-        opacity: 1.0;
+const getFontSize = (props) => {
+    let fontSize = '1.5em';
+    if (props.size) {
+        fontSize = props.size;
     }
+
+    if (props.maxSize) {
+        fontSize = `max(${props.maxSize}, ${fontSize})`;
+    }
+
+    return fontSize;
+}
+export const Icon = styled.div`
+    font-size: ${(props) => getFontSize(props)};
+    color: ${({ theme }) => theme.colors.onBackground};
+
+    ${({ hasBorder }) => hasBorder &&
+        `border: ${({ borderSize }) => borderSize ? borderSize : '5px'} solid ${({ borderColor }) => borderColor ? borderColor : 'white'};`}
 `
 
 export const Image = styled.img`
     border-radius: 50%;
     object-fit: cover;
-    min-width: ${({ size }) => size ? size : '2rem'};
-    width: ${({ size }) => size ? size : '2rem'};
-    min-height: ${({ size }) => size ? size : '2rem'};
-    height: ${({ size }) => size ? size : '2rem'};
+
+    ${({ size }) => size ? `
+        width: ${size};
+        height: ${size};
+    ` : `
+        width: 1.5em;
+        height: 1.5em;
+    `};
+
+    ${({ minSize }) => minSize ? `
+        min-width: ${minSize};
+        min-height: ${minSize};
+    ` : `
+        min-width: 1.5em;
+        min-height: 1.5em;
+    `}
+
+    ${({ maxSize }) => maxSize && `
+        max-width: ${maxSize};
+        max-height: ${maxSize};
+    `}
+
+    ${({ hasBorder, borderSize, borderColor }) => hasBorder &&
+        `border: ${borderSize} solid ${borderColor}`
+    }
 `
