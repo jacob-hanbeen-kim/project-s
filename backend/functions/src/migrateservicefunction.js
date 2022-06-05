@@ -14,15 +14,16 @@ const db = getFirestore();
 /* 
 Migration API
 
-Renames initialUserId's (1) user document id and (2) profile document id to its 'firstName + lastName'.
+Renames initialUserId's (1) user document id and (2) profile document id to a new user id.
 
 @params
-initialUserId (string): user id to migrate from. usually a person's wallet address.
+initialUserId (string): user id to migrate from. typically a person's wallet address.
 userType (string): type of user. lowercased.[sponsee, sponsor, agency]
+newUserId (string): new user id to migrate to. typically a person's wallet address.
  */
-const migrateUserIdToFirstAndLastNameAsync = async (req, res) => {
+const migrateOldUserIdToNewUserIdAsync = async (req, res) => {
   const {
-    params: { initialUserId, userType },
+    params: { initialUserId, userType, newUserId },
   } = req;
   try {
     console.log("Begin Migration!");
@@ -45,19 +46,16 @@ const migrateUserIdToFirstAndLastNameAsync = async (req, res) => {
     const profileDocSnapshot = await getDoc(profileDocRef);
     const profileData = profileDocSnapshot.data();
 
-    // create a temporary user id for this user
-    const tempUserId = `${profileData.firstName}` + `${profileData.lastName}`;
-
     // create new user document with temp userid
-    console.log("create new user document with temp userid");
+    console.log("create new user document with new userid");
     const userCollectionRef = collection(db, "users");
-    const newUserDoc = doc(userCollectionRef, tempUserId);
+    const newUserDoc = doc(userCollectionRef, newUserId);
     await setDoc(newUserDoc, userData);
 
     // create new profile document with temp userid
-    console.log("create new profile document with temp userid");
+    console.log("create new profile document with new userid");
     const profileCollectionRef = collection(db, userType);
-    const newProfileDoc = doc(profileCollectionRef, tempUserId);
+    const newProfileDoc = doc(profileCollectionRef, newUserId);
     await setDoc(newProfileDoc, profileData);
 
     // delete old user document
@@ -85,8 +83,8 @@ app.use(cors({ origin: true }));
 
 /* Migration API */
 app.put(
-  "/migrate/:initialUserId/:userType",
-  migrateUserIdToFirstAndLastNameAsync
+  "/migrate/:initialUserId/:userType/:newUserId",
+  migrateOldUserIdToNewUserIdAsync
 );
 
 /* Cloud Function Export */
