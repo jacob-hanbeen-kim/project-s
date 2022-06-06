@@ -8,6 +8,7 @@ export const SearchIconContainer = styled.div`
     -webkit-box-pack: center;
     justify-content: center;
     padding: 12px;
+    padding-right: 0px;
 `
 
 export const SearchIcon = styled(FaSearch)`

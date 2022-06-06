@@ -63,8 +63,3 @@ export const Section = styled.section`
         width: 100%;
     }
 `
-
-export const SupportContainer = styled.div`
-    overflow-y: auto;
-    padding: 0px 30px;
-`

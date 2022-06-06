@@ -6,7 +6,7 @@ import {
 } from './LockerRoomSection.styled';
 
 import SideFormBar from './SideFormBar/SideFormBar';
-import { Carousel, ImageMap } from '../../../components';
+import { Carousel, ImageMap } from '../../../../components';
 
 const images = [
     {

@@ -9,17 +9,9 @@ import {
     FilterIcon
 } from './Sidebar.styled'
 
-const filterItems = {
-    sports: '',
-    country: '',
-    leaguge: '',
-    team: '',
-    age: '',
-}
+const Sidebar = ({ applyFilter, filterItems }) => {
 
-const Sidebar = ({ applyFilter }) => {
-
-    const [values, setValues] = useState(filterItems);
+    const [values, setValues] = useState({});
 
 
     const handleInputChange = (e) => {
@@ -27,7 +19,7 @@ const Sidebar = ({ applyFilter }) => {
     }
 
     const resetValues = () => {
-        setValues(filterItems);
+        setValues({});
     }
 
     return (
@@ -38,15 +30,15 @@ const Sidebar = ({ applyFilter }) => {
             </Header>
             <Form onSubmit={(e) => applyFilter(e, values, resetValues)}>
                 {
-                    Object.keys(values).map((key, idx) => {
+                    filterItems.map((key) => {
                         return (
-                            <FilterContainer key={idx}>
+                            <FilterContainer key={key}>
                                 <Text>{key.toUpperCase()}</Text>
                                 <InputContainer>
                                     <Input
                                         name={key}
                                         type="text"
-                                        value={values[key]}
+                                        value={values[key] ? values[key] : ''}
                                         placeholder={`Filter by ${key}`}
                                         onChange={handleInputChange}
                                     />

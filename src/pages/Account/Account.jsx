@@ -1,9 +1,10 @@
 import {
-    AccountContainer,
+    Container
 } from './Account.styled';
 
-import Sponsee from '../Sponsee/Sponsee';
-import Sponsor from '../Sponsor/Sponsor';
+import Sponsee from './Sponsee/Sponsee';
+import Sponsor from './Sponsor/Sponsor';
+import HeroSection from './HeroSection/HeroSection';
 
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -88,11 +89,12 @@ const Account = () => {
     }, [])
 
     return (
-        <AccountContainer>
+        <Container>
+            <HeroSection user={profile} profileImg={profileImg} profileBg={profileBg} />
             {
                 profile && displayProfilePage()
             }
-        </AccountContainer >
+        </Container >
     )
 }
 

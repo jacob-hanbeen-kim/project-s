@@ -54,7 +54,8 @@ const ViewOption = {
     LIST: 'list'
 }
 
-const View = ({ data, tabs, filters, clearFilter, activeTab, onClickTab }) => {
+const View = ({ data, tabs, filters, setFilters, clearFilter, activeTab, onClickTab }) => {
+
     const [activeViewOption, setActiveViewOption] = useState(ViewOption.GRID);
     const [activeSortOption, setActiveSortOption] = useState(sortOptions[0].label);
 
@@ -85,6 +86,10 @@ const View = ({ data, tabs, filters, clearFilter, activeTab, onClickTab }) => {
         } else {
             return <ListView users={data} />
         }
+    }
+
+    const removeFilter = (filter) => {
+        setFilters({ ...filters, [filter]: '' })
     }
 
     return (
@@ -147,7 +152,7 @@ const View = ({ data, tabs, filters, clearFilter, activeTab, onClickTab }) => {
                                             <FilterText>
                                                 {`${key}: ${filters[key]}`}
                                             </FilterText>
-                                            <FilterXBtn />
+                                            <FilterXBtn onClick={() => removeFilter(key)} />
                                         </Filter>
                                     )
                                 }

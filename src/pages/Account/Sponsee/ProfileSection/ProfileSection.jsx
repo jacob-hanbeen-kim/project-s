@@ -13,7 +13,7 @@ import {
 } from './ProfileSection.styled';
 
 import Sidebar from '../StickySidebar';
-import { ImageMap, Card } from '../../../components';
+import { ImageMap, Card } from '../../../../components';
 
 const ProfileSection = () => {
 

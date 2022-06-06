@@ -182,8 +182,10 @@ export const FilterList = styled.div`
     margin: 0px 5px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+
+    flex-wrap: wrap;
 `
 
 export const Filter = styled.div`
@@ -196,7 +198,7 @@ export const Filter = styled.div`
     background-color: white;
     height: 25px;
 
-    margin: 0px 5px;
+    margin: 5px;
 
     cursor: pointer;
 `

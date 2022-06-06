@@ -3,17 +3,15 @@ import {
 } from './Sponsor.styled';
 
 // sections
-import HeroSection from './HeroSection/HeroSection';
 import ProfileSection from './ProfileSection/ProfileSection';
-import { Tabs } from '../../components';
+import { Tabs } from '../../../components';
 
 const Sponsor = ({ user, profileImg, profileBg }) => {
 
     return (
         <Container>
-            <HeroSection currentAccount={user?.id} username={user?.name} profileImg={profileImg} profileBg={profileBg} />
-            <Tabs>
-                <ProfileSection label="Profile" username={user?.name} />
+            <Tabs noBorder={true} align='flex-start'>
+                <ProfileSection label="Profile" username={user?.firstName} />
                 <div label="Market Place">Market Place Section</div>
                 <div label="Past Partnerships">Past PartnerShips Sectione</div>
             </Tabs>

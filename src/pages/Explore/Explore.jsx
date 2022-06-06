@@ -24,10 +24,12 @@ const Explore = () => {
     const [data, setData] = useState([]);
     const [activeTab, setActiveTab] = useState(tabs[0]);
     const [filters, setFilters] = useState({});
+    const [filterItems, setFilterItems] = useState([]);
 
     const applyFilter = (e, value, callback) => {
         e.preventDefault();
-        setFilters(value);
+        console.log(value);
+        setFilters({ ...filters, ...value });
         callback && callback();
 
         // #TODO: add filter
@@ -55,6 +57,33 @@ const Explore = () => {
     }
 
     useEffect(() => {
+        if (activeTab === 'Athletes' ||
+            activeTab === 'Team' ||
+            activeTab === 'Brand'
+        ) {
+            setFilterItems([
+                'sports',
+                'country',
+                'leaguge',
+                'team',
+                'age'
+            ])
+        } else if (activeTab === 'Sponsor') {
+            setFilterItems([
+                'sports',
+                'country',
+                'leaguge'
+            ])
+        } else {
+            setFilterItems([
+                'sports',
+                'country',
+                'leaguge'
+            ])
+        }
+    }, [activeTab])
+
+    useEffect(() => {
         UserService.getAllSponseeProfiles().then((res) => {
             console.log('data', res);
             setData(res);
@@ -64,7 +93,7 @@ const Explore = () => {
     return (
         <Container>
             <SidebarContainer>
-                <Sidebar applyFilter={applyFilter} />
+                <Sidebar applyFilter={applyFilter} filterItems={filterItems} />
             </SidebarContainer>
             <ContentContainer>
                 <View
@@ -73,7 +102,8 @@ const Explore = () => {
                     activeTab={activeTab}
                     onClickTab={handleTabToggle}
                     filters={filters}
-                    clearFilter={(e) => applyFilter(e, {})}
+                    setFilters={setFilters}
+                    clearFilter={() => setFilters({})}
                 />
             </ContentContainer>
         </Container>

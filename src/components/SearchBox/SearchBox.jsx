@@ -7,7 +7,7 @@ import {
 
 const SearchBox = (props) => {
     return (
-        <Input reverse={true} props={props}>
+        <Input reverse={true} {...props}>
             <SearchIconContainer>
                 <SearchIcon />
             </SearchIconContainer>

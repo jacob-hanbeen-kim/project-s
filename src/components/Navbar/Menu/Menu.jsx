@@ -1,7 +1,6 @@
 import {
     StyledMenu,
     MenuItems,
-    DropdownList,
     ProfileDropDown,
     DropdownItem,
     StyledNavLink,
@@ -37,14 +36,11 @@ const Menu = ({ logout, toggleTheme, getUsername, currentUser, onSidebarToggle, 
                 <NavLinkIcon><FaRegBell /></NavLinkIcon>
                 <NavLinkCaption>Notification</NavLinkCaption>
             </StyledNavLink>
-            <StyledNavLink to='/login'>
-                <ProfileImg hasProfileImg={currentUser !== null} src={process.env.PUBLIC_URL + `/images/account/${getUsername()}/profileImg.png`} />
-                <NavLinkCaption>Profile</NavLinkCaption>
-            </StyledNavLink>
-            {/* <DropdownItem>
-                <ProfileLink to='/login'>
+            <DropdownItem>
+                <StyledNavLink to='/login'>
                     <ProfileImg hasProfileImg={currentUser !== null} src={process.env.PUBLIC_URL + `/images/account/${getUsername()}/profileImg.png`} />
-                </ProfileLink >
+                    <NavLinkCaption>Profile</NavLinkCaption>
+                </StyledNavLink>
                 {currentUser &&
                     <ProfileDropDown>
                         <SubNavLink to="/account">Profile</SubNavLink>
@@ -55,7 +51,7 @@ const Menu = ({ logout, toggleTheme, getUsername, currentUser, onSidebarToggle, 
                         }
                     </ProfileDropDown>
                 }
-            </DropdownItem > */}
+            </DropdownItem >
             {/* <Toggler onClick={() => toggleTheme()}>
                 {
                     theme === 'light' ?

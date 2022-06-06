@@ -19,34 +19,19 @@ export const MenuItems = styled.div`
     }
 `
 
-export const DropdownList = styled.ul`
-    list-style-type: none;
-    margin: 0;
-    overflow: hidden;
-    padding: 0px;
-    font-weight: bold;
-
-    &:hover {
-        transition: all 0.2s ease-in-out;
-    }
-`;
-
 export const DropdownContent = styled.div`
     display: none;
     position: absolute;
-    min-width: 160px;
+    min-width: 140px;
     z-index: 1;
 `;
 
-export const DropdownItem = styled.li`
-    display: inline-block;
+export const DropdownItem = styled.div`
+    display: flex;
     align-items: center;
-    text-decoration: none;
-    padding: 0.8rem;
-    cursor: pointer;
+    justify-content: center;
 
-    font-weight: bold;
-    text-transform: uppercase;
+    position: relative;
 
     &:hover ${DropdownContent} {
         transition: all 0.2s ease-in-out;
@@ -54,23 +39,10 @@ export const DropdownItem = styled.li`
     }
 `
 
-export const ProfileLink = styled(NavLink)`
-    color: ${({ theme }) => theme.colors.onNavbar};
-    border: none;
-    outline: none;
-    cursor: pointer;
-
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeS}) {
-        display: none;
-    }
-`
-
 export const ProfileDropDown = styled(DropdownContent)`
     float: right;
-    left:auto;
-    right:0;
-    padding: 16px 0px;
-    transform: translateX(-45%);
+    right: 0;
+    top: 47px;
 `
 
 export const SubNavLink = styled(NavLink)`
@@ -80,6 +52,7 @@ export const SubNavLink = styled(NavLink)`
     text-decoration: none;
     display: block;
     text-align: left;
+
     &:hover {
         background-color: ${({ theme }) => theme.colors.sidebar};
         color: ${({ theme }) => `${theme.colors.onNavbar}`};

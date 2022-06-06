@@ -7,7 +7,7 @@ import {
     Uploader
 } from './SideFormBar.styled';
 
-import { SearchBox, Input } from '../../../../components';
+import { SearchBox, Input } from '../../../../../components';
 
 
 const SideFormBar = ({ }) => {
