@@ -13,7 +13,7 @@ import { useAuth } from '../../contexts/AuthContext';
 const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
 
     const { currentUser, logout } = useAuth();
-    const [searchTxt, setSearchTxt] = useState(undefined);
+    const [searchTxt, setSearchTxt] = useState('');
 
     const getUsername = () => {
         if (currentUser) return currentUser.name;
@@ -22,8 +22,7 @@ const Navbar = ({ isSidebarOpen, onSidebarToggle, theme, toggleTheme }) => {
 
     const onSearch = (e) => {
         e.preventDefault();
-        console.log(searchTxt);
-        setSearchTxt(undefined);
+        setSearchTxt('');
     }
 
     return (
