@@ -21,10 +21,7 @@ import EditProfile from './pages/Profile/EditProfile';
 import Onboarding from './pages/Onboarding/Onboarding'
 import OnboardingSponsee from './pages/Onboarding/Sponsee/OnboardSponsee'
 import OnboardingSponsor from './pages/Onboarding/Sponsor/OnboardSponsor'
-import OnboardSponsorTwo from './pages/Onboarding/Sponsor/OnboardSponsorTwo'
-import OnboardSponsorThree from './pages/Onboarding/Sponsor/OnboardSponsorThree'
 import OnboardAgency from './pages/Onboarding/Agent/OnboardAgency'
-import OnboardAgencyTwo from './pages/Onboarding/Agent/OnboardAgencyTwo'
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { AuthProvider } from './contexts/AuthContext';
 import Negotiate from './pages/Negotiate/Negotiate';
