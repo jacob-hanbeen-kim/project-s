@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
-export const EditProfileContainer = styled.div`
+export const Container = styled.div`
     display: flex;
     flex-direction: column;
+
+    padding: 0px 5vw;
 `
 
 export const HeaderWrapper = styled.div`
     text-align: center;
-    margin: 10px 60px;
     padding-left: 60px;
     padding-right: 60px;
     font-size: 16px;
@@ -17,18 +18,20 @@ export const HeaderWrapper = styled.div`
 export const EditContainer = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 `
 
 export const ProfileTextWrapper = styled.div`
+    width: 100%;
     text-align: left;
-    padding-left: 60px;
-    padding-right: 60px;
     font-size: 14px;
 `
 
 export const ProfileEditForm = styled.form`
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 `
 
@@ -62,7 +65,6 @@ export const ProfileEditWrapper = styled.div`
     
 `
 
-export const ProfileTextArea = styled.textarea`
-    width:70%;
-    margin-bottom: 10px;
+export const TextEditorWrapper = styled.div`
+    
 `

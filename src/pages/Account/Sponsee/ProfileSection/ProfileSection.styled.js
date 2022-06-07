@@ -4,6 +4,8 @@ export const ProfileContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
+
+    width: 100vw;
     padding: 20px 80px ;
     /* height: 100vh; */
 
@@ -14,7 +16,6 @@ export const ProfileContainer = styled.div`
 
 export const ContentContainer = styled.div`
     /* max-height: 100%; */
-
     padding: 0px 30px;
     flex: 2;
 

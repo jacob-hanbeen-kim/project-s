@@ -1,6 +1,6 @@
 
 import { Tabs } from '../../components';
-import EditProfileTab from './EditTabs/EditProfileTab';
+import Profile from './Profile/Profile';
 import PackageSponsorTab from './EditTabs/PackageSponsorTab'
 import Settings from './EditTabs/Settings';
 
@@ -12,10 +12,10 @@ const EditProfile = ({ }) => {
 
     return (
         <Tabs>
-                <EditProfileTab label="Edit Profile" />
-                <div label="Basic">Basic Section</div>
-                <PackageSponsorTab label="Sponsor Package" />
-                <Settings label="Settings"/>
+            <Profile label="Profile" />
+            <div label="Basic">Basic Section</div>
+            <PackageSponsorTab label="Sponsor Package" />
+            <Settings label="Settings" />
         </Tabs>
     )
 }

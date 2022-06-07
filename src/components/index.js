@@ -41,6 +41,7 @@ import Input from './Input/Input';
 import InputWithButton from './InputWithButton/InputWithButton';
 
 import Text from './Text/Text';
+import TextEditor from './TextEditor/TextEditor';
 import Image from './Image/Image';
 
 import Table from './Table/Table';
@@ -75,6 +76,7 @@ export {
     Input,
     InputWithButton,
     Text,
+    TextEditor,
     Image,
     Table
 };

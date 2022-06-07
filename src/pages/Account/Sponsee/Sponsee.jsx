@@ -10,7 +10,7 @@ const Sponsee = ({ user, profileImg, profileBg }) => {
     return (
         <Container>
             <Tabs noBorder={true} align='flex-start'>
-                <ProfileSection label="Profile" />
+                <ProfileSection label="Profile" user={user} />
                 <LockerRoomSection label="Locker Room" />
                 <div label="Past Partnerships"></div>
             </Tabs>

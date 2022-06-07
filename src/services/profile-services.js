@@ -1,5 +1,17 @@
-import { collection, getDocs, getDoc, doc } from "firebase/firestore";
+import { collection, getDocs, getDoc, setDoc, doc } from "firebase/firestore";
 import { db } from "../firebase-config";
+
+const createProfile = async (id, fields) => {
+  const profileDoc = doc(db, "profile", id);
+  await setDoc(profileDoc, fields);
+};
+
+const getProfileById = async (id) => {
+  const profileDoc = doc(db, "profile", id);
+  const data = await getDoc(profileDoc);
+  const profile = { ...data.data(), id: data.id };
+  return profile
+};
 
 const getAllSponsorProfiles = async () => {
   const profileCollectionRef = collection(db, "sponsor");
@@ -236,6 +248,8 @@ class AgencyFields {
 export const agencyFields = new AgencyFields();
 
 const ProfileService = {
+  createProfile,
+  getProfileById,
   getAllSponsorProfiles,
   getAllSponseeProfiles,
   getAllAgencyProfiles,

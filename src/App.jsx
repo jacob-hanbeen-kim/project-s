@@ -17,7 +17,7 @@ import Login from './pages/Login/Login';
 import Explore from './pages/Explore/Explore';
 import Account from './pages/Account/Account';
 import Membership from './pages/Membership/Membership';
-import EditProfile from './pages/Profile/EditProfile';
+import EditProfile from './pages/EditProfile/EditProfile';
 import Onboarding from './pages/Onboarding/Onboarding'
 import OnboardingSponsee from './pages/Onboarding/Sponsee/OnboardSponsee'
 import OnboardSponseeTwo from './pages/Onboarding/Sponsee/OnboardSponseeTwo'
