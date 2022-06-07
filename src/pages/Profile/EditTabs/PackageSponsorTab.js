@@ -36,21 +36,21 @@ const PackageSponsorTab = ({ }) => {
                 <PackageList>
                     <h3> Your Packages </h3>
                     { showPackage ?
-                    <PackageWrapper>
-                        {
-                            packages.current.map((pack, i) => {
-                                return (
-                                    <div key={i}>
-                                        <p>{pack}</p>
-                                    </div>
-                                )
-                            })
-                        }
-                    </PackageWrapper> :
-                    <NoPackageWrapper>
-                    <p>You currently have no packages.</p>
-                </NoPackageWrapper>
-                }   
+                        <PackageWrapper>
+                            {
+                                packages.current.map((pack, i) => {
+                                    return (
+                                        <div key={i}>
+                                            <p>{pack}</p>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </PackageWrapper> :
+                        <NoPackageWrapper>
+                            <p>You currently have no packages.</p>
+                        </NoPackageWrapper>
+                    }   
                 </PackageList>
                 { showNewItem &&
                     <NewItemWrapper>

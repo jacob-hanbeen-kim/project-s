@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import {
     Container,
     ContentContainer,
@@ -6,29 +5,28 @@ import {
     BtnWrapper,
     ImageContainer,
     ButtonItems
-} from './OnboardingCard.styled';
+} from './DealsCard.styled';
 
-const OnboardingCard = ({
+const DealsCard = ({
     option,
-    description,
     image
 }) => {
 
-    const navigate = useNavigate();
-    const navigateOnboarding = () => {
-        navigate(`/onboarding/${option}`)
+    const onSelect = (e) => {
+        e.preventDefault()
     }
+
     return (
         <Container>
             <ContentContainer>
-                <Header>{description}</Header>
+                <Header>{option}</Header>
             </ContentContainer>
             <ImageContainer>
                 <img src={process.env.PUBLIC_URL + image} alt={option}/>
             </ImageContainer>
             <div>
                 <BtnWrapper>
-                    <ButtonItems onClick={navigateOnboarding}>
+                    <ButtonItems onClick={onSelect}>
                         Select
                     </ButtonItems>
                 </BtnWrapper>
@@ -37,4 +35,4 @@ const OnboardingCard = ({
     )
 }
 
-export default OnboardingCard
+export default DealsCard

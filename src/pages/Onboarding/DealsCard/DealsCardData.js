@@ -1,29 +1,29 @@
 export const firstCard = {
     option: "Equipment Endorsement",
-    image: "hello"
+    image: "/images/onboardingCard/Equipment Endorsement.png"
 }
 
 export const secondCard = {
     option: "Media Advertisement",
-    image: "hello"
+    image: "/images/onboardingCard/Media Advertisement.png"
 }
 
 export const thirdCard = {
     option: "Social Media Collaboration",
-    image: "hello"
+    image: "/images/onboardingCard/Social Media Collaboration.png"
 }
 
 export const fourthCard = {
     option: "Onsite Advertisement",
-    image: "hello"
+    image: "/images/onboardingCard/Onsite Advertisement.png"
 }
 
 export const fifthCard = {
     option: "Logo on Apparel",
-    image: "hello"
+    image: "/images/onboardingCard/Logo on Apparel.png"
 }
 
 export const sixthCard = {
     option: "Others",
-    image: "hello"
+    image: "/images/onboardingCard/Others.png"
 }

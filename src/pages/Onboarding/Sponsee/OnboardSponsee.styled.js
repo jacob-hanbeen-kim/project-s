@@ -69,11 +69,21 @@ export const FormContainer = styled.div`
 
 export const PageOneForm = styled.form`
     display: flex;
-    width: 50%;
     flex-direction: column;
     height: 100%;
+    width: 100%;
     /* margin-top: 80px */
 `
+
+export const PageOneFormContainer = styled.div`
+    width: 50%;
+`
+
+export const AmountContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
 export const CheckboxWrapper = styled.div`
     width: 40%;
     flex-direction: row;
@@ -131,7 +141,7 @@ export const NextButton = styled(Button)`
     background-color: #ae7acc;
 `
 
-export const OnboardingSponsorCardContainer = styled.div`
+export const OnboardingSponsorCardWrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;

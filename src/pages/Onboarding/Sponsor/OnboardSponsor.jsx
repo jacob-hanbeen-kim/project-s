@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from'react-router-dom'
 import {
-    OnboardAgencyContainer,
+    OnboardSponsorContainer,
     TitleContainer,
     TitleDescription,
     DescriptionContainer,
@@ -9,31 +10,30 @@ import {
     ProgressCurrent,
     ProgressLine,
     ProgressBarCircle,
-    CheckboxWrapper,
+    EnterpriseWrapper,
     FormContainer,
     PageOneForm,
-    SelectOption,
-    SendEmailContainer,
-    SendEmailWrapper,
-    SendEmailButton,
-    Label,
-    AgencyInfoContainer,
+    FormInputLabel,
+    SponsorInfoContainer,
     FormInput,
     FormButtonContainer,
     BackButton,
     NextButton,
-} from './OnboardAgency.styled';
+} from './OnboardSponsor.styled';
 
-import OnboardAgencyPageOne from './Step1/AgencyPageOne';
-import OnboardAgencyPageTwo from './Step2/AgencyPageTwo';
+import OnboardSponsorPageOne from './Step1/SponsorPageOne';
+import OnboardSponsorPageTwo from './Step2/SponsorPageTwo';
+import OnboardSponsorPageThree from './Step3/SponsorPageThree';
 
 const Steps = {
     STEP1: 1,
-    STEP2: 2
+    STEP2: 2,
+    STEP3: 3
 }
 
-const OnboardAgency = ({}) => {
+const OnboardSponsor = ({}) => {
 
+    const navigate = useNavigate();
     const [currentStep, setCurrentStep] = useState(Steps.STEP1);
     const [formVal, setFormVal] = useState({});
 
@@ -41,15 +41,21 @@ const OnboardAgency = ({}) => {
         setFormVal({ ...formVal, [e.target.name]: e.target.value})
     }
 
+    const [checked, setChecked] = useState({ yes: false, no: false});
+
     const getForm = () => {
         switch(currentStep) {
             case Steps.STEP1:
                 return (<div>
-                    <OnboardAgencyPageOne values={formVal} onChange={handleValChange} Steps={Steps} setCurrentStep={setCurrentStep}/>
+                    <OnboardSponsorPageOne values={formVal} onChange={handleValChange} Steps={Steps} setCurrentStep={setCurrentStep}/>
                 </div>)
             case Steps.STEP2:
                 return (<div>
-                    <OnboardAgencyPageTwo values={formVal} onChange={handleValChange} Steps={Steps} setCurrentStep={setCurrentStep}/>
+                    <OnboardSponsorPageTwo values={formVal} onChange={handleValChange} Steps={Steps} setCurrentStep={setCurrentStep}/>
+                </div>)
+            case Steps.STEP3:
+                return (<div>
+                    <OnboardSponsorPageThree values={formVal} onChange={handleValChange} Steps={Steps} setCurrentStep={setCurrentStep}/>
                 </div>)
             default:
                 return (<div>
@@ -58,14 +64,11 @@ const OnboardAgency = ({}) => {
         }
     }
 
-    const [checked, setChecked] = useState({ yes: false, no: false});
-
-
     return (
-        <OnboardAgencyContainer>
+        <OnboardSponsorContainer>
             <TitleContainer>
                 <Header>
-                    Agency
+                    Sponsor
                 </Header>
             </TitleContainer>
             <DescriptionContainer>
@@ -74,8 +77,8 @@ const OnboardAgency = ({}) => {
                 </TitleDescription>
             </DescriptionContainer>
             {getForm()}
-        </OnboardAgencyContainer>
+        </OnboardSponsorContainer>
     )
 }
 
-export default OnboardAgency
+export default OnboardSponsor

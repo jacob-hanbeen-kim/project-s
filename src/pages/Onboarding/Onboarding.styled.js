@@ -11,34 +11,21 @@ export const TitleContainer = styled.div`
     text-align: center;
 `
 
-export const ProgressBarContainer = styled.div`
+export const ActionItemContainer = styled.div`
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-left: 150px;
-    margin-right: 150px;
+    flex-direction: column;
+    font-size: 15px;
+    align-items: center;
+
+    margin-bottom: 20px;
 `
 
-export const ProgressLine = styled.div`
-    width: 200px;
-    height: 13px;
-    border-bottom: 1px solid #c4c4c4;
-`
+export const ActionItem = styled.p`
+    text-decoration: underline;
 
-export const ProgressCurrent = styled.div`
-    height: 25px;
-    width: 25px;
-    background-color: #ae7acc;
-    border-radius: 50%;
-    display: inline-block;
-`
-
-export const ProgressBarCircle = styled.div`
-    height: 25px;
-    width: 25px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 export const OnboardingCardContainer = styled.div`
