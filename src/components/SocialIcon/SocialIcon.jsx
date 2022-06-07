@@ -5,7 +5,7 @@ import {
 } from './SocialIcon.styled';
 import { FaFacebookF, FaInstagram, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 
-const SocialIcon = ({ media }) => {
+const SocialIcon = ({ media, size, fontSize }) => {
     const getIcon = () => {
         switch (media) {
             case 'facebook': return <FaFacebookF />;
@@ -17,9 +17,9 @@ const SocialIcon = ({ media }) => {
     }
 
     return (
-        <Container>
+        <Container size={size}>
             <Wrapper media={media}>
-                <Icon>
+                <Icon fontSize={fontSize}>
                     {
                         getIcon()
                     }

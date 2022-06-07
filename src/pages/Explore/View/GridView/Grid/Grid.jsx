@@ -23,19 +23,15 @@ import {
     Follower
 } from './Grid.styled';
 import { SocialIcon, SportIcon } from '../../../../../components';
+import { useNavigate } from 'react-router-dom';
 
-const Grid = ({
-    userInfo
-}) => {
+const Grid = ({ userInfo }) => {
 
-    const getName = () => {
-        if (userInfo.firstName) {
-            return `${userInfo.firstName} ${userInfo.lastName}`;
-        } else {
-            return userInfo.agencyName;
-        }
-
+    const navigate = useNavigate();
+    const handleOnClick = () => {
+        navigate(`/account/${userInfo.id}`);
     }
+
     return (
         <Container>
             <Wrapper>
@@ -48,7 +44,7 @@ const Grid = ({
                 </ProfilePhoto>
                 <ProfileContent>
                     <Title>
-                        <Name>{getName()}</Name>
+                        <Name onClick={handleOnClick}>{`${userInfo.firstName} ${userInfo.lastName}`}</Name>
                         <Category>
                             {userInfo.sport &&
                                 <CategoryWrapper>

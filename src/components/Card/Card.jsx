@@ -28,10 +28,17 @@ const Card = ({
                     </CardImage>
                 }
                 <CardContent color={color}>
-                    {title && <h2>{title}</h2>}
+                    {title && <h3>{title}</h3>}
                     {details && <p>{details}</p>}
                     {children}
-                    <Button color={color} bg={backgroundColor} onClick={onClick}>
+                    <Button
+                        color={color}
+                        bg={backgroundColor}
+                        onClick={onClick}
+                        height='25px'
+                        fontSize='12px'
+                        bgColor='#6D4D80'
+                    >
                         {buttonTxt}
                     </Button>
                 </CardContent>

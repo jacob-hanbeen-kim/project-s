@@ -45,6 +45,9 @@ import Image from './Image/Image';
 
 import Table from './Table/Table';
 
+import MediaScoreIcon from './MediaScoreIcon/MediaScoreIcon';
+import Icons from './Icons/Icons';
+
 export {
     Card, Card2, CardWithIcon,
     Carousel,
@@ -54,6 +57,8 @@ export {
     Navbar,
     SocialIcons,
     SocialIcon,
+    MediaScoreIcon,
+    Icons,
     SportIcon,
     VideoBackground,
     ImageBackground,

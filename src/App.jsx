@@ -62,8 +62,9 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} />
-                  <Route path="/account" element={<Account />} />
-                  <Route path="/account/:username" element={<Account />} />
+                  <Route path="/account" element={<Account />}>
+                    <Route path=":accountId" element={<Account />} />
+                  </Route>
                   <Route path="/explore" element={<Explore />} />
                   <Route path="/membership" element={<Membership />} />
                   <Route path="/account/edit" element={<EditProfile />} />

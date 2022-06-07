@@ -9,13 +9,21 @@ const color = {
 
 
 export const Container = styled.div`
-    width: 18px;
-    height: 18px;
+    width: ${({ size }) => size ? size : '18px'};
+    height: ${({ size }) => size ? size : '18px'};
+    min-width: 18px;
+    min-height: 18px;
 `
 
 export const Wrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: inherit;
     height: inherit;
+    min-width: inherit;
+    min-height: inherit;
     background: ${({ media }) => color[media]};
     border-radius: ${({ theme }) => theme.border.radius};
 
@@ -30,7 +38,7 @@ export const Icon = styled.div`
     width: inherit;
     height: inherit;
 
-    font-size: 12px;
+    font-size: ${({ fontSize }) => fontSize ? `max(${fontSize}, 12px)` : '12px'};
 
     color: #fff;
 `

@@ -51,9 +51,8 @@ const ListView = ({ users }) => {
     );
 
     const navigateToAccount = (e) => {
-        const userId = e.target.dataset.id;
-        const accountName = e.target.innerText;
-        navigate(`/account/${accountName}`, { state: { userId: userId } });
+        const accountId = e.currentTarget.dataset.id;
+        navigate(`/account/${accountId}`);
     }
 
     return (

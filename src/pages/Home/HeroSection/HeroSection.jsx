@@ -58,7 +58,6 @@ const HeroSection = () => {
                 src='images/home/background.png'
                 opacity={1}
                 maskColor={true}
-                offset='70px'
                 bgPositionY='top'
                 blur='0'
             />

@@ -5,9 +5,9 @@ import {
 } from './SearchBox.styled';
 
 
-const SearchBox = ({ }) => {
+const SearchBox = (props) => {
     return (
-        <Input reverse={true}>
+        <Input reverse={true} props={props}>
             <SearchIconContainer>
                 <SearchIcon />
             </SearchIconContainer>

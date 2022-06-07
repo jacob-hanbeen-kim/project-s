@@ -23,7 +23,7 @@ const Login = ({ }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        currentUser && navigate("/account");
+        currentUser && navigate(`/account/${currentUser.id}`);
     }, [currentUser])
 
 
@@ -32,8 +32,6 @@ const Login = ({ }) => {
         setWallet(wallet);
 
         const response = await login();
-
-        // console.log('login response', response);
 
         setWallet(null);
         setIsConnecting(false);

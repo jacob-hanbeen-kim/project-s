@@ -18,9 +18,8 @@ const Table = ({ headers, datas, onClick }) => {
     const populateRow = (row) => {
         return headers.map((col, idx) => {
             if (idx === 0) {
-                // return <TableDataSticky data-id={row.id} onClick={onClick}>{row[col.key]}</TableDataSticky>
                 return (
-                    <TableData key={idx}>
+                    <TableData key={idx} data-id={row.id} onClick={onClick}>
                         <ProfilePhoto>
                             <ProfileIcon></ProfileIcon>
                         </ProfilePhoto>

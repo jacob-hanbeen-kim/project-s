@@ -1,178 +1,196 @@
-import styled from 'styled-components'
-import { Flex } from '../../../styles/Flex.styled'
-import { Container } from '../../../styles/Container.styled'
-import { FaFileContract } from 'react-icons/fa';
-import { FaUserCircle } from 'react-icons/fa'
+import styled from 'styled-components';
 
-
-export const HeroContainer = styled.div`
-    height: 50vh;
-    padding: 30px 100px;
-    width: 100vw;
-
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
-        padding: 100px 0;
-    }
+export const Container = styled.div`
+    /* height: 20vh; */
 `
 
-export const HeroWrapper = styled.div`
-    display: flex;
-    z-index: 1;
-    /* width: inherit; */
-    height: inherit;
-    padding: 0 24px;
-    justify-content: center;
-    align-items: center;
-
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
-        /* grid-template-areas: 'col1 col1' 'col2 col2'; */
-        height: 50vh;
-    }
-
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeS}) {
-        /* grid-template-areas: 'col1 col1' 'col2 col2'; */
-        height: 70vh;
-    }
-`
-
-export const HeroContent = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    /* height: inherit; */
-
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
-        /* grid-template-areas: 'col1 col1' 'col2 col2'; */
-        flex-direction: column;
-    }
-`
-
-export const ProfileInfoWrapper = styled.div`
-    margin: 0px;
-    padding: 0 15px;
-`
-
-export const ProfileInfoFlex = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
-        flex-direction: column;
-        /* justify-content: center; */
-    }
-`
-
-export const TextWrapper = styled.div`
+export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    align-items: center;
     justify-content: center;
-    justify-items: center;
+    align-items: center;
+
+    height: 60vh;
 `
 
-export const TopLine = styled.h1`
-    color: ${({ theme }) => theme.colors.onBackground};
-    font-size: 16px;
-    line-height: 16px;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
+export const ImageWrapper = styled.div`
+    flex: 2;
+
+    overflow-y: hidden;
+
+    & img {
+        /* height: 100%; */
+        width: 100%;
+        /* object-fit: cover; */
+    }
 `
 
-export const BioWrapper = styled.div`
-    margin: 0px;
-    padding: 0 15px;
+export const ContentWrapper = styled.div`
+    flex: 3;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0px 5vw;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
+        flex-direction: column;
+    }
+`
+
+export const MediaWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    flex: 1;
+
+    width: 100%;
+`
+
+export const InfoWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    height: 100%;
+
+    padding: 20px 30px;
+    flex: 2;
+`
+
+export const ActionItemsWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1;
     
-    /* @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
-        margin: 30px 0px;
-    } */
+    height: 100%;
+    padding: 25px 0px;
+
+    & button {
+        margin: 0px 5px;
+    }
+`
+
+export const ProfileImgWrapper = styled.div`
+    position: absolute;
+    bottom: 7vh;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
+        bottom: -2vh;
+    }
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
+        bottom: -2vh;
+    }
+`
+
+export const SocialMediaWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
+        justify-content: flex-end;
+        width: 100%;
+        padding: 10px;
+    }
+`
+
+export const SocialWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 5px;
+`
+
+export const Follower = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3px;
+    font-size: max(0.6vw, 5px);
+`
+
+export const MetricWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
+        flex-direction: row;
+    }
+`
+
+export const Metrics = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+
+    & p {
+        font-size: 1em;
+        padding: 0px;
+        margin: 0px;
+        margin-left: 8px;
+    }
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
+        margin-left: 5px;
+    }
+`
+
+export const TopLine = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 10px;
+    width: 100%;
+`
+
+export const Name = styled.p`
+    font-size: 3rem;
+    margin: 0px;
+    padding: 0px;
+
+    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
+        font-size: 2.5rem;
+    }
 `
 
 export const TagWrapper = styled.div`
     display: flex;
-    justify-content: flex-start;
-    /* justify-items: center; */
-    flex: 1 1 auto;
-    align-items: center;
-
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
-        justify-content: center;
-    }
-`
-
-
-export const Img = styled.img`
-    border-radius: 50%;
-    object-fit: cover;
-    padding: 5px;
-    margin: 0px 10px;
-    width: ${({ size }) => size ? size : '2rem'};
-    height: ${({ size }) => size ? size : '2rem'};
-
-    /* filter: ${({ theme }) => theme.colors.onSurface}; */
-    /* background-color: ${({ theme }) => theme.colors.onSurface}; */
-    background-color: #f0f6fc;
-`
-
-export const TagContainer = styled.div`
-    margin: 0px;
-    margin-left: ${({ isLeft }) => isLeft ? '0px' : '10px'};
-    margin-right: ${({ isLeft }) => isLeft ? '10px' : '0px'};
-    padding: 0px;
-
-    display: flex;
     flex-direction: row;
+    justify-content: center;
     align-items: center;
-    justify-content: space-evenly;
+    height: 100%;
+
+    opacity: 0.5;
+
+    & * {
+       margin: 0px 5px; 
+    }
 `
 
 export const VerticalLine = styled.div`
-    border-left: 2px solid ${({ theme }) => theme.colors.onSurface + 'ab'};
-    height: 30px;
-    margin: 0px;
+    /* border-left: 2px solid ${({ theme }) => theme.colors.onSurface + 'ab'}; */
+    border-left: 1px solid black;
+    height: 2.5em;
+    margin: 0px 10px;
 `
 
-export const Details = styled.p`
-    /* max-width: 440px; */
-    margin: 0px;
-    font-size: 1rem;
-    /* line-height: 24px; */
-    text-align: start;
-    overflow-y: scroll;
-    max-height: 300px;
-    max-width: 600px;
-    min-width: 300px;
-    
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
-        text-align: center;
-    }
-`
-
-export const SponsorList = styled.div`
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
-    overflow-x: scroll;
-    max-width: 600px;
-    min-width: 300px;
-
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeL}) {
-        max-width: 300px;
-    }
-
-    @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
-        max-width: 600px;
-    }
-    /* width: 300px; */
-`
-
-export const SponsorItem = styled.div`
-    width: 100%;
-    height: 100%;
+export const BtnText = styled.div`
+    margin-left: 8px;
 `
