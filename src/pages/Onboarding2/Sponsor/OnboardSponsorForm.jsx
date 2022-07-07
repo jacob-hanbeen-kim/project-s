@@ -1,20 +1,23 @@
 import React, { useState } from 'react'
-import SponseePageOne from './SponseePageOne';
-import SponseePageTwo from './SponseePageTwo';
+import SponsorPageOne from './SponsorPageOne';
+import SponsorPageTwo from './SponsorPageTwo';
+import SponsorPageThree from './SponsorPageThree';
 import Confirm from './Confirm';
 
-const OnboardSponseeForm = () => {
+const OnboardSponsorForm = () => {
 
     const [states, setStates] = useState({
         step: 1,
-        occupation: '',
-        firstName: '',
-        lastName: '',
+        enterprise: '',
+        name: '',
+        location: '',
+        industry: '',
+        revenue: '',
+        website: '',
         email: '',
-        mobile: '',
-        sport: '',
-        agency: false,
-        association: '',
+        budget: '',
+        time_period: '',
+        interest: '',
         deals: {
             equipmentEndorsement: false,
             mediaAdvertisement: false,
@@ -22,8 +25,7 @@ const OnboardSponseeForm = () => {
             onsiteAdvertisement: false,
             logoOnApparel: false,
             others: false,
-        },
-        amount: ''
+        }
     })
 
     //Proceed to next page
@@ -51,15 +53,15 @@ const OnboardSponseeForm = () => {
     }
 
     const { step } = states;
-    const {occupation, firstName, lastName, email, mobile, sport, agency, association, amount, deals,
+    const {enterprise, name, location, industry, revenue, website, email, budget, time_period, interest, deals,
         equipmentEndorsement, mediaAdvertisement, socialMediaCollaboration, onsiteAdvertisement, logoOnApparel, others} = states;
-    const values = {occupation, firstName, lastName, email, mobile, sport, agency, association, amount, deals,
+    const values = {enterprise, name, location, industry, revenue, website, email, budget, time_period, interest, deals,
         equipmentEndorsement, mediaAdvertisement, socialMediaCollaboration, onsiteAdvertisement, logoOnApparel, others};
     
     switch(step) {
         case 1: 
             return (
-                <SponseePageOne 
+                <SponsorPageOne 
                     nextStep = {nextStep}
                     handleChange = {handleChange}
                     values = {values}
@@ -67,20 +69,24 @@ const OnboardSponseeForm = () => {
             )
         case 2: 
             return (
-                <SponseePageTwo 
+                <SponsorPageTwo 
                     nextStep = {nextStep}
                     previousStep = {previousStep}
                     handleChange = {handleChange}
                     values = {values}
-                    states = {states}
                 />
             )
         case 3: 
             return (
-                <Confirm />
+                <SponsorPageThree 
+                    nextStep = {nextStep}
+                    previousStep = {previousStep}
+                    handleChange = {handleChange}
+                    values = {values}
+                />
             )
     }
     
 }
 
-export default OnboardSponseeForm
+export default OnboardSponsorForm

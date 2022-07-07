@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 import {
     ProgressBarContainer,
     ProgressCurrent,
@@ -19,19 +20,30 @@ import {
     OnboardingSponsorCardContainer
 } from '../../Onboarding/Sponsee/OnboardSponsee.styled';
 
+import { useAuth } from '../../../contexts/AuthContext';
+
 import DealsCard from '../../Onboarding/DealsCard/DealsCard';
 import { equipmentEndorsementCard, mediaAdvertisementCard, socialMediaCollaborationCard, onsiteAdvertisementCard, logoOnApparelCard, othersCard} from '../../Onboarding/DealsCard/DealsCardData'
 
-const SponseePageTwo = ({ values, handleChange, nextStep, previousStep}) => {
+const SponseePageTwo = ({ values, handleChange, states, previousStep}) => {
+
+    const { currentUser } = useAuth();
 
     const previousPage = (e) => {
         e.preventDefault();
         previousStep();
     }
 
-    const nextPage = (e) => {
+    const handleSubmit = async (e) => {
+        const response = await axios.post(`https://us-central1-project-s-backend.cloudfunctions.net/dbServiceApp/profile/sponsee/${currentUser.id}`, 
+        { body : states}, 
+        { headers: {
+            'Content-Type': 'application/json'
+                }
+            }
+        )
+        console.log(response)
         e.preventDefault();
-        nextStep();
     }
 
     return(
@@ -76,7 +88,7 @@ const SponseePageTwo = ({ values, handleChange, nextStep, previousStep}) => {
                     </PageOneFormContainer>
                     <FormButtonContainer>
                         <BackButton onClick={previousPage}>Back</BackButton>
-                        <NextButton onClick={nextPage}>Next</NextButton>
+                        <NextButton onSubmit={handleSubmit}>Next</NextButton>
                     </FormButtonContainer>
                 </PageOneForm>
             </FormContainer>

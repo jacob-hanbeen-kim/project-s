@@ -1,20 +1,15 @@
 import React, { useState } from 'react'
-import SponseePageOne from './SponseePageOne';
-import SponseePageTwo from './SponseePageTwo';
+import AgencyPageOne from './AgencyPageOne';
+import AgencyPageTwo from './AgencyPageTwo';
 import Confirm from './Confirm';
 
-const OnboardSponseeForm = () => {
+const OnboardAgencyForm = () => {
 
     const [states, setStates] = useState({
         step: 1,
-        occupation: '',
-        firstName: '',
-        lastName: '',
-        email: '',
-        mobile: '',
-        sport: '',
-        agency: false,
-        association: '',
+        name: '',
+        client: '',
+        pay_base: '',
         deals: {
             equipmentEndorsement: false,
             mediaAdvertisement: false,
@@ -22,8 +17,7 @@ const OnboardSponseeForm = () => {
             onsiteAdvertisement: false,
             logoOnApparel: false,
             others: false,
-        },
-        amount: ''
+        }
     })
 
     //Proceed to next page
@@ -51,15 +45,15 @@ const OnboardSponseeForm = () => {
     }
 
     const { step } = states;
-    const {occupation, firstName, lastName, email, mobile, sport, agency, association, amount, deals,
+    const { name, client, pay_base, 
         equipmentEndorsement, mediaAdvertisement, socialMediaCollaboration, onsiteAdvertisement, logoOnApparel, others} = states;
-    const values = {occupation, firstName, lastName, email, mobile, sport, agency, association, amount, deals,
+    const values = {name, client, pay_base,
         equipmentEndorsement, mediaAdvertisement, socialMediaCollaboration, onsiteAdvertisement, logoOnApparel, others};
     
     switch(step) {
         case 1: 
             return (
-                <SponseePageOne 
+                <AgencyPageOne 
                     nextStep = {nextStep}
                     handleChange = {handleChange}
                     values = {values}
@@ -67,20 +61,19 @@ const OnboardSponseeForm = () => {
             )
         case 2: 
             return (
-                <SponseePageTwo 
+                <AgencyPageTwo 
                     nextStep = {nextStep}
                     previousStep = {previousStep}
                     handleChange = {handleChange}
                     values = {values}
-                    states = {states}
                 />
             )
         case 3: 
             return (
-                <Confirm />
+                <Confirm/>
             )
     }
     
 }
 
-export default OnboardSponseeForm
+export default OnboardAgencyForm
