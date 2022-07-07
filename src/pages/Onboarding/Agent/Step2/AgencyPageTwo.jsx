@@ -22,7 +22,7 @@ import {
 } from '../OnboardAgency.styled';
 
 import DealsCard from '../../DealsCard/DealsCard';
-import { firstCard, secondCard, thirdCard, fourthCard, fifthCard, sixthCard} from '../../DealsCard/DealsCardData'
+import { equipmentEndorsementCard, mediaAdvertisementCard, socialMediaCollaborationCard, onsiteAdvertisementCard, logoOnApparelCard, othersCard} from '../../DealsCard/DealsCardData'
 
 const OnboardAgencyPageTwo = ({ values, onChange, Steps, setCurrentStep }) => {
 
@@ -41,14 +41,14 @@ const OnboardAgencyPageTwo = ({ values, onChange, Steps, setCurrentStep }) => {
                 <PageOneForm>
                     <Label>What kind of deals are you looking for?</Label>
                     <OnboardingAgencyCardContainer>
-                        <DealsCard {...firstCard}/>
-                        <DealsCard {...secondCard}/>
-                        <DealsCard {...thirdCard}/>
+                        <DealsCard {...equipmentEndorsementCard} value={values} onChange={onChange} name=""/>
+                        <DealsCard {...mediaAdvertisementCard} value={values.deals.media} onChange={onChange} name=""/>
+                        <DealsCard {...socialMediaCollaborationCard} value={values.deals.social} onChange={onChange} name=""/>
                     </OnboardingAgencyCardContainer>
                     <OnboardingAgencyCardContainer>
-                        <DealsCard {...fourthCard}/>
-                        <DealsCard {...fifthCard}/>
-                        <DealsCard {...sixthCard}/>
+                        <DealsCard {...onsiteAdvertisementCard} value={values.deals} onChange={onChange} name=""/>
+                        <DealsCard {...logoOnApparelCard} value={values.deals} onChange={onChange} name=""/>
+                        <DealsCard {...othersCard} value={values.deals} onChange={onChange} name=""/>
                     </OnboardingAgencyCardContainer>
                     <Label>What is your pay based on?</Label>
                     <RadioButtonContainer>

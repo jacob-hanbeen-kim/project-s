@@ -13,11 +13,6 @@ export const TitleContainer = styled.div`
     margin-top: 50px;
 `
 
-export const SelectWrapper = styled.select`
-    margin-left : 30px;
-    margin-top: 20px;
-`
-
 export const ProgressBarContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -120,6 +115,8 @@ export const RadioButtonWrapper = styled.div`
 
 export const SelectOption = styled.select`
     border: 1px solid #ccc;
+    margin-left : 30px;
+    margin-top: 20px;
 `
 
 export const FormButtonContainer = styled.div`
@@ -141,15 +138,22 @@ export const NextButton = styled(Button)`
     background-color: #ae7acc;
 `
 
-export const OnboardingSponsorCardWrapper = styled.div`
+export const OnboardingDealsCardWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px
+    /* justify-content: center; */
+
+`
+
+export const OnboardingSponsorCardContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     width: 100%;
 
     margin: 50px 0px;
-    margin-left: 60px;
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
         flex-direction: column;

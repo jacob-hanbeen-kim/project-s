@@ -1,29 +1,29 @@
-export const firstCard = {
+export const equipmentEndorsementCard = {
     option: "Equipment Endorsement",
     image: "/images/onboardingCard/Equipment Endorsement.png"
 }
 
-export const secondCard = {
+export const mediaAdvertisementCard = {
     option: "Media Advertisement",
     image: "/images/onboardingCard/Media Advertisement.png"
 }
 
-export const thirdCard = {
+export const socialMediaCollaborationCard = {
     option: "Social Media Collaboration",
     image: "/images/onboardingCard/Social Media Collaboration.png"
 }
 
-export const fourthCard = {
+export const onsiteAdvertisementCard = {
     option: "Onsite Advertisement",
     image: "/images/onboardingCard/Onsite Advertisement.png"
 }
 
-export const fifthCard = {
+export const logoOnApparelCard = {
     option: "Logo on Apparel",
     image: "/images/onboardingCard/Logo on Apparel.png"
 }
 
-export const sixthCard = {
+export const othersCard = {
     option: "Others",
     image: "/images/onboardingCard/Others.png"
 }

@@ -20,9 +20,13 @@ import {
     FormInput,
 } from '../OnboardSponsee.styled';
 
-const OnboardSponseePageOne = ({ values, onChange, Steps, setCurrentStep }) => {
+const OnboardSponseePageOne = ({ values, onChange, onClick, Steps, setCurrentStep }) => {
     const navigate = useNavigate();
     const [hasAgency, setHasAgency] = useState(false);
+
+    const handleOnChange = (e) => {
+        setHasAgency(!hasAgency);
+    }
 
     const agencyTrue = (e) => {
         e.preventDefault();
@@ -47,7 +51,7 @@ const OnboardSponseePageOne = ({ values, onChange, Steps, setCurrentStep }) => {
     };
 
     const handleSubmit = (e) => {
-        // console.log(values);
+        console.log(values);
         setCurrentStep(Steps.STEP2);
     }
 

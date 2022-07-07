@@ -1,19 +1,46 @@
+import { useRef, useState } from 'react';
 import {
     Container,
     ContentContainer,
     Header,
     BtnWrapper,
     ImageContainer,
-    ButtonItems
+    ButtonItemsOff,
+    ButtonItemsOn
 } from './DealsCard.styled';
 
 const DealsCard = ({
     option,
-    image
+    image,
+    onChange,
+    onClick,
+    values
 }) => {
 
-    const onSelect = (e) => {
-        e.preventDefault()
+    const [deals, setDeals] = useState();
+    const [active, setActive] = useState(false);
+    
+
+    const onPress = (e) => {
+        e.preventDefault();
+        if(active===false) {
+            setActive(true);
+            onChange({
+                target: {
+                    name: `${option}`,
+                    value: false
+                }
+            })
+        } else if (active===true){
+            setActive(false);
+            onChange({
+                target: {
+                    name: `${option}`,
+                    value: true
+                }
+            })
+        }
+        // console.log(values)
     }
 
     return (
@@ -26,9 +53,14 @@ const DealsCard = ({
             </ImageContainer>
             <div>
                 <BtnWrapper>
-                    <ButtonItems onClick={onSelect}>
+                    { active ?
+                        <ButtonItemsOn onChange={onChange} onClick={onPress} value={option}>
                         Select
-                    </ButtonItems>
+                        </ButtonItemsOn> :
+                        <ButtonItemsOff onChange={onChange} onClick={onPress} value={option}>
+                        Select
+                        </ButtonItemsOff>
+                    }
                 </BtnWrapper>
             </div>
         </Container >

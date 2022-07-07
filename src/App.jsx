@@ -19,9 +19,9 @@ import Account from './pages/Account/Account';
 import Membership from './pages/Membership/Membership';
 import EditProfile from './pages/Profile/EditProfile';
 import Onboarding from './pages/Onboarding/Onboarding'
-import OnboardingSponsee from './pages/Onboarding/Sponsee/OnboardSponsee'
-import OnboardingSponsor from './pages/Onboarding/Sponsor/OnboardSponsor'
-import OnboardAgency from './pages/Onboarding/Agent/OnboardAgency'
+import OnboardingSponsee from './pages/Onboarding2/Sponsee/OnboardSponseeForm';
+import OnboardingSponsor from './pages/Onboarding/Sponsor/OnboardSponsor';
+import OnboardAgency from './pages/Onboarding/Agent/OnboardAgency';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import { AuthProvider } from './contexts/AuthContext';
 import Negotiate from './pages/Negotiate/Negotiate';

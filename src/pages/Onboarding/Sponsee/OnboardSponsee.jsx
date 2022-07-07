@@ -24,6 +24,7 @@ const OnboardSponsee = ({}) => {
 
     const handleValChange = (e) => {
         setFormVal({ ...formVal, [e.target.name]: e.target.value})
+        console.log(formVal)
     }
 
     const getForm = () => {

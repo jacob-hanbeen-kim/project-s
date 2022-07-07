@@ -69,7 +69,7 @@ export const BtnWrapper = styled.div`
 `
 
 export const ButtonItems = styled(Button)`
-    background-color: #c4c4c4;
+    background-color: #ae7acc;
 `
 
 export const SaveTag = styled.div`
