@@ -19,28 +19,25 @@ import {
     BackButton,
     NextButton,
     OnboardingAgencyCardContainer
-} from './OnboardAgency.styled';
+} from '../../Onboarding/Agent/OnboardAgency.styled';
 
-import OnboardingCard from '../OnboardingCard/OnboardingCard';
-import { firstCard, secondCard, thirdCard, fourthCard, fifthCard, sixthCard} from '../OnboardingCard/OnboardingCardData'
+import DealsCard from '../../Onboarding/DealsCard/DealsCard';
+import { equipmentEndorsementCard, mediaAdvertisementCard, socialMediaCollaborationCard, onsiteAdvertisementCard, logoOnApparelCard, othersCard} from '../../Onboarding/DealsCard/DealsCardData'
 
-const OnboardAgencyTwo = ({}) => {
+const AgencyPageTwo = ({ values, handleChange, nextStep, previousStep }) => {
 
-    const [checked, setChecked] = useState({ yes: false, no: false});
+    const nextPage = (e) => {
+        e.preventDefault();
+        nextStep();
+    }
 
+    const previousPage = (e) => {
+        e.preventDefault();
+        previousStep();
+    }
 
     return (
-        <OnboardAgencyContainer>
-            <TitleContainer>
-                <Header>
-                    Agency
-                </Header>
-            </TitleContainer>
-            <DescriptionContainer>
-                <TitleDescription>
-                    Defiact helps you close deals 87% faster
-                </TitleDescription>
-            </DescriptionContainer>
+        <>
             <ProgressBarContainer>
                 <ProgressBarCircle />
                 <ProgressLine />
@@ -52,14 +49,14 @@ const OnboardAgencyTwo = ({}) => {
                 <PageOneForm>
                     <Label>What kind of deals are you looking for?</Label>
                     <OnboardingAgencyCardContainer>
-                        <OnboardingCard {...firstCard}/>
-                        <OnboardingCard {...secondCard}/>
-                        <OnboardingCard {...thirdCard}/>
+                        <DealsCard {...equipmentEndorsementCard} onChange={handleChange('')}/>
+                        <DealsCard {...mediaAdvertisementCard} onChange={handleChange('')}/>
+                        <DealsCard {...socialMediaCollaborationCard} onChange={handleChange('')}/>
                     </OnboardingAgencyCardContainer>
                     <OnboardingAgencyCardContainer>
-                        <OnboardingCard {...fourthCard}/>
-                        <OnboardingCard {...fifthCard}/>
-                        <OnboardingCard {...sixthCard}/>
+                        <DealsCard {...onsiteAdvertisementCard} onChange={handleChange('')}/>
+                        <DealsCard {...logoOnApparelCard} onChange={handleChange('')}/>
+                        <DealsCard {...othersCard} onChange={handleChange('')}/>
                     </OnboardingAgencyCardContainer>
                     <Label>What is your pay based on?</Label>
                     <RadioButtonContainer>
@@ -75,11 +72,11 @@ const OnboardAgencyTwo = ({}) => {
                 </PageOneForm>
             </FormContainer>
             <FormButtonContainer>
-                <BackButton>Back</BackButton>
-                <NextButton>Submit</NextButton>
+                <BackButton onClick={previousPage}>Back</BackButton>
+                <NextButton onClick={nextPage}>Submit</NextButton>
             </FormButtonContainer>
-        </OnboardAgencyContainer>
+        </>
     )
 }
 
-export default OnboardAgencyTwo
+export default AgencyPageTwo

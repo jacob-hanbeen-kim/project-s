@@ -13,11 +13,6 @@ export const TitleContainer = styled.div`
     margin-top: 50px;
 `
 
-export const SelectWrapper = styled.select`
-    margin-left : 30px;
-    margin-top: 20px;
-`
-
 export const ProgressBarContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -69,11 +64,21 @@ export const FormContainer = styled.div`
 
 export const PageOneForm = styled.form`
     display: flex;
-    width: 50%;
     flex-direction: column;
     height: 100%;
+    width: 100%;
     /* margin-top: 80px */
 `
+
+export const PageOneFormContainer = styled.div`
+    width: 50%;
+`
+
+export const AmountContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
 export const CheckboxWrapper = styled.div`
     width: 40%;
     flex-direction: row;
@@ -110,6 +115,8 @@ export const RadioButtonWrapper = styled.div`
 
 export const SelectOption = styled.select`
     border: 1px solid #ccc;
+    margin-left : 30px;
+    margin-top: 20px;
 `
 
 export const FormButtonContainer = styled.div`
@@ -131,15 +138,22 @@ export const NextButton = styled(Button)`
     background-color: #ae7acc;
 `
 
+export const OnboardingDealsCardWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px
+    /* justify-content: center; */
+
+`
+
 export const OnboardingSponsorCardContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
     width: 100%;
 
     margin: 50px 0px;
-    margin-left: 60px;
 
     @media screen and (max-width: ${({ theme }) => theme.screen.sizeM}) {
         flex-direction: column;

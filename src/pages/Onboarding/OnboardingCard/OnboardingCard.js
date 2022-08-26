@@ -1,29 +1,36 @@
-import { Button } from '../../../styles/Button.styled';
+import { useNavigate } from 'react-router-dom';
 import {
     Container,
     ContentContainer,
     Header,
     BtnWrapper,
-    ImageContainer
+    ImageContainer,
+    ButtonItems
 } from './OnboardingCard.styled';
 
 const OnboardingCard = ({
     option,
+    description,
     image
 }) => {
+
+    const navigate = useNavigate();
+    const navigateOnboarding = () => {
+        navigate(`/onboarding/${option}`)
+    }
     return (
         <Container>
             <ContentContainer>
-                <Header>{option}</Header>
+                <Header>{description}</Header>
             </ContentContainer>
             <ImageContainer>
-
+                <img src={process.env.PUBLIC_URL + image} alt={option}/>
             </ImageContainer>
             <div>
                 <BtnWrapper>
-                    <Button>
+                    <ButtonItems onClick={navigateOnboarding}>
                         Select
-                    </Button>
+                    </ButtonItems>
                 </BtnWrapper>
             </div>
         </Container >

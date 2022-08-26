@@ -1,10 +1,4 @@
-import { useState } from 'react';
 import {
-    OnboardSponsorContainer,
-    TitleContainer,
-    TitleDescription,
-    DescriptionContainer,
-    Header,
     ProgressBarContainer,
     ProgressCurrent,
     ProgressLine,
@@ -21,26 +15,23 @@ import {
     FormButtonContainer,
     BackButton,
     NextButton,
-} from './OnboardSponsor.styled';
+} from '../../Onboarding/Sponsor/OnboardSponsor.styled';
 
-const OnboardSponsorTwo = ({}) => {
+const SponsorPageTwo = ({ values, handleChange, nextStep, previousStep }) => {
 
-    const [checked, setChecked] = useState({ yes: false, no: false});
+    const nextPage = (e) => {
+        e.preventDefault();
+        nextStep();
+    }
 
+    const previousPage = (e) => {
+        e.preventDefault();
+        previousStep();
+    }
 
-    return (
-        <OnboardSponsorContainer>
-            <TitleContainer>
-                <Header>
-                    Sponsor
-                </Header>
-            </TitleContainer>
-            <DescriptionContainer>
-                <TitleDescription>
-                    Defiact helps you close deals 87% faster
-                </TitleDescription>
-            </DescriptionContainer>
-            <ProgressBarContainer>
+    return(
+        <>
+        <ProgressBarContainer>
                 <ProgressBarCircle />
                 <ProgressLine />
                 <ProgressBarCircle />
@@ -53,11 +44,11 @@ const OnboardSponsorTwo = ({}) => {
                 <PageOneForm>
                     <Label>What is your budget?</Label>
                     <EnterpriseWrapper>
-                        <FormInput type="number" id="budget" name="budget" placeholder="Your budget.." />
+                        <FormInput type="number" onChange={handleChange('budget')} id="budget" name="budget" placeholder="Your budget.." />
                     </EnterpriseWrapper>
                     <Label>When do you want to sponsor?</Label>
                     <CheckboxWrapper>
-                        <select name="time_period" id="time_period">
+                        <select onChange={handleChange('time_period')} name="time_period" id="time_period">
                             <optgroup label="time_period">
                                 <option>Choose Option</option>
                                 <option value="one_month">1 month</option>
@@ -71,18 +62,18 @@ const OnboardSponsorTwo = ({}) => {
                     <SportsContainer>
                         <Label>What are your sports of interest?</Label>
                         <SportsWrapper>
-                            <FormInput type="text" id="sports" name="sports" placeholder="sport of interest.." />
+                            <FormInput type="text" onChange={handleChange('interest')} id="interest" name="interest" placeholder="sport of interest.." />
                             <AddSportButton> + </AddSportButton>
                         </SportsWrapper>
                     </SportsContainer>
                 </PageOneForm>
             </FormContainer>
             <FormButtonContainer>
-                <BackButton>Back</BackButton>
-                <NextButton>Next</NextButton>
+                <BackButton onClick={previousPage}>Back</BackButton>
+                <NextButton onClick={nextPage}>Next</NextButton>
             </FormButtonContainer>
-        </OnboardSponsorContainer>
+            </>
     )
 }
 
-export default OnboardSponsorTwo
+export default SponsorPageTwo

@@ -10,7 +10,7 @@ export const Container = styled.div`
     justify-content: space-between;
     align-items: center;
 
-    min-width: 270px;
+    /* min-width: 270px; */
     max-width: 270px;
     min-height: 340px;
     /* max-height: 340px; */
@@ -68,7 +68,11 @@ export const BtnWrapper = styled.div`
     }
 `
 
-export const ButtonItems = styled(Button)`
+
+export const ButtonItemsOff = styled(Button)`
+    background-color: #c4c4c4;
+`
+export const ButtonItemsOn = styled(Button)`
     background-color: #ae7acc;
 `
 
